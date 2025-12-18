@@ -2,27 +2,15 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch forjex-app",
+      "name": "Launch plolux",
       "type": "node-terminal",
       "request": "launch",
-      "command": "pnpm --filter forjex-app dev",
+      "command": "pnpm --filter plolux dev",
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "presentation": {
-        "group": "forjex",
+        "group": "plolux",
         "order": 1
-      }
-    },
-    {
-      "name": "Launch forjex-brief",
-      "type": "node-terminal",
-      "request": "launch",
-      "command": "pnpm --filter forjex-brief dev",
-      "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
-      "presentation": {
-        "group": "forjex",
-        "order": 2
       }
     }
   ]

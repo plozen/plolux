@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-# 워크플로 이름: 모노레포 통합 배포
-name: 모노레포 통합 배포
+# 워크플로 이름: Plolux 통합 배포
+name: Plolux 통합 배포
 
 # 트리거 설정: main 브랜치에 push 이벤트가 발생했을 때 워크플로를 실행합니다.
 on:
@@ -21,192 +21,116 @@ concurrency:
 
 # 실행될 작업(Job)들을 정의합니다.
 jobs:
-  # 'changes' 작업: 어떤 패키지(app, brief)에 변경이 있었는지 감지합니다.
+  # 'changes' 작업: 패키지 변경 감지
   changes:
-    # 실행 환경: 최신 버전의 Ubuntu에서 실행됩니다.
     name: 변경 사항 감지
     runs-on: ubuntu-latest
-    # 출력(outputs): 이 작업의 결과를 다른 작업에서 사용할 수 있도록 설정합니다.
     outputs:
-      app: ${{ steps.filter.outputs.app }}
-      brief: ${{ steps.filter.outputs.brief }}
-    # 단계(steps): 실제 작업들이 순차적으로 실행됩니다.
+      plolux: ${{ steps.filter.outputs.plolux }}
     steps:
-      # 1단계: 코드 체크아웃
-      # actions/checkout@v4 액션을 사용하여 저장소의 코드를 워크플로 실행 환경으로 가져옵니다.
       - name: 저장소 코드 체크아웃
         uses: actions/checkout@v4
 
-      # 2단계: 변경된 파일 경로 필터링
-      # dorny/paths-filter@v2 액션을 사용하여 특정 경로의 파일 변경 여부를 감지합니다.
-      # 'app'과 'brief' 두 개의 필터를 정의하여 각 패키지 디렉토리의 변경을 추적합니다.
       - name: 변경된 파일 경로 필터링
         uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
-            app:
-              - 'packages/forjex-app/**'
-            brief:
-              - 'packages/forjex-brief/**'
+            plolux:
+              - 'packages/plolux/**'
 
   # 'build-and-deploy' 작업: 코드를 빌드하고 GitHub Pages에 배포합니다.
   build-and-deploy:
     name: 빌드 및 배포
-    # 의존성 설정: 'changes' 작업이 성공적으로 완료되어야 이 작업을 시작합니다.
     needs: changes
-    # 실행 조건: 아래 조건 중 하나라도 참일 때 작업을 실행합니다.
-    # 1. 커밋 메시지에 [no-deploy] 태그가 없을 것
-    # 2. AND (
-    #      'app' 또는 'brief' 패키지에 변경이 있었거나,
-    #      OR 커밋 메시지에 [deploy:...] 태그가 포함되어 수동 배포가 요청되었을 경우
-    #    )
+    # 실행 조건: 
+    # 1. [no-deploy] 태그가 없을 것
+    # 2. plolux 패키지가 변경되었거나, [deploy:plolux] 또는 [deploy:all] 태그가 있을 때
     if: |
       !contains(github.event.head_commit.message, '[no-deploy]') &&
-      (needs.changes.outputs.app == 'true' || needs.changes.outputs.brief == 'true' || contains(github.event.head_commit.message, '[deploy:'))
-    # 실행 환경: 최신 버전의 Ubuntu에서 실행됩니다.
+      (needs.changes.outputs.plolux == 'true' || contains(github.event.head_commit.message, '[deploy:plolux]') || contains(github.event.head_commit.message, '[deploy:all]'))
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    # 권한 설정: 워크플로가 GitHub API와 상호작용하는 데 필요한 권한을 부여합니다.
     permissions:
-      contents: read # 저장소 컨텐츠를 읽기 위한 권한
-      pages: write # GitHub Pages에 쓰기 위한 권한
-      id-token: write # OIDC(OpenID Connect) 토큰을 사용하기 위한 권한
+      contents: read
+      pages: write
+      id-token: write
 
-    # 단계(steps): 실제 작업들이 순차적으로 실행됩니다.
     steps:
-      # 1단계: 코드 체크아웃
       - name: 저장소 코드 체크아웃
         uses: actions/checkout@v4
 
-      # 2단계: pnpm 설치
-      # pnpm/action-setup@v3 액션을 사용하여 pnpm 패키지 매니저를 설치합니다.
       - name: pnpm 설치
         uses: pnpm/action-setup@v3
         with:
-          version: latest # 항상 최신 버전의 pnpm을 사용합니다.
+          version: latest
 
-      # 3단계: Node.js 설치
-      # ⚠️ Node 18은 oxc-parser의 prebuild가 제공되지 않아 CI 환경에서 네이티브 바인딩을 찾지 못함.
-      # Node 22.x LTS로 올리면 prebuild가 자동 다운로드되어 빌드 실패가 사라집니다.
       - name: Node.js 설치 (22.x 버전)
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # ✅ Node.js 22 버전을 사용합니다 (oxc-parser 호환성 개선).
+          node-version: '22'
 
-      # 4단계: pnpm 캐시 복원
-      # actions/cache@v3 액션을 사용하여 pnpm 저장소 캐시를 복원합니다.
-      # 의존성 설치 시간을 단축하여 빌드 속도를 향상시킵니다.
       - name: pnpm 의존성 캐시 복원
         uses: actions/cache@v3
         with:
-          path: ~/.pnpm-store # 캐시할 pnpm 저장소 경로
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }} # 캐시 키: OS와 pnpm-lock.yaml 파일 해시를 조합하여 생성
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
-      # 5단계: 빌드에 필요한 시스템 의존성 설치
-      # 'node-gyp'와 같은 네이티브 모듈 빌드에 필요한 build-essential, python3 등을 설치합니다.
-      - name: 빌드 필수 패키지 설치 (build-essential, python)
+      - name: 빌드 필수 패키지 설치
         run: sudo apt-get update && sudo apt-get install -y build-essential python3 python-is-python3
 
-      # 6단계: Rust 툴체인 설치
-      # Rust 기반의 빌드 도구(예: SWC)를 사용하기 위해 Rust 안정화 버전을 설치합니다.
       - name: Rust 툴체인 설치
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
 
-      # 7단계: 커밋 메시지에서 배포 대상 파싱
-      # 커밋 메시지에 포함된 [deploy:target] 태그를 분석하여 수동 배포 대상을 추출합니다.
-      # 결과는 'targets'라는 output으로 저장됩니다.
-      - name: 커밋 메시지에서 배포 대상 추출
-        id: deploy_targets
-        run: |
-          MESSAGE="${{ github.event.head_commit.message }}"
-          if [[ $MESSAGE =~ \[deploy:([^\]]+)\] ]]; then
-            TARGETS="${BASH_REMATCH[1]}"
-            echo "targets=$TARGETS" >> $GITHUB_OUTPUT
-          else
-            echo "targets=" >> $GITHUB_OUTPUT
-          fi
-
-      # 8단계: 작업 공간 정리
-      # 이전 빌드에서 남았을 수 있는 node_modules 디렉토리를 모두 삭제하여 깨끗한 상태에서 의존성을 설치합니다.
       - name: 기존 node_modules 디렉토리 정리
         run: |
           rm -rf node_modules
           find . -name "node_modules" -type d -prune -exec rm -rf '{}' +
 
-      # 9단계: 의존성 설치
       - name: pnpm 의존성 설치
         run: |
           pnpm install --frozen-lockfile
           echo "✅ Dependencies installed successfully."
 
-      # 10단계: 최종 배포물을 담을 staging 디렉터리 생성
       - name: 최종 배포 결과물을 담을 'staging' 디렉토리 생성
         run: mkdir -p staging
 
-      # 11단계: 루트 index.html 복사
       - name: 루트 index.html을 'staging'으로 복사
         run: cp index.html staging/
 
       # -------------------------------------------------------------
-      # forjex-brief 빌드 및 복사
+      # plolux 빌드 및 복사
       # -------------------------------------------------------------
-      # 12단계: forjex-brief 빌드
-      - name: forjex-brief 패키지 빌드
-        if: needs.changes.outputs.brief == 'true' || contains(steps.deploy_targets.outputs.targets, 'forjex-brief') || contains(steps.deploy_targets.outputs.targets, 'all')
+      - name: plolux 패키지 빌드
         run: |
-          echo "🚀 Building forjex-brief..."
-          pnpm --filter forjex-brief build
-          echo "✅ forjex-brief build complete."
+          echo "🚀 Building plolux..."
+          pnpm --filter plolux build
+          echo "✅ plolux build complete."
 
-      # 13단계: forjex-brief 결과물 복사 (Next.js 'out' 디렉토리)
-      - name: forjex-brief 빌드 결과물을 'staging'으로 복사
-        if: needs.changes.outputs.brief == 'true' || contains(steps.deploy_targets.outputs.targets, 'forjex-brief') || contains(steps.deploy_targets.outputs.targets, 'all')
+      - name: plolux 빌드 결과물을 'staging'으로 복사
         run: |
-          mkdir -p staging/forjex-brief
-          cp -r packages/forjex-brief/out/* staging/forjex-brief/
-          echo "📦 forjex-brief copied to staging."
-
-      # -------------------------------------------------------------
-      # forjex-app 빌드 및 복사
-      # -------------------------------------------------------------
-      # 14단계: forjex-app 빌드
-      - name: forjex-app 패키지 빌드
-        if: needs.changes.outputs.app == 'true' || contains(steps.deploy_targets.outputs.targets, 'forjex-app') || contains(steps.deploy_targets.outputs.targets, 'all')
-        run: |
-          echo "🚀 Building forjex-app..."
-          pnpm --filter forjex-app build
-          echo "✅ forjex-app build complete."
-
-      # 15단계: forjex-app 결과물 복사 (Next.js 'out' 디렉토리)
-      - name: forjex-app 빌드 결과물을 'staging'으로 복사
-        if: needs.changes.outputs.app == 'true' || contains(steps.deploy_targets.outputs.targets, 'forjex-app') || contains(steps.deploy_targets.outputs.targets, 'all')
-        run: |
-          mkdir -p staging/forjex-app
-          cp -r packages/forjex-app/out/* staging/forjex-app/
-          echo "📦 forjex-app copied to staging."
+          mkdir -p staging/plolux
+          # Next.js output: export 모드일 경우 'out' 폴더가 생성됨
+          # 주의: next.config.ts에서 output: 'export' 설정 필요
+          cp -r packages/plolux/out/* staging/plolux/ || echo "⚠️ 'out' directory not found. Did you set output: 'export' in next.config.ts?"
+          echo "📦 plolux copied to staging."
 
       # -------------------------------------------------------------
       # GitHub Pages 업로드 및 배포
       # -------------------------------------------------------------
-      # 18단계: 배포 아티팩트 업로드
-      # 'staging' 디렉토리의 모든 내용을 GitHub Pages 배포를 위한 아티팩트로 업로드합니다.
       - name: staging 디렉토리를 배포 아티팩트로 업로드
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'staging'
 
-      # 19단계: GitHub Pages에 배포
-      # 업로드된 아티팩트를 사용하여 GitHub Pages에 최종적으로 배포합니다.
       - name: GitHub Pages에 배포
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          # 업로드 단계와 동일한 아티팩트 이름을 사용합니다.
           artifact_name: github-pages
