@@ -9,32 +9,17 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
     'prettier',
   ],
-  parser: 'vue-eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
-    parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'vue'],
-  rules: {
-    'vue/multi-word-component-names': 'off',
-  },
+  plugins: ['@typescript-eslint'],
   overrides: [
     {
       files: ['**/*.test.ts', '**/*.spec.ts'],
-    },
-    {
-      files: ['packages/forgeline-mcp-server/plugin/code.js'],
-      env: {
-        browser: true,
-      },
-      globals: {
-        figma: 'readonly',
-        __html__: 'readonly',
-      },
     },
   ],
 };
