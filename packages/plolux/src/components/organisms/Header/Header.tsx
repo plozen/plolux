@@ -1,22 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import styles from './Header.module.scss';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
-
-  // 페이지 이동 시 메뉴 닫기
-  useEffect(() => {
-    if (isMenuOpen) {
-      // eslint-disable-next-line
-      setIsMenuOpen(false);
-    }
-  }, [pathname, isMenuOpen, setIsMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -39,7 +29,7 @@ export default function Header() {
         </button>
 
         {/* 네비게이션 메뉴 */}
-        <nav className={`${styles.nav} ${isMenuOpen ? styles.active : ''}`}>
+        <nav className={styles.nav} data-menu-open={isMenuOpen}>
           <Link href="/about">PLOLUX</Link>
           <Link href="/services">서비스</Link>
           <Link href="/portfolio">포트폴리오</Link>
