@@ -1,17 +1,21 @@
-// Colors
-$color-primary: #111;
-$color-white: #fff;
-$color-black: #000;
+// Brand Colors
+$primary-color: #00FFC2;
+$secondary-color: #0A192F;
+$background-color: #FFFFFF;
 
-// Trust Section Colors
-$color-bg-light: #f4f7fa;
-$color-primary-blue: #0055a4;
-$color-primary-blue-pale: rgba(0, 85, 164, 0.1);
-$color-text-dark: #1a1a1b;
-$color-text-gray: #4e5968;
+// Text Colors
+$text-main: #333333;
+$text-sub: #666666;
+$border-color: #E0E0E0;
+
+// Layout
+$container-width: 1280px;
+$header-height: 72px;
 
 // Spacing
-$spacing-base: 4px;
+$spacing-lg: 40px;
+$spacing-md: 24px;
+$spacing-sm: 16px;
 
 // Breakpoints
 $mobile: 768px;

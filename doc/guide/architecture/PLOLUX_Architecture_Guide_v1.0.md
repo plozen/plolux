@@ -30,6 +30,7 @@ packages/plolux/
 │   │   │   └── portfolio/        # 포트폴리오 등 서브 페이지
 │   │   ├── (admin)/              # [Admin System] 관리자 전용 대시보드
 │   │   │   ├── admin/            # URL Prefix: /admin
+│   │   │   │   ├── _guide/       # [Dev Only] 스타일 가이드 및 컴포넌트 미리보기 페이지
 │   │   │   │   ├── login/        # 관리자 로그인
 │   │   │   │   └── dashboard/    # 관리자 메인 대시보드
 │   │   │   └── layout.tsx        # 관리자 레이아웃 (Sidebar, Auth Guard 포함)

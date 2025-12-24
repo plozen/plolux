@@ -1,0 +1,64 @@
+.footer {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 80px 0 40px;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .logo {
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .info {
+    max-width: 300px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+
+    .copy {
+      margin-top: 24px;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+  }
+
+  .links {
+    display: flex;
+    gap: 60px;
+
+    h4 {
+      color: white;
+      margin-bottom: 20px;
+      font-family: var(--font-family-base);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 12px;
+        
+        a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            
+            &:hover {
+                color: var(--primary-color);
+            }
+        }
+      }
+    }
+  }
+}

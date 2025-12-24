@@ -1,0 +1,62 @@
+@use "src/styles/abstracts/variables" as v;
+
+.guideContainer {
+  padding: 40px;
+  background-color: v.$color-bg-light;
+  min-height: 100vh;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: v.$color-text-dark;
+  border-bottom: 2px solid v.$color-primary;
+  padding-bottom: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.colorCard {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+
+  .preview {
+    height: 120px;
+    width: 100%;
+  }
+
+  .info {
+    padding: 16px;
+    
+    .name {
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: v.$color-text-dark;
+    }
+    
+    .hex {
+      font-size: 0.9rem;
+      color: v.$color-text-gray;
+    }
+  }
+}
+
+// Color Utility Classes for Preview
+.bgPrimary { background-color: v.$color-primary; }
+.bgSecondary { background-color: v.$color-secondary; }
+.bgPrimaryPale { background-color: v.$color-primary-pale; }
+.bgTextDark { background-color: v.$color-text-dark; }
+.bgTextGray { background-color: v.$color-text-gray; }
+.bgBgLight { background-color: v.$color-bg-light; border: 1px solid #ddd; }

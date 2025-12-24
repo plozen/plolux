@@ -1,5 +1,80 @@
-// Common base styles
+:root {
+  /* Brand Colors */
+  --primary-color: #00FFC2; /* 딥 사파이어: 전문성, 신뢰, 고급스러움 */
+  --secondary-color: #0A192F; /* 뮤티드 골드: 우아함, 액센트, 프리미엄 */
+  --background-color: #FFFFFF; /* 오프 화이트: 깔끔함, 여백, 가독성 */
+  --text-main: #333333; /* 기본 텍스트 색상 */
+  --text-sub: #666666; /* 서브 텍스트, 설명 텍스트 색상 */
+  --border-color: #E0E0E0; /* 경계선, 구분선 색상 */
+
+  /* Typography */
+  --font-family-base: 'Pretendard', sans-serif; /* 국문 본문 및 UI 텍스트 */
+  --font-family-heading: 'Montserrat', sans-serif; /* 영문 및 제목 텍스트 */
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Layout & Spacing */
+  --container-width: 1280px; /* 최대 콘텐츠 너비 */
+  --header-height: 72px; /* 헤더 고정 높이 */
+  --padding-section: 80px 0; /* 섹션 상하 패딩 */
+  --spacing-lg: 40px;
+  --spacing-md: 24px;
+  --spacing-sm: 16px;
+
+  /* Border Radius */
+  --border-radius-base: 8px; /* 카카오처럼 부드러운 라운딩 */
+  --border-radius-pill: 50px;
+
+  /* Shadow */
+  --shadow-base: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  /* Transition */
+  --transition-base: all 0.3s ease-in-out;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-main);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 a {
+  color: var(--text-main);
   text-decoration: none;
-  color: inherit;
+  transition: var(--transition-base);
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--font-family-base);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Base Layout Config */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }

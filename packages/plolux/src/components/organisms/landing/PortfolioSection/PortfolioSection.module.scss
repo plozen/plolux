@@ -1,0 +1,78 @@
+.section {
+    padding: var(--padding-section);
+    background-color: var(--background-color);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+
+    .title {
+        font-size: 2.5rem;
+        margin: 0;
+    }
+
+    .viewAll {
+        font-weight: 600;
+        text-decoration: underline;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.item {
+    group: hover; // ??? SCSS syntax error potential if not careful. Just nesting.
+    cursor: pointer;
+
+    &:hover {
+        .thumb {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-base);
+        }
+        .info h3 {
+            color: var(--primary-color);
+        }
+    }
+
+    .thumb {
+        background-color: #eee;
+        border-radius: var(--border-radius-base);
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        margin-bottom: 16px;
+        transition: var(--transition-base);
+        
+        .placeholderImg {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ccc;
+            background-color: #f0f0f0;
+        }
+    }
+
+    .info {
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+            transition: color 0.2s;
+        }
+        span {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+    }
+}

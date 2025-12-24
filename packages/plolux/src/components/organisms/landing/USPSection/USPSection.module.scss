@@ -1,0 +1,58 @@
+.uspSection {
+  padding: var(--padding-section);
+  background-color: var(--background-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  padding: 40px;
+  border-radius: var(--border-radius-base);
+  background-color: white;
+  box-shadow: var(--shadow-base);
+  text-align: center;
+  transition: var(--transition-base);
+  border: 1px solid transparent;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+  }
+
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background-color: rgba(0, 255, 194, 0.1);
+    color: var(--secondary-color); // Using secondary for visibility on light bg, or primary if bg is dark
+    // With Primary #00FFC2 which is bright cyan, text should be dark.
+    // If background is light, icon color being Secondary #0A192F matches branding well, or Primary.
+    // Let's use darker secondary for contrast on light bg, or primary for brand pop.
+    color: var(--secondary-color); 
+    border-radius: 50%;
+    margin-bottom: 24px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-main);
+  }
+
+  .desc {
+    font-size: 1rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+}
