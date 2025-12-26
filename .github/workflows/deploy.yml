@@ -174,7 +174,7 @@ jobs:
       - name: Sync App to Plozen Repo
         uses: cpina/github-action-push-to-another-repository@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.PLOZEN_SYNC_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.FORJEX_SYNC_TOKEN }}
         with:
           source-directory: 'packages/plozen'
           destination-github-username: 'plozen'
@@ -197,7 +197,7 @@ jobs:
       - name: Sync App to Plolux Repo
         uses: cpina/github-action-push-to-another-repository@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.PLOLUX_SYNC_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.FORJEX_SYNC_TOKEN }}
         with:
           source-directory: 'packages/plolux'
           destination-github-username: 'plolux'
