@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: "export",
   reactCompiler: true,
-  basePath: isGithubPages ? "/forjex/plozen" : undefined,
+  basePath: isGithubPages ? "/forjex/plolux" : undefined,
   images: {
     unoptimized: true,
   },
@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
     includePaths: ['.', './src'],
   },
   env: {
-    NEXT_PUBLIC_BASE_PATH: isGithubPages ? "/forjex/plozen" : "",
+    NEXT_PUBLIC_BASE_PATH: isGithubPages ? "/forjex/plolux" : "",
   },
 };
 
