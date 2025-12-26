@@ -1,0 +1,35 @@
+@use "../abstracts/variables" as *;
+
+// =============================================================================
+// Global Base Styles (Theme Variables)
+// =============================================================================
+
+:root {
+  // Light Mode Variables
+  --bg-primary: #{$col-pure-white};
+  --text-primary: #{$col-deep-void};
+  --text-secondary: #{$col-titanium-silver};
+  --accent-primary: #{$col-bio-lime};
+}
+
+[data-theme='dark'] {
+  // Dark Mode Variables
+  --bg-primary: #{$col-deep-void};
+  --text-primary: #{$col-pure-white};
+  --text-secondary: #{$col-titanium-silver}; // May need adjustment for contrast
+  --accent-primary: #{$col-bio-lime};
+}
+
+// Scrollbar Customization
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+  border-radius: 4px;
+}

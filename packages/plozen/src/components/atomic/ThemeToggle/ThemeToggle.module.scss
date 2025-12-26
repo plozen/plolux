@@ -1,0 +1,20 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.toggleButton {
+  @include flex-center;
+  padding: 8px;
+  border-radius: 50%;
+  color: var(--text-primary);
+  transition: background-color 0.2s, color 0.2s;
+  
+  &:hover {
+    background-color: rgba(var(--text-primary), 0.1);
+    color: var(--accent-primary);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

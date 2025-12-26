@@ -1,0 +1,98 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - #{$header-height});
+  min-height: 600px;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+  @include flex-center;
+  flex-direction: column;
+}
+
+.backgroundCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.3;
+  // Moving Grid Effect can be done via keyframes or just CSS
+  background-image: 
+    linear-gradient(rgba($col-titanium-silver, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($col-titanium-silver, 0.2) 1px, transparent 1px);
+  background-size: 50px 50px;
+  
+  // Optional: subtle movement
+  animation: bgScroll 20s linear infinite;
+}
+
+@keyframes bgScroll {
+  from { background-position: 0 0; }
+  to { background-position: 50px 50px; }
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  @include flex-column;
+  align-items: center;
+  gap: 32px;
+}
+
+.title {
+  font-family: $font-montserrat;
+  font-weight: $font-weight-extrabold;
+  font-size: 4rem;
+  line-height: 1.1;
+  color: var(--text-primary);
+  
+  @include mobile {
+    font-size: 2.5rem;
+  }
+
+  .highlight {
+    color: var(--accent-primary);
+    text-shadow: 0 0 20px rgba($col-bio-lime, 0.6); // Glow effect
+  }
+}
+
+.slogan {
+  font-family: $font-montserrat;
+  font-size: 1.5rem;
+  font-weight: $font-weight-medium;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  
+  @include mobile {
+    font-size: 1rem;
+  }
+}
+
+.ctaButton {
+  margin-top: 16px;
+  padding: 16px 48px;
+  font-family: $font-pretendard;
+  font-size: 1.1rem;
+  font-weight: $font-weight-bold;
+  color: $col-deep-void;
+  background-color: var(--accent-primary);
+  border-radius: 4px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba($col-bio-lime, 0.6);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Engine Core removed

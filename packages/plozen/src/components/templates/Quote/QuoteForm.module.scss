@@ -1,0 +1,143 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.quotePage {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  @include flex-center;
+  padding: 40px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardContainer {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.card {
+  background-color: var(--bg-primary);
+  border: 1px solid rgba($col-titanium-silver, 0.2);
+  border-radius: 16px;
+  padding: 48px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  @include flex-column;
+  gap: 32px;
+  
+  // High contrast support
+  [data-theme='dark'] & {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    background-color: lighten($col-deep-void, 2%);
+  }
+
+  @include mobile {
+    padding: 32px 24px;
+  }
+}
+
+.question {
+  h2 {
+    font-family: $font-montserrat;
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    
+    @include mobile {
+      font-size: 1.5rem;
+    }
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.optionBtn {
+  padding: 20px;
+  border: 1px solid rgba($col-titanium-silver, 0.3);
+  border-radius: 8px;
+  text-align: left;
+  font-family: $font-pretendard;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  background: transparent;
+
+  &:hover {
+    border-color: var(--accent-primary);
+    background-color: rgba($col-bio-lime, 0.05);
+  }
+
+  &.selected {
+    border-color: var(--accent-primary);
+    background-color: rgba($col-bio-lime, 0.1);
+    color: var(--accent-primary);
+    font-weight: $font-weight-bold;
+  }
+}
+
+.inputField {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba($col-titanium-silver, 0.3);
+  color: var(--text-primary);
+  font-family: $font-pretendard;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: var(--accent-primary);
+  }
+  
+  &::placeholder {
+    color: rgba($col-titanium-silver, 0.5);
+  }
+}
+
+.navigation {
+  @include flex-between;
+  margin-top: 16px;
+}
+
+.navBtn {
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: $font-weight-bold;
+  transition: opacity 0.2s;
+
+  &.prev {
+    color: var(--text-secondary);
+    &:hover { color: var(--text-primary); }
+  }
+
+  &.next {
+    background-color: var(--accent-primary);
+    color: $col-deep-void;
+    &:hover { opacity: 0.9; }
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: var(--accent-primary);
+  transition: width 0.3s ease;
+}

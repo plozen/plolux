@@ -1,0 +1,59 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+// =============================================================================
+// Colors (Clean Tech & High Contrast)
+// =============================================================================
+
+// Primary
+$col-bio-lime: #D6FF00;      // Energy, Spark, Focus
+$col-deep-void: #111111;     // Background (Dark), Strong Text
+$col-titanium-silver: #747D8C; // Structure, Lines
+
+// Base
+$col-pure-white: #FFFFFF;
+$col-off-white: #F5F5F7;
+$col-dark-gray: #1E1E1E;
+
+// Semantic - Light Mode Defaults
+$col-bg-primary: $col-pure-white;
+$col-text-primary: $col-deep-void;
+$col-text-secondary: $col-titanium-silver;
+
+// =============================================================================
+// Typography
+// =============================================================================
+
+$font-montserrat: 'Montserrat', sans-serif;
+$font-pretendard: 'Pretendard', sans-serif;
+$font-inter: 'Inter', monospace;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// =============================================================================
+// Spacing & Layout
+// =============================================================================
+
+$spacing-unit: 4px;
+$container-max-width: 1440px;
+$header-height: 80px;
+
+// =============================================================================
+// Breakpoints
+// =============================================================================
+
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-wide: 1440px;
+
+// =============================================================================
+// Z-Index
+// =============================================================================
+
+$z-header: 1000;
+$z-modal: 2000;

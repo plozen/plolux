@@ -1,0 +1,90 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.footer {
+  width: 100%;
+  background-color: var(--bg-primary); // Adapt to theme or stick to dark?
+  // Let's make it slightly different to distinguish from body?
+  border-top: 1px solid rgba($col-titanium-silver, 0.1);
+  padding: 48px 0;
+  
+  @include mobile {
+    padding: 32px 0;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.top {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: 24px;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.logo {
+  font-family: $font-montserrat;
+  font-weight: $font-weight-extrabold;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  
+  span {
+    color: var(--accent-primary);
+  }
+}
+
+.links {
+  display: flex;
+  gap: 24px;
+  
+  a {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+    
+    &:hover {
+      color: var(--accent-primary);
+    }
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.bottom {
+  @include flex-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba($col-titanium-silver, 0.1);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+
+  @include mobile {
+    flex-direction: column-reverse;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
+
+.legal {
+  display: flex;
+  gap: 16px;
+  
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

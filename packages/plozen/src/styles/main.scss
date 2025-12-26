@@ -1,0 +1,8 @@
+@forward "abstracts/variables";
+@forward "abstracts/mixins";
+
+@use "base/reset";
+@use "base/typography";
+@use "base/base";
+
+// This file is the main entry point for global styles.
