@@ -200,9 +200,9 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.FORJEX_SYNC_TOKEN }}
         with:
           source-directory: 'packages/plolux'
-          destination-github-username: 'plolux'
+          destination-github-username: 'plozen'
           destination-repository-name: 'plolux-web'
-          user-email: 'devops@plolux.com'
+          user-email: 'devops@plozen.com'
           target-branch: 'main'
           create-target-branch-if-needed: true
           commit-message: 'Ship: Plolux Engine Update (ORIGIN_COMMIT)'
