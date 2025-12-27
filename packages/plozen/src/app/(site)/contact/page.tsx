@@ -1,21 +1,20 @@
 "use client";
 
 
+import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import QuoteForm from "@/components/templates/Quote/QuoteForm";
 import BoardList from "@/components/organisms/Board/BoardList";
 import styles from "./page.module.scss";
 
-export default function ContactPage() {
+function ContactPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-
   
   const activeTab = searchParams.get('tab') === 'general' ? 'general' : 'project';
 
   const handleTabChange = (tab: 'general' | 'project') => {
-    // Update URL directly; activeTab is derived from searchParams so it updates automatically
     router.replace(`/contact?tab=${tab}`, { scroll: false });
   };
 
@@ -99,5 +98,13 @@ export default function ContactPage() {
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContactPageContent />
+    </Suspense>
   );
 }
