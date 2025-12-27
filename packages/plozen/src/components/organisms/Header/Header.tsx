@@ -88,7 +88,8 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Link href="/quote" onClick={toggleMenu} style={{ color: 'var(--accent-primary)' }}>
+              {/* Point to Contact page with project context logic if needed, or just encourage user to go to contact */}
+              <Link href="/contact" onClick={toggleMenu} style={{ color: 'var(--accent-primary)' }}>
                 프로젝트 시작하기
               </Link>
             </motion.nav>

@@ -5,4 +5,8 @@
 @use "base/typography";
 @use "base/base";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // This file is the main entry point for global styles.

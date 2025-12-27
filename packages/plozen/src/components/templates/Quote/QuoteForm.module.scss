@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../../../styles/abstracts/variables" as *;
 @use "../../../styles/abstracts/mixins" as *;
 
@@ -29,7 +30,7 @@
   // High contrast support
   [data-theme='dark'] & {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-    background-color: lighten($col-deep-void, 2%);
+    background-color: color.adjust($col-deep-void, $lightness: 2%);
   }
 
   @include mobile {
