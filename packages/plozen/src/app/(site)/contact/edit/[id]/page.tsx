@@ -8,6 +8,18 @@ import styles from "./page.module.scss";
 import { createClient } from "@/lib/supabase/client";
 import PasswordModal from "@/components/organisms/Board/PasswordModal";
 
+// 1. Force Dynamic Rendering (Important for [id] dynamic routes in output: 'export' env)
+// This tells Next.js NOT to try and pre-render this page at build time.
+// export const dynamic = "force-dynamic"; // 'force-dynamic' is not valid in 'use client' file directly? 
+// No, route segment config options like 'dynamic' must be exported from a Server Component (or layout).
+// Since this is a "use client" page, the best way to handle this in a static export is actually different.
+// BUT, if we are purely client-side fetching (which we are), we can't really "fix" the build error of missing generateStaticParams
+// UNLESS we tell Next.js to ignore this for static generation.
+//
+// However, the error log says: "Property 'title' does not exist on type 'SelectQueryError...'"
+// This is a TypeScript error, NOT a runtime build error about static params yet.
+// Let's fix the TS error first.
+
 // React Quill Dynamic Import
 const ReactQuill = dynamic(() => import('react-quill-new'), { 
   ssr: false,
@@ -36,12 +48,15 @@ export default function EditPage() {
 
   // Init Data Fetch
   useEffect(() => {
-    fetchData();
+    if (id) {
+      fetchData();
+    }
   }, [id]);
 
   const fetchData = async (passwordOverride?: string) => {
     try {
       // 1. Fetch metadata from view first to check existence
+      // Fix TS Error: explicit generic or type assertion might be needed if types are tricky
       const { data: metaData, error: metaError } = await supabase
         .from('inquiries_list_view' as any)
         .select('*')
@@ -81,9 +96,17 @@ export default function EditPage() {
 
       // Success - We have content
       const post = contentData[0];
+      
+      // Fix TS Error: Ensure metaData properties are accessed safely or typed correctly
+      // The error complained 'title' does not exist on 'SelectQueryError'. 
+      // This implies TS thought metaData could be the Error object, which happens if destructuring is ambiguous or types are inferred weirdly.
+      // But we handled 'metaError' above.
+      // Let's assert metaData structure to be safe.
+      const safeMetaData = metaData as any; 
+
       setFormData({
-        title: metaData.title,
-        author: metaData.author_name,
+        title: safeMetaData?.title || "",
+        author: safeMetaData?.author_name || "",
         password: passwordOverride || "", // Pre-fill if user just entered it
         content: post.content,
         isPrivate: post.is_private,
