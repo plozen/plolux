@@ -13,13 +13,13 @@
 - `deploymentTarget`: 배포 실행 방식을 지정합니다.
   - `'auto'`: 커밋 메시지에 별도 태그를 추가하지 않습니다. CI/CD는 변경된 파일을 감지하여 **자동으로 배포**합니다.
   - `'none'`: 커밋 메시지에 `[no-deploy]` 태그를 추가합니다. CI/CD는 **배포를 실행하지 않습니다.**
-  - `'forgeline-app'`, `'forgeline-brief'`, `'all'` 등: 커밋 메시지에 `[deploy:타겟]` 태그를 추가하여 **수동으로 배포를 강제**합니다. 여러 대상을 지정하려면 쉼표로 구분합니다 (예: `'forgeline-app,forgeline-brief'`).
+  - `'plozen'`, `'plolux'`, `'all'` 등: 커밋 메시지에 `[deploy:타겟]` 태그를 추가하여 **수동으로 배포를 강제**합니다. 여러 대상을 지정하려면 쉼표로 구분합니다 (예: `'plozen,plolux'`).
 - `runLint`: 린트 테스트(`pnpm lint`) 실행 여부를 결정합니다.
 
 ### 파라미터 기본값
 
 - `targetBranch`: `main`
-- `deploymentTarget`: `all`
+- `deploymentTarget`: `plozen`
 - `runLint`: `false`
 
 ## 절차 개요

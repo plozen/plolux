@@ -67,12 +67,6 @@
   }
 }
 
-.textarea {
-  min-height: 200px;
-  resize: vertical;
-  line-height: 1.6;
-}
-
 .checkboxGroup {
   display: flex;
   align-items: center;
@@ -136,9 +130,16 @@
   }
 }
 
+.loadingState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  color: #888;
+}
+
 /* React Quill Override */
 .editorWrapper {
-  // Styles to customize ReactQuill container if needed
   :global(.quill) {
     background: #fff;
     border-radius: 8px;

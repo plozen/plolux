@@ -1,29 +1,107 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useMemo, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import dynamic from 'next/dynamic';
 import styles from "./page.module.scss";
 import { createClient } from "@/lib/supabase/client";
+import PasswordModal from "@/components/organisms/Board/PasswordModal";
 
-// React Quill Dynamic Import (SSR False)
+// React Quill Dynamic Import
 const ReactQuill = dynamic(() => import('react-quill-new'), { 
   ssr: false,
   loading: () => <div className="h-64 w-full bg-gray-50 animate-pulse rounded-md">Loading Editor...</div>
 });
 import 'react-quill-new/dist/quill.snow.css';
 
-export default function WritePage() {
+export default function EditPage() {
   const router = useRouter();
+  const params = useParams();
+  const id = params.id as string;
+  const supabase = createClient();
+
+  // States
+  const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  
   const [formData, setFormData] = useState({
     title: "",
     author: "",
-    password: "",
-    content: "", // This will be HTML string
+    password: "", // User must enter this to save
+    content: "",
     isPrivate: false,
   });
+
+  // Init Data Fetch
+  useEffect(() => {
+    fetchData();
+  }, [id]);
+
+  const fetchData = async (passwordOverride?: string) => {
+    try {
+      // 1. Fetch metadata from view first to check existence
+      const { data: metaData, error: metaError } = await supabase
+        .from('inquiries_list_view' as any)
+        .select('*')
+        .eq('id', id)
+        .single();
+        
+      if (metaError || !metaData) {
+        alert("게시글을 찾을 수 없습니다.");
+        router.back();
+        return;
+      }
+
+      // 2. Fetch Content using RPC (Secure)
+      // If we have a passwordOverride (from modal), use it. Otherwise try empty.
+      const pw = passwordOverride || '';
+      const { data: contentData, error: contentError } = await supabase.rpc('get_inquiry_content', {
+        p_id: id,
+        p_password: pw
+      });
+
+      if (contentError) throw contentError;
+
+      // If no content returned, it means password was wrong or empty for a private post
+      if (!contentData || contentData.length === 0) {
+        // It's private or password failed.
+        // Check if we already tried a password
+        if (passwordOverride) {
+          alert("비밀번호가 일치하지 않습니다.");
+          // keep modal open
+        } else {
+          // First attempt, assume private -> Open Modal
+          setModalOpen(true);
+        }
+        setIsLoading(false);
+        return;
+      }
+
+      // Success - We have content
+      const post = contentData[0];
+      setFormData({
+        title: metaData.title,
+        author: metaData.author_name,
+        password: passwordOverride || "", // Pre-fill if user just entered it
+        content: post.content,
+        isPrivate: post.is_private,
+      });
+      setModalOpen(false); // Close modal if open
+      setIsLoading(false);
+
+    } catch (e) {
+      console.error(e);
+      alert("데이터를 불러오는 중 오류가 발생했습니다.");
+      router.back();
+    }
+  };
+
+  const handleModalSubmit = (password: string) => {
+    // Retry fetching with the entered password
+    fetchData(password);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -42,7 +120,6 @@ export default function WritePage() {
     e.preventDefault();
     
     // Validation
-    // Quill may leave <p><br></p> for empty content, so check plain text length if possible or just trim tags.
     const isContentEmpty = formData.content.replace(/<(.|\n)*?>/g, '').trim().length === 0;
 
     if (!formData.title.trim() || !formData.author.trim() || isContentEmpty) {
@@ -50,33 +127,36 @@ export default function WritePage() {
       return;
     }
     if (!formData.password.trim()) {
-      alert("글 수정/삭제를 위한 비밀번호를 입력해주세요.");
+      alert("수정사항 저장을 위해 비밀번호를 입력해주세요.");
       return;
     }
 
     setIsSubmitting(true);
-    const supabase = createClient();
 
     try {
-      const { error } = await supabase
-        .from('inquiries')
-        .insert({
-          title: formData.title,
-          content: formData.content, // HTML Storage
-          author_name: formData.author,
-          password: formData.password,
-          is_private: formData.isPrivate,
-        });
+      const { data, error } = await supabase.rpc('update_inquiry', {
+        p_id: id,
+        p_password: formData.password, // Authentication for update
+        p_title: formData.title,
+        p_content: formData.content,
+        p_author_name: formData.author,
+        p_is_private: formData.isPrivate
+      });
 
       if (error) throw error;
       
-      alert("게시글이 성공적으로 등록되었습니다.");
-      router.push("/contact?tab=general"); 
-      router.refresh(); // Ensure list is updated
+      // update_inquiry returns boolean (true if updated, false if password wrong)
+      if (data === true) {
+        alert("게시글이 수정되었습니다.");
+        router.push("/contact?tab=general"); 
+        router.refresh();
+      } else {
+        alert("비밀번호가 일치하지 않아 수정에 실패했습니다.");
+      }
       
     } catch (error) {
-      console.error('Error creating post:', error);
-      alert("게시글 등록 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+      console.error('Error updating post:', error);
+      alert("수정 중 오류가 발생했습니다.");
     } finally {
       setIsSubmitting(false);
     }
@@ -92,6 +172,10 @@ export default function WritePage() {
     ],
   }), []);
 
+  if (isLoading && !modalOpen) {
+    return <div className={styles.loadingState}>Loading...</div>;
+  }
+
   return (
     <motion.div 
       className={styles.container}
@@ -99,7 +183,7 @@ export default function WritePage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
     >
-      <h1 className={styles.title}>게시글 작성</h1>
+      <h1 className={styles.title}>게시글 수정</h1>
       
       <form className={styles.formContainer} onSubmit={handleSubmit}>
         {/* Title */}
@@ -131,14 +215,14 @@ export default function WritePage() {
             />
           </div>
           <div className={styles.formGroup}>
-            <label className={styles.label}>비밀번호 (수정/삭제용)</label>
+            <label className={styles.label}>비밀번호 (저장용)</label>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               className={styles.input}
-              placeholder="4자리 이상 입력"
+              placeholder="비밀번호를 입력해야 저장됩니다"
               required
             />
           </div>
@@ -153,7 +237,7 @@ export default function WritePage() {
               checked={formData.isPrivate}
               onChange={handleCheckbox}
             />
-            <label htmlFor="isPrivate">비밀글로 작성</label>
+            <label htmlFor="isPrivate">비밀글로 설정</label>
           </div>
         </div>
 
@@ -166,7 +250,6 @@ export default function WritePage() {
               value={formData.content}
               onChange={handleEditorChange}
               modules={modules}
-              placeholder="문의 내용을 자유롭게 작성해주세요."
             />
           </div>
         </div>
@@ -182,10 +265,19 @@ export default function WritePage() {
             취소
           </button>
           <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
-            {isSubmitting ? "등록 중..." : "등록하기"}
+            {isSubmitting ? "수정 중..." : "수정 완료"}
           </button>
         </div>
       </form>
+
+      {/* Security Modal - Shows only if content fetch requires password */}
+      <PasswordModal 
+        isOpen={modalOpen}
+        onClose={() => router.back()}
+        onSubmit={handleModalSubmit}
+        title="비밀글 조회"
+        description="수정을 위해 먼저 비밀번호를 입력해주세요."
+      />
     </motion.div>
   );
 }
