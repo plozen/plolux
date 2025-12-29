@@ -50,7 +50,7 @@ export default function HeroSection() {
            animate={{ opacity: 1, y: 0 }}
            transition={{ delay: 1.0, duration: 0.8 }}
         >
-          <Link href="/quote" className={styles.ctaButton}>
+          <Link href="/contact?tab=project" className={styles.ctaButton}>
             프로젝트 시작하기
           </Link>
         </motion.div>
