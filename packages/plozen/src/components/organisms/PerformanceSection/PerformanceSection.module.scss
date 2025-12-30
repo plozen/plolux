@@ -1,0 +1,190 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+// Local Variables
+// Using strict SCSS variables as requested, no Tailwind.
+$col-bio-lime: var(--accent-primary, #D6FF00); // Fallback to literal if var not set, but var is preferred for theme
+$gauge-bg-light: #E5E7EB; // Light gray for empty part of gauge in light mode
+$gauge-bg-dark: #374151;  // Dark gray for empty part of gauge in dark mode
+
+.section {
+  position: relative;
+  width: 100%;
+  padding: 100px 0;
+  background-color: var(--bg-secondary); 
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+
+  @include mobile {
+    padding: 60px 0;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 24px;
+  @include flex-column;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mobile {
+    margin-bottom: 40px;
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background-color: rgba(#D6FF00, 0.1); // Using literal hex for rgba calculation or define varRGB
+  color: var(--accent-primary);
+  font-family: $font-montserrat;
+  font-weight: $font-weight-bold;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  border: 1px solid rgba(#D6FF00, 0.2);
+}
+
+.title {
+  font-family: $font-pretendard;
+  font-size: 2.5rem;
+  font-weight: $font-weight-extrabold;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 16px;
+  word-break: keep-all;
+
+  @include mobile {
+    font-size: 1.8rem;
+    padding: 0 10px;
+  }
+  
+  br {
+    @include mobile {
+        display: none;
+    }
+  }
+}
+
+.description {
+  font-family: $font-pretendard;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 700px;
+  word-break: keep-all;
+  
+  @include mobile {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+}
+
+.gaugesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  width: 100%;
+  margin-bottom: 60px;
+  max-width: 1000px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr; // Single column on mobile
+    gap: 40px;
+    max-width: 320px;
+  }
+}
+
+.gaugeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gaugeWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 16px;
+  
+  @include mobile {
+     width: 140px;
+     height: 140px;
+  }
+}
+
+.gaugeLabel {
+  font-family: $font-pretendard;
+  font-size: 1.1rem;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.trustBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  font-family: $font-montserrat;
+  font-weight: $font-weight-medium;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  
+  svg {
+    color: var(--accent-primary);
+  }
+}
+
+// SVG Circle Styles
+.circleBackground {
+  fill: none;
+  stroke: var(--border-color);
+  stroke-width: 8;
+  opacity: 0.3;
+}
+
+.circleProgress {
+  fill: none;
+  stroke: var(--accent-primary); // Bio Lime
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+
+.scoreText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: $font-inter;
+  font-weight: $font-weight-bold;
+  font-size: 2rem;
+  color: var(--accent-primary);
+  
+  @include mobile {
+    font-size: 2.2rem;
+  }
+}

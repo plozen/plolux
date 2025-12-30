@@ -1,0 +1,40 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.section {
+  width: 100%;
+  padding: 100px 0;
+  border-bottom: 1px solid rgba($col-titanium-silver, 0.1);
+  @include flex-center;
+}
+
+.primary {
+  background-color: var(--bg-primary);
+}
+
+.secondary {
+  background-color: var(--bg-secondary);
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.title {
+  font-family: $font-pretendard;
+  font-size: 2rem;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.description {
+  font-family: $font-montserrat;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}

@@ -7,14 +7,16 @@
 :root {
   // Light Mode Variables
   --bg-primary: #{$col-pure-white};
+  --bg-secondary: #{$col-off-white};
   --text-primary: #{$col-deep-void};
   --text-secondary: #{$col-titanium-silver};
-  --accent-primary: #{$col-bio-lime};
+  --accent-primary: #{$col-deep-lime};
 }
 
 [data-theme='dark'] {
   // Dark Mode Variables
   --bg-primary: #{$col-deep-void};
+  --bg-secondary: #{$col-dark-gray};
   --text-primary: #{$col-pure-white};
   --text-secondary: #{$col-titanium-silver}; // May need adjustment for contrast
   --accent-primary: #{$col-bio-lime};
