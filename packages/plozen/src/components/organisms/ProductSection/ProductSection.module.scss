@@ -1,0 +1,74 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.section {
+  position: relative;
+  width: 100%;
+  padding: 100px 0;
+  background-color: var(--bg-primary); // Using Theme Variable
+  border-bottom: 1px solid var(--border-color);
+  
+  @include mobile {
+    padding: 60px 0;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  
+  @include mobile {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-family: $font-montserrat;
+  font-size: 2.5rem;
+  font-weight: $font-weight-extrabold;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+
+  @include mobile {
+    font-size: 1.8rem;
+  }
+}
+
+.subtitle {
+  font-family: $font-pretendard;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  
+  @include mobile {
+    font-size: 1rem;
+    br {
+      display: none; // Hide desktop line break on mobile
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  @include tablet {
+    gap: 24px;
+  }
+  
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 400px; // Limit width on mobile for better card look
+  }
+}

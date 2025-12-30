@@ -1,14 +1,15 @@
 import HeroSection from "@/components/organisms/HeroSection/HeroSection";
 import PerformanceSection from "@/components/organisms/PerformanceSection/PerformanceSection";
-import PlaceholderSection from "@/components/organisms/PlaceholderSection/PlaceholderSection";
+import ProductSection from "@/components/organisms/ProductSection/ProductSection";
+import TechnicalSection from "@/components/organisms/TechnicalSection/TechnicalSection";
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
       <PerformanceSection />
-      <PlaceholderSection title="New Section 1" variant="primary" />
-      <PlaceholderSection title="New Section 2" variant="secondary" />
+      <ProductSection />
+      <TechnicalSection />
     </main>
   );
 }

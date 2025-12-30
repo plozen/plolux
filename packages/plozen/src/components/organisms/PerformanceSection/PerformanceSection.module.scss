@@ -1,11 +1,11 @@
 @use "../../../styles/abstracts/variables" as *;
 @use "../../../styles/abstracts/mixins" as *;
 
-// Local Variables
-// Using strict SCSS variables as requested, no Tailwind.
-$col-bio-lime: var(--accent-primary, #D6FF00); // Fallback to literal if var not set, but var is preferred for theme
-$gauge-bg-light: #E5E7EB; // Light gray for empty part of gauge in light mode
-$gauge-bg-dark: #374151;  // Dark gray for empty part of gauge in dark mode
+// 로컬 변수 (Local Variables)
+// Tailwind 대신 순수 SCSS와 CSS 변수를 사용합니다.
+$col-bio-lime: var(--accent-primary, #D6FF00); // 테마 변수 사용 권장 (fallback: 리터럴)
+$gauge-bg-light: #E5E7EB; // 라이트 모드 게이지 배경색 (연한 회색)
+$gauge-bg-dark: #374151;  // 다크 모드 게이지 배경색 (진한 회색)
 
 .section {
   position: relative;
@@ -45,7 +45,7 @@ $gauge-bg-dark: #374151;  // Dark gray for empty part of gauge in dark mode
   display: inline-block;
   padding: 8px 16px;
   border-radius: 50px;
-  background-color: rgba(#D6FF00, 0.1); // Using literal hex for rgba calculation or define varRGB
+  background-color: rgba(#D6FF00, 0.1); // RGB 계산을 위해 리터럴 Hex 사용 (추후 변수화 가능)
   color: var(--accent-primary);
   font-family: $font-montserrat;
   font-weight: $font-weight-bold;
@@ -105,7 +105,7 @@ $gauge-bg-dark: #374151;  // Dark gray for empty part of gauge in dark mode
   }
 
   @include mobile {
-    grid-template-columns: 1fr; // Single column on mobile
+    grid-template-columns: 1fr; // 모바일에서는 1열 그리드
     gap: 40px;
     max-width: 320px;
   }
@@ -156,7 +156,7 @@ $gauge-bg-dark: #374151;  // Dark gray for empty part of gauge in dark mode
   }
 }
 
-// SVG Circle Styles
+// SVG 원형 게이지 스타일 (SVG Circle Styles)
 .circleBackground {
   fill: none;
   stroke: var(--border-color);
@@ -166,7 +166,7 @@ $gauge-bg-dark: #374151;  // Dark gray for empty part of gauge in dark mode
 
 .circleProgress {
   fill: none;
-  stroke: var(--accent-primary); // Bio Lime
+  stroke: var(--accent-primary); // 강조색 (Bio Lime)
   stroke-width: 8;
   stroke-linecap: round;
   transform: rotate(-90deg);

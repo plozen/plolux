@@ -34,7 +34,7 @@ export default function PerformanceSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             속도 1초 미만, SEO 100점.<br />
-            마케팅의 시작은 '기술'입니다.
+            마케팅의 시작은 &apos;기술&apos;입니다.
           </motion.h2>
           <motion.p 
             className={styles.description}

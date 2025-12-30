@@ -1,0 +1,29 @@
+@use "sass:color";
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px; // Slightly wider for bento grid
+  margin: 0 auto;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.wideWrapper {
+  grid-column: span 2;
+
+  @include mobile {
+    grid-column: span 1;
+  }
+}
