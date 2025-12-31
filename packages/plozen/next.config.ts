@@ -5,7 +5,7 @@ const isGithubPages = process.env.DEPLOY_TARGET === "gh-pages";
 console.log(`[NextConfig] DEPLOY_TARGET: ${process.env.DEPLOY_TARGET}, isGithubPages: ${isGithubPages}`);
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // output: "export",
   reactCompiler: true,
   basePath: isGithubPages ? "/forjex/plozen" : undefined,
   images: {
