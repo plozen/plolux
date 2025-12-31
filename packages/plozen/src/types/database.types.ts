@@ -65,11 +65,15 @@ export type Database = {
           contact_phone: string | null
           created_at: string | null
           description: string
+          design_mood: string | null
+          features: Json | null
           id: string
           ip_address: unknown
+          project_goal: string | null
           project_type: string | null
           reference_urls: string | null
           status: string | null
+          target_audience: string | null
           target_deadline: string | null
         }
         Insert: {
@@ -80,11 +84,15 @@ export type Database = {
           contact_phone?: string | null
           created_at?: string | null
           description: string
+          design_mood?: string | null
+          features?: Json | null
           id?: string
           ip_address?: unknown
+          project_goal?: string | null
           project_type?: string | null
           reference_urls?: string | null
           status?: string | null
+          target_audience?: string | null
           target_deadline?: string | null
         }
         Update: {
@@ -95,11 +103,15 @@ export type Database = {
           contact_phone?: string | null
           created_at?: string | null
           description?: string
+          design_mood?: string | null
+          features?: Json | null
           id?: string
           ip_address?: unknown
+          project_goal?: string | null
           project_type?: string | null
           reference_urls?: string | null
           status?: string | null
+          target_audience?: string | null
           target_deadline?: string | null
         }
         Relationships: []
