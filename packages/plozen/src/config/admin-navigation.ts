@@ -1,9 +1,10 @@
-import { LayoutDashboard, FileText, MessageSquare, Settings, LogIn } from 'lucide-react';
+import { LayoutDashboard, FileText, MessageSquare, Settings, LogIn, LucideProps } from 'lucide-react';
 
 export interface AdminNavItem {
   title: string;
   href: string;
-  icon: React.ComponentType<{ className?: string }>;
+  // Use the specific type that lucide-react exports for its icons to ensure compatibility with all props including 'size'
+  icon: React.ComponentType<LucideProps>; 
   matchPath: string;
 }
 
