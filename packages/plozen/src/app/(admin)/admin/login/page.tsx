@@ -1,5 +1,8 @@
 import { login } from './actions'
 
+export const runtime = 'edge'
+
+
 // Next.js 15+ 에서는 searchParams가 Promise입니다.
 export default async function AdminLoginPage({
   searchParams,
