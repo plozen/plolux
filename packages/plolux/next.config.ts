@@ -6,9 +6,9 @@ console.log(`[NextConfig] DEPLOY_TARGET: ${process.env.DEPLOY_TARGET}, isGithubP
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: "export",
+  output: isGithubPages ? "export" : undefined,
   reactCompiler: true,
-  basePath: isGithubPages ? "/forjex/plolux" : undefined,
+  basePath: isGithubPages ? "/plolux/plolux" : undefined,
   images: {
     unoptimized: true,
   },
@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
     includePaths: ['.', './src'],
   },
   env: {
-    NEXT_PUBLIC_BASE_PATH: isGithubPages ? "/forjex/plolux" : "",
+    NEXT_PUBLIC_BASE_PATH: isGithubPages ? "/plolux/plolux" : "",
   },
 };
 

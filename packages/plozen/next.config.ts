@@ -5,9 +5,9 @@ const isGithubPages = process.env.DEPLOY_TARGET === "gh-pages";
 console.log(`[NextConfig] DEPLOY_TARGET: ${process.env.DEPLOY_TARGET}, isGithubPages: ${isGithubPages}`);
 
 const nextConfig: NextConfig = {
-  // output: "export",
+  output: isGithubPages ? "export" : undefined,
   reactCompiler: true,
-  basePath: isGithubPages ? "/forjex/plozen" : undefined,
+  basePath: isGithubPages ? "/plolux/plozen" : undefined,
   images: {
     unoptimized: true,
   },
@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
     includePaths: ['./src/styles'], 
   },
   env: {
-    NEXT_PUBLIC_BASE_PATH: isGithubPages ? "/forjex/plozen" : "",
+    NEXT_PUBLIC_BASE_PATH: isGithubPages ? "/plolux/plozen" : "",
   },
   logging: {
     fetches: {
