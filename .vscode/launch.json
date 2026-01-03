@@ -7,7 +7,6 @@
       "request": "launch",
       "command": "pnpm --filter plozen dev",
       "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
       "presentation": {
         "group": "plozen",
         "order": 1
@@ -19,7 +18,6 @@
       "request": "launch",
       "command": "pnpm --filter plolux dev",
       "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
       "presentation": {
         "group": "plolux",
         "order": 1

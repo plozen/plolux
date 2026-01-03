@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-# 워크플로 이름: PLOZEN 통합 배포
-name: PLOZEN 통합 배포
+# 워크플로 이름: Plolux 통합 배포
+name: Plolux 통합 배포
 
 # 트리거 설정: main 브랜치에 push 이벤트가 발생했을 때 워크플로를 실행합니다.
 on:
@@ -126,9 +126,9 @@ jobs:
 
       - name: plozen 빌드 결과물을 'staging'으로 복사
         run: |
-          # plozen 디렉토리 생성 (URL: /forjex/plozen -> Repo:forjex + Dir:plozen)
+          # plozen 디렉토리 생성 (URL: /plolux/plozen -> Repo:plolux + Dir:plozen)
           mkdir -p staging/plozen
-          # plolux 디렉토리 생성 (URL: /forjex/plolux -> Repo:forjex + Dir:plolux)
+          # plolux 디렉토리 생성 (URL: /plolux/plolux -> Repo:plolux + Dir:plolux)
           mkdir -p staging/plolux
 
           # GitHub Pages에서 _next 폴더 인식을 위해 .nojekyll 파일 생성

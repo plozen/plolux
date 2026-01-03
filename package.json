@@ -1,8 +1,8 @@
 {
-  "name": "forjex",
+  "name": "plolux",
   "private": true,
   "version": "1.0.0",
-  "description": "Forjex Monorepo Workspace",
+  "description": "Plolux Monorepo Workspace",
   "main": "index.js",
   "scripts": {
     "dev:plozen": "pnpm --filter plozen dev",
