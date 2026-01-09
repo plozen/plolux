@@ -31,7 +31,7 @@ export default function CompanyDetailPage({ params }: { params: Promise<{ locale
     initial: { x: '100%' },
     animate: { x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
     exit: { x: '100%', transition: { duration: 0.2 } }
-  };
+  } as const;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
