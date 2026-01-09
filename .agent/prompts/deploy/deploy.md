@@ -19,7 +19,7 @@
 ### 파라미터 기본값
 
 - `targetBranch`: `main`
-- `deploymentTarget`: `plozen`
+- `deploymentTarget`: `none`
 - `runLint`: `false`
 
 ## 절차 개요
