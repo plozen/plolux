@@ -1,0 +1,84 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.viewport {
+  width: 100%;
+  max-width: 320px; // 모바일 기준
+  height: 200px;
+  position: relative;
+  perspective: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: rgba($color-bg, 0.8);
+  border-radius: 24px;
+  @include glass-panel;
+  @include flex-center;
+  flex-direction: column;
+  cursor: grab;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.logoArea {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  @include flex-center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $color-text;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  
+  button {
+    background: rgba($color-text, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: $color-text;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba($color-text, 0.2);
+    }
+  }
+}

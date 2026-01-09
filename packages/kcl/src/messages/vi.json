@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "Xếp hạng hỏa lực hiện tại",
+    "ranking": "Xếp hạng thời gian thực",
+    "support": "Ủng hộ"
+  },
+  "Common": {
+    "unofficial": "Đây là ứng dụng người hâm mộ không chính thức.",
+    "fan_app": "Ứng dụng Fan"
+  },
+  "Nav": {
+    "home": "Trang chủ",
+    "ranking": "Xếp hạng",
+    "support": "Ủng hộ",
+    "my": "Tôi"
+  }
+}

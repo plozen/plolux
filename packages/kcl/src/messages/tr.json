@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "Mevcut Güç Sıralaması",
+    "ranking": "Gerçek Zamanlı Sıralama",
+    "support": "Destek"
+  },
+  "Common": {
+    "unofficial": "Bu Resmi Olmayan Bir Hayran Uygulamasıdır.",
+    "fan_app": "Hayran Uygulaması"
+  },
+  "Nav": {
+    "home": "Ana Sayfa",
+    "ranking": "Sıralama",
+    "support": "Destek",
+    "my": "Ben"
+  }
+}

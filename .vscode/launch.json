@@ -22,6 +22,17 @@
         "group": "plolux",
         "order": 1
       }
+    },
+    {
+      "name": "Launch kcl",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm --filter kcl dev",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "kcl",
+        "order": 1
+      }
     }
   ]
 }

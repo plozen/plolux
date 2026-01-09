@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "Classement de Puissance Actuel",
+    "ranking": "Classement en Temps Réel",
+    "support": "Soutenir"
+  },
+  "Common": {
+    "unofficial": "Ceci est une application de fan non officielle.",
+    "fan_app": "App de Fan"
+  },
+  "Nav": {
+    "home": "Accueil",
+    "ranking": "Classement",
+    "support": "Soutien",
+    "my": "Moi"
+  }
+}

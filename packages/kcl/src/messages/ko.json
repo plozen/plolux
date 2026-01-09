@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "실시간 화력 순위",
+    "ranking": "실시간 랭킹",
+    "support": "총공하기"
+  },
+  "Common": {
+    "unofficial": "이 앱은 비공식 팬 제작 앱이며, 특정 소속사와 관련이 없습니다.",
+    "fan_app": "비공식 팬 앱"
+  },
+  "Nav": {
+    "home": "홈",
+    "ranking": "랭킹",
+    "support": "총공",
+    "my": "마이"
+  }
+}

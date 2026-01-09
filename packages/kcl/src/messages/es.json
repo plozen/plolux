@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "Ranking de Poder Actual",
+    "ranking": "Ranking en Tiempo Real",
+    "support": "Apoyar"
+  },
+  "Common": {
+    "unofficial": "Esta es una aplicación de fans no oficial.",
+    "fan_app": "App de Fans"
+  },
+  "Nav": {
+    "home": "Inicio",
+    "ranking": "Ranking",
+    "support": "Apoyo",
+    "my": "Yo"
+  }
+}

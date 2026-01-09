@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "当前火力排名",
+    "ranking": "实时排名",
+    "support": "支持"
+  },
+  "Common": {
+    "unofficial": "这是一个非官方的粉丝应用程序。",
+    "fan_app": "粉丝应用"
+  },
+  "Nav": {
+    "home": "首页",
+    "ranking": "排名",
+    "support": "支持",
+    "my": "我的"
+  }
+}

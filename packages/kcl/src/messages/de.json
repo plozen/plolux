@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "Aktuelles Leistungsranking",
+    "ranking": "Echtzeit-Ranking",
+    "support": "Unterstützen"
+  },
+  "Common": {
+    "unofficial": "Dies ist eine inoffizielle Fan-App.",
+    "fan_app": "Fan-App"
+  },
+  "Nav": {
+    "home": "Startseite",
+    "ranking": "Ranking",
+    "support": "Support",
+    "my": "Ich"
+  }
+}

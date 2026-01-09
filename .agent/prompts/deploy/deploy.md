@@ -19,7 +19,7 @@
 ### 파라미터 기본값
 
 - `targetBranch`: `main`
-- `deploymentTarget`: `none`
+- `deploymentTarget`: `kcl`
 - `runLint`: `false`
 
 ## 절차 개요

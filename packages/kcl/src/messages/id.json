@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "Peringkat Kekuatan Saat Ini",
+    "ranking": "Peringkat Real-time",
+    "support": "Dukung"
+  },
+  "Common": {
+    "unofficial": "Ini adalah Aplikasi Penggemar Tidak Resmi.",
+    "fan_app": "Aplikasi Penggemar"
+  },
+  "Nav": {
+    "home": "Beranda",
+    "ranking": "Peringkat",
+    "support": "Dukung",
+    "my": "Saya"
+  }
+}

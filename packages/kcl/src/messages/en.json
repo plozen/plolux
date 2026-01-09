@@ -1,0 +1,17 @@
+{
+  "Home": {
+    "title": "Current Top Firepower",
+    "ranking": "Real-time Ranking",
+    "support": "Support"
+  },
+  "Common": {
+    "unofficial": "This is an Unofficial Fan App. Not affiliated with any entertainment company.",
+    "fan_app": "Fan Made App"
+  },
+  "Nav": {
+    "home": "Home",
+    "ranking": "Ranking",
+    "support": "Support",
+    "my": "My"
+  }
+}
