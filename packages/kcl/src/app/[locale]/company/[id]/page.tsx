@@ -2,6 +2,7 @@ import { MOCK_COMPANIES } from '@/lib/mock-data';
 import { notFound } from 'next/navigation';
 import CompanyDetailClient from './CompanyDetailClient';
 import { use } from 'react';
+import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
   const locales = ['ko', 'en', 'id', 'tr', 'ja', 'zh', 'es', 'pt', 'th', 'vi', 'fr', 'de'];
@@ -19,6 +20,9 @@ export function generateStaticParams() {
 export default function CompanyDetailPage({ params }: { params: Promise<{ locale: string; id: string }> }) {
   // Await params properly in Next.js 15+ equivalent behavior
   const { locale, id } = use(params);
+
+  // Enable static rendering
+  setRequestLocale(locale);
 
   const company = MOCK_COMPANIES.find(c => c.id === id);
 
