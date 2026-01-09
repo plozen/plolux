@@ -14,6 +14,19 @@ import { use } from 'react';
 // Dynamically import Chart to avoid Hydration Mismatch with random data
 const StockChart = dynamic(() => import('@/components/features/chart/StockChart'), { ssr: false });
 
+export function generateStaticParams() {
+  const locales = ['ko', 'en', 'id', 'tr', 'ja', 'zh', 'es', 'pt', 'th', 'vi', 'fr', 'de'];
+  const params = [];
+
+  for (const locale of locales) {
+    for (const company of MOCK_COMPANIES) {
+      params.push({ locale, id: company.id });
+    }
+  }
+
+  return params;
+}
+
 export default function CompanyDetailPage({ params }: { params: Promise<{ locale: string; id: string }> }) {
   const { locale, id } = use(params);
   const t = useTranslations('Home');
