@@ -19,9 +19,8 @@ export default function HomePage() {
   return (
     <div className={styles.homeContainer}>
       <Header />
-      <div style={{ height: '80px' }} />
       
-      <section className={styles.hero} style={{ minHeight: 'calc(100vh - 80px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '220px' }}>
+      <section className={styles.hero} style={{ minHeight: 'calc(100vh - 60px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '40px' }}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

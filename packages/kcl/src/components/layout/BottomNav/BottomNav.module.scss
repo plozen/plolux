@@ -1,5 +1,5 @@
 @use '../../../styles/abstracts/variables' as *;
-@use '../../../styles/abstracts/mixins' as *;
+@use '../../../styles/abstracts/mixins' as mix;
 
 .navContainer {
   position: fixed;
@@ -11,7 +11,7 @@
 }
 
 .navGlass {
-  @include glass-panel;
+  @include mix.glass-panel;
   display: flex;
   justify-content: space-around;
   align-items: center;

@@ -1,8 +1,8 @@
 @use '../../../styles/abstracts/variables' as *;
-@use '../../../styles/abstracts/mixins' as *;
+@use '../../../styles/abstracts/mixins' as mix;
 
 .button {
-  @include flex-center;
+  @include mix.flex-center;
   position: relative;
   border-radius: 12px;
   font-weight: 600;

@@ -1,5 +1,5 @@
 @use '../../../../styles/abstracts/variables' as *;
-@use '../../../../styles/abstracts/mixins' as *;
+@use '../../../../styles/abstracts/mixins' as mix;
 
 .container {
   margin-top: 32px;
@@ -17,7 +17,7 @@
 }
 
 .form {
-  @include glass-panel;
+  @include mix.glass-panel;
   padding: 16px;
   border-radius: 16px;
   margin-bottom: 24px;
@@ -86,7 +86,7 @@
 }
 
 .commentItem {
-  @include glass-panel;
+  @include mix.glass-panel;
   padding: 12px 16px;
   border-radius: 12px;
   border-left: 3px solid $color-primary; // 강조

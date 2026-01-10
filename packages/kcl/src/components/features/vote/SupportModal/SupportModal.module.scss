@@ -1,5 +1,5 @@
 @use '../../../../styles/abstracts/variables' as *;
-@use '../../../../styles/abstracts/mixins' as *;
+@use '../../../../styles/abstracts/mixins' as mix;
 
 .content {
   display: flex;
@@ -21,7 +21,7 @@
     border-radius: 50%;
     margin-bottom: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    @include flex-center;
+    @include mix.flex-center;
     font-size: 2rem;
     font-weight: 700;
     color: #fff;
@@ -95,7 +95,7 @@
     border-radius: 50%;
     background: $color-primary;
     box-shadow: 0 0 40px $color-primary, inset 0 0 20px #fff;
-    @include flex-center;
+    @include mix.flex-center;
     margin-bottom: 16px;
     animation: pulse 1s infinite alternate;
   }

@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 export interface CompanyType {
   id: string;
   name: { en: string; ko: string };
@@ -36,8 +34,9 @@ const generateHistory = (startValue: number) => {
 };
 
 export const MOCK_COMPANIES: CompanyType[] = [
+  // 1부 리그 (Top 10)
   {
-    id: uuidv4(),
+    id: "co-hybe",
     name: { en: "HYBE", ko: "하이브" },
     representative: { 
       en: ["BTS", "SEVENTEEN", "NewJeans", "TXT"], 
@@ -50,7 +49,7 @@ export const MOCK_COMPANIES: CompanyType[] = [
     stockHistory: generateHistory(150000000)
   },
   {
-    id: uuidv4(),
+    id: "co-sm",
     name: { en: "SM Entertainment", ko: "SM 엔터테인먼트" },
     representative: { 
       en: ["aespa", "NCT", "RIIZE", "Red Velvet"], 
@@ -63,7 +62,7 @@ export const MOCK_COMPANIES: CompanyType[] = [
     stockHistory: generateHistory(120000000)
   },
   {
-    id: uuidv4(),
+    id: "co-jyp",
     name: { en: "JYP Entertainment", ko: "JYP 엔터테인먼트" },
     representative: { 
       en: ["Stray Kids", "TWICE", "ITZY", "NMIXX"], 
@@ -76,7 +75,7 @@ export const MOCK_COMPANIES: CompanyType[] = [
     stockHistory: generateHistory(115000000)
   },
   {
-    id: uuidv4(),
+    id: "co-yg",
     name: { en: "YG Entertainment", ko: "YG 엔터테인먼트" },
     representative: { 
       en: ["BLACKPINK", "BABYMONSTER", "TREASURE", "AKMU"], 
@@ -89,7 +88,7 @@ export const MOCK_COMPANIES: CompanyType[] = [
     stockHistory: generateHistory(95000000)
   },
   {
-    id: uuidv4(),
+    id: "co-starship",
     name: { en: "Starship Ent.", ko: "스타쉽 엔터" },
     representative: { 
       en: ["IVE", "Monsta X", "CRAVITY"], 
@@ -102,7 +101,7 @@ export const MOCK_COMPANIES: CompanyType[] = [
     stockHistory: generateHistory(72000000)
   },
   {
-    id: uuidv4(),
+    id: "co-cube",
     name: { en: "Cube Ent.", ko: "큐브 엔터" },
     representative: { 
       en: ["(G)I-DLE", "BTOB"], 
@@ -115,7 +114,7 @@ export const MOCK_COMPANIES: CompanyType[] = [
     stockHistory: generateHistory(54000000)
   },
   {
-    id: uuidv4(),
+    id: "co-wakeone",
     name: { en: "WakeOne", ko: "웨이크원" },
     representative: { 
       en: ["ZEROBASEONE", "Kep1er"], 
@@ -128,7 +127,7 @@ export const MOCK_COMPANIES: CompanyType[] = [
     stockHistory: generateHistory(50000000)
   },
   {
-    id: uuidv4(),
+    id: "co-blacklabel",
     name: { en: "The Black Label", ko: "더블랙레이블" },
     representative: { 
       en: ["Rosé", "Jeon Somi", "Taeyang"], 
@@ -141,7 +140,7 @@ export const MOCK_COMPANIES: CompanyType[] = [
     stockHistory: generateHistory(40000000)
   },
   {
-    id: uuidv4(),
+    id: "co-ist",
     name: { en: "IST Ent.", ko: "IST 엔터" },
     representative: { 
       en: ["The Boyz", "Apink"], 
@@ -154,7 +153,7 @@ export const MOCK_COMPANIES: CompanyType[] = [
     stockHistory: generateHistory(39000000)
   },
   {
-    id: uuidv4(),
+    id: "co-kq",
     name: { en: "KQ Ent.", ko: "KQ 엔터" },
     representative: { 
       en: ["ATEEZ", "xikers"], 
@@ -165,6 +164,138 @@ export const MOCK_COMPANIES: CompanyType[] = [
     change: "down",
     image: "linear-gradient(135deg, #FF416C 0%, #FF4B2B 100%)",
     stockHistory: generateHistory(36000000)
+  },
+
+  // 2부 리그 (Top 11 ~ 20)
+  {
+    id: "co-woollii",
+    name: { en: "Woollim Ent.", ko: "울림 엔터" },
+    representative: { 
+      en: ["Golden Child", "DRIPPIN", "Rocket Punch"], 
+      ko: ["골든차일드", "드리핀", "로켓펀치"] 
+    },
+    rank: 11,
+    firepower: 28000000,
+    change: "same",
+    image: "linear-gradient(135deg, #FFD700 0%, #B8860B 100%)",
+    stockHistory: generateHistory(28000000)
+  },
+  {
+    id: "co-wm",
+    name: { en: "WM Ent.", ko: "WM 엔터" },
+    representative: { 
+      en: ["OH MY GIRL", "ONF"], 
+      ko: ["오마이걸", "온앤오프"] 
+    },
+    rank: 12,
+    firepower: 26500000,
+    change: "up",
+    image: "linear-gradient(135deg, #00C6FB 0%, #005BEA 100%)",
+    stockHistory: generateHistory(26500000)
+  },
+  {
+    id: "co-fnc",
+    name: { en: "FNC Ent.", ko: "FNC 엔터" },
+    representative: { 
+      en: ["P1Harmony", "SF9", "CNBLUE"], 
+      ko: ["피원하모니", "SF9", "씨엔블루"] 
+    },
+    rank: 13,
+    firepower: 24000000,
+    change: "down",
+    image: "linear-gradient(135deg, #FF7E5F 0%, #FEB47B 100%)",
+    stockHistory: generateHistory(24000000)
+  },
+  {
+    id: "co-fantagio",
+    name: { en: "Fantagio", ko: "판타지오" },
+    representative: { 
+      en: ["ASTRO", "Weki Meki", "LUN8"], 
+      ko: ["아스트로", "위키미키", "루네이트"] 
+    },
+    rank: 14,
+    firepower: 22000000,
+    change: "same",
+    image: "linear-gradient(135deg, #FFA17F 0%, #00223E 100%)",
+    stockHistory: generateHistory(22000000)
+  },
+  {
+    id: "co-rbw",
+    name: { en: "RBW", ko: "RBW" },
+    representative: { 
+      en: ["MAMAMOO", "ONEUS", "PURPLE KISS"], 
+      ko: ["마마무", "원어스", "퍼플키스"] 
+    },
+    rank: 15,
+    firepower: 20000000,
+    change: "up",
+    image: "linear-gradient(135deg, #833AB4 0%, #FD1D1D 100%)",
+    stockHistory: generateHistory(20000000)
+  },
+  {
+    id: "co-jelly",
+    name: { en: "Jellyfish Ent.", ko: "젤리피쉬" },
+    representative: { 
+      en: ["VERIVERY", "EVNNE"], 
+      ko: ["베리베리", "이븐"] 
+    },
+    rank: 16,
+    firepower: 18000000,
+    change: "down",
+    image: "linear-gradient(135deg, #FFEFBA 0%, #FFFFFF 100%)",
+    stockHistory: generateHistory(18000000)
+  },
+  {
+    id: "co-c9",
+    name: { en: "C9 Ent.", ko: "C9 엔터" },
+    representative: { 
+      en: ["CIX", "EPEX", "cignature"], 
+      ko: ["CIX", "이펙스", "시그니처"] 
+    },
+    rank: 17,
+    firepower: 16500000,
+    change: "same",
+    image: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+    stockHistory: generateHistory(16500000)
+  },
+  {
+    id: "co-modhaus",
+    name: { en: "Modhaus", ko: "모드하우스" },
+    representative: { 
+      en: ["tripleS", "ARTMS"], 
+      ko: ["트리플에스", "아르테미스"] 
+    },
+    rank: 18,
+    firepower: 15000000,
+    change: "up",
+    image: "linear-gradient(135deg, #FC466B 0%, #3F5EFB 100%)",
+    stockHistory: generateHistory(15000000)
+  },
+  {
+    id: "co-bpm",
+    name: { en: "BPM Ent.", ko: "빅플래닛메이드" },
+    representative: { 
+      en: ["VIVIZ", "Taemin", "BADVILLAIN"], 
+      ko: ["비비지", "태민", "배드빌런"] 
+    },
+    rank: 19,
+    firepower: 13000000,
+    change: "same",
+    image: "linear-gradient(135deg, #0F2027 0%, #203A43 100%)",
+    stockHistory: generateHistory(13000000)
+  },
+  {
+    id: "co-attrakt",
+    name: { en: "ATTRAKT", ko: "어트랙트" },
+    representative: { 
+      en: ["FIFTY FIFTY"], 
+      ko: ["피프티피프티"] 
+    },
+    rank: 20,
+    firepower: 11000000,
+    change: "down",
+    image: "linear-gradient(135deg, #DA22FF 0%, #9733EE 100%)",
+    stockHistory: generateHistory(11000000)
   }
 ];
 

@@ -1,0 +1,155 @@
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as mix;
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: rgba($color-bg, 0.95);
+  border-right: 1px solid rgba($color-text, 0.1);
+  z-index: $z-nav;
+  padding: 8px 12px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+  
+  // Default Mobile: Hidden
+  display: none;
+
+  // Tablet & Desktop
+  @media (min-width: 768px) {
+    display: flex;
+    width: 72px; // Icon only
+  }
+
+  // Wide Desktop
+  @media (min-width: 1264px) {
+    width: 244px; // Full width
+  }
+}
+
+.logoArea {
+  height: 92px;
+  @include mix.flex-center;
+  // Wide: Left align
+  // Narrow: Center align
+  
+  @media (min-width: 1264px) {
+    justify-content: flex-start;
+    padding: 0 12px;
+  }
+}
+
+.kclLogo {
+  font-family: $font-display;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: $color-primary;
+  letter-spacing: -1px;
+  
+  // Hide text on narrow mode, maybe show simple icon?
+  // Instagram shows Icon on narrow, Text Logo on wide.
+  display: none;
+  
+  @media (min-width: 1264px) {
+    display: block; 
+  }
+}
+
+.kclIconLogo {
+  display: block;
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: $color-primary;
+  
+  @media (min-width: 1264px) {
+    display: none;
+  }
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navItem {
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  color: $color-text;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color-text, 0.1);
+    
+    .icon {
+      transform: scale(1.05);
+    }
+  }
+
+  &.active {
+    font-weight: 700;
+    
+    .icon {
+      stroke-width: 3px; // Make icon bolder
+    }
+  }
+  
+  // Center icon in narrow mode
+  justify-content: center;
+  
+  @media (min-width: 1264px) {
+    justify-content: flex-start;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+  // Badge support
+  .badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: $color-danger;
+    border-radius: 50%;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s;
+}
+
+.label {
+  display: none;
+  margin-left: 16px;
+  font-size: 1rem;
+  white-space: nowrap;
+  
+  @media (min-width: 1264px) {
+    display: block;
+  }
+}
+
+.footer {
+  // More menu, Threads link
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

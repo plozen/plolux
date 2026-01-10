@@ -1,20 +1,43 @@
 @use '../../../styles/abstracts/variables' as *;
-@use '../../../styles/abstracts/mixins' as *;
+@use '../../../styles/abstracts/mixins' as mix;
 
 .header {
-  @include flex-center;
+  @include mix.flex-center;
   justify-content: space-between;
-  padding: 16px 20px;
-  position: fixed; // sticky -> fixed 고정
+  padding: 12px 16px;
+  position: sticky;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   width: 100%;
-  max-width: 480px; // 모바일 뷰 기준
   z-index: $z-nav;
-  background: rgba($color-bg, 0.8);
+  background: rgba($color-bg, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba($color-text, 0.1); // 하단 경계선 추가
+  border-bottom: 1px solid rgba($color-text, 0.1);
+  
+  // Hide header on Desktop? 
+  // Instagram Desktop doesn't have a top header, only Sidebar.
+  // Language selector can be placed:
+  // 1. In Sidebar (Footer)
+  // 2. Or absolute top right.
+  // The user asked to KEEP language selector in header.
+  // So we keep Header on Desktop but maybe transparent or simplified?
+  // Let's keep it visible for now as it holds the Lang Selector.
+  
+  @media (min-width: 768px) {
+    // If we want to hide Logo on desktop because sidebar has it:
+    // But we need Lang selector.
+    // Let's just hide border or make it blend.
+    background: transparent;
+    border-bottom: none;
+    position: absolute; // Float on top right
+    top: 0;
+    right: 0;
+    width: auto; // Just the controls
+    padding: 20px;
+    pointer-events: none; // Let clicks pass through if needed, but select needs clicks
+    
+    // Allow interactions with children
+    * { pointer-events: auto; }
+  }
 }
 
 .logo {
@@ -26,6 +49,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
+  
+  // Hide Logo on Desktop since Sidebar has it
+  @media (min-width: 768px) {
+    display: none;
+  }
 }
 
 .controls {
@@ -33,57 +61,24 @@
   gap: 8px;
 }
 
-.iconBtn {
-  padding: 8px 12px;
-  color: $color-text;
-  border: 1px solid rgba($color-text, 0.2); // 테두리 추가
-  background: rgba($color-text, 0.05); // 아주 연한 배경 추가
-  border-radius: 8px;
-  
-  &:hover {
-    background: rgba($color-text, 0.1);
-  }
-  
-  .langText {
-    margin-left: 6px;
-    font-size: 0.8rem;
-    font-weight: 700; // 글씨 조금 더 굵게
-  }
-}
-
 .langSelect {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba($color-text, 0.2);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba($color-text, 0.1);
   background: rgba($color-text, 0.05);
-  color: $color-text;
-  font-size: 0.8rem;
+  color: $color-text-dim;
+  font-size: 0.75rem;
   font-weight: 600;
   outline: none;
   cursor: pointer;
-  appearance: none; // 기본 화살표 제거 (필요시 커스텀 혹은 유지)
   
   &:hover {
     background: rgba($color-text, 0.1);
+    color: $color-text;
   }
-
 
   option {
     background-color: var(--color-bg);
     color: var(--color-text);
-  }
-}
-
-.sunIcon {
-  display: none;
-  :global(html[data-theme='dark']) & {
-    display: block;
-  }
-}
-
-.moonIcon {
-  display: block;
-  :global(html[data-theme='dark']) & {
-    display: none;
   }
 }

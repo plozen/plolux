@@ -1,5 +1,5 @@
 @use '../abstracts/variables' as *;
-@use '../abstracts/mixins' as *;
+@use '../abstracts/mixins' as mix;
 
 body {
   background-color: #000;
@@ -30,7 +30,7 @@ body {
 }
 
 .app-shell {
-  @include mobile-container;
+  @include mix.mobile-container;
   min-height: 100vh;
   background-color: $color-bg; 
   box-shadow: 0 0 60px rgba($color-primary, 0.15);

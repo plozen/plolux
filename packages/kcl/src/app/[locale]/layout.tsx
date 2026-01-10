@@ -3,7 +3,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Inter, Montserrat } from 'next/font/google';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
-import MobileLayout from '@/components/layout/MobileLayout';
+import AppShell from '@/components/layout/AppShell';
 import '@/styles/main.scss';
 import '@/styles/layout/_app-shell.scss';
 
@@ -19,9 +19,38 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
-export const metadata = {
-  title: 'Kpop Company League',
-  description: 'Global K-Pop Fandom Competition Platform',
+import { Metadata } from 'next';
+import { FULL_URL, BASE_PATH } from '@/lib/constants';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(FULL_URL),
+  title: {
+    template: '%s | KCL',
+    default: 'KCL - Kpop Company League',
+  },
+  description: "Prove your fandom's firepower. Support your artist in the global ranking battle.",
+  openGraph: {
+    title: 'KCL - Kpop Company League',
+    description: "Prove your fandom's firepower. Support your artist in the global ranking battle.",
+    siteName: 'Kpop Company League',
+    type: 'website',
+    url: FULL_URL,
+    images: [
+      {
+        url: `${BASE_PATH}/og-image.jpg`, // Ensure this image exists or use a placeholder
+        width: 1200,
+        height: 630,
+        alt: 'KCL - Kpop Company League',
+      },
+    ],
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  themeColor: '#8B5CF6',
 };
 
 const locales = ['ko', 'en', 'id', 'tr', 'ja', 'zh', 'es', 'pt', 'th', 'vi', 'fr', 'de'];
@@ -61,9 +90,9 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <div className="app-shell">
-              <MobileLayout>{children}</MobileLayout>
-            </div>
+            <AppShell>
+              {children}
+            </AppShell>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

@@ -19,7 +19,7 @@ const nextConfig = {
   },
   reactCompiler: true,
   sassOptions: {
-    includePaths: [path.join(__dirname, 'src/styles')],
+    includePaths: [path.join(__dirname, 'src/styles'), path.join(__dirname, 'src/styles/abstracts')],
   },
   env: {
     NEXT_PUBLIC_BASE_PATH: isGithubPages ? '/plolux/kcl' : '',

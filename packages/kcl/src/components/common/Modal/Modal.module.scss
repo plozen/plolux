@@ -1,5 +1,5 @@
 @use '../../../styles/abstracts/variables' as *;
-@use '../../../styles/abstracts/mixins' as *;
+@use '../../../styles/abstracts/mixins' as mix;
 
 .overlay {
   position: fixed;
@@ -17,7 +17,7 @@
 }
 
 .container {
-  @include glass-panel;
+  @include mix.glass-panel;
   width: 100%;
   max-width: 320px; // Compact modal
   padding: 24px;
