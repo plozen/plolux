@@ -24,6 +24,9 @@ interface CompanyDetailClientProps {
 export default function CompanyDetailClient({ locale, id }: CompanyDetailClientProps) {
   const t = useTranslations('Home');
 
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const company = MOCK_COMPANIES.find(c => c.id === id);
 
   if (!company) {
@@ -37,8 +40,6 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
     animate: { x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
     exit: { x: '100%', transition: { duration: 0.2 } }
   } as const;
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <motion.div 
