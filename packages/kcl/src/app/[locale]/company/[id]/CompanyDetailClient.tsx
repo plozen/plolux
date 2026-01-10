@@ -1,19 +1,26 @@
+/**
+ * CompanyDetailClient.tsx
+ * 
+ * 회사 상세 페이지 클라이언트 컴포넌트
+ * 회사 정보, 파이어파워 트렌드, 분석 데이터, 댓글을 표시합니다.
+ * 
+ * 참고: Support(투표)는 홈 화면 전용 기능으로, 상세 페이지에서는 홈으로 유도합니다.
+ */
+
 "use client";
 
 import { useTranslations } from 'next-intl';
-import { ArrowLeft, TrendingUp, Zap } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Home } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Header from '@/components/layout/Header';
 import { MOCK_COMPANIES, MOCK_VOTES } from '@/lib/mock-data';
 import styles from './page.module.scss';
-import { useState } from 'react';
-import SupportModal from '@/components/features/vote/SupportModal';
 import CommentSection from '@/components/features/comments/CommentSection';
 import Tabs from '@/components/common/Tabs';
 
-// Dynamically import Chart to avoid Hydration Mismatch with random data
+// 차트 컴포넌트 동적 로딩 (SSR 비활성화)
 const StockChart = dynamic(() => import('@/components/features/chart/StockChart'), { ssr: false });
 
 interface CompanyDetailClientProps {
@@ -24,17 +31,17 @@ interface CompanyDetailClientProps {
 export default function CompanyDetailClient({ locale, id }: CompanyDetailClientProps) {
   const t = useTranslations('Home');
 
-  
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  // 회사 데이터 조회
   const company = MOCK_COMPANIES.find(c => c.id === id);
 
   if (!company) {
-    return <div>Company not found</div>; // Should be handled by parent or notFound in parent
+    return <div>Company not found</div>;
   }
 
+  // 로케일에 맞는 회사명 가져오기
   const targetName = company.name[locale as 'en' | 'ko'] || company.name['en'];
   
+  // 페이지 전환 애니메이션 설정
   const pageVariants = {
     initial: { x: '100%' },
     animate: { x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
@@ -52,17 +59,17 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
       <Header />
       <div style={{ height: '120px' }} />
 
-      {/* Detail Page Specific Header */}
+      {/* 상세 페이지 헤더 (뒤로가기 + 제목) */}
       <div className={styles.header}>
         <Link href={`/${locale}/ranking`} className={styles.backBtn}>
           <ArrowLeft size={24} />
         </Link>
         <span className={styles.title}>{targetName}</span>
-        <div style={{ width: 24 }} /> {/* Spacer for centering */}
+        <div style={{ width: 24 }} /> {/* 중앙 정렬을 위한 스페이서 */}
       </div>
 
       <main className={styles.content}>
-        {/* Company Header Card */}
+        {/* 회사 정보 카드 */}
         <motion.div 
           className={styles.companyCard}
           initial={{ opacity: 0, scale: 0.95 }}
@@ -72,23 +79,29 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
         >
           <div className={styles.cardHeader}>
             <div className={styles.rankBadge}>No. {company.rank}</div>
-            {/* Support Button in Card */}
-            <button 
-              className={styles.supportBtn} 
-              onClick={() => setIsModalOpen(true)}
+            {/* 홈에서 서포트하기 링크 (Support 버튼 대체) */}
+            <Link 
+              href={`/${locale}`}
+              className={styles.supportLink}
               style={{
-                 background: 'rgba(255,255,255,0.2)',
-                 border: '1px solid rgba(255,255,255,0.4)',
-                 borderRadius: '20px',
-                 padding: '6px 12px',
-                 display: 'flex', alignItems: 'center', gap: '6px',
-                 color: '#fff', fontWeight: 'bold', cursor: 'pointer',
-                 backdropFilter: 'blur(4px)'
+                background: 'rgba(255,255,255,0.2)',
+                border: '1px solid rgba(255,255,255,0.4)',
+                borderRadius: '20px',
+                padding: '6px 12px',
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '6px',
+                color: '#fff', 
+                fontWeight: 'bold', 
+                cursor: 'pointer',
+                backdropFilter: 'blur(4px)',
+                textDecoration: 'none',
+                fontSize: '0.85rem'
               }}
             >
-              <Zap size={16} fill="white" />
-              Support
-            </button>
+              <Home size={16} />
+              홈에서 서포트
+            </Link>
           </div>
           
           <div className={styles.firepower} style={{ marginBottom: '12px' }}>
@@ -100,7 +113,7 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
           <p className={styles.companyId}>K-Pop Entertainment</p>
         </motion.div>
 
-        {/* Stock Chart Section */}
+        {/* 파이어파워 트렌드 차트 */}
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Firepower Trend</h2>
           {company.stockHistory && (
@@ -110,30 +123,27 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
           )}
         </section>
 
-        {/* Analysis Tabs Section */}
+        {/* 분석 탭 (그룹별, 레이블별, 상위 팬) */}
         <section className={styles.section}>
            <DataAnalysisTabs companyId={company.id} />
         </section>
 
-        {/* Comment Section */}
+        {/* 댓글 섹션 */}
         <section className={styles.section}>
           <CommentSection />
         </section>
       </main>
-
-      <SupportModal 
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        companyName={targetName}
-        companyId={company.id}
-        companyImage={company.image}
-      />
     </motion.div>
   );
 }
 
+/**
+ * DataAnalysisTabs
+ * 
+ * 투표 데이터를 그룹별, 레이블별, 상위 팬별로 분석하여 탭 형태로 표시
+ */
 function DataAnalysisTabs({ companyId }: { companyId: string }) {
-  // 1. Filter votes for this company
+  // 해당 회사의 투표 데이터 필터링
   const votes = MOCK_VOTES.filter(v => v.companyId === companyId);
   const totalVotes = votes.length;
 
@@ -141,7 +151,7 @@ function DataAnalysisTabs({ companyId }: { companyId: string }) {
     return <div className={styles.emptyState}>No vote data available yet.</div>;
   }
 
-  // 2. Aggregate by Group
+  // 그룹별 통계 집계
   const groupStats = Object.entries(
     votes.reduce((acc, vote) => {
       acc[vote.groupId] = (acc[vote.groupId] || 0) + 1;
@@ -149,7 +159,7 @@ function DataAnalysisTabs({ companyId }: { companyId: string }) {
     }, {} as Record<string, number>)
   ).sort((a, b) => b[1] - a[1]);
 
-  // 3. Aggregate by Label
+  // 레이블별 통계 집계
   const labelStats = Object.entries(
     votes.reduce((acc, vote) => {
       acc[vote.labelId] = (acc[vote.labelId] || 0) + 1;
@@ -157,16 +167,18 @@ function DataAnalysisTabs({ companyId }: { companyId: string }) {
     }, {} as Record<string, number>)
   ).sort((a, b) => b[1] - a[1]);
 
-  // 4. Aggregate by User (Top voters)
+  // 사용자별 통계 집계 (상위 5명)
   const userStats = Object.entries(
     votes.reduce((acc, vote) => {
       acc[vote.userId] = (acc[vote.userId] || 0) + 1;
       return acc;
     }, {} as Record<string, number>)
-  ).sort((a, b) => b[1] - a[1]).slice(0, 5); // Top 5 only
+  ).sort((a, b) => b[1] - a[1]).slice(0, 5);
 
-  // Render Helpers
-  const renderList = (items: [string, number][], type: 'Group' | 'Label') => (
+  /**
+   * 통계 리스트 렌더링 헬퍼
+   */
+  const renderList = (items: [string, number][]) => (
     <div className={styles.statList}>
       {items.map(([name, count], idx) => {
         const percent = ((count / totalVotes) * 100).toFixed(1);
@@ -188,16 +200,17 @@ function DataAnalysisTabs({ companyId }: { companyId: string }) {
     </div>
   );
 
+  // 탭 아이템 정의
   const tabItems = [
     {
       id: 'group',
       label: 'By Group',
-      content: renderList(groupStats, 'Group')
+      content: renderList(groupStats)
     },
     {
       id: 'label',
       label: 'By Label',
-      content: renderList(labelStats, 'Label')
+      content: renderList(labelStats)
     },
     {
       id: 'user',

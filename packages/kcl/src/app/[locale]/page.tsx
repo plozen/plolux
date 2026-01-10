@@ -1,9 +1,26 @@
+/**
+ * HomePage
+ * 
+ * KCL 메인 홈 페이지 컴포넌트
+ * 회사 선택 및 투표 기능UI를 제공합니다.
+ * 
+ * 레이아웃 구조:
+ * - 히어로 섹션: 타이틀 + 회사 선택기 + 투표 버튼
+ * - 랭킹 바로가기 버튼
+ * 
+ * 참고: AppShell이 사이드바(Desktop)와 BottomNav(Mobile)를 처리하므로
+ * 이 페이지에서는 헤더를 별도로 렌더링하지 않습니다.
+ */
+
 "use client";
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
-import Header from '@/components/layout/Header';
+import { MOCK_COMPANIES } from '@/lib/mock-data';
+import CompanySelector from '@/components/features/home/CompanySelector';
+import VoteButton from '@/components/features/home/VoteButton';
 import styles from './page.module.scss';
 
 export default function HomePage() {
@@ -12,51 +29,54 @@ export default function HomePage() {
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] || 'en';
 
+  // 선택된 회사 ID 상태 관리
   const [selectedCompanyId, setSelectedCompanyId] = useState(MOCK_COMPANIES[0].id);
 
+  // 선택된 회사 데이터 조회
   const selectedCompany = MOCK_COMPANIES.find(c => c.id === selectedCompanyId) || MOCK_COMPANIES[0];
 
   return (
     <div className={styles.homeContainer}>
-      <Header />
-      
-      <section className={styles.hero} style={{ minHeight: 'calc(100vh - 60px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '40px' }}>
+      {/* 히어로 섹션 - 메인 투표 영역 */}
+      <section className={styles.hero}>
+        {/* 타이틀 */}
         <motion.div
+          className={styles.heroTitle}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          style={{ textAlign: 'center', marginBottom: '30px' }}
+          transition={{ duration: 0.6 }}
         >
-          <h1 style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--color-primary)' }}>KCL</h1>
-          <p style={{ fontSize: '1rem', opacity: 0.8 }}>Choose & Support Your Favorite</p>
+          <h1>KCL</h1>
+          <p>Choose & Support Your Favorite</p>
         </motion.div>
 
-        <CompanySelector 
-          companies={MOCK_COMPANIES} 
-          selectedCompanyId={selectedCompanyId} 
-          onSelect={setSelectedCompanyId} 
-        />
+        {/* 투표 섹션 */}
+        <motion.div 
+          className={styles.voteSection}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {/* 회사 선택 캐러셀 */}
+          <CompanySelector 
+            companies={MOCK_COMPANIES} 
+            selectedCompanyId={selectedCompanyId} 
+            onSelect={setSelectedCompanyId} 
+          />
 
-        <div style={{ height: '40px' }} />
+          {/* 투표 버튼 */}
+          <VoteButton company={selectedCompany} />
+        </motion.div>
 
-        <VoteButton company={selectedCompany} />
-
-        <div style={{ height: '60px' }} />
-        
+        {/* 랭킹 페이지 이동 버튼 */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          className={styles.rankingButton}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
           onClick={() => router.push(`/${currentLocale}/ranking`)}
-          style={{
-            padding: '12px 32px',
-            fontSize: '1rem',
-            fontWeight: '600',
-            borderRadius: '30px',
-            border: '1px solid rgba(255,255,255,0.2)',
-            background: 'rgba(255,255,255,0.05)',
-            color: 'var(--color-text)',
-            cursor: 'pointer',
-            backdropFilter: 'blur(10px)'
-          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
           View Full Ranking
         </motion.button>
@@ -64,8 +84,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-import { useState } from 'react';
-import { MOCK_COMPANIES } from '@/lib/mock-data';
-import CompanySelector from '@/components/features/home/CompanySelector';
-import VoteButton from '@/components/features/home/VoteButton';

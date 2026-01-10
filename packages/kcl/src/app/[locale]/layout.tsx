@@ -19,9 +19,25 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { FULL_URL, BASE_PATH } from '@/lib/constants';
 
+/**
+ * Next.js 14+에서 viewport는 별도로 export해야 함
+ * viewport 메타태그 설정: 모바일 최적화
+ */
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#8B5CF6',
+};
+
+/**
+ * 페이지 메타데이터 설정
+ * SEO 최적화 및 소셜 미디어 공유 정보
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(FULL_URL),
   title: {
@@ -37,20 +53,13 @@ export const metadata: Metadata = {
     url: FULL_URL,
     images: [
       {
-        url: `${BASE_PATH}/og-image.jpg`, // Ensure this image exists or use a placeholder
+        url: `${BASE_PATH}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: 'KCL - Kpop Company League',
       },
     ],
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
-  themeColor: '#8B5CF6',
 };
 
 const locales = ['ko', 'en', 'id', 'tr', 'ja', 'zh', 'es', 'pt', 'th', 'vi', 'fr', 'de'];

@@ -1,19 +1,28 @@
+/**
+ * _app-shell.scss
+ * 
+ * 전역 앱 셸 스타일 - body 및 배경 효과
+ * 레이아웃 구조는 AppShell.module.scss에서 처리
+ */
+
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as mix;
 
-body {
-  background-color: #000;
-  // PC 화면에서 중앙 정렬을 위해 body는 flex로 설정하거나 margin auto를 사용
-  // 여기서는 단순히 배경만 깔고, .app-shell이 중앙에 오도록 함
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  overflow-y: auto; // 스크롤 허용으로 변경
-  overflow-x: hidden; // 가로 스크롤만 방지
+html {
+  // 스크롤 시 헤더에 가리는 문제 방지
+  scroll-padding-top: 60px;
+  scroll-behavior: smooth;
+}
 
-  // 배경 이미지나 블러 효과 추가
+body {
+  background-color: #0a0a0a;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  
+  // 배경 오로라 효과
   &::before {
     content: '';
     position: fixed;
@@ -21,19 +30,14 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    // 배경은 다크모드/라이트모드 공통으로 은은한 오로라 효과를 줍니다.
     background:
-      radial-gradient(circle at 10% 20%, rgba($color-primary, 0.15) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba($color-secondary, 0.15) 0%, transparent 40%);
+      radial-gradient(ellipse at 10% 20%, rgba($color-primary, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba($color-secondary, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba($color-bg, 0.9) 0%, transparent 100%);
     z-index: -1;
+    pointer-events: none;
   }
 }
 
-.app-shell {
-  @include mix.mobile-container;
-  min-height: 100vh;
-  background-color: $color-bg; 
-  box-shadow: 0 0 60px rgba($color-primary, 0.15);
-  border: 1px solid $color-border;
-  position: relative; // 스크롤 컨텍스트 확보
-}
+// 기존 .app-shell 클래스는 더 이상 사용하지 않음
+// AppShell 컴포넌트에서 module.scss를 사용함
