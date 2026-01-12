@@ -2,8 +2,8 @@
 
 > **작성일**: 2026-01-12  
 > **담당**: Max (Backend Lead)  
-> **Phase**: 1, Task T1.4  
-> **상태**: 설계 완료, 구현 대기 (T1.8)
+> **Phase**: 1, Task T1.8  
+> **상태**: 마이그레이션 스크립트 작성 완료 (T1.8)
 
 ---
 
@@ -490,8 +490,8 @@ EXECUTE FUNCTION update_updated_at_column();
 
 ### Phase 1B: 구현 및 시딩 (T1.8, T1.9)
 
-- [ ] Migration SQL 실행 (`doc/project/kcl/migrations/001_create_tables.sql`)
-- [ ] Supabase Studio에서 테이블 생성 확인
+- [x] Migration SQL 검증 및 스크립트 작성 (`packages/kcl/scripts/migrate.ts`)
+- [ ] Supabase Studio에서 테이블 생성 실행
 - [ ] RLS 정책 활성화 및 테스트
 - [ ] 초기 데이터 시딩 (50~100개 회사/그룹)
 
