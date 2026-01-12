@@ -1,17 +1,39 @@
 {
   "Home": {
-    "title": "Mevcut Güç Sıralaması",
-    "ranking": "Gerçek Zamanlı Sıralama",
-    "support": "Destek"
+    "title": "Güncel En İyi Güç",
+    "ranking": "Canlı Sıralama",
+    "support": "Destek",
+    "search_placeholder": "Sanatçı veya şirket ara...",
+    "vote_button": "Şimdi Oy Ver",
+    "firepower": "Güç"
   },
   "Common": {
-    "unofficial": "Bu Resmi Olmayan Bir Hayran Uygulamasıdır.",
-    "fan_app": "Hayran Uygulaması"
+    "unofficial": "Bu Resmi Olmayan Bir Hayran Uygulamasıdır. Hiçbir eğlence şirketiyle ilişkili değildir.",
+    "fan_app": "Hayran Yapımı Uygulama",
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "coming_soon": "Yakında..."
   },
   "Nav": {
     "home": "Ana Sayfa",
     "ranking": "Sıralama",
     "support": "Destek",
-    "my": "Ben"
+    "my": "Profilim",
+    "create": "Oluştur",
+    "theme": "Tema"
+  },
+  "Company": {
+    "detail": "Şirket Detayları",
+    "artists": "Sanatçılar",
+    "total_votes": "Toplam Oy",
+    "trending": "Trend",
+    "back": "Geri"
+  },
+  "Vote": {
+    "who_fan": "Favori sanatçınız kimdir?",
+    "select_artist": "Bir sanatçı seçin",
+    "success": "Oy başarılı!",
+    "error": "Oy verilemedi. Lütfen tekrar deneyin.",
+    "daily_limit": "Günlük oy limitinize ulaştınız."
   }
 }

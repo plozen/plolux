@@ -2,16 +2,38 @@
   "Home": {
     "title": "Current Top Firepower",
     "ranking": "Real-time Ranking",
-    "support": "Support"
+    "support": "Support",
+    "search_placeholder": "Search artist or company...",
+    "vote_button": "Vote Now",
+    "firepower": "Firepower"
   },
   "Common": {
     "unofficial": "This is an Unofficial Fan App. Not affiliated with any entertainment company.",
-    "fan_app": "Fan Made App"
+    "fan_app": "Fan Made App",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "coming_soon": "Coming Soon..."
   },
   "Nav": {
     "home": "Home",
     "ranking": "Ranking",
     "support": "Support",
-    "my": "My"
+    "my": "My Profile",
+    "create": "Create",
+    "theme": "Theme"
+  },
+  "Company": {
+    "detail": "Company Details",
+    "artists": "Artists",
+    "total_votes": "Total Votes",
+    "trending": "Trending",
+    "back": "Back"
+  },
+  "Vote": {
+    "who_fan": "Who is your favorite artist?",
+    "select_artist": "Select an artist",
+    "success": "Vote successful!",
+    "error": "Failed to vote. Please try again.",
+    "daily_limit": "You've reached your daily vote limit."
   }
 }

@@ -1,17 +1,39 @@
 {
   "Home": {
-    "title": "Classement de Puissance Actuel",
+    "title": "Puissance Actuelle Maximale",
     "ranking": "Classement en Temps Réel",
-    "support": "Soutenir"
+    "support": "Soutenir",
+    "search_placeholder": "Rechercher artiste ou entreprise...",
+    "vote_button": "Voter Maintenant",
+    "firepower": "Puissance"
   },
   "Common": {
-    "unofficial": "Ceci est une application de fan non officielle.",
-    "fan_app": "App de Fan"
+    "unofficial": "Ceci est une Application de Fans Non Officielle. Non affiliée à aucune société de divertissement.",
+    "fan_app": "Application Créée par des Fans",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "coming_soon": "Bientôt..."
   },
   "Nav": {
     "home": "Accueil",
     "ranking": "Classement",
-    "support": "Soutien",
-    "my": "Moi"
+    "support": "Soutenir",
+    "my": "Mon Profil",
+    "create": "Créer",
+    "theme": "Thème"
+  },
+  "Company": {
+    "detail": "Détails de l'Entreprise",
+    "artists": "Artistes",
+    "total_votes": "Votes Totaux",
+    "trending": "Tendance",
+    "back": "Retour"
+  },
+  "Vote": {
+    "who_fan": "Qui est votre artiste préféré?",
+    "select_artist": "Sélectionnez un artiste",
+    "success": "Vote réussi!",
+    "error": "Échec du vote. Veuillez réessayer.",
+    "daily_limit": "Vous avez atteint votre limite quotidienne de votes."
   }
 }

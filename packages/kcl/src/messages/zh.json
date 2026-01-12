@@ -1,17 +1,39 @@
 {
   "Home": {
-    "title": "当前火力排名",
+    "title": "当前最高火力",
     "ranking": "实时排名",
-    "support": "支持"
+    "support": "支持",
+    "search_placeholder": "搜索艺人或公司...",
+    "vote_button": "立即投票",
+    "firepower": "火力"
   },
   "Common": {
-    "unofficial": "这是一个非官方的粉丝应用程序。",
-    "fan_app": "粉丝应用"
+    "unofficial": "这是一个非官方粉丝应用。与任何娱乐公司无关。",
+    "fan_app": "粉丝制作应用",
+    "loading": "加载中...",
+    "error": "发生错误",
+    "coming_soon": "即将推出..."
   },
   "Nav": {
     "home": "首页",
     "ranking": "排名",
     "support": "支持",
-    "my": "我的"
+    "my": "我的",
+    "create": "创建",
+    "theme": "主题"
+  },
+  "Company": {
+    "detail": "公司详情",
+    "artists": "艺人",
+    "total_votes": "总投票数",
+    "trending": "热门",
+    "back": "返回"
+  },
+  "Vote": {
+    "who_fan": "您最喜欢的艺人是谁？",
+    "select_artist": "选择艺人",
+    "success": "投票成功！",
+    "error": "投票失败。请重试。",
+    "daily_limit": "您已达到每日投票限制。"
   }
 }

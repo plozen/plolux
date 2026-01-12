@@ -1,17 +1,39 @@
 {
   "Home": {
-    "title": "Aktuelles Leistungsranking",
-    "ranking": "Echtzeit-Ranking",
-    "support": "Unterstützen"
+    "title": "Aktuelle Top-Feuerkraft",
+    "ranking": "Echtzeit-Rangliste",
+    "support": "Unterstützen",
+    "search_placeholder": "Künstler oder Firma suchen...",
+    "vote_button": "Jetzt Abstimmen",
+    "firepower": "Feuerkraft"
   },
   "Common": {
-    "unofficial": "Dies ist eine inoffizielle Fan-App.",
-    "fan_app": "Fan-App"
+    "unofficial": "Dies ist eine Inoffizielle Fan-App. Nicht verbunden mit irgendeinem Unterhaltungsunternehmen.",
+    "fan_app": "Von Fans Erstellte App",
+    "loading": "Laden...",
+    "error": "Ein Fehler ist aufgetreten",
+    "coming_soon": "Demnächst..."
   },
   "Nav": {
     "home": "Startseite",
-    "ranking": "Ranking",
-    "support": "Support",
-    "my": "Ich"
+    "ranking": "Rangliste",
+    "support": "Unterstützen",
+    "my": "Mein Profil",
+    "create": "Erstellen",
+    "theme": "Design"
+  },
+  "Company": {
+    "detail": "Firmendetails",
+    "artists": "Künstler",
+    "total_votes": "Gesamtstimmen",
+    "trending": "Im Trend",
+    "back": "Zurück"
+  },
+  "Vote": {
+    "who_fan": "Wer ist Ihr Lieblingskünstler?",
+    "select_artist": "Wählen Sie einen Künstler",
+    "success": "Abstimmung erfolgreich!",
+    "error": "Abstimmung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "daily_limit": "Sie haben Ihr tägliches Abstimmungslimit erreicht."
   }
 }

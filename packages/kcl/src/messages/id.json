@@ -1,17 +1,39 @@
 {
   "Home": {
-    "title": "Peringkat Kekuatan Saat Ini",
+    "title": "Peringkat Firepower Saat Ini",
     "ranking": "Peringkat Real-time",
-    "support": "Dukung"
+    "support": "Dukung",
+    "search_placeholder": "Cari artis atau perusahaan...",
+    "vote_button": "Vote Sekarang",
+    "firepower": "Firepower"
   },
   "Common": {
-    "unofficial": "Ini adalah Aplikasi Penggemar Tidak Resmi.",
-    "fan_app": "Aplikasi Penggemar"
+    "unofficial": "Ini adalah Aplikasi Fan Tidak Resmi. Tidak berafiliasi dengan perusahaan hiburan manapun.",
+    "fan_app": "Aplikasi Buatan Fan",
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "coming_soon": "Segera Hadir..."
   },
   "Nav": {
     "home": "Beranda",
     "ranking": "Peringkat",
     "support": "Dukung",
-    "my": "Saya"
+    "my": "Profil Saya",
+    "create": "Buat",
+    "theme": "Tema"
+  },
+  "Company": {
+    "detail": "Detail Perusahaan",
+    "artists": "Artis",
+    "total_votes": "Total Voting",
+    "trending": "Trending",
+    "back": "Kembali"
+  },
+  "Vote": {
+    "who_fan": "Siapa artis favorit Anda?",
+    "select_artist": "Pilih artis",
+    "success": "Vote berhasil!",
+    "error": "Gagal vote. Silakan coba lagi.",
+    "daily_limit": "Anda telah mencapai batas vote harian."
   }
 }

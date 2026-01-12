@@ -1,17 +1,39 @@
 {
   "Home": {
-    "title": "Xếp hạng hỏa lực hiện tại",
-    "ranking": "Xếp hạng thời gian thực",
-    "support": "Ủng hộ"
+    "title": "Sức Mạnh Hàng Đầu Hiện Tại",
+    "ranking": "Xếp Hạng Thời Gian Thực",
+    "support": "Ủng Hộ",
+    "search_placeholder": "Tìm kiếm nghệ sĩ hoặc công ty...",
+    "vote_button": "Bình Chọn Ngay",
+    "firepower": "Sức Mạnh"
   },
   "Common": {
-    "unofficial": "Đây là ứng dụng người hâm mộ không chính thức.",
-    "fan_app": "Ứng dụng Fan"
+    "unofficial": "Đây là Ứng Dụng Fan Không Chính Thức. Không liên kết với bất kỳ công ty giải trí nào.",
+    "fan_app": "Ứng Dụng Do Fan Tạo",
+    "loading": "Đang tải...",
+    "error": "Đã xảy ra lỗi",
+    "coming_soon": "Sắp Ra Mắt..."
   },
   "Nav": {
-    "home": "Trang chủ",
-    "ranking": "Xếp hạng",
-    "support": "Ủng hộ",
-    "my": "Tôi"
+    "home": "Trang Chủ",
+    "ranking": "Xếp Hạng",
+    "support": "Ủng Hộ",
+    "my": "Hồ Sơ Của Tôi",
+    "create": "Tạo",
+    "theme": "Chủ Đề"
+  },
+  "Company": {
+    "detail": "Chi Tiết Công Ty",
+    "artists": "Nghệ Sĩ",
+    "total_votes": "Tổng Số Phiếu",
+    "trending": "Xu Hướng",
+    "back": "Quay Lại"
+  },
+  "Vote": {
+    "who_fan": "Nghệ sĩ yêu thích của bạn là ai?",
+    "select_artist": "Chọn một nghệ sĩ",
+    "success": "Bình chọn thành công!",
+    "error": "Bình chọn thất bại. Vui lòng thử lại.",
+    "daily_limit": "Bạn đã đạt giới hạn bình chọn hàng ngày."
   }
 }
