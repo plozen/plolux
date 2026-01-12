@@ -14,7 +14,6 @@ import { ArrowLeft, TrendingUp, Home } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import Header from '@/components/layout/Header';
 import { MOCK_COMPANIES, MOCK_VOTES } from '@/lib/mock-data';
 import styles from './page.module.scss';
 import CommentSection from '@/components/features/comments/CommentSection';
@@ -56,9 +55,6 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
       animate="animate"
       exit="exit"
     >
-      <Header />
-      <div style={{ height: '120px' }} />
-
       {/* 상세 페이지 헤더 (뒤로가기 + 제목) */}
       <div className={styles.header}>
         <Link href={`/${locale}/ranking`} className={styles.backBtn}>
