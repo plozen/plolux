@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(**)",
+      "Read(**)",
+      "Read(../workspace-*/**)",
+      "Edit(../workspace-*/**)",
+      "Bash(git:*)",
+      "Bash(npm:*)",
+      "Bash(node:*)",
+      "Bash(python:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "WebSearch",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(if [ -f \"C:/plolux/workspace/packages/kcl/.env.local\" ])",
+      "Bash(then echo \"환경 변수 파일 존재\")",
+      "Bash(else echo \"환경 변수 파일 없음 - 설정 필요\")",
+      "Bash(fi)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/.env*)",
+      "Read(./**/credentials*)",
+      "Read(./**/secret*)",
+      "Read(./**/password*)",
+      "Read(./**/token*)",
+      "Read(./**/*key.json)",
+      "Edit(./.env)",
+      "Edit(./.env.*)",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)"
+    ]
+  },
+  "agent_settings": {
+    "auto_approve": true,
+    "require_confirmation": false,
+    "autonomous_mode": true,
+    "max_consecutive_actions": 100
+  }
+}
