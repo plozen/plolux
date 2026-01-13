@@ -1,166 +1,145 @@
 /**
- * page.module.scss
+ * page.module.scss (Dashboard)
  * 
- * 홈 페이지 스타일
- * 투표 기능과 랭킹 프리뷰를 위한 레이아웃
+ * 통합 대시보드 페이지 스타일
+ * 반응형 2단 레이아웃 + Sticky Search
  */
 
 @use '../../styles/abstracts/variables' as *;
 @use '../../styles/abstracts/mixins' as mix;
 
-.homeContainer {
+.dashboardContainer {
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-// 히어로 섹션 - 메인 투표 영역
-.hero {
+// Sticky Search Header
+.searchHeader {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: 12px 0 16px;
+  background: linear-gradient(to bottom, $color-bg 70%, transparent 100%);
+
+  @media (min-width: 768px) {
+    padding: 16px 0 24px;
+  }
+}
+
+// 메인 레이아웃 (반응형 2단)
+.mainLayout {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  
-  // 모바일: 전체 화면 활용
-  min-height: calc(100vh - 160px); // 헤더 + 하단 내비 공간 제외
-  padding: 32px 16px;
-  margin: 0;
-  
-  // 태블릿+: 더 넓은 레이아웃
+  gap: 24px;
+  flex: 1;
+
   @media (min-width: 768px) {
-    min-height: calc(100vh - 80px);
-    padding: 48px 24px;
-  }
-  
-  // 배경 그라데이션 효과
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: 
-      radial-gradient(circle at 30% 30%, rgba($color-primary, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 70% 70%, rgba($color-secondary, 0.1) 0%, transparent 50%);
-    animation: rotate 30s linear infinite;
-    z-index: 0;
-    pointer-events: none;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
   }
 }
 
-// 타이틀 영역
-.heroTitle {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 32px;
-  
-  h1 {
-    font-family: $font-display;
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: $gradient-primary;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 8px;
-    
-    @media (min-width: 768px) {
-      font-size: 3.5rem;
-    }
-  }
-  
-  p {
-    font-size: 0.95rem;
-    color: $color-text-dim;
-    
-    @media (min-width: 768px) {
-      font-size: 1.1rem;
-    }
-  }
-}
+// 랭킹 섹션 (좌측/전체)
+.rankingSection {
+  flex: 1;
+  min-width: 0; // flex item overflow 방지
 
-// 투표 섹션
-.voteSection {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  
   @media (min-width: 768px) {
-    max-width: 600px;
-    gap: 40px;
+    // 데스크톱에서 60-70% 너비
+    flex: 1 1 65%;
+    max-width: 700px;
   }
 }
 
-// 랭킹 버튼
-.rankingButton {
-  position: relative;
-  z-index: 1;
-  margin-top: 24px;
-  padding: 14px 36px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 30px;
-  border: 1px solid rgba($color-text, 0.2);
-  background: rgba($color-text, 0.05);
+.sectionTitle {
+  font-family: $font-display;
+  font-size: 1.3rem;
+  font-weight: 800;
   color: $color-text;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba($color-text, 0.1);
-    border-color: rgba($color-primary, 0.5);
-    box-shadow: 0 0 20px rgba($color-primary, 0.2);
-  }
-  
+  margin: 0 0 16px;
+
   @media (min-width: 768px) {
-    padding: 16px 48px;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
   }
 }
 
-// 회사 목록 그리드 (랭킹 페이지에서 사용)
-.list {
+// 랭킹 리스트
+.rankingList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding-bottom: 20px;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 120px; // 모바일 하단 여백 (BottomNav + Sheet 공간)
 
   @media (min-width: 768px) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-  }
-  
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding-bottom: 40px;
   }
 }
 
-// 배경 회전 애니메이션
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+// 패널 섹션 (우측) - 데스크톱 전용
+.panelSection {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    flex: 0 0 320px;
+    position: sticky;
+    top: 100px; // SearchHeader 높이 고려
+    height: fit-content;
+    max-height: calc(100vh - 120px);
+  }
+
+  @media (min-width: 1200px) {
+    flex: 0 0 360px;
+  }
+
+  @media (min-width: 1400px) {
+    flex: 0 0 400px;
+  }
+}
+
+// ===== 기존 히어로 섹션 스타일 (백업 - archive 브랜치에 보존) =====
+// 아래 스타일들은 새 대시보드에서 사용하지 않지만,
+// 빌드 호환성을 위해 빈 선언으로 유지합니다.
+
+.homeContainer {
+  // dashboardContainer로 대체됨
+}
+
+.hero {
+  display: none;
+}
+
+.heroTitle {
+  display: none;
+}
+
+.voteSection {
+  display: none;
+}
+
+.rankingButton {
+  display: none;
+}
+
+.list {
+  display: none;
 }
 
 // 페이드 인 애니메이션
 @keyframes fadeIn {
-  from { 
-    opacity: 0; 
+  from {
+    opacity: 0;
     transform: translateY(20px);
   }
-  to { 
-    opacity: 1; 
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
 }
