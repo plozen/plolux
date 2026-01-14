@@ -7,6 +7,32 @@
     "vote_button": "Bình Chọn Ngay",
     "firepower": "Sức Mạnh"
   },
+  "HallOfFame": {
+    "title": "Đại Sảnh Danh Vọng",
+    "subtitle": "Legends of KCL",
+    "grand_champion": "Nhà Vô Địch",
+    "annual_champion": "Nhà Vô Địch Năm",
+    "victories": "Chiến Thắng",
+    "current_race": "Xếp Hạng Hiện Tại",
+    "monthly_champions": "Nhà Vô Địch Tháng",
+    "archives": "Lưu Trữ",
+    "no_champion_yet": "Chưa có nhà vô địch",
+    "loading": "Đang tải...",
+    "months": {
+      "1": "Th1",
+      "2": "Th2",
+      "3": "Th3",
+      "4": "Th4",
+      "5": "Th5",
+      "6": "Th6",
+      "7": "Th7",
+      "8": "Th8",
+      "9": "Th9",
+      "10": "Th10",
+      "11": "Th11",
+      "12": "Th12"
+    }
+  },
   "Common": {
     "unofficial": "Đây là Ứng Dụng Fan Không Chính Thức. Không liên kết với bất kỳ công ty giải trí nào.",
     "fan_app": "Ứng Dụng Do Fan Tạo",
@@ -27,7 +53,8 @@
     "logout": "Đăng xuất",
     "login": "Đăng nhập",
     "switch_account": "Chuyển tài khoản",
-    "mode_switch": "Chuyển chế độ"
+    "mode_switch": "Chuyển chế độ",
+    "hall_of_fame": "Đại Sảnh Danh Vọng"
   },
   "Company": {
     "detail": "Chi Tiết Công Ty",

@@ -7,6 +7,32 @@
     "vote_button": "Şimdi Oy Ver",
     "firepower": "Güç"
   },
+  "HallOfFame": {
+    "title": "Şöhret Salonu",
+    "subtitle": "Legends of KCL",
+    "grand_champion": "Büyük Şampiyon",
+    "annual_champion": "Yıllık Şampiyon",
+    "victories": "Zafer",
+    "current_race": "Güncel Sıralama",
+    "monthly_champions": "Aylık Şampiyonlar",
+    "archives": "Arşiv",
+    "no_champion_yet": "Henüz şampiyon yok",
+    "loading": "Yükleniyor...",
+    "months": {
+      "1": "Oca",
+      "2": "Şub",
+      "3": "Mar",
+      "4": "Nis",
+      "5": "May",
+      "6": "Haz",
+      "7": "Tem",
+      "8": "Ağu",
+      "9": "Eyl",
+      "10": "Eki",
+      "11": "Kas",
+      "12": "Ara"
+    }
+  },
   "Common": {
     "unofficial": "Bu Resmi Olmayan Bir Hayran Uygulamasıdır. Hiçbir eğlence şirketiyle ilişkili değildir.",
     "fan_app": "Hayran Yapımı Uygulama",
@@ -27,7 +53,8 @@
     "logout": "Çıkış Yap",
     "login": "Giriş Yap",
     "switch_account": "Hesap Değiştir",
-    "mode_switch": "Mod Değiştir"
+    "mode_switch": "Mod Değiştir",
+    "hall_of_fame": "Şöhret Salonu"
   },
   "Company": {
     "detail": "Şirket Detayları",

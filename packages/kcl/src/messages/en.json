@@ -7,6 +7,32 @@
     "vote_button": "Vote Now",
     "firepower": "Firepower"
   },
+  "HallOfFame": {
+    "title": "Hall of Fame",
+    "subtitle": "Legends of KCL",
+    "grand_champion": "Grand Champion",
+    "annual_champion": "Annual Champion",
+    "victories": "Wins",
+    "current_race": "Current Race",
+    "monthly_champions": "Monthly Champions",
+    "archives": "Archives",
+    "no_champion_yet": "No champion yet",
+    "loading": "Loading...",
+    "months": {
+      "1": "Jan",
+      "2": "Feb",
+      "3": "Mar",
+      "4": "Apr",
+      "5": "May",
+      "6": "Jun",
+      "7": "Jul",
+      "8": "Aug",
+      "9": "Sep",
+      "10": "Oct",
+      "11": "Nov",
+      "12": "Dec"
+    }
+  },
   "Common": {
     "unofficial": "This is an Unofficial Fan App. Not affiliated with any entertainment company.",
     "fan_app": "Fan Made App",
@@ -23,6 +49,7 @@
     "theme": "Theme",
     "report": "Report/Contact",
     "analytics": "Analytics",
+    "hall_of_fame": "Hall of Fame",
     "settings": "Settings",
     "logout": "Logout",
     "login": "Login",
