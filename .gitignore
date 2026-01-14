@@ -6,4 +6,5 @@ package-lock.json
 
 # AI Agent 설정 및 기획 문서 (보안)
 .claude/
+.agent/
 doc/
