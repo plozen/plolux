@@ -104,16 +104,26 @@
 
 ---
 
-### [] Phase 1, T1.8: 데이터베이스 테이블 생성 (추후)
+### ✅ Phase 1, T1.8: 데이터베이스 테이블 생성
 
 **담당**: Max (Backend)
-**의존성**: T1.4 완료 후
+**상태**: ✅ 완료
+**완료일**: 2026-01-14
+**Migration**: `001_kcl_create_tables`, `002_kcl_fix_function_search_path`
 
 **작업 내용**:
 
-- T1.4에서 작성한 Migration SQL 실행
-- Supabase Studio에서 테이블 생성 확인
-- RLS 정책 활성화 및 테스트
+- ✅ T1.4에서 작성한 Migration SQL 실행
+- ✅ Supabase Studio에서 테이블 생성 확인
+- ✅ RLS 정책 활성화 및 테스트
+
+**생성된 테이블**:
+
+- `kcl_companies` (소속사) - RLS ✅
+- `kcl_groups` (아티스트) - RLS ✅
+- `kcl_votes` (투표) - RLS ✅
+- `kcl_comments` (댓글) - RLS ✅
+- `kcl_users` (유저, Phase 2용) - RLS ✅
 
 ---
 
@@ -226,16 +236,25 @@
 
 ---
 
-### [] Phase 1, T1.9: 초기 데이터 시딩 (추후)
+### ✅ Phase 1, T1.9: 초기 데이터 시딩
 
 **담당**: Max (Backend)
-**의존성**: T1.8 완료 후
+**상태**: ✅ 완료
+**완료일**: 2026-01-14
+**커밋**: `3510df1`
+**브랜치**: `phase/1-data-seeding` (병합 대기)
 
-**작업 내용**:
+**결과**:
 
-- `kcl_companies`: 기존 Mock Data 마이그레이션
-- `kcl_groups`: 주요 K-POP 아티스트 50~100팀 데이터 Insert
-- Seed SQL 파일 작성 및 실행
+| 항목                   | 목표  | 달성         |
+| ---------------------- | ----- | ------------ |
+| 소속사 (kcl_companies) | 20개+ | **30개** ✅  |
+| 아티스트 (kcl_groups)  | 50팀+ | **105팀** ✅ |
+
+**산출물**:
+
+- `doc/project/kcl/migrations/002_seed_companies.sql`
+- `doc/project/kcl/migrations/003_seed_groups.sql`
 
 ---
 
@@ -476,6 +495,84 @@
 
 ---
 
+### ✅ Phase 1, T1.14: 홈 화면 리그 시스템 UI 개편 (탭 기반)
+
+**담당**: Luna (Frontend)
+**상태**: ✅ 완료
+**완료일**: 2026-01-14
+**커밋**: `f7cfd83`
+**브랜치**: `phase/1-league-ui` (병합 대기)
+**기획서**: `doc/project/kcl/home_league_spec.md`
+
+**결과**:
+
+| 항목      | 내용                                               |
+| --------- | -------------------------------------------------- |
+| 컴포넌트  | 7개 (SeasonHeader, LeagueTabs, PromotionBattle 등) |
+| i18n      | 12개 언어 완료                                     |
+| 파일 수정 | 29개                                               |
+
+**생성된 컴포넌트**:
+
+- `SeasonHeader` - 시즌 정보 헤더 (D-day, 현재 1위)
+- `LeagueTabs` - 1부/2부 리그 탭 (스와이프 지원)
+- `PromotionBattle` - 승강전 영역 (10위 vs 11위)
+- `TopThreeCard` - 상위 3개사 카드 (트로피 아이콘)
+- `LeagueRankingItem` - 순위 리스트 아이템
+- `PremierLeague` - 1부 리그 레이아웃
+- `Challengers` - 2부 리그 레이아웃
+
+**인수 조건**:
+
+- [x] 1부/2부 탭 전환 정상 작동
+- [x] 승강전 영역 항상 표시
+- [x] 모바일 스와이프 탭 전환
+- [x] 반응형 레이아웃
+- [x] 12개 언어 i18n 적용
+
+---
+
+### ✅ Phase 1, T1.15: 명예의 전당(Hall of Fame) 페이지 개발
+
+**담당**: Kai (Full-Stack)
+**상태**: ✅ 완료
+**완료일**: 2026-01-14
+**커밋**: `da3356d`
+**브랜치**: `phase/1-hall-of-fame` (병합 대기)
+**기획서**: `doc/project/kcl/hall_of_fame_spec.md`
+
+**결과**:
+
+| 항목       | 내용                                         |
+| ---------- | -------------------------------------------- |
+| 컴포넌트   | 5개 (GrandChampionCard, CurrentRaceChart 등) |
+| i18n       | 12개 언어 완료                               |
+| 네비게이션 | Sidebar/BottomNav 연결 완료                  |
+
+**생성된 컴포넌트**:
+
+- `GrandChampionCard` - 그랜드 챔피언 카드
+- `CurrentRaceChart` - 현재 시즌 경쟁 차트
+- `MonthlyTimeline` - 월별 타임라인
+- `ArchivesCarousel` - 아카이브 캐러셀
+- `ChampionBadge` - 챔피언 뱃지
+
+**산출물**:
+
+- `packages/kcl/src/app/[locale]/hall-of-fame/page.tsx`
+- `packages/kcl/src/components/features/hall-of-fame/`
+- `packages/kcl/src/types/hall-of-fame.ts`
+- `packages/kcl/src/hooks/useHallOfFame.ts`
+
+**인수 조건**:
+
+- [x] `/hall-of-fame` 라우트 정상 접근
+- [x] Mock 데이터로 정상 렌더링
+- [x] 반응형 레이아웃
+- [x] 12개 언어 i18n 적용
+
+---
+
 ### [] Phase 1, T1.7: 보안 정책 및 법적 고지 적용
 
 **담당**: Viper (Security)
@@ -528,19 +625,29 @@ graph TD
     T1.12 --> T1.11
     T1.13[T1.13: 기획서 작성] --> T1.11[T1.11: Analytics 페이지]
     T1.10 --> T1.11
+    T1.3 --> T1.14[T1.14: 홈 리그 UI]
+    T1.14 --> T1.15[T1.15: 명예의 전당]
+    T1.10 --> T1.14
+    T1.10 --> T1.15
 ```
 
 ---
 
-**마지막 업데이트**: 2026-01-14 (스키마 감수 결과 반영)
+**마지막 업데이트**: 2026-01-14 (T1.9, T1.14, T1.15 완료 - 병합 대기)
+
+**병합 대기 브랜치** (대표님 승인 필요):
+
+- 🟢 `phase/1-data-seeding` - T1.9 데이터 시딩 (Max)
+- 🟢 `phase/1-league-ui` - T1.14 홈 리그 UI (Luna)
+- 🟢 `phase/1-hall-of-fame` - T1.15 명예의 전당 (Kai)
 
 **다음 태스크**:
 
-- 🔴 **CRITICAL**: T1.8.1 투표 데이터 영속성 구현 (Kai)
-- 🔴 **CRITICAL**: T1.8.2 Rate Limiting 구현 (Kai)
-- 🔴 **CRITICAL**: T1.8.3 RLS 정책 성능 최적화 (Max)
-- 🔴 **CRITICAL**: T1.8.4 CASCADE DELETE 수정 (Max)
+- ✅ ~~T1.8 DB 테이블 생성~~ (완료)
+- ✅ ~~T1.9 데이터 시딩~~ (완료 - 병합 대기)
+- ✅ ~~T1.14 홈 화면 리그 시스템 UI~~ (완료 - 병합 대기)
+- ✅ ~~T1.15 명예의 전당 페이지~~ (완료 - 병합 대기)
 - ✅ ~~T1.13 Analytics 화면 기획서 작성~~ (완료)
 - ✅ ~~T1.12 모드 전환 버튼 UI 변경~~ (완료)
-- 🟠 **우선**: T1.11 Analytics 페이지 구현 (기획서 완료, 개발 가능)
-- ⏸️ 대기: T1.8 DB 테이블 생성 (Critical 이슈 선행)
+- 🟡 **대기**: T1.11 Analytics 페이지 구현
+- 🔴 **CRITICAL**: T1.8.1~T1.8.4 (보안 이슈)
