@@ -20,7 +20,13 @@
     "support": "支持",
     "my": "我的",
     "create": "创建",
-    "theme": "主题"
+    "theme": "主题",
+    "report": "反馈/联系",
+    "settings": "设置",
+    "logout": "退出登录",
+    "login": "登录",
+    "switch_account": "切换账号",
+    "mode_switch": "切换模式"
   },
   "Company": {
     "detail": "公司详情",

@@ -20,7 +20,13 @@
     "support": "Soutenir",
     "my": "Mon Profil",
     "create": "Créer",
-    "theme": "Thème"
+    "theme": "Thème",
+    "report": "Signaler/Contact",
+    "settings": "Paramètres",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "switch_account": "Changer de compte",
+    "mode_switch": "Changer de mode"
   },
   "Company": {
     "detail": "Détails de l'Entreprise",

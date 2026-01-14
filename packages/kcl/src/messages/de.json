@@ -20,7 +20,13 @@
     "support": "Unterstützen",
     "my": "Mein Profil",
     "create": "Erstellen",
-    "theme": "Design"
+    "theme": "Design",
+    "report": "Melden/Kontakt",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "login": "Anmelden",
+    "switch_account": "Konto wechseln",
+    "mode_switch": "Modus wechseln"
   },
   "Company": {
     "detail": "Firmendetails",

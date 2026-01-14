@@ -20,7 +20,13 @@
     "support": "Apoiar",
     "my": "Meu Perfil",
     "create": "Criar",
-    "theme": "Tema"
+    "theme": "Tema",
+    "report": "Reportar/Contato",
+    "settings": "Configurações",
+    "logout": "Sair",
+    "login": "Entrar",
+    "switch_account": "Trocar conta",
+    "mode_switch": "Mudar modo"
   },
   "Company": {
     "detail": "Detalhes da Empresa",

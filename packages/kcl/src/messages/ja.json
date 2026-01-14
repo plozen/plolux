@@ -20,7 +20,13 @@
     "support": "応援",
     "my": "マイページ",
     "create": "作成",
-    "theme": "テーマ"
+    "theme": "テーマ",
+    "report": "報告/お問い合わせ",
+    "settings": "設定",
+    "logout": "ログアウト",
+    "login": "ログイン",
+    "switch_account": "アカウント切替",
+    "mode_switch": "モード切替"
   },
   "Company": {
     "detail": "会社詳細",

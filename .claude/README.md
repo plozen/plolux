@@ -6,8 +6,14 @@
 
 ```
 .claude/
+├── agents/             # 에이전트 프로필
+│   ├── jeff-dean.md            # Jeff Dean (CTO - 오케스트레이터)
+│   ├── backend-max.md          # Max (Principal Engineer - Backend)
+│   ├── frontend-luna.md        # Luna (Lead Frontend - UI/UX)
+│   ├── fullstack-kai.md        # Kai (Senior Full-Stack - 데이터/API)
+│   └── security-viper.md       # Viper (Security Manager - QA)
 ├── commands/           # AI 에이전트 명령 및 가이드
-│   ├── orchestrate.md          # 오케스트레이터 (Jeff Dean) 가이드
+│   ├── orchestrate.md          # 오케스트레이터 가이드 (슬래시 커맨드용)
 │   └── subagent-guidelines.md  # 서브에이전트 작업 규칙
 ├── planning/          # 프로젝트 계획 문서
 │   ├── tasks.md               # 작업 목록 및 진행 상황
@@ -18,29 +24,19 @@
 
 ## 🎭 역할 구분
 
-### Jeff Dean (오케스트레이터)
+| 코드명 | 이름      | 직급                       | 역할                             | 에이전트 파일              | 모델                                   |
+| ------ | --------- | -------------------------- | -------------------------------- | -------------------------- | -------------------------------------- |
+| 👑     | Jeff Dean | CTO                        | 오케스트레이션 & 아키텍처        | `agents/jeff-dean.md`      | `anthropic/claude-opus-4-5`            |
+| 🔧     | Max       | Principal Engineer         | Backend, DB, Docker              | `agents/backend-max.md`    | `anthropic/claude-opus-4-5`            |
+| 🎨     | Luna      | Lead Frontend Engineer     | Frontend UI/UX, 디자인, 스타일링 | `agents/frontend-luna.md`  | `anthropic/claude-opus-4-5`            |
+| ⚡     | Kai       | Senior Full-Stack Engineer | Frontend 데이터 레이어, API 연동 | `agents/fullstack-kai.md`  | `anthropic/claude-opus-4-5`            |
+| 🛡️     | Viper     | Security Manager           | Security, QA, 코드 리뷰          | `agents/security-viper.md` | `google/antigravity-gemini-3-pro-high` |
 
-- **문서**: `commands/orchestrate.md`
-- **역할**: CEO 요청 분석, 팀원 조율, 병합 및 배포 총괄
-- **권한**: `/deploy` skill 사용, main 브랜치 병합
+### 권한 요약
 
-### Max (Backend Lead)
-
-- **문서**: `commands/subagent-guidelines.md`
-- **역할**: Backend, Database, Docker 작업
-- **권한**: Worktree 내 로컬 커밋만
-
-### Luna (Frontend Lead)
-
-- **문서**: `commands/subagent-guidelines.md`
-- **역할**: Frontend, UI/UX 작업
-- **권한**: Worktree 내 로컬 커밋만
-
-### Viper (Security Manager)
-
-- **문서**: `commands/subagent-guidelines.md`
-- **역할**: Security, QA, 코드 리뷰
-- **권한**: Worktree 내 로컬 커밋만
+- **Jeff Dean (CTO)**: `/deploy` skill 사용, main 브랜치 병합, 팀원 조율
+- **서브에이전트 (Max, Luna, Kai, Viper)**: Worktree 내 로컬 커밋만 가능
+- **Luna & Kai 협업**: Luna=UI/UX, Kai=데이터/로직으로 Frontend 영역 분담
 
 ## 📖 핵심 문서
 
@@ -55,7 +51,7 @@
 
 ### 2. [subagent-guidelines.md](commands/subagent-guidelines.md)
 
-서브에이전트(Max, Luna, Viper)가 따라야 할 작업 규칙:
+서브에이전트(Max, Luna, Kai, Viper)가 따라야 할 작업 규칙:
 
 - Worktree 생성 및 사용
 - TDD 사이클
@@ -116,5 +112,11 @@ runLint: false
 
 ---
 
-**마지막 업데이트**: 2026-01-12  
+**마지막 업데이트**: 2026-01-14  
 **관리자**: Jeff Dean (CTO)
+
+### 변경 이력
+
+- 2026-01-14: Kai (Senior Full-Stack Engineer) 팀 합류
+- 2026-01-14: Jeff Dean 에이전트 파일 추가 (`agents/jeff-dean.md`)
+- 2026-01-14: 에이전트 모델 설정 정리 (Viper → Gemini)

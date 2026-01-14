@@ -20,7 +20,13 @@
     "support": "Dukung",
     "my": "Profil Saya",
     "create": "Buat",
-    "theme": "Tema"
+    "theme": "Tema",
+    "report": "Laporkan/Kontak",
+    "settings": "Pengaturan",
+    "logout": "Keluar",
+    "login": "Masuk",
+    "switch_account": "Ganti Akun",
+    "mode_switch": "Ganti Mode"
   },
   "Company": {
     "detail": "Detail Perusahaan",

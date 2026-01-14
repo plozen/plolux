@@ -20,7 +20,13 @@
     "support": "Destek",
     "my": "Profilim",
     "create": "Oluştur",
-    "theme": "Tema"
+    "theme": "Tema",
+    "report": "Bildir/İletişim",
+    "settings": "Ayarlar",
+    "logout": "Çıkış Yap",
+    "login": "Giriş Yap",
+    "switch_account": "Hesap Değiştir",
+    "mode_switch": "Mod Değiştir"
   },
   "Company": {
     "detail": "Şirket Detayları",

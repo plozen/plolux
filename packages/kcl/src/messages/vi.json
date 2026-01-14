@@ -20,7 +20,13 @@
     "support": "Ủng Hộ",
     "my": "Hồ Sơ Của Tôi",
     "create": "Tạo",
-    "theme": "Chủ Đề"
+    "theme": "Chủ Đề",
+    "report": "Báo cáo/Liên hệ",
+    "settings": "Cài đặt",
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập",
+    "switch_account": "Chuyển tài khoản",
+    "mode_switch": "Chuyển chế độ"
   },
   "Company": {
     "detail": "Chi Tiết Công Ty",
