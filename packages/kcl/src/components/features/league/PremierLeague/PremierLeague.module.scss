@@ -1,0 +1,139 @@
+/**
+ * PremierLeague.module.scss
+ *
+ * 1부 리그 탭 콘텐츠 스타일
+ * - 골드 테마
+ * - Top 3 그리드
+ * - 강등 위기 영역
+ */
+
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as mix;
+
+$color-gold: #d4af37;
+$color-relegation: #dc3545;
+
+.premierLeague {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  color: $color-gold;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $color-text;
+  font-family: $font-display;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $color-gold;
+}
+
+// Top 3 그리드
+.topThreeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  // 모바일에서 1위를 크게 표시
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    // 첫 번째 카드(1위) 강조
+    & > *:first-child {
+      order: -1;
+    }
+  }
+
+  @media (min-width: 768px) {
+    gap: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 20px;
+  }
+}
+
+// 4-9위 리스트
+.rankingList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media (min-width: 768px) {
+    gap: 10px;
+  }
+
+  // 데스크탑 2열 그리드 옵션
+  @media (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+// 10위 강등 위기 영역
+.relegationZone {
+  margin-top: 8px;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba($color-relegation, 0.1) 0%,
+    rgba($color-relegation, 0.02) 100%
+  );
+  border: 1px solid rgba($color-relegation, 0.3);
+
+  @media (min-width: 768px) {
+    padding: 20px;
+  }
+}
+
+.relegationHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.warningIcon {
+  color: $color-relegation;
+}
+
+.relegationLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: $color-relegation;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.relegationMessage {
+  margin: 12px 0 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: $color-relegation;
+  text-align: center;
+  opacity: 0.9;
+}

@@ -1,8 +1,9 @@
 /**
- * page.module.scss (Dashboard)
+ * page.module.scss (리그 시스템)
  * 
- * 통합 대시보드 페이지 스타일
- * 반응형 2단 레이아웃 + Sticky Search
+ * 홈 페이지 스타일 (탭 기반 리그 UI)
+ * - 반응형 레이아웃
+ * - 시즌 헤더 + 탭 + 콘텐츠 구조
  */
 
 @use '../../styles/abstracts/variables' as *;
@@ -13,18 +14,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-// Sticky Search Header
-.searchHeader {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  padding: 12px 0 16px;
-  background: linear-gradient(to bottom, $color-bg 70%, transparent 100%);
+  padding-bottom: 100px; // 모바일 하단 여백 (BottomNav)
 
   @media (min-width: 768px) {
-    padding: 16px 0 24px;
+    padding-bottom: 40px;
   }
 }
 
@@ -42,43 +35,14 @@
   }
 }
 
-// 랭킹 섹션 (좌측/전체)
-.rankingSection {
+// 리그 콘텐츠 섹션 (좌측/전체)
+.leagueSection {
   flex: 1;
   min-width: 0; // flex item overflow 방지
 
   @media (min-width: 768px) {
-    // 데스크톱에서 60-70% 너비
     flex: 1 1 65%;
-    max-width: 700px;
-  }
-}
-
-.sectionTitle {
-  font-family: $font-display;
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: $color-text;
-  margin: 0 0 16px;
-
-  @media (min-width: 768px) {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-}
-
-// 랭킹 리스트
-.rankingList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  list-style: none;
-  margin: 0;
-  padding: 0 0 120px; // 모바일 하단 여백 (BottomNav + Sheet 공간)
-
-  @media (min-width: 768px) {
-    gap: 12px;
-    padding-bottom: 40px;
+    max-width: 800px;
   }
 }
 
@@ -90,7 +54,7 @@
     display: block;
     flex: 0 0 320px;
     position: sticky;
-    top: 100px; // SearchHeader 높이 고려
+    top: 20px;
     height: fit-content;
     max-height: calc(100vh - 120px);
   }
@@ -104,30 +68,30 @@
   }
 }
 
-// ===== 기존 히어로 섹션 스타일 (백업 - archive 브랜치에 보존) =====
-// 아래 스타일들은 새 대시보드에서 사용하지 않지만,
-// 빌드 호환성을 위해 빈 선언으로 유지합니다.
+// ===== 기존 스타일 호환성 (deprecated) =====
 
-.homeContainer {
-  // dashboardContainer로 대체됨
-}
-
-.hero {
+.searchHeader {
   display: none;
 }
 
-.heroTitle {
+.sectionTitle {
   display: none;
 }
 
-.voteSection {
+.rankingSection {
   display: none;
 }
 
-.rankingButton {
+.rankingList {
   display: none;
 }
 
+// 기존 hero 섹션 (사용 안함)
+.homeContainer,
+.hero,
+.heroTitle,
+.voteSection,
+.rankingButton,
 .list {
   display: none;
 }

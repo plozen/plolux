@@ -42,5 +42,49 @@
     "success": "โหวตสำเร็จ!",
     "error": "โหวตไม่สำเร็จ กรุณาลองใหม่อีกครั้ง",
     "daily_limit": "คุณถึงขีดจำกัดการโหวตรายวันแล้ว"
+  },
+  "League": {
+    "season": {
+      "title": "ฤดูกาล {month} {year}",
+      "days_remaining": "เหลืออีก {days} วัน",
+      "ends_today": "สิ้นสุดวันนี้!",
+      "current_leader": "อันดับ 1 ปัจจุบัน",
+      "realtime": "อัพเดทแบบเรียลไทม์"
+    },
+    "tabs": {
+      "premier": "ดิวิชั่น 1",
+      "challengers": "ดิวิชั่น 2",
+      "swipe_hint": "ปัดเพื่อเปลี่ยนลีก"
+    },
+    "premier": {
+      "title": "Premier League",
+      "subtitle": "ดิวิชั่น 1",
+      "relegation_zone": "โซนตกชั้น",
+      "relegation_warning": "ตามหลังอันดับ 11 อยู่ {count} โหวต"
+    },
+    "challengers": {
+      "title": "Challengers",
+      "subtitle": "ดิวิชั่น 2",
+      "promotion_zone": "โซนเลื่อนชั้น",
+      "votes_to_promotion": "อีก {count} โหวตเพื่อเลื่อนชั้น!",
+      "promotion_cta": "สนับสนุนเลย!",
+      "show_more": "ดูเพิ่มเติม"
+    },
+    "promotion_battle": {
+      "title": "ศึกเพลย์ออฟ",
+      "button": "โหวตเลย",
+      "gap": "ส่วนต่าง",
+      "gap_message": "อีกแค่ {count} โหวตเพื่อเลื่อนชั้น!",
+      "cta": "พลิกสถานการณ์เลย!"
+    },
+    "vote": {
+      "button": "โหวต",
+      "hourly": "+{count}/ชม."
+    },
+    "rank_change": {
+      "up": "▲ {count}",
+      "down": "▼ {count}",
+      "same": "-"
+    }
   }
 }

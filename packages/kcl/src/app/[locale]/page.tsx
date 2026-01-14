@@ -1,56 +1,102 @@
 /**
- * HomePage (Dashboard)
+ * HomePage (리그 시스템)
  *
- * KCL 통합 대시보드 페이지
- * 투표와 순위 확인이 한 곳에서 이루어지는 단일 페이지입니다.
+ * KCL 리그 시스템 메인 페이지
+ * - 탭 기반 1부/2부 리그 전환
+ * - 승강전 영역 (10위 vs 11위) 항상 표시
+ * - 시즌 정보 헤더
  *
  * 레이아웃:
- * - Mobile: 랭킹 리스트 + BottomSheet(투표)
- * - Desktop: 랭킹 리스트(좌측 60-70%) + StickyPanel(우측 30-40%)
- *
- * 기능:
- * - Sticky Search Bar (아티스트/소속사 통합 검색)
- * - Split Action UI (리스트 본문=투표 / Chevron=상세)
- * - Auto-Scroll & Highlight (검색 시)
- * - 반응형 투표 인터페이스
+ * - Mobile: 세로 1열, 스와이프 탭
+ * - Desktop: 사이드바 + 메인 콘텐츠
  */
 
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useState, useCallback, useMemo, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { MOCK_COMPANIES, CompanyType } from '@/lib/mock-data';
+import type {
+  LeagueTabType,
+  CompanyRanking,
+  SeasonInfo,
+  PromotionBattle as PromotionBattleType,
+} from '@/types/league';
 
 // UI Components
-import SearchBar from '@/components/ui/SearchBar';
 import BottomSheet from '@/components/ui/BottomSheet';
 import StickyPanel from '@/components/ui/StickyPanel';
 
 // Feature Components
 import VoteController from '@/components/features/VoteController';
-import DashboardRankingItem from '@/components/features/dashboard/DashboardRankingItem';
+import SeasonHeader from '@/components/features/league/SeasonHeader';
+import LeagueTabs from '@/components/features/league/LeagueTabs';
+import PromotionBattle from '@/components/features/league/PromotionBattle';
+import PremierLeague from '@/components/features/league/PremierLeague';
+import Challengers from '@/components/features/league/Challengers';
 
 import styles from './page.module.scss';
 
-export default function HomePage() {
-  const t = useTranslations('Home');
+/**
+ * Mock 데이터를 CompanyRanking 형식으로 변환
+ */
+function transformToCompanyRanking(company: CompanyType, index: number): CompanyRanking {
+  const rank = index + 1;
+  return {
+    companyId: company.id,
+    companyName: company.name.en,
+    nameKo: company.name.ko,
+    nameEn: company.name.en,
+    logoUrl: '',
+    gradientColor: company.image,
+    rank,
+    previousRank: company.rank,
+    rankChange: company.change === 'up' ? 1 : company.change === 'down' ? -1 : 0,
+    voteCount: company.firepower,
+    voteCountHourly: Math.floor(company.firepower * 0.01), // 시간당 1% 가정
+    tier: rank <= 10 ? 'premier' : 'challengers',
+    isRelegationZone: rank === 10,
+    isPromotionZone: rank === 11,
+    artists: company.representative,
+  };
+}
 
-  // 선택된 회사 상태
+/**
+ * 현재 시즌 정보 생성 (Mock)
+ */
+function getCurrentSeason(): SeasonInfo {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+
+  // 월말까지 남은 일수 계산
+  const lastDay = new Date(year, month, 0).getDate();
+  const daysRemaining = lastDay - now.getDate();
+
+  return {
+    year,
+    month,
+    startDate: new Date(year, month - 1, 1).toISOString(),
+    endDate: new Date(year, month, 0).toISOString(),
+    daysRemaining,
+    isActive: true,
+  };
+}
+
+export default function HomePage() {
+  // 탭 상태 (1부 리그 기본)
+  const [activeTab, setActiveTab] = useState<LeagueTabType>('premier');
+
+  // 선택된 회사 상태 (투표용)
   const [selectedCompany, setSelectedCompany] = useState<CompanyType | null>(null);
-  // 검색에서 선택된 아티스트
-  const [selectedArtist, setSelectedArtist] = useState<string | undefined>(undefined);
+
   // BottomSheet 열림 상태 (모바일)
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  // 하이라이트된 회사 ID
-  const [highlightedId, setHighlightedId] = useState<string | null>(null);
-  // 최근 투표된 회사 ID
-  const [votedId, setVotedId] = useState<string | null>(null);
 
-  // 아이템 ref 맵 (auto-scroll용)
-  const itemRefs = useRef<Map<string, HTMLLIElement>>(new Map());
+  // Challengers 더 보기 상태
+  const [challengersLimit, setChallengersLimit] = useState(10);
 
-  // 화면 크기 감지 (모바일 vs 데스크톱)
+  // 화면 크기 감지
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
@@ -62,41 +108,51 @@ export default function HomePage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // 검색 결과 선택 핸들러
-  const handleSearchSelect = useCallback(
-    (companyId: string, artistName?: string) => {
+  // 시즌 정보
+  const season = useMemo(() => getCurrentSeason(), []);
+
+  // 전체 소속사 순위 데이터 변환
+  const allCompanies = useMemo(() => {
+    return MOCK_COMPANIES.map(transformToCompanyRanking);
+  }, []);
+
+  // 1부 리그 (1-10위)
+  const premierLeague = useMemo(() => {
+    return allCompanies.filter((c) => c.rank <= 10);
+  }, [allCompanies]);
+
+  // 2부 리그 (11위~)
+  const challengers = useMemo(() => {
+    return allCompanies.filter((c) => c.rank > 10).slice(0, challengersLimit);
+  }, [allCompanies, challengersLimit]);
+
+  // 승강전 정보 (10위 vs 11위)
+  const promotionBattle: PromotionBattleType | null = useMemo(() => {
+    const rank10 = allCompanies.find((c) => c.rank === 10);
+    const rank11 = allCompanies.find((c) => c.rank === 11);
+
+    if (!rank10 || !rank11) return null;
+
+    return {
+      relegationCompany: rank10,
+      promotionCompany: rank11,
+      gap: rank10.voteCount - rank11.voteCount,
+    };
+  }, [allCompanies]);
+
+  // 현재 1위 (리더)
+  const leader = useMemo(() => {
+    return allCompanies.find((c) => c.rank === 1) || null;
+  }, [allCompanies]);
+
+  // 투표 핸들러
+  const handleVote = useCallback(
+    (companyId: string) => {
       const company = MOCK_COMPANIES.find((c) => c.id === companyId);
       if (!company) return;
 
-      // 회사 선택 및 아티스트 컨텍스트 설정
       setSelectedCompany(company);
-      setSelectedArtist(artistName);
 
-      // Auto-scroll to item
-      const itemEl = itemRefs.current.get(companyId);
-      if (itemEl) {
-        itemEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-
-      // 하이라이트 효과
-      setHighlightedId(companyId);
-      setTimeout(() => setHighlightedId(null), 2000);
-
-      // 모바일에서는 BottomSheet 자동 오픈
-      if (isMobile) {
-        setIsSheetOpen(true);
-      }
-    },
-    [isMobile],
-  );
-
-  // 랭킹 아이템 선택 핸들러 (투표 패널 오픈)
-  const handleItemSelect = useCallback(
-    (company: CompanyType) => {
-      setSelectedCompany(company);
-      setSelectedArtist(undefined); // 아티스트 컨텍스트 리셋
-
-      // 모바일에서는 BottomSheet 오픈
       if (isMobile) {
         setIsSheetOpen(true);
       }
@@ -105,67 +161,75 @@ export default function HomePage() {
   );
 
   // 투표 성공 핸들러
-  const handleVoteSuccess = useCallback((companyId: string) => {
-    setVotedId(companyId);
-    setTimeout(() => setVotedId(null), 1500);
+  const handleVoteSuccess = useCallback(() => {
+    // 투표 성공 후 처리 (순위 업데이트 등)
   }, []);
 
-  // ref 등록 콜백
-  const setItemRef = useCallback((id: string, el: HTMLLIElement | null) => {
-    if (el) {
-      itemRefs.current.set(id, el);
-    } else {
-      itemRefs.current.delete(id);
-    }
+  // 더 보기 핸들러
+  const handleLoadMore = useCallback(() => {
+    setChallengersLimit((prev) => prev + 10);
   }, []);
+
+  // 더 불러올 데이터 있는지
+  const hasMoreChallengers = useMemo(() => {
+    const totalChallengers = allCompanies.filter((c) => c.rank > 10).length;
+    return challengersLimit < totalChallengers;
+  }, [allCompanies, challengersLimit]);
 
   return (
     <div className={styles.dashboardContainer}>
-      {/* Sticky Search Bar */}
-      <header className={styles.searchHeader}>
-        <SearchBar onSelect={handleSearchSelect} placeholder={t('search_placeholder')} />
-      </header>
+      {/* 시즌 헤더 */}
+      <SeasonHeader season={season} leader={leader} />
 
-      {/* Main Content Area */}
+      {/* 탭 네비게이션 */}
+      <LeagueTabs
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        premierCount={premierLeague.length}
+        challengersCount={allCompanies.filter((c) => c.rank > 10).length}
+      />
+
+      {/* 승강전 영역 (항상 표시) */}
+      {promotionBattle && <PromotionBattle battle={promotionBattle} onVote={handleVote} />}
+
+      {/* 메인 레이아웃 */}
       <div className={styles.mainLayout}>
-        {/* 랭킹 리스트 (좌측/전체) */}
-        <section className={styles.rankingSection}>
-          <h2 className={styles.sectionTitle}>{t('ranking')}</h2>
-
-          <motion.ul
-            className={styles.rankingList}
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: { opacity: 0 },
-              show: {
-                opacity: 1,
-                transition: { staggerChildren: 0.05 },
-              },
-            }}
-          >
-            {MOCK_COMPANIES.map((company, index) => (
-              <DashboardRankingItem
-                key={company.id}
-                ref={(el) => setItemRef(company.id, el)}
-                item={company}
-                index={index}
-                onSelect={handleItemSelect}
-                isHighlighted={highlightedId === company.id}
-                isVoted={votedId === company.id}
-              />
-            ))}
-          </motion.ul>
+        {/* 탭 콘텐츠 */}
+        <section className={styles.leagueSection}>
+          <AnimatePresence mode="wait">
+            {activeTab === 'premier' ? (
+              <motion.div
+                key="premier"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.2 }}
+              >
+                <PremierLeague companies={premierLeague} onVote={handleVote} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="challengers"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Challengers
+                  companies={challengers}
+                  onVote={handleVote}
+                  onLoadMore={handleLoadMore}
+                  hasMore={hasMoreChallengers}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </section>
 
         {/* 우측 투표 패널 (데스크톱 전용) */}
         <aside className={styles.panelSection}>
           <StickyPanel isVisible={true} title="Battle Station">
-            <VoteController
-              company={selectedCompany}
-              selectedArtist={selectedArtist}
-              onVoteSuccess={handleVoteSuccess}
-            />
+            <VoteController company={selectedCompany} onVoteSuccess={handleVoteSuccess} />
           </StickyPanel>
         </aside>
       </div>
@@ -176,11 +240,7 @@ export default function HomePage() {
         onClose={() => setIsSheetOpen(false)}
         heightRatio={0.55}
       >
-        <VoteController
-          company={selectedCompany}
-          selectedArtist={selectedArtist}
-          onVoteSuccess={handleVoteSuccess}
-        />
+        <VoteController company={selectedCompany} onVoteSuccess={handleVoteSuccess} />
       </BottomSheet>
     </div>
   );

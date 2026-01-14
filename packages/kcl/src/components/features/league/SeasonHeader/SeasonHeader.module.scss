@@ -1,0 +1,181 @@
+/**
+ * SeasonHeader.module.scss
+ *
+ * 시즌 헤더 스타일
+ * - 그라디언트 배경
+ * - 반응형 레이아웃
+ */
+
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as mix;
+
+.seasonHeader {
+  @include mix.glass-panel;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+
+  // 골드 그라디언트 오버레이
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.02) 100%);
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    padding: 20px 24px;
+    flex-wrap: nowrap;
+  }
+}
+
+.seasonInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 1;
+}
+
+.seasonTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  h1 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $color-text;
+    font-family: $font-display;
+
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.trophyIcon {
+  color: #d4af37; // Gold
+}
+
+.daysRemaining {
+  span {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba($color-text, 0.08);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $color-text-dim;
+
+    &.urgent {
+      background: rgba(220, 53, 69, 0.15);
+      color: #dc3545;
+      animation: pulse 1.5s infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.leaderInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  z-index: 1;
+}
+
+.leaderLabel {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: $color-text-dim;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.leaderCompany {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.companyLogo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.companyDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.companyName {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: $color-text;
+}
+
+.voteCount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: $color-primary;
+  font-weight: 600;
+
+  svg {
+    color: #ff6b35;
+  }
+}
+
+.realtimeIndicator {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  color: $color-text-dim;
+  opacity: 0.6;
+
+  svg {
+    color: #28a745;
+  }
+
+  @media (min-width: 768px) {
+    top: 12px;
+    right: 16px;
+    font-size: 0.7rem;
+  }
+}

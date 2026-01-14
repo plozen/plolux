@@ -42,5 +42,49 @@
     "success": "Bình chọn thành công!",
     "error": "Bình chọn thất bại. Vui lòng thử lại.",
     "daily_limit": "Bạn đã đạt giới hạn bình chọn hàng ngày."
+  },
+  "League": {
+    "season": {
+      "title": "Mùa giải tháng {month} năm {year}",
+      "days_remaining": "Còn {days} ngày",
+      "ends_today": "Kết thúc hôm nay!",
+      "current_leader": "Hiện đang #1",
+      "realtime": "Cập nhật thời gian thực"
+    },
+    "tabs": {
+      "premier": "Giải Hạng Nhất",
+      "challengers": "Giải Hạng Hai",
+      "swipe_hint": "Vuốt để chuyển giải"
+    },
+    "premier": {
+      "title": "Premier League",
+      "subtitle": "Giải Hạng Nhất",
+      "relegation_zone": "Vùng xuống hạng",
+      "relegation_warning": "Kém vị trí 11 {count} phiếu"
+    },
+    "challengers": {
+      "title": "Challengers",
+      "subtitle": "Giải Hạng Hai",
+      "promotion_zone": "Vùng thăng hạng",
+      "votes_to_promotion": "Còn {count} phiếu để thăng hạng!",
+      "promotion_cta": "Ủng hộ ngay!",
+      "show_more": "Xem thêm"
+    },
+    "promotion_battle": {
+      "title": "Trận Tranh Thăng Hạng",
+      "button": "Bình chọn ngay",
+      "gap": "Khoảng cách",
+      "gap_message": "Chỉ còn {count} phiếu để thăng hạng!",
+      "cta": "Lật ngược tình thế ngay!"
+    },
+    "vote": {
+      "button": "Bình chọn",
+      "hourly": "+{count}/giờ"
+    },
+    "rank_change": {
+      "up": "▲ {count}",
+      "down": "▼ {count}",
+      "same": "-"
+    }
   }
 }

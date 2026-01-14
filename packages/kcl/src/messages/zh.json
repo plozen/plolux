@@ -42,5 +42,49 @@
     "success": "投票成功！",
     "error": "投票失败。请重试。",
     "daily_limit": "您已达到每日投票限制。"
+  },
+  "League": {
+    "season": {
+      "title": "{year}年{month}月赛季",
+      "days_remaining": "还剩{days}天",
+      "ends_today": "今日截止！",
+      "current_leader": "当前第一",
+      "realtime": "实时更新"
+    },
+    "tabs": {
+      "premier": "甲级联赛",
+      "challengers": "乙级联赛",
+      "swipe_hint": "滑动切换联赛"
+    },
+    "premier": {
+      "title": "Premier League",
+      "subtitle": "甲级联赛",
+      "relegation_zone": "降级危机",
+      "relegation_warning": "与第11名相差{count}票"
+    },
+    "challengers": {
+      "title": "Challengers",
+      "subtitle": "乙级联赛",
+      "promotion_zone": "升级机会",
+      "votes_to_promotion": "距离升级还需{count}票！",
+      "promotion_cta": "立即支持！",
+      "show_more": "查看更多"
+    },
+    "promotion_battle": {
+      "title": "升降级战",
+      "button": "立即投票",
+      "gap": "差距",
+      "gap_message": "距离升级仅需{count}票！",
+      "cta": "立即逆转！"
+    },
+    "vote": {
+      "button": "投票",
+      "hourly": "每小时+{count}"
+    },
+    "rank_change": {
+      "up": "▲ {count}",
+      "down": "▼ {count}",
+      "same": "-"
+    }
   }
 }
