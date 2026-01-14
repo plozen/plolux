@@ -3,15 +3,16 @@
  *
  * 1부 리그 탭 콘텐츠 컴포넌트
  * - Top 3 대형 카드 (가로 배치)
- * - 4-9위 리스트
- * - 10위 강등 위기 강조 (별도 스타일)
+ * - 4-10위 리스트 (일반 표시)
+ *
+ * @updated T1.16 - 10위 강등 위기 강조 제거 (SeasonHeader로 통합)
  */
 
 'use client';
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Crown, AlertTriangle } from 'lucide-react';
+import { Crown } from 'lucide-react';
 import type { CompanyRanking } from '@/types/league';
 import TopThreeCard from '../TopThreeCard';
 import LeagueRankingItem from '../LeagueRankingItem';
@@ -27,10 +28,9 @@ interface PremierLeagueProps {
 export default function PremierLeague({ companies, onVote }: PremierLeagueProps) {
   const t = useTranslations('League.premier');
 
-  // 순위별 분류
+  // 순위별 분류 - T1.16: 10위를 4-9위와 함께 일반 리스트로 표시
   const top3 = companies.filter((c) => c.rank <= 3);
-  const rank4to9 = companies.filter((c) => c.rank >= 4 && c.rank <= 9);
-  const rank10 = companies.find((c) => c.rank === 10);
+  const rank4to10 = companies.filter((c) => c.rank >= 4 && c.rank <= 10);
 
   return (
     <section className={styles.premierLeague}>
@@ -55,7 +55,7 @@ export default function PremierLeague({ companies, onVote }: PremierLeagueProps)
         ))}
       </div>
 
-      {/* 4-9위 리스트 */}
+      {/* 4-10위 리스트 - T1.16: 10위도 일반 표시 */}
       <motion.div
         className={styles.rankingList}
         initial="hidden"
@@ -68,7 +68,7 @@ export default function PremierLeague({ companies, onVote }: PremierLeagueProps)
           },
         }}
       >
-        {rank4to9.map((company) => (
+        {rank4to10.map((company) => (
           <motion.div
             key={company.companyId}
             variants={{
@@ -81,21 +81,7 @@ export default function PremierLeague({ companies, onVote }: PremierLeagueProps)
         ))}
       </motion.div>
 
-      {/* 10위 (강등 위기) 강조 */}
-      {rank10 && (
-        <div className={styles.relegationZone}>
-          <div className={styles.relegationHeader}>
-            <AlertTriangle size={16} className={styles.warningIcon} />
-            <span className={styles.relegationLabel}>{t('relegation_zone')}</span>
-          </div>
-          <LeagueRankingItem company={rank10} onVote={onVote} />
-          <p className={styles.relegationMessage}>
-            {t('relegation_warning', {
-              count: rank10.voteCount - (companies[10]?.voteCount || 0),
-            })}
-          </p>
-        </div>
-      )}
+      {/* T1.16: 10위 강등 위기 강조 제거 - SeasonHeader의 승강전 영역으로 통합 */}
     </section>
   );
 }

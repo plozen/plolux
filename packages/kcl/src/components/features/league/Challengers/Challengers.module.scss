@@ -3,8 +3,9 @@
  *
  * 2부 리그 탭 콘텐츠 스타일
  * - 실버 테마
- * - 승격 기회 강조 영역
  * - 더 보기 버튼
+ *
+ * @updated T1.16 - 승격 기회 강조 영역 제거 (SeasonHeader로 통합)
  */
 
 @use '../../../../styles/abstracts/variables' as *;
@@ -49,130 +50,14 @@ $color-promotion: #28a745;
   color: $color-silver;
 }
 
-// 11위 승격 기회 영역
+// ===== T1.16: 11위 승격 기회 영역 스타일 (deprecated - SeasonHeader로 통합) =====
+// 하위 호환성을 위해 스타일은 유지하나, 컴포넌트에서 사용하지 않음
+
 .promotionZone {
-  padding: 20px;
-  border-radius: 16px;
-  background: linear-gradient(
-    135deg,
-    rgba($color-promotion, 0.1) 0%,
-    rgba($color-promotion, 0.02) 100%
-  );
-  border: 1px solid rgba($color-promotion, 0.3);
-
-  @media (min-width: 768px) {
-    padding: 24px;
-  }
+  display: none; // T1.16: 사용 중단
 }
 
-.promotionHeader {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.promotionIcon {
-  color: $color-promotion;
-}
-
-.promotionLabel {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: $color-promotion;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.promotionCard {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  background: $color-panel-bg;
-  border-radius: 12px;
-  border: 1px solid rgba($color-promotion, 0.2);
-
-  @media (min-width: 768px) {
-    padding: 20px;
-    gap: 16px;
-  }
-}
-
-.logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: white;
-  flex-shrink: 0;
-
-  @media (min-width: 768px) {
-    width: 56px;
-    height: 56px;
-    font-size: 1.5rem;
-  }
-}
-
-.info {
-  flex: 1;
-  min-width: 0;
-}
-
-.companyName {
-  margin: 0 0 4px;
-  font-size: 1rem;
-  font-weight: 700;
-  color: $color-text;
-
-  @media (min-width: 768px) {
-    font-size: 1.1rem;
-  }
-}
-
-.voteCount {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: $color-text-dim;
-
-  svg {
-    color: #ff6b35;
-  }
-}
-
-.voteButton {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, $color-promotion 0%, darken($color-promotion, 10%) 100%);
-  color: white;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba($color-promotion, 0.4);
-  }
-}
-
-.promotionMessage {
-  margin: 12px 0 0;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: $color-promotion;
-  text-align: center;
-}
-
-// 12위~ 리스트
+// 11위~ 리스트
 .rankingList {
   display: flex;
   flex-direction: column;

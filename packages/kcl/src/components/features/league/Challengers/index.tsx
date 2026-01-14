@@ -2,16 +2,17 @@
  * Challengers
  *
  * 2부 리그 탭 콘텐츠 컴포넌트
- * - 11위 승격 기회 강조 (별도 카드)
- * - 12위~ 리스트
+ * - 11위~ 리스트 (일반 표시)
  * - 더 보기 버튼 (페이지네이션)
+ *
+ * @updated T1.16 - 11위 승격 기회 강조 제거 (SeasonHeader로 통합)
  */
 
 'use client';
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Flame, ArrowUp, ChevronDown } from 'lucide-react';
+import { Flame, ChevronDown } from 'lucide-react';
 import type { CompanyRanking } from '@/types/league';
 import LeagueRankingItem from '../LeagueRankingItem';
 import styles from './Challengers.module.scss';
@@ -30,11 +31,6 @@ interface ChallengersProps {
 export default function Challengers({ companies, onVote, onLoadMore, hasMore }: ChallengersProps) {
   const t = useTranslations('League.challengers');
 
-  // 11위 (승격 기회)
-  const rank11 = companies.find((c) => c.rank === 11);
-  // 12위 이하
-  const restCompanies = companies.filter((c) => c.rank > 11);
-
   return (
     <section className={styles.challengers}>
       {/* 섹션 헤더 */}
@@ -46,45 +42,9 @@ export default function Challengers({ companies, onVote, onLoadMore, hasMore }: 
         </div>
       </header>
 
-      {/* 11위 (승격 기회) 강조 */}
-      {rank11 && (
-        <motion.div
-          className={styles.promotionZone}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-        >
-          <div className={styles.promotionHeader}>
-            <ArrowUp size={16} className={styles.promotionIcon} />
-            <span className={styles.promotionLabel}>{t('promotion_zone')}</span>
-          </div>
+      {/* T1.16: 11위 승격 기회 강조 제거 - SeasonHeader의 승강전 영역으로 통합 */}
 
-          <div className={styles.promotionCard}>
-            <div className={styles.logo} style={{ background: rank11.gradientColor }}>
-              {rank11.nameEn.charAt(0)}
-            </div>
-            <div className={styles.info}>
-              <h3 className={styles.companyName}>{rank11.nameEn}</h3>
-              <div className={styles.voteCount}>
-                <Flame size={14} />
-                <span>{rank11.voteCount.toLocaleString()}</span>
-              </div>
-            </div>
-            <button className={styles.voteButton} onClick={() => onVote(rank11.companyId)}>
-              투표하기
-            </button>
-          </div>
-
-          <p className={styles.promotionMessage}>
-            {t('votes_to_promotion', {
-              count: (companies[0]?.voteCount || 0) - rank11.voteCount,
-            })}{' '}
-            {t('promotion_cta')}
-          </p>
-        </motion.div>
-      )}
-
-      {/* 12위~ 리스트 */}
+      {/* 11위~ 리스트 - T1.16: 11위도 일반 표시 */}
       <motion.div
         className={styles.rankingList}
         initial="hidden"
@@ -97,7 +57,7 @@ export default function Challengers({ companies, onVote, onLoadMore, hasMore }: 
           },
         }}
       >
-        {restCompanies.map((company) => (
+        {companies.map((company) => (
           <motion.div
             key={company.companyId}
             variants={{

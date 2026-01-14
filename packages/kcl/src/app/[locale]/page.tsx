@@ -3,12 +3,14 @@
  *
  * KCL 리그 시스템 메인 페이지
  * - 탭 기반 1부/2부 리그 전환
- * - 승강전 영역 (10위 vs 11위) 항상 표시
- * - 시즌 정보 헤더
+ * - 시즌 대시보드 (1위 + 승강전 통합) - T1.16 수정
+ * - 검색 기능 복구 - T1.16
  *
  * 레이아웃:
  * - Mobile: 세로 1열, 스와이프 탭
- * - Desktop: 사이드바 + 메인 콘텐츠
+ * - Desktop: 메인 콘텐츠 + 고정 Battle Station 패널
+ *
+ * @updated T1.16 - 승강전 Header 통합, 검색 복구, 패널 고정
  */
 
 'use client';
@@ -26,12 +28,14 @@ import type {
 // UI Components
 import BottomSheet from '@/components/ui/BottomSheet';
 import StickyPanel from '@/components/ui/StickyPanel';
+import SearchBar from '@/components/ui/SearchBar'; // T1.16 복구
 
 // Feature Components
 import VoteController from '@/components/features/VoteController';
 import SeasonHeader from '@/components/features/league/SeasonHeader';
 import LeagueTabs from '@/components/features/league/LeagueTabs';
-import PromotionBattle from '@/components/features/league/PromotionBattle';
+// PromotionBattle은 SeasonHeader로 통합됨 - T1.16
+// import PromotionBattle from '@/components/features/league/PromotionBattle';
 import PremierLeague from '@/components/features/league/PremierLeague';
 import Challengers from '@/components/features/league/Challengers';
 
@@ -176,10 +180,28 @@ export default function HomePage() {
     return challengersLimit < totalChallengers;
   }, [allCompanies, challengersLimit]);
 
+  /** 검색 결과 선택 핸들러 - T1.16 복구 */
+  const handleSearchSelect = useCallback(
+    (companyId: string) => {
+      handleVote(companyId);
+    },
+    [handleVote],
+  );
+
   return (
     <div className={styles.dashboardContainer}>
-      {/* 시즌 헤더 */}
-      <SeasonHeader season={season} leader={leader} />
+      {/* 시즌 대시보드 (1위 + 승강전 통합) - T1.16 수정 */}
+      <SeasonHeader
+        season={season}
+        leader={leader}
+        promotionBattle={promotionBattle}
+        onVote={handleVote}
+      />
+
+      {/* 검색창 - T1.16 복구 */}
+      <div className={styles.searchSection}>
+        <SearchBar onSelect={handleSearchSelect} />
+      </div>
 
       {/* 탭 네비게이션 */}
       <LeagueTabs
@@ -189,8 +211,8 @@ export default function HomePage() {
         challengersCount={allCompanies.filter((c) => c.rank > 10).length}
       />
 
-      {/* 승강전 영역 (항상 표시) */}
-      {promotionBattle && <PromotionBattle battle={promotionBattle} onVote={handleVote} />}
+      {/* 승강전 영역 → SeasonHeader로 통합됨 (T1.16) */}
+      {/* {promotionBattle && <PromotionBattle battle={promotionBattle} onVote={handleVote} />} */}
 
       {/* 메인 레이아웃 */}
       <div className={styles.mainLayout}>

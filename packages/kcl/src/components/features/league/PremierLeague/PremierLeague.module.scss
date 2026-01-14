@@ -4,7 +4,8 @@
  * 1부 리그 탭 콘텐츠 스타일
  * - 골드 테마
  * - Top 3 그리드
- * - 강등 위기 영역
+ *
+ * @updated T1.16 - 10위 강등 위기 영역 제거 (SeasonHeader로 통합)
  */
 
 @use '../../../../styles/abstracts/variables' as *;
@@ -75,7 +76,7 @@ $color-relegation: #dc3545;
   }
 }
 
-// 4-9위 리스트
+// 4-10위 리스트 - T1.16: 10위도 일반 표시
 .rankingList {
   display: flex;
   flex-direction: column;
@@ -93,47 +94,9 @@ $color-relegation: #dc3545;
   }
 }
 
-// 10위 강등 위기 영역
+// ===== T1.16: 10위 강등 위기 영역 스타일 (deprecated - SeasonHeader로 통합) =====
+// 하위 호환성을 위해 스타일은 유지하나, 컴포넌트에서 사용하지 않음
+
 .relegationZone {
-  margin-top: 8px;
-  padding: 16px;
-  border-radius: 16px;
-  background: linear-gradient(
-    135deg,
-    rgba($color-relegation, 0.1) 0%,
-    rgba($color-relegation, 0.02) 100%
-  );
-  border: 1px solid rgba($color-relegation, 0.3);
-
-  @media (min-width: 768px) {
-    padding: 20px;
-  }
-}
-
-.relegationHeader {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.warningIcon {
-  color: $color-relegation;
-}
-
-.relegationLabel {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: $color-relegation;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.relegationMessage {
-  margin: 12px 0 0;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: $color-relegation;
-  text-align: center;
-  opacity: 0.9;
+  display: none; // T1.16: 사용 중단
 }
