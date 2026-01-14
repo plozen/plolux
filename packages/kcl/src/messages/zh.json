@@ -7,6 +7,32 @@
     "vote_button": "立即投票",
     "firepower": "火力"
   },
+  "HallOfFame": {
+    "title": "名人堂",
+    "subtitle": "Legends of KCL",
+    "grand_champion": "大奖",
+    "annual_champion": "年度冠军",
+    "victories": "次夺冠",
+    "current_race": "当前排名",
+    "monthly_champions": "月度冠军",
+    "archives": "历史记录",
+    "no_champion_yet": "暂无冠军",
+    "loading": "加载中...",
+    "months": {
+      "1": "1月",
+      "2": "2月",
+      "3": "3月",
+      "4": "4月",
+      "5": "5月",
+      "6": "6月",
+      "7": "7月",
+      "8": "8月",
+      "9": "9月",
+      "10": "10月",
+      "11": "11月",
+      "12": "12月"
+    }
+  },
   "Common": {
     "unofficial": "这是一个非官方粉丝应用。与任何娱乐公司无关。",
     "fan_app": "粉丝制作应用",

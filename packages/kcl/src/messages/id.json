@@ -7,6 +7,32 @@
     "vote_button": "Vote Sekarang",
     "firepower": "Firepower"
   },
+  "HallOfFame": {
+    "title": "Hall of Fame",
+    "subtitle": "Legends of KCL",
+    "grand_champion": "Juara Besar",
+    "annual_champion": "Juara Tahunan",
+    "victories": "Kemenangan",
+    "current_race": "Peringkat Saat Ini",
+    "monthly_champions": "Juara Bulanan",
+    "archives": "Arsip",
+    "no_champion_yet": "Belum ada juara",
+    "loading": "Memuat...",
+    "months": {
+      "1": "Jan",
+      "2": "Feb",
+      "3": "Mar",
+      "4": "Apr",
+      "5": "Mei",
+      "6": "Jun",
+      "7": "Jul",
+      "8": "Agu",
+      "9": "Sep",
+      "10": "Okt",
+      "11": "Nov",
+      "12": "Des"
+    }
+  },
   "Common": {
     "unofficial": "Ini adalah Aplikasi Fan Tidak Resmi. Tidak berafiliasi dengan perusahaan hiburan manapun.",
     "fan_app": "Aplikasi Buatan Fan",

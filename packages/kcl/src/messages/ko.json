@@ -7,6 +7,32 @@
     "vote_button": "투표하기",
     "firepower": "화력"
   },
+  "HallOfFame": {
+    "title": "명예의 전당",
+    "subtitle": "Legends of KCL",
+    "grand_champion": "대상",
+    "annual_champion": "연간 챔피언",
+    "victories": "회 우승",
+    "current_race": "현재 순위",
+    "monthly_champions": "월간 챔피언",
+    "archives": "역대 기록",
+    "no_champion_yet": "아직 챔피언이 없습니다",
+    "loading": "로딩 중...",
+    "months": {
+      "1": "1월",
+      "2": "2월",
+      "3": "3월",
+      "4": "4월",
+      "5": "5월",
+      "6": "6월",
+      "7": "7월",
+      "8": "8월",
+      "9": "9월",
+      "10": "10월",
+      "11": "11월",
+      "12": "12월"
+    }
+  },
   "Common": {
     "unofficial": "이 앱은 비공식 팬 제작 앱이며, 특정 소속사와 관련이 없습니다.",
     "fan_app": "비공식 팬 앱",
@@ -23,6 +49,7 @@
     "theme": "테마",
     "report": "제보/문의",
     "analytics": "통계",
+    "hall_of_fame": "명예의 전당",
     "settings": "설정",
     "logout": "로그아웃",
     "login": "로그인",

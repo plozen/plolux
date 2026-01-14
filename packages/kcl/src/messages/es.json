@@ -7,6 +7,32 @@
     "vote_button": "Votar Ahora",
     "firepower": "Potencia"
   },
+  "HallOfFame": {
+    "title": "Salón de la Fama",
+    "subtitle": "Legends of KCL",
+    "grand_champion": "Gran Campeón",
+    "annual_champion": "Campeón Anual",
+    "victories": "Victorias",
+    "current_race": "Clasificación Actual",
+    "monthly_champions": "Campeones Mensuales",
+    "archives": "Archivo",
+    "no_champion_yet": "Aún no hay campeón",
+    "loading": "Cargando...",
+    "months": {
+      "1": "Ene",
+      "2": "Feb",
+      "3": "Mar",
+      "4": "Abr",
+      "5": "May",
+      "6": "Jun",
+      "7": "Jul",
+      "8": "Ago",
+      "9": "Sep",
+      "10": "Oct",
+      "11": "Nov",
+      "12": "Dic"
+    }
+  },
   "Common": {
     "unofficial": "Esta es una Aplicación de Fans No Oficial. No está afiliada con ninguna empresa de entretenimiento.",
     "fan_app": "Aplicación Hecha por Fans",

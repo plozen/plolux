@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Home, BarChart3 } from 'lucide-react';
+import { Home, BarChart3, Trophy } from 'lucide-react';
 import styles from './Sidebar.module.scss';
 import classNames from 'classnames';
 
@@ -22,6 +22,7 @@ export default function Sidebar() {
   const navItems = [
     { label: t('home'), icon: Home, path: '/' },
     { label: t('analytics'), icon: BarChart3, path: '/analytics' },
+    { label: t('hall_of_fame'), icon: Trophy, path: '/hall-of-fame' },
     // { label: t('ranking'), icon: Trophy, path: '/ranking' },
     // { label: '게시판', icon: MessageSquare, path: '/community' },
     // { label: '만들기', icon: PlusSquare, path: '#' },
