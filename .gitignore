@@ -3,3 +3,6 @@ log
 package-lock.json
 .env
 .env.local
+
+# AI Agent 설정 및 기획 문서 (보안)
+.claude/
