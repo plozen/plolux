@@ -53,7 +53,8 @@
     "logout": "Déconnexion",
     "login": "Connexion",
     "switch_account": "Changer de compte",
-    "mode_switch": "Changer de mode"
+    "mode_switch": "Changer de mode",
+    "hall_of_fame": "Temple de la Renommée"
   },
   "Company": {
     "detail": "Détails de l'Entreprise",

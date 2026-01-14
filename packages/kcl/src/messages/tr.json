@@ -53,7 +53,8 @@
     "logout": "Çıkış Yap",
     "login": "Giriş Yap",
     "switch_account": "Hesap Değiştir",
-    "mode_switch": "Mod Değiştir"
+    "mode_switch": "Mod Değiştir",
+    "hall_of_fame": "Şöhret Salonu"
   },
   "Company": {
     "detail": "Şirket Detayları",

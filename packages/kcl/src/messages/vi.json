@@ -53,7 +53,8 @@
     "logout": "Đăng xuất",
     "login": "Đăng nhập",
     "switch_account": "Chuyển tài khoản",
-    "mode_switch": "Chuyển chế độ"
+    "mode_switch": "Chuyển chế độ",
+    "hall_of_fame": "Đại Sảnh Danh Vọng"
   },
   "Company": {
     "detail": "Chi Tiết Công Ty",

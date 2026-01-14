@@ -53,7 +53,8 @@
     "logout": "Keluar",
     "login": "Masuk",
     "switch_account": "Ganti Akun",
-    "mode_switch": "Ganti Mode"
+    "mode_switch": "Ganti Mode",
+    "hall_of_fame": "Hall of Fame"
   },
   "Company": {
     "detail": "Detail Perusahaan",

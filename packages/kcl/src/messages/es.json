@@ -53,7 +53,8 @@
     "logout": "Cerrar sesión",
     "login": "Iniciar sesión",
     "switch_account": "Cambiar cuenta",
-    "mode_switch": "Cambiar modo"
+    "mode_switch": "Cambiar modo",
+    "hall_of_fame": "Salón de la Fama"
   },
   "Company": {
     "detail": "Detalles de la Empresa",

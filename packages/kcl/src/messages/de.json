@@ -53,7 +53,8 @@
     "logout": "Abmelden",
     "login": "Anmelden",
     "switch_account": "Konto wechseln",
-    "mode_switch": "Modus wechseln"
+    "mode_switch": "Modus wechseln",
+    "hall_of_fame": "Ruhmeshalle"
   },
   "Company": {
     "detail": "Firmendetails",

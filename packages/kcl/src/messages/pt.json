@@ -53,7 +53,8 @@
     "logout": "Sair",
     "login": "Entrar",
     "switch_account": "Trocar conta",
-    "mode_switch": "Mudar modo"
+    "mode_switch": "Mudar modo",
+    "hall_of_fame": "Hall da Fama"
   },
   "Company": {
     "detail": "Detalhes da Empresa",

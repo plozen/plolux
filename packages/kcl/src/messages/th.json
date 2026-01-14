@@ -53,7 +53,8 @@
     "logout": "ออกจากระบบ",
     "login": "เข้าสู่ระบบ",
     "switch_account": "สลับบัญชี",
-    "mode_switch": "สลับโหมด"
+    "mode_switch": "สลับโหมด",
+    "hall_of_fame": "หอเกียรติยศ"
   },
   "Company": {
     "detail": "รายละเอียดบริษัท",
