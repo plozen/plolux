@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import styles from './Dropdown.module.scss';
-import { Settings, Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { Settings } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 interface DropdownProps {
@@ -15,7 +14,6 @@ interface DropdownProps {
 
 export default function MoreDropdown({ isOpen, onClose, isLoggedIn }: DropdownProps) {
   const t = useTranslations('Nav');
-  const { theme, setTheme } = useTheme();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close when clicking outside
@@ -44,17 +42,7 @@ export default function MoreDropdown({ isOpen, onClose, isLoggedIn }: DropdownPr
         <span>{t('settings')}</span>
       </div>
 
-      <div
-        className={styles.menuItem}
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      >
-        {theme === 'dark' ? (
-          <Moon className={styles.itemIcon} />
-        ) : (
-          <Sun className={styles.itemIcon} />
-        )}
-        <span>{t('mode_switch')}</span>
-      </div>
+      {/* 모드 전환 버튼은 사이드바 상단으로 이동됨 */}
 
       <div className={styles.divider}></div>
 

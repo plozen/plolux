@@ -117,6 +117,115 @@
 
 ---
 
+### 🔴 Phase 1, T1.8.1: [CRITICAL] 투표 데이터 영속성 구현
+
+**담당**: Kai (Full-Stack)
+**상태**: 대기
+**의존성**: T1.8 완료 후
+**우선순위**: 🔴 Critical (출시 전 필수)
+
+**문제점**:
+현재 투표가 Redis 카운터만 증가시키고 `kcl_votes` 테이블에 INSERT되지 않음.
+서버 재시작 시 모든 투표 데이터 유실됨.
+
+**해결책**: Vote Batcher 패턴 도입 (250개 배치 INSERT, 50x 성능 향상)
+
+**작업 내용**:
+
+1. `packages/kcl/src/lib/vote-batcher.ts` 신규 생성
+   - 250개 투표마다 1회 배치 INSERT
+   - 5초 간격 자동 flush
+2. `batch_insert_votes` PostgreSQL 함수 추가 (unnest 활용)
+3. `packages/kcl/src/app/api/vote/route.ts` 수정
+   - Redis 증가 후 VoteBatcher 큐에 추가
+
+**산출물**:
+
+- `packages/kcl/src/lib/vote-batcher.ts`
+- `doc/project/kcl/migrations/002_batch_insert_function.sql`
+
+---
+
+### 🔴 Phase 1, T1.8.2: [CRITICAL] Rate Limiting 구현
+
+**담당**: Kai (Full-Stack)
+**상태**: 대기
+**의존성**: T1.8 완료 후
+**우선순위**: 🔴 Critical (출시 전 필수)
+
+**문제점**:
+`ip_hash` 컬럼은 있으나 실제 Rate Limit 로직이 없음.
+어뷰징(무한 투표) 방어 불가.
+
+**해결책**: Sliding Window 알고리즘 (Cloudflare/Redis 표준)
+
+**작업 내용**:
+
+1. `packages/kcl/src/lib/rate-limit.ts` 신규 생성
+   - Redis Sorted Set 활용
+   - 1시간당 10회 투표 제한
+2. Vote API에 Rate Limit 체크 통합
+3. 429 Too Many Requests 응답 처리
+
+**산출물**:
+
+- `packages/kcl/src/lib/rate-limit.ts`
+
+---
+
+### 🔴 Phase 1, T1.8.3: [CRITICAL] RLS 정책 성능 최적화
+
+**담당**: Max (Backend)
+**상태**: 대기
+**의존성**: T1.8 완료 후
+**우선순위**: 🔴 Critical (출시 전 필수)
+
+**문제점**:
+현재 RLS 정책이 `USING (true)` 직접 사용 → 매 쿼리마다 재평가
+
+**해결책**: SELECT 래핑으로 100배 성능 향상 (Supabase 공식 권장)
+
+**작업 내용**:
+
+1. 모든 RLS 정책 SELECT 래핑 적용
+   - `USING (true)` → `USING ((SELECT true))`
+   - `USING (auth.uid() = id)` → `USING ((SELECT auth.uid()) = id)`
+2. RLS 컬럼에 인덱스 추가
+   - `idx_votes_company_id`
+   - `idx_comments_company_id`
+
+**산출물**:
+
+- `doc/project/kcl/migrations/003_optimize_rls.sql`
+
+---
+
+### 🔴 Phase 1, T1.8.4: [CRITICAL] CASCADE DELETE → RESTRICT 변경
+
+**담당**: Max (Backend)
+**상태**: 대기
+**의존성**: T1.8 완료 후
+**우선순위**: 🔴 Critical (출시 전 필수)
+
+**문제점**:
+현재 소속사 삭제 시 모든 투표/댓글이 자동 삭제됨 (CASCADE DELETE).
+실수로 인한 대규모 데이터 손실 위험.
+
+**해결책**: `ON DELETE RESTRICT`로 변경하여 참조 데이터 있을 시 삭제 차단
+
+**작업 내용**:
+
+1. Foreign Key 제약조건 수정
+   - `kcl_votes.company_id`: CASCADE → RESTRICT
+   - `kcl_comments.company_id`: CASCADE → RESTRICT
+2. 삭제 전 참조 데이터 확인 로직 필요 시 Edge Function 추가
+
+**산출물**:
+
+- `doc/project/kcl/migrations/004_restrict_delete.sql`
+
+---
+
 ### [] Phase 1, T1.9: 초기 데이터 시딩 (추후)
 
 **담당**: Max (Backend)
@@ -223,25 +332,24 @@
 ### ✅ Phase 1, T1.6: 네비게이션 및 메뉴 재구성
 
 **담당**: Kai (Full-Stack)
-**상태**: ✅ 완료
+**상태**: 🔄 수정 필요
 **완료일**: 2026-01-14
 **커밋**: aafcb74
-**배포**: GitHub Pages 배포 완료
 
 **목표**: 1차 개발 범위에 맞춰 메뉴를 최적화하고 PC/Mobile 경험 통일 (통합 대시보드 반영)
 
-**Viper 보안 점검 결과**:
+**⚠️ 수정 사항 (2026-01-14)**:
 
-- 🟢 Critical 이슈: 0건
-- 🟠 Warning: 4건 (i18n 미적용 - 작업 시 함께 수정)
-- 권고: `useTranslations('Nav')` 적용, 새 번역 키 추가 필요
+- `report` → `analytics` 라우트 변경 필요
+- 메뉴명: "제보/문의" → "통계" 변경
+- 404 오류 해결 필요 (페이지 미생성)
 
-**작업 내용**:
+**최종 메뉴 구성**:
 
 - **PC (Sidebar) & Mobile (BottomNav) 통일**:
-  1.  **홈 (Home)**: 통합 대시보드 (랭킹+투표)
-  2.  **모드 전환 (Theme Toggle)**: 기존 '더보기'에서 밖으로 꺼냄
-  3.  **문제 신고 (Report)**: 버그 제보/문의 링크
+  1.  **홈 (Home)**: 통합 대시보드 (랭킹+투표) - `/`
+  2.  **통계 (Analytics)**: 투표 트렌드 및 분석 - `/analytics`
+  3.  **더 보기 (More)**: 테마 전환, 설정 등
 - **제외 항목 (메뉴에서 숨김)**:
   - ~~랭킹 (Ranking)~~: 홈으로 통합됨
   - 프로필 (My), 만들기 (Create), 서포트 (Support)
@@ -249,8 +357,122 @@
 
 **산출물**:
 
-- `packages/kcl/src/components/layout/Sidebar/Sidebar.tsx`
-- `packages/kcl/src/components/layout/BottomNav/BottomNav.tsx`
+- `packages/kcl/src/components/layout/Sidebar/index.tsx`
+- `packages/kcl/src/components/layout/BottomNav/index.tsx`
+
+---
+
+### ✅ Phase 1, T1.12: UI 개선 - 모드 전환 버튼 이동
+
+**담당**: Luna (Frontend)
+**상태**: ✅ 완료
+**완료일**: 2026-01-14
+**우선순위**: Medium
+**분류**: 순수 UI 작업
+
+**목표**: 사용자 접근성 향상을 위해 '모드 전환(다크/라이트)' 버튼을 더보기 메뉴에서 분리하여 상단 배치
+
+**작업 내용**:
+
+1. ✅ Sidebar/Header 영역에 모드 전환 토글 버튼 배치 (우측 상단)
+2. ✅ MoreDropdown 내 모드 전환 항목 제거
+3. ✅ 모바일/PC 반응형 위치 조정
+
+**산출물**:
+
+- `src/components/common/ThemeToggle/index.tsx` (신규)
+- `src/components/common/ThemeToggle/ThemeToggle.module.scss` (신규)
+- `src/components/layout/Sidebar/index.tsx` (수정)
+- `src/components/layout/Header/index.tsx` (수정)
+- `src/components/common/Dropdown/index.tsx` (수정)
+
+---
+
+### ✅ Phase 1, T1.13: 문서화 - Analytics(통계) 화면 기획서 작성
+
+**담당**: Kai (Lead) + Luna (Support)
+**상태**: ✅ 완료
+**완료일**: 2026-01-14
+**우선순위**: High
+**후속 작업**: T1.11
+
+**목표**: Analytics 페이지 개발 전 화면 구성 및 기능 명세 확정
+
+**작업 분담**:
+
+- **Kai (리드)**: 데이터 관점 기획, 차트별 필요 데이터 정의, API 스펙 초안
+- **Luna (서포트)**: 화면 레이아웃, UX 흐름, 반응형 고려사항
+
+**작업 내용**:
+
+- ✅ `doc/project/kcl/analytics_screen_spec.md` 작성
+- ✅ 실시간 트렌드, 점유율, 급상승 차트 등 주요 섹션 와이어프레임(텍스트 기반) 정의
+- ✅ 데이터 요구사항 및 Mock 데이터 구조 정의
+
+**기획서 포함 내용** (약 500줄, 15KB):
+
+1. 개요 및 타겟 사용자
+2. 화면 구성 (ASCII 와이어프레임)
+3. 반응형 레이아웃 (Mobile/Tablet/Desktop)
+4. 데이터 요구사항 (TypeScript 타입 정의)
+5. Mock 데이터 구조
+6. 기술 스택 (Recharts, SWR, nuqs)
+7. 인터랙션 정의
+8. 접근성 고려사항
+9. i18n 메시지 키 정의
+10. 컴포넌트 구조 및 인터페이스
+11. 개발 우선순위 (Must/Should/Nice to Have)
+
+**산출물**:
+
+- `doc/project/kcl/analytics_screen_spec.md`
+
+---
+
+### [] Phase 1, T1.11: Analytics(통계) 페이지 구현
+
+**담당**: Luna (Frontend) + Kai (Data Layer)
+**상태**: 대기
+**의존성**: T1.6 메뉴 수정 완료 후, T1.13 기획서 작성 후
+**우선순위**: High
+
+**목표**: 투표 데이터 기반의 시각화된 통계 및 트렌드 분석 페이지 구현
+
+**라우트**: `/[locale]/analytics`
+
+**UI 구성**:
+
+1. **Header**: 기간 필터 (오늘/7일/30일/전체)
+2. **Main Charts**:
+   - 실시간 트렌드 차트 (시간대별/일별 투표 추이)
+   - 소속사별 점유율 (Pie/Donut Chart)
+   - 급상승 소속사 Top 5
+   - 아티스트별 기여도 (소속사 내 비중)
+3. **Footer**: 데이터 갱신 시간 표시
+
+**기술 스택**:
+
+- 차트: Recharts (React 친화적, 번들 경량)
+- 데이터: Mock Data → 추후 Supabase 연동 (T1.10 이후)
+- 캐싱: SWR 또는 React Query
+
+**작업 분담**:
+
+- **Luna**: UI/UX, 차트 컴포넌트, 반응형 레이아웃
+- **Kai**: 데이터 페칭 로직, 타입 정의, API 연동 준비
+
+**산출물**:
+
+- `packages/kcl/src/app/[locale]/analytics/page.tsx`
+- `packages/kcl/src/components/features/analytics/` (차트 컴포넌트들)
+- `packages/kcl/src/messages/*.json` Nav.analytics 키 추가 (12개 언어)
+
+**인수 조건**:
+
+- [ ] `/analytics` 라우트 정상 접근 (404 해결)
+- [ ] 최소 2개 이상의 차트 표시
+- [ ] 반응형 (Mobile/Desktop) 정상 작동
+- [ ] 12개 언어 메뉴명 적용
 
 ---
 
@@ -290,18 +512,35 @@
 graph TD
     HOTFIX --> T1.3[T1.3: 메인 UI]
     T1.4[T1.4: DB 스키마 설계] --> T1.8[T1.8: 테이블 생성]
-    T1.8 --> T1.9[T1.9: 데이터 시딩]
+    T1.8 --> T1.8.1[T1.8.1: 투표 영속성]
+    T1.8 --> T1.8.2[T1.8.2: Rate Limiting]
+    T1.8 --> T1.8.3[T1.8.3: RLS 최적화]
+    T1.8 --> T1.8.4[T1.8.4: CASCADE 수정]
+    T1.8.1 --> T1.9[T1.9: 데이터 시딩]
+    T1.8.2 --> T1.9
+    T1.8.3 --> T1.9
+    T1.8.4 --> T1.9
     T1.9 --> T1.10[T1.10: API 연결]
     T1.10 --> T1.3
     T1.8 --> T1.7[T1.7: 보안/RLS]
     T1.8 --> T1.2[T1.2: 댓글 보안]
+    T1.6[T1.6: 메뉴 수정] --> T1.12[T1.12: 모드버튼 이동]
+    T1.12 --> T1.11
+    T1.13[T1.13: 기획서 작성] --> T1.11[T1.11: Analytics 페이지]
+    T1.10 --> T1.11
 ```
 
 ---
 
-**마지막 업데이트**: 2026-01-13 (T1.1 & T1.3 완료, T1.6 보안 점검 완료)
+**마지막 업데이트**: 2026-01-14 (스키마 감수 결과 반영)
+
 **다음 태스크**:
 
-- 🔄 병합 대기: T1.1 & T1.3 통합 대시보드 (CEO 승인 필요)
-- 🔄 구현 대기: T1.6 네비게이션 재구성 (Luna 배정)
-- ⏸️ CEO 검토: T1.8 DB 테이블 생성 (스키마 검토 후 진행)
+- 🔴 **CRITICAL**: T1.8.1 투표 데이터 영속성 구현 (Kai)
+- 🔴 **CRITICAL**: T1.8.2 Rate Limiting 구현 (Kai)
+- 🔴 **CRITICAL**: T1.8.3 RLS 정책 성능 최적화 (Max)
+- 🔴 **CRITICAL**: T1.8.4 CASCADE DELETE 수정 (Max)
+- ✅ ~~T1.13 Analytics 화면 기획서 작성~~ (완료)
+- ✅ ~~T1.12 모드 전환 버튼 UI 변경~~ (완료)
+- 🟠 **우선**: T1.11 Analytics 페이지 구현 (기획서 완료, 개발 가능)
+- ⏸️ 대기: T1.8 DB 테이블 생성 (Critical 이슈 선행)

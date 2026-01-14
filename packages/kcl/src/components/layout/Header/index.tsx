@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import styles from './Header.module.scss';
+import ThemeToggle from '../../common/ThemeToggle';
 
 export default function Header() {
   const locale = useLocale();
@@ -28,13 +29,12 @@ export default function Header() {
         So let's keep logo but remove Theme Toggle as requested.
       */}
       <h1 className={styles.logo}>KCL</h1>
-      
+
       <div className={styles.controls}>
-        <select 
-          value={locale} 
-          onChange={changeLang} 
-          className={styles.langSelect}
-        >
+        {/* 테마 토글 버튼 - 모바일/데스크탑 모두 우측 상단에 배치 */}
+        <ThemeToggle compact className={styles.themeToggle} />
+
+        <select value={locale} onChange={changeLang} className={styles.langSelect}>
           <option value="ko">한국어</option>
           <option value="en">English</option>
           <option value="id">Bahasa Indonesia</option>
@@ -48,7 +48,6 @@ export default function Header() {
           <option value="fr">Français</option>
           <option value="de">Deutsch</option>
         </select>
-        {/* Theme Toggle Removed - Moved to Sidebar More Menu */}
       </div>
     </header>
   );

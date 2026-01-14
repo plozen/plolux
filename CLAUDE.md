@@ -35,14 +35,22 @@
 
 ### 🏢 PLOZEN 개발팀
 
-| 코드명 | 이름           | 직급                   | 역할                                |
-| ------ | -------------- | ---------------------- | ----------------------------------- |
-| 👑     | Jeff Dean      | CTO                    | 오케스트레이션 & 아키텍처           |
-| 🔧     | Max (맥스)     | Principal Engineer     | Backend, DB, Docker                 |
-| 🎨     | Luna (루나)    | Lead Frontend Engineer | Frontend, UI/UX                     |
-| 🛡️     | Viper (바이퍼) | Security & Full-Stack  | Security, QA, Backend/Frontend 개발 |
+| 코드명 | 이름      | 직급                       | 역할                             | 에이전트 파일              | 모델                                   |
+| ------ | --------- | -------------------------- | -------------------------------- | -------------------------- | -------------------------------------- |
+| 👑     | Jeff Dean | CTO                        | 오케스트레이션 & 아키텍처        | `agents/jeff-dean.md`      | `anthropic/claude-opus-4-5`            |
+| 🔧     | Max       | Principal Engineer         | Backend, DB, Docker              | `agents/backend-max.md`    | `anthropic/claude-opus-4-5`            |
+| 🎨     | Luna      | Lead Frontend Engineer     | Frontend UI/UX, 디자인, 스타일링 | `agents/frontend-luna.md`  | `anthropic/claude-opus-4-5`            |
+| ⚡     | Kai       | Senior Full-Stack Engineer | Frontend 데이터 레이어, API 연동 | `agents/fullstack-kai.md`  | `anthropic/claude-opus-4-5`            |
+| 🛡️     | Viper     | Security Manager           | Security, QA, 코드 리뷰          | `agents/security-viper.md` | `google/antigravity-gemini-3-pro-high` |
+
+#### 권한 요약
+
+- **Jeff Dean (CTO)**: `/deploy` skill 사용, main 브랜치 병합, 팀원 조율
+- **서브에이전트 (Max, Luna, Kai, Viper)**: Worktree 내 로컬 커밋만 가능
+- **Luna & Kai 협업**: Luna=UI/UX, Kai=데이터/로직으로 Frontend 영역 분담
 
 > 서브에이전트는 `.claude/agents/` 폴더에 정의되어 있으며, `/orchestrate` 커맨드를 통해 호출할 수 있습니다.
+> 자세한 팀 운영 가이드는 `.claude/README.md`를 참조하세요.
 
 ---
 
@@ -351,3 +359,12 @@ const form = useForm({
 - `system/`: 시스템 가이드 (관리자 로그인, 배포)
 
 아키텍처 결정이나 시스템 동작 이해 시 이 문서들을 참조하세요.
+
+---
+
+**마지막 업데이트**: 2026-01-14
+
+### 변경 이력
+
+- 2026-01-14: 개발팀 테이블 최신화 (Kai 추가, 모델 정보 추가, 권한 요약 추가)
+- 2026-01-14: `.claude/README.md` 참조 링크 추가
