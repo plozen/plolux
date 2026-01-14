@@ -42,5 +42,49 @@
     "success": "Oy başarılı!",
     "error": "Oy verilemedi. Lütfen tekrar deneyin.",
     "daily_limit": "Günlük oy limitinize ulaştınız."
+  },
+  "League": {
+    "season": {
+      "title": "{month} {year} Sezonu",
+      "days_remaining": "{days} gün kaldı",
+      "ends_today": "Bugün sona eriyor!",
+      "current_leader": "Şu an #1",
+      "realtime": "Gerçek zamanlı güncelleme"
+    },
+    "tabs": {
+      "premier": "Birinci Lig",
+      "challengers": "İkinci Lig",
+      "swipe_hint": "Lig değiştirmek için kaydırın"
+    },
+    "premier": {
+      "title": "Premier League",
+      "subtitle": "Birinci Lig",
+      "relegation_zone": "Düşme hattı",
+      "relegation_warning": "11. sıranın {count} oy gerisinde"
+    },
+    "challengers": {
+      "title": "Challengers",
+      "subtitle": "İkinci Lig",
+      "promotion_zone": "Yükselme bölgesi",
+      "votes_to_promotion": "Yükselmek için {count} oy!",
+      "promotion_cta": "Şimdi destekle!",
+      "show_more": "Daha fazla göster"
+    },
+    "promotion_battle": {
+      "title": "Play-off Maçı",
+      "button": "Şimdi oy ver",
+      "gap": "Fark",
+      "gap_message": "Yükselmek için sadece {count} oy!",
+      "cta": "Durumu tersine çevir!"
+    },
+    "vote": {
+      "button": "Oy Ver",
+      "hourly": "+{count}/saat"
+    },
+    "rank_change": {
+      "up": "▲ {count}",
+      "down": "▼ {count}",
+      "same": "-"
+    }
   }
 }

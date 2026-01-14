@@ -42,5 +42,49 @@
     "success": "投票成功！",
     "error": "投票に失敗しました。もう一度お試しください。",
     "daily_limit": "本日の投票上限に達しました。"
+  },
+  "League": {
+    "season": {
+      "title": "{year}年{month}月シーズン",
+      "days_remaining": "残り{days}日",
+      "ends_today": "本日終了！",
+      "current_leader": "現在1位",
+      "realtime": "リアルタイム更新"
+    },
+    "tabs": {
+      "premier": "1部リーグ",
+      "challengers": "2部リーグ",
+      "swipe_hint": "スワイプでリーグ切替"
+    },
+    "premier": {
+      "title": "Premier League",
+      "subtitle": "1部リーグ",
+      "relegation_zone": "降格危機",
+      "relegation_warning": "11位と{count}票差"
+    },
+    "challengers": {
+      "title": "Challengers",
+      "subtitle": "2部リーグ",
+      "promotion_zone": "昇格チャンス",
+      "votes_to_promotion": "昇格まで{count}票！",
+      "promotion_cta": "今すぐ応援を！",
+      "show_more": "もっと見る"
+    },
+    "promotion_battle": {
+      "title": "昇降格戦",
+      "button": "投票する",
+      "gap": "票差",
+      "gap_message": "昇格までわずか{count}票！",
+      "cta": "今すぐ逆転を！"
+    },
+    "vote": {
+      "button": "投票",
+      "hourly": "時間あたり+{count}"
+    },
+    "rank_change": {
+      "up": "▲ {count}",
+      "down": "▼ {count}",
+      "same": "-"
+    }
   }
 }

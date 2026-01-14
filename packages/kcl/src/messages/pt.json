@@ -42,5 +42,49 @@
     "success": "Voto bem-sucedido!",
     "error": "Falha ao votar. Por favor, tente novamente.",
     "daily_limit": "Você atingiu seu limite diário de votos."
+  },
+  "League": {
+    "season": {
+      "title": "Temporada {month} {year}",
+      "days_remaining": "D-{days} restantes",
+      "ends_today": "Termina hoje!",
+      "current_leader": "Atual #1",
+      "realtime": "Atualização em tempo real"
+    },
+    "tabs": {
+      "premier": "Primeira Divisão",
+      "challengers": "Segunda Divisão",
+      "swipe_hint": "Deslize para mudar de liga"
+    },
+    "premier": {
+      "title": "Premier League",
+      "subtitle": "Primeira Divisão",
+      "relegation_zone": "Zona de rebaixamento",
+      "relegation_warning": "{count} votos atrás do 11°"
+    },
+    "challengers": {
+      "title": "Challengers",
+      "subtitle": "Segunda Divisão",
+      "promotion_zone": "Zona de promoção",
+      "votes_to_promotion": "{count} votos para subir!",
+      "promotion_cta": "Apoie agora!",
+      "show_more": "Ver mais"
+    },
+    "promotion_battle": {
+      "title": "Batalha de Promoção",
+      "button": "Votar agora",
+      "gap": "Diferença",
+      "gap_message": "Apenas {count} votos para subir!",
+      "cta": "Vire o jogo agora!"
+    },
+    "vote": {
+      "button": "Votar",
+      "hourly": "+{count}/hr"
+    },
+    "rank_change": {
+      "up": "▲ {count}",
+      "down": "▼ {count}",
+      "same": "-"
+    }
   }
 }
