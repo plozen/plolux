@@ -20,7 +20,13 @@
     "support": "총공",
     "my": "마이",
     "create": "만들기",
-    "theme": "테마"
+    "theme": "테마",
+    "report": "제보/문의",
+    "settings": "설정",
+    "logout": "로그아웃",
+    "login": "로그인",
+    "switch_account": "계정 전환",
+    "mode_switch": "모드 전환"
   },
   "Company": {
     "detail": "회사 상세",

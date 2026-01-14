@@ -20,7 +20,13 @@
     "support": "Support",
     "my": "My Profile",
     "create": "Create",
-    "theme": "Theme"
+    "theme": "Theme",
+    "report": "Report/Contact",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "switch_account": "Switch Account",
+    "mode_switch": "Switch Mode"
   },
   "Company": {
     "detail": "Company Details",
