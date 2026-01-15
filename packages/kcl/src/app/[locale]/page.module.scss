@@ -2,7 +2,7 @@
  * page.module.scss (리그 시스템)
  * 
  * 홈 페이지 스타일 (탭 기반 리그 UI)
- * - 반응형 레이아웃
+ * - 반응형 레이아웃 (Grid/Flex)
  * - 시즌 헤더 + 탭 + 콘텐츠 구조
  */
 
@@ -12,12 +12,14 @@
 .dashboardContainer {
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   padding-bottom: 100px; // 모바일 하단 여백 (BottomNav)
 
   @media (min-width: 768px) {
     padding-bottom: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
@@ -26,7 +28,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  flex: 1;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -35,83 +36,72 @@
   }
 }
 
-// 리그 콘텐츠 섹션 (좌측/전체)
-.leagueSection {
+// 좌측 콘텐츠 영역 (헤더 + 탭 + 리스트)
+.contentColumn {
   flex: 1;
   min-width: 0; // flex item overflow 방지
-
-  @media (min-width: 768px) {
-    flex: 1 1 65%;
-    max-width: 800px;
-    // T1.16: 우측 고정 패널과 겹침 방지
-    padding-right: 340px;
-  }
-
-  @media (min-width: 1200px) {
-    padding-right: 380px;
-  }
-
-  @media (min-width: 1400px) {
-    padding-right: 420px;
-  }
+  display: flex;
+  flex-direction: column;
 }
 
-// 검색 섹션 - T1.16 복구
+// 검색 섹션
 .searchSection {
   margin-bottom: 16px;
   z-index: 50;
 
   @media (min-width: 768px) {
     max-width: 500px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 }
 
-// 패널 섹션 (우측) - 데스크톱 전용 - T1.16 fixed 변경
-.panelSection {
+// 리그 리스트 섹션 (탭 콘텐츠)
+.leagueListSection {
+  width: 100%;
+}
+
+// 우측 패널 컬럼 (데스크톱 전용)
+.panelColumn {
   display: none;
 
   @media (min-width: 768px) {
     display: block;
-    position: fixed; // T1.16: sticky → fixed 변경
-    right: 2rem; // T1.16: 우측 고정
-    top: 100px; // T1.16: 헤더 아래 고정
     width: 320px;
+    flex-shrink: 0; // 줄어들지 않음
+
+    // Sticky Positioning
+    position: sticky;
+    top: 100px; // 헤더 높이 고려
     height: fit-content;
     max-height: calc(100vh - 120px);
-    z-index: 90; // T1.16: Nav(100) 아래
     overflow-y: auto;
+    z-index: 10;
+
+    // 스크롤바 스타일링
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
   }
 
   @media (min-width: 1200px) {
     width: 360px;
   }
-
-  @media (min-width: 1400px) {
-    width: 400px;
-    right: 3rem;
-  }
 }
 
 // ===== 기존 스타일 호환성 (deprecated) =====
+// 아래 클래스들은 더 이상 사용되지 않거나 하위 호환을 위해 남겨둠
 
-.searchHeader {
-  display: none;
-}
-
-.sectionTitle {
-  display: none;
-}
-
-.rankingSection {
-  display: none;
-}
-
-.rankingList {
-  display: none;
-}
-
-// 기존 hero 섹션 (사용 안함)
+.searchHeader,
+.sectionTitle,
+.rankingSection,
+.rankingList,
 .homeContainer,
 .hero,
 .heroTitle,
