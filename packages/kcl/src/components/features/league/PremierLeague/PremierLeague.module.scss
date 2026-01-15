@@ -77,20 +77,19 @@ $color-relegation: #dc3545;
 }
 
 // 4-10위 리스트 - T1.16: 10위도 일반 표시
+// T1.XX: 2열 그리드 제거 → 1열 세로 리스트로 변경
 .rankingList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 
   @media (min-width: 768px) {
-    gap: 10px;
+    gap: 12px;
   }
 
-  // 데스크탑 2열 그리드 옵션
+  // 데스크탑에서도 1열 유지 (2열 그리드 제거)
   @media (min-width: 1024px) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 14px;
   }
 }
 

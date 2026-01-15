@@ -31,8 +31,9 @@
 
   @media (min-width: 768px) {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch; // Battle Station 전체 높이 확장
     gap: 32px;
+    min-height: calc(100vh - 120px); // 전체 높이 확보
   }
 }
 
@@ -60,22 +61,16 @@
   width: 100%;
 }
 
-// 우측 패널 컬럼 (데스크톱 전용)
+// 우측 패널 컬럼 (데스크톱 전용) - Battle Station
 .panelColumn {
   display: none;
 
   @media (min-width: 768px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 320px;
     flex-shrink: 0; // 줄어들지 않음
-
-    // Sticky Positioning
-    position: sticky;
-    top: 100px; // 헤더 높이 고려
-    height: fit-content;
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
-    z-index: 10;
+    align-self: stretch; // 부모 높이에 맞춤 (전체 높이)
 
     // 스크롤바 스타일링
     &::-webkit-scrollbar {
