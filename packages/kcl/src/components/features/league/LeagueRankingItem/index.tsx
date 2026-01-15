@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
 import { Flame, TrendingUp, TrendingDown, Minus, AlertTriangle, ArrowUp } from 'lucide-react';
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import type { CompanyRanking } from '@/types/league';
 import styles from './LeagueRankingItem.module.scss';
 
@@ -33,6 +33,7 @@ export default function LeagueRankingItem({
 }: LeagueRankingItemProps) {
   const router = useRouter();
   const t = useTranslations('League');
+  const locale = useLocale();
 
   /** 순위 변동 렌더링 */
   const renderRankChange = () => {
@@ -67,6 +68,7 @@ export default function LeagueRankingItem({
       })}
       whileHover={{ x: 4 }}
       transition={{ duration: 0.15 }}
+      onClick={() => _onVote?.(company.companyId)}
     >
       {/* 순위 */}
       <div className={styles.rank}>
@@ -110,7 +112,7 @@ export default function LeagueRankingItem({
         className={styles.voteButton}
         onClick={(e) => {
           e.stopPropagation();
-          router.push(`/company/${company.companyId}`);
+          router.push(`/${locale}/company/${company.companyId}`);
         }}
       >
         {t('view_details')}

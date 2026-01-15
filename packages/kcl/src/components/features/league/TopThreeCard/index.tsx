@@ -12,7 +12,7 @@
 import { motion } from 'framer-motion';
 import { Medal, Flame, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import type { CompanyRanking } from '@/types/league';
 import styles from './TopThreeCard.module.scss';
 
@@ -42,6 +42,7 @@ const MEDAL_EMOJI: Record<1 | 2 | 3, string> = {
 export default function TopThreeCard({ company, rank, onVote: _onVote }: TopThreeCardProps) {
   const router = useRouter();
   const t = useTranslations('League');
+  const locale = useLocale();
   const medalColor = MEDAL_COLORS[rank];
 
   /** 순위 변동 아이콘 */
@@ -78,6 +79,7 @@ export default function TopThreeCard({ company, rank, onVote: _onVote }: TopThre
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: (rank - 1) * 0.1 }}
+      onClick={_onVote}
     >
       {/* 메달 뱃지 */}
       <div className={styles.medalBadge} style={{ background: medalColor }}>
@@ -116,7 +118,7 @@ export default function TopThreeCard({ company, rank, onVote: _onVote }: TopThre
         className={styles.voteButton}
         onClick={(e) => {
           e.stopPropagation();
-          router.push(`/company/${company.companyId}`);
+          router.push(`/${locale}/company/${company.companyId}`);
         }}
         style={{
           background: `linear-gradient(135deg, ${medalColor}dd 0%, ${medalColor}99 100%)`,
