@@ -90,6 +90,34 @@
     },
     "vote_success": "{company} için +1 Güç"
   },
+  "Analytics": {
+    "title": "İstatistikler",
+    "subtitle": "Oy Veri Analizi",
+    "period": {
+      "today": "Bugün",
+      "week": "7 Gün",
+      "month": "30 Gün",
+      "all": "Tümü"
+    },
+    "charts": {
+      "trend": "Gerçek Zamanlı Trend",
+      "trend_desc": "Saatlik oy trendleri",
+      "market_share": "Pazar Payı",
+      "market_share_desc": "Oy dağılımı",
+      "rising": "Yükselen Şirketler",
+      "rising_desc": "Büyümeye göre Top 5"
+    },
+    "stats": {
+      "total_votes": "Toplam Oy",
+      "active_companies": "Aktif Şirketler",
+      "top_company": "1. Şirket"
+    },
+    "last_updated": "Son Güncelleme",
+    "minutes_ago": "{minutes}dk önce",
+    "votes": "oy",
+    "rank_up": "Sıralama Yükseldi",
+    "no_data": "Veri bulunamadı"
+  },
   "League": {
     "season": {
       "title": "{month} {year} Sezonu",

@@ -90,6 +90,34 @@
     },
     "vote_success": "+1 Firepower untuk {company}"
   },
+  "Analytics": {
+    "title": "Statistik",
+    "subtitle": "Analisis Data Voting",
+    "period": {
+      "today": "Hari Ini",
+      "week": "7 Hari",
+      "month": "30 Hari",
+      "all": "Semua"
+    },
+    "charts": {
+      "trend": "Tren Real-time",
+      "trend_desc": "Tren voting per jam",
+      "market_share": "Pangsa Pasar",
+      "market_share_desc": "Distribusi voting",
+      "rising": "Perusahaan Naik Daun",
+      "rising_desc": "Top 5 berdasarkan pertumbuhan"
+    },
+    "stats": {
+      "total_votes": "Total Voting",
+      "active_companies": "Perusahaan Aktif",
+      "top_company": "Perusahaan #1"
+    },
+    "last_updated": "Terakhir Diperbarui",
+    "minutes_ago": "{minutes}m yang lalu",
+    "votes": "suara",
+    "rank_up": "Naik Peringkat",
+    "no_data": "Tidak ada data tersedia"
+  },
   "League": {
     "season": {
       "title": "Musim {month} {year}",

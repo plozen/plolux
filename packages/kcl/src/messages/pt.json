@@ -90,6 +90,34 @@
     },
     "vote_success": "+1 Potência para {company}"
   },
+  "Analytics": {
+    "title": "Estatísticas",
+    "subtitle": "Análise de Dados de Votação",
+    "period": {
+      "today": "Hoje",
+      "week": "7 Dias",
+      "month": "30 Dias",
+      "all": "Tudo"
+    },
+    "charts": {
+      "trend": "Tendência em Tempo Real",
+      "trend_desc": "Tendência de votos por hora",
+      "market_share": "Participação de Mercado",
+      "market_share_desc": "Distribuição de votos",
+      "rising": "Empresas em Alta",
+      "rising_desc": "Top 5 por crescimento"
+    },
+    "stats": {
+      "total_votes": "Votos Totais",
+      "active_companies": "Empresas Ativas",
+      "top_company": "Empresa #1"
+    },
+    "last_updated": "Última Atualização",
+    "minutes_ago": "{minutes}m atrás",
+    "votes": "votos",
+    "rank_up": "Subiu no Ranking",
+    "no_data": "Sem dados disponíveis"
+  },
   "League": {
     "season": {
       "title": "Temporada {month} {year}",

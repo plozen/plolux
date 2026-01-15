@@ -90,6 +90,34 @@
     },
     "vote_success": "{company}に+1パワー"
   },
+  "Analytics": {
+    "title": "統計",
+    "subtitle": "投票データ分析",
+    "period": {
+      "today": "今日",
+      "week": "7日間",
+      "month": "30日間",
+      "all": "全期間"
+    },
+    "charts": {
+      "trend": "リアルタイムトレンド",
+      "trend_desc": "時間別投票推移",
+      "market_share": "事務所別シェア",
+      "market_share_desc": "投票分布",
+      "rising": "急上昇事務所",
+      "rising_desc": "成長率Top 5"
+    },
+    "stats": {
+      "total_votes": "総投票数",
+      "active_companies": "参加事務所",
+      "top_company": "1位事務所"
+    },
+    "last_updated": "最終更新",
+    "minutes_ago": "{minutes}分前",
+    "votes": "票",
+    "rank_up": "順位上昇",
+    "no_data": "データがありません"
+  },
   "League": {
     "season": {
       "title": "{year}年{month}月シーズン",

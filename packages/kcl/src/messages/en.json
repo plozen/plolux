@@ -90,6 +90,34 @@
     },
     "vote_success": "+1 Firepower for {company}"
   },
+  "Analytics": {
+    "title": "Analytics",
+    "subtitle": "Vote Data Analysis",
+    "period": {
+      "today": "Today",
+      "week": "7 Days",
+      "month": "30 Days",
+      "all": "All Time"
+    },
+    "charts": {
+      "trend": "Real-time Trend",
+      "trend_desc": "Hourly vote trends",
+      "market_share": "Market Share",
+      "market_share_desc": "Vote distribution",
+      "rising": "Rising Companies",
+      "rising_desc": "Top 5 by growth"
+    },
+    "stats": {
+      "total_votes": "Total Votes",
+      "active_companies": "Active Companies",
+      "top_company": "Top Company"
+    },
+    "last_updated": "Last Updated",
+    "minutes_ago": "{minutes}m ago",
+    "votes": "votes",
+    "rank_up": "Rank Up",
+    "no_data": "No data available"
+  },
   "League": {
     "season": {
       "title": "{month} {year} Season",

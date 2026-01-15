@@ -90,6 +90,34 @@
     },
     "vote_success": "{company} +1火力"
   },
+  "Analytics": {
+    "title": "统计",
+    "subtitle": "投票数据分析",
+    "period": {
+      "today": "今日",
+      "week": "7天",
+      "month": "30天",
+      "all": "全部"
+    },
+    "charts": {
+      "trend": "实时趋势",
+      "trend_desc": "每小时投票趋势",
+      "market_share": "公司份额",
+      "market_share_desc": "投票分布",
+      "rising": "急速上升公司",
+      "rising_desc": "增长率Top 5"
+    },
+    "stats": {
+      "total_votes": "总投票数",
+      "active_companies": "参与公司",
+      "top_company": "第一名公司"
+    },
+    "last_updated": "最后更新",
+    "minutes_ago": "{minutes}分钟前",
+    "votes": "票",
+    "rank_up": "排名上升",
+    "no_data": "暂无数据"
+  },
   "League": {
     "season": {
       "title": "{year}年{month}月赛季",

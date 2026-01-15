@@ -90,6 +90,34 @@
     },
     "vote_success": "+1 Feuerkraft für {company}"
   },
+  "Analytics": {
+    "title": "Statistiken",
+    "subtitle": "Abstimmungsdatenanalyse",
+    "period": {
+      "today": "Heute",
+      "week": "7 Tage",
+      "month": "30 Tage",
+      "all": "Gesamt"
+    },
+    "charts": {
+      "trend": "Echtzeit-Trend",
+      "trend_desc": "Stündliche Abstimmungstrends",
+      "market_share": "Marktanteil",
+      "market_share_desc": "Stimmenverteilung",
+      "rising": "Aufsteigende Unternehmen",
+      "rising_desc": "Top 5 nach Wachstum"
+    },
+    "stats": {
+      "total_votes": "Gesamtstimmen",
+      "active_companies": "Aktive Unternehmen",
+      "top_company": "Top-Unternehmen"
+    },
+    "last_updated": "Letzte Aktualisierung",
+    "minutes_ago": "vor {minutes}m",
+    "votes": "Stimmen",
+    "rank_up": "Rangaufstieg",
+    "no_data": "Keine Daten verfügbar"
+  },
   "League": {
     "season": {
       "title": "Saison {month} {year}",

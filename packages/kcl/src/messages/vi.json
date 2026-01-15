@@ -90,6 +90,34 @@
     },
     "vote_success": "+1 Sức Mạnh cho {company}"
   },
+  "Analytics": {
+    "title": "Thống Kê",
+    "subtitle": "Phân Tích Dữ Liệu Bình Chọn",
+    "period": {
+      "today": "Hôm Nay",
+      "week": "7 Ngày",
+      "month": "30 Ngày",
+      "all": "Tất Cả"
+    },
+    "charts": {
+      "trend": "Xu Hướng Thời Gian Thực",
+      "trend_desc": "Xu hướng bình chọn theo giờ",
+      "market_share": "Thị Phần",
+      "market_share_desc": "Phân bổ phiếu bầu",
+      "rising": "Công Ty Đang Lên",
+      "rising_desc": "Top 5 theo tăng trưởng"
+    },
+    "stats": {
+      "total_votes": "Tổng Phiếu Bầu",
+      "active_companies": "Công Ty Hoạt Động",
+      "top_company": "Công Ty #1"
+    },
+    "last_updated": "Cập Nhật Lần Cuối",
+    "minutes_ago": "{minutes} phút trước",
+    "votes": "phiếu",
+    "rank_up": "Tăng Hạng",
+    "no_data": "Không có dữ liệu"
+  },
   "League": {
     "season": {
       "title": "Mùa giải tháng {month} năm {year}",
