@@ -1,20 +1,22 @@
 /**
  * CompanyDetailClient.tsx
- * 
+ *
  * 회사 상세 페이지 클라이언트 컴포넌트
- * 회사 정보, 파이어파워 트렌드, 분석 데이터, 댓글을 표시합니다.
- * 
+ * 회사 정보, 파이어파워 트렌드, 소속 그룹, 댓글을 표시합니다.
+ *
  * 참고: Support(투표)는 홈 화면 전용 기능으로, 상세 페이지에서는 홈으로 유도합니다.
+ *
+ * @updated T1.10 - Mock → Supabase API 연동
  */
 
-"use client";
+'use client';
 
 import { useTranslations } from 'next-intl';
-import { ArrowLeft, TrendingUp, Home } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Home, Users, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { MOCK_COMPANIES, MOCK_VOTES } from '@/lib/mock-data';
+import { useCompanyData, useCompanyGroups } from '@/hooks/useCompanyData';
 import styles from './page.module.scss';
 import CommentSection from '@/components/features/comments/CommentSection';
 import Tabs from '@/components/common/Tabs';
@@ -30,25 +32,60 @@ interface CompanyDetailClientProps {
 export default function CompanyDetailClient({ locale, id }: CompanyDetailClientProps) {
   const t = useTranslations('Home');
 
-  // 회사 데이터 조회
-  const company = MOCK_COMPANIES.find(c => c.id === id);
+  // 🔥 Supabase API에서 데이터 가져오기
+  const { company, groups, isLoading, error, refresh } = useCompanyData(id);
 
-  if (!company) {
-    return <div>Company not found</div>;
+  // 로딩 상태
+  if (isLoading) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.loadingState}>
+          <div className={styles.spinner} />
+          <p>Loading company data...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // 에러 또는 데이터 없음
+  if (error || !company) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <Link href={`/${locale}/ranking`} className={styles.backBtn}>
+            <ArrowLeft size={24} />
+          </Link>
+          <span className={styles.title}>Company</span>
+          <div style={{ width: 24 }} />
+        </div>
+        <div className={styles.errorState}>
+          <p>Company not found</p>
+          <button onClick={() => refresh()}>Retry</button>
+        </div>
+      </div>
+    );
   }
 
   // 로케일에 맞는 회사명 가져오기
-  const targetName = company.name[locale as 'en' | 'ko'] || company.name['en'];
-  
+  const targetName = locale === 'ko' ? company.name_ko : company.name_en;
+
+  // gradient 스타일 생성
+  const gradientStyle = company.gradient_color?.startsWith('linear-gradient')
+    ? company.gradient_color
+    : `linear-gradient(135deg, ${company.gradient_color || '#8B5CF6'} 0%, #1A1A1A 100%)`;
+
+  // Mock 주가 히스토리 (TODO: 실제 투표 히스토리 API로 대체)
+  const stockHistory = generateMockHistory(company.firepower);
+
   // 페이지 전환 애니메이션 설정
   const pageVariants = {
     initial: { x: '100%' },
-    animate: { x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
-    exit: { x: '100%', transition: { duration: 0.2 } }
+    animate: { x: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
+    exit: { x: '100%', transition: { duration: 0.2 } },
   } as const;
 
   return (
-    <motion.div 
+    <motion.div
       className={styles.container}
       variants={pageVariants}
       initial="initial"
@@ -61,22 +98,24 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
           <ArrowLeft size={24} />
         </Link>
         <span className={styles.title}>{targetName}</span>
-        <div style={{ width: 24 }} /> {/* 중앙 정렬을 위한 스페이서 */}
+        <button onClick={() => refresh()} className={styles.refreshBtn}>
+          <RefreshCw size={18} />
+        </button>
       </div>
 
       <main className={styles.content}>
         {/* 회사 정보 카드 */}
-        <motion.div 
+        <motion.div
           className={styles.companyCard}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          style={{ background: company.image }}
+          style={{ background: gradientStyle }}
         >
           <div className={styles.cardHeader}>
             <div className={styles.rankBadge}>No. {company.rank}</div>
             {/* 홈에서 서포트하기 링크 (Support 버튼 대체) */}
-            <Link 
+            <Link
               href={`/${locale}`}
               className={styles.supportLink}
               style={{
@@ -84,25 +123,25 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
                 border: '1px solid rgba(255,255,255,0.4)',
                 borderRadius: '20px',
                 padding: '6px 12px',
-                display: 'flex', 
-                alignItems: 'center', 
+                display: 'flex',
+                alignItems: 'center',
                 gap: '6px',
-                color: '#fff', 
-                fontWeight: 'bold', 
+                color: '#fff',
+                fontWeight: 'bold',
                 cursor: 'pointer',
                 backdropFilter: 'blur(4px)',
                 textDecoration: 'none',
-                fontSize: '0.85rem'
+                fontSize: '0.85rem',
               }}
             >
               <Home size={16} />
               홈에서 서포트
             </Link>
           </div>
-          
+
           <div className={styles.firepower} style={{ marginBottom: '12px' }}>
-             <TrendingUp size={16} />
-             <span>{company.firepower.toLocaleString()}</span>
+            <TrendingUp size={16} />
+            <span>{company.firepower.toLocaleString()}</span>
           </div>
 
           <h1 className={styles.companyName}>{targetName}</h1>
@@ -112,16 +151,16 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
         {/* 파이어파워 트렌드 차트 */}
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Firepower Trend</h2>
-          {company.stockHistory && (
-             <div style={{ width: '100%', height: '250px' }}>
-                <StockChart data={company.stockHistory} color={company.image} />
-             </div>
+          {stockHistory && (
+            <div style={{ width: '100%', height: '250px' }}>
+              <StockChart data={stockHistory} color={gradientStyle} />
+            </div>
           )}
         </section>
 
-        {/* 분석 탭 (그룹별, 레이블별, 상위 팬) */}
+        {/* 소속 그룹 목록 */}
         <section className={styles.section}>
-           <DataAnalysisTabs companyId={company.id} />
+          <GroupsSection groups={groups} locale={locale} />
         </section>
 
         {/* 댓글 섹션 */}
@@ -134,98 +173,138 @@ export default function CompanyDetailClient({ locale, id }: CompanyDetailClientP
 }
 
 /**
- * DataAnalysisTabs
- * 
- * 투표 데이터를 그룹별, 레이블별, 상위 팬별로 분석하여 탭 형태로 표시
+ * Mock 주가 히스토리 생성
+ * TODO: 실제 투표 히스토리 API로 대체
  */
-function DataAnalysisTabs({ companyId }: { companyId: string }) {
-  // 해당 회사의 투표 데이터 필터링
-  const votes = MOCK_VOTES.filter(v => v.companyId === companyId);
-  const totalVotes = votes.length;
+function generateMockHistory(currentValue: number) {
+  const history = [];
+  let value = currentValue * 0.9;
+  const now = new Date();
 
-  if (totalVotes === 0) {
-    return <div className={styles.emptyState}>No vote data available yet.</div>;
+  for (let i = 29; i >= 0; i--) {
+    const date = new Date(now);
+    date.setDate(date.getDate() - i);
+    const change = (Math.random() - 0.48) * 0.06;
+    value = Math.max(0, value * (1 + change));
+    history.push({
+      date: date.toISOString().split('T')[0],
+      value: Math.round(value),
+    });
   }
 
-  // 그룹별 통계 집계
-  const groupStats = Object.entries(
-    votes.reduce((acc, vote) => {
-      acc[vote.groupId] = (acc[vote.groupId] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>)
-  ).sort((a, b) => b[1] - a[1]);
+  if (history.length > 0) {
+    history[history.length - 1].value = currentValue;
+  }
 
-  // 레이블별 통계 집계
-  const labelStats = Object.entries(
-    votes.reduce((acc, vote) => {
-      acc[vote.labelId] = (acc[vote.labelId] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>)
-  ).sort((a, b) => b[1] - a[1]);
+  return history;
+}
 
-  // 사용자별 통계 집계 (상위 5명)
-  const userStats = Object.entries(
-    votes.reduce((acc, vote) => {
-      acc[vote.userId] = (acc[vote.userId] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>)
-  ).sort((a, b) => b[1] - a[1]).slice(0, 5);
+/**
+ * GroupsSection
+ *
+ * 소속 그룹(아티스트) 목록을 표시하는 섹션
+ */
+interface GroupsSectionProps {
+  groups: Array<{
+    id: string;
+    name_ko: string;
+    name_en: string;
+    debut_date: string | null;
+    member_count: number | null;
+    group_type: string | null;
+    is_active: boolean;
+  }>;
+  locale: string;
+}
 
-  /**
-   * 통계 리스트 렌더링 헬퍼
-   */
-  const renderList = (items: [string, number][]) => (
-    <div className={styles.statList}>
-      {items.map(([name, count], idx) => {
-        const percent = ((count / totalVotes) * 100).toFixed(1);
-        return (
-          <div key={name} className={styles.statItem}>
-            <div className={styles.statInfo}>
-              <span className={styles.rank}>{idx + 1}</span>
-              <span className={styles.name}>{name}</span>
-            </div>
-            <div className={styles.statValue}>
-              <div className={styles.barBg}>
-                <div className={styles.barFill} style={{ width: `${percent}%` }} />
-              </div>
-              <span className={styles.count}>{count} ({percent}%)</span>
-            </div>
-          </div>
-        );
-      })}
+function GroupsSection({ groups, locale }: GroupsSectionProps) {
+  if (groups.length === 0) {
+    return (
+      <div className={styles.emptyState}>
+        <Users size={32} />
+        <p>No artist data available yet.</p>
+      </div>
+    );
+  }
+
+  // 그룹 타입별 분류
+  const boyGroups = groups.filter((g) => g.group_type === 'boy');
+  const girlGroups = groups.filter((g) => g.group_type === 'girl');
+  const soloArtists = groups.filter((g) => g.group_type === 'solo');
+  const otherGroups = groups.filter((g) => !['boy', 'girl', 'solo'].includes(g.group_type || ''));
+
+  const renderGroupList = (items: typeof groups) => (
+    <div className={styles.groupList}>
+      {items.map((group) => (
+        <div key={group.id} className={styles.groupItem}>
+          <span className={styles.groupName}>
+            {locale === 'ko' ? group.name_ko : group.name_en}
+          </span>
+          {group.member_count && (
+            <span className={styles.memberCount}>{group.member_count} members</span>
+          )}
+          {group.debut_date && (
+            <span className={styles.debutDate}>{new Date(group.debut_date).getFullYear()}</span>
+          )}
+        </div>
+      ))}
     </div>
   );
 
   // 탭 아이템 정의
   const tabItems = [
-    {
-      id: 'group',
-      label: 'By Group',
-      content: renderList(groupStats)
-    },
-    {
-      id: 'label',
-      label: 'By Label',
-      content: renderList(labelStats)
-    },
-    {
-      id: 'user',
-      label: 'Top Fans',
-      content: (
-        <div className={styles.statList}>
-          {userStats.map(([userId, count], idx) => (
-             <div key={userId} className={styles.statItem} style={{ justifyContent: 'space-between' }}>
-               <div className={styles.statInfo}>
-                 <span className={styles.rank}>{idx + 1}</span>
-                 <span className={styles.name}>{userId}</span>
-               </div>
-               <span className={styles.count}>{count} votes</span>
-             </div>
-          ))}
-        </div>
-      )
-    }
+    ...(boyGroups.length > 0
+      ? [
+          {
+            id: 'boy',
+            label: `Boy Groups (${boyGroups.length})`,
+            content: renderGroupList(boyGroups),
+          },
+        ]
+      : []),
+    ...(girlGroups.length > 0
+      ? [
+          {
+            id: 'girl',
+            label: `Girl Groups (${girlGroups.length})`,
+            content: renderGroupList(girlGroups),
+          },
+        ]
+      : []),
+    ...(soloArtists.length > 0
+      ? [
+          {
+            id: 'solo',
+            label: `Solo (${soloArtists.length})`,
+            content: renderGroupList(soloArtists),
+          },
+        ]
+      : []),
+    ...(otherGroups.length > 0
+      ? [
+          {
+            id: 'other',
+            label: `Other (${otherGroups.length})`,
+            content: renderGroupList(otherGroups),
+          },
+        ]
+      : []),
   ];
 
-  return <Tabs items={tabItems} />;
+  // 탭이 하나만 있으면 탭 없이 바로 표시
+  if (tabItems.length === 1) {
+    return (
+      <>
+        <h2 className={styles.sectionTitle}>Artists ({groups.length})</h2>
+        {tabItems[0].content}
+      </>
+    );
+  }
+
+  return (
+    <>
+      <h2 className={styles.sectionTitle}>Artists ({groups.length})</h2>
+      <Tabs items={tabItems} />
+    </>
+  );
 }
