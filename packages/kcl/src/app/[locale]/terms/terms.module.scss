@@ -1,5 +1,7 @@
-@use 'variables' as *;
-@use 'mixins' as *;
+/**
+ * Terms of Service 페이지 스타일
+ * CSS 변수를 사용하므로 별도의 SCSS import 불필요
+ */
 
 .legalPage {
   min-height: 100vh;
