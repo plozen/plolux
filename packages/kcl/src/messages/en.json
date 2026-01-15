@@ -51,6 +51,7 @@
     "analytics": "Analytics",
     "hall_of_fame": "Hall of Fame",
     "news": "News",
+    "community": "Community",
     "settings": "Settings",
     "logout": "Logout",
     "login": "Login",
@@ -165,26 +166,69 @@
   },
   "Community": {
     "title": "Community",
-    "subtitle": "Share your thoughts freely",
-    "write": "Write Post",
-    "nickname": "Nickname",
-    "title_label": "Title",
-    "content": "Content",
-    "submit": "Submit",
-    "cancel": "Cancel",
-    "comments": "Comments",
-    "comment_placeholder": "Write a comment",
-    "report": "Report",
-    "report_reason": "Report Reason",
-    "report_success": "Report submitted successfully",
-    "report_duplicate": "You have already reported this",
-    "no_posts": "No posts yet",
+    "subtitle": "Fan Free Board",
+    "write": "Write",
+    "back_to_list": "← Back to List",
+    "no_posts": "No posts yet.",
     "loading": "Loading...",
-    "view_count": "Views",
-    "created_at": "Posted",
-    "back_to_list": "Back to List",
-    "post_success": "Post created successfully",
-    "comment_success": "Comment posted successfully",
-    "error": "An error occurred"
+    "table": {
+      "number": "No.",
+      "title": "Title",
+      "author": "Author",
+      "date": "Date",
+      "views": "Views",
+      "comments": "Comments"
+    },
+    "post": {
+      "views": "{count} views",
+      "comments": "{count} comments",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "Nickname",
+      "nickname_placeholder": "Enter nickname (max 20 chars)",
+      "title": "Title",
+      "title_placeholder": "Enter title (max 100 chars)",
+      "content": "Content",
+      "content_placeholder": "Enter content",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "submitting": "Submitting..."
+    },
+    "validation": {
+      "nickname_required": "Please enter a nickname",
+      "nickname_max": "Nickname must be 20 characters or less",
+      "title_required": "Please enter a title",
+      "title_max": "Title must be 100 characters or less",
+      "content_required": "Please enter content"
+    },
+    "detail": {
+      "report": "Report",
+      "delete": "Delete",
+      "edit": "Edit"
+    },
+    "comment": {
+      "title": "Comments",
+      "placeholder": "Write a comment (max 200 chars)",
+      "submit": "Post",
+      "no_comments": "Be the first to comment!",
+      "delete_confirm": "Delete this comment?"
+    },
+    "report": {
+      "title": "Report",
+      "reason": "Reason",
+      "reasons": {
+        "spam": "Spam/Advertising",
+        "inappropriate": "Inappropriate Content",
+        "harassment": "Harassment/Hate",
+        "other": "Other"
+      },
+      "detail": "Details (optional)",
+      "detail_placeholder": "Please describe the issue",
+      "submit": "Submit Report",
+      "cancel": "Cancel",
+      "success": "Report submitted",
+      "submitting": "Submitting..."
+    }
   }
 }

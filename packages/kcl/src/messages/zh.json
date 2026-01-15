@@ -55,7 +55,8 @@
     "switch_account": "切换账号",
     "mode_switch": "切换模式",
     "hall_of_fame": "名人堂",
-    "news": "新闻"
+    "news": "新闻",
+    "community": "社区"
   },
   "News": {
     "title": "新闻与洞察",
@@ -165,26 +166,69 @@
   },
   "Community": {
     "title": "社区",
-    "subtitle": "自由分享您的想法",
+    "subtitle": "粉丝自由讨论区",
     "write": "发帖",
-    "nickname": "昵称",
-    "title_label": "标题",
-    "content": "内容",
-    "submit": "发布",
-    "cancel": "取消",
-    "comments": "评论",
-    "comment_placeholder": "写评论",
-    "report": "举报",
-    "report_reason": "举报原因",
-    "report_success": "举报已提交",
-    "report_duplicate": "您已举报过此内容",
-    "no_posts": "暂无帖子",
+    "back_to_list": "← 返回列表",
+    "no_posts": "暂无帖子。",
     "loading": "加载中...",
-    "view_count": "浏览",
-    "created_at": "发布时间",
-    "back_to_list": "返回列表",
-    "post_success": "帖子发布成功",
-    "comment_success": "评论发布成功",
-    "error": "发生错误"
+    "table": {
+      "number": "编号",
+      "title": "标题",
+      "author": "作者",
+      "date": "日期",
+      "views": "浏览",
+      "comments": "评论"
+    },
+    "post": {
+      "views": "{count}次浏览",
+      "comments": "{count}条评论",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "昵称",
+      "nickname_placeholder": "请输入昵称（最多20字）",
+      "title": "标题",
+      "title_placeholder": "请输入标题（最多100字）",
+      "content": "内容",
+      "content_placeholder": "请输入内容",
+      "submit": "发布",
+      "cancel": "取消",
+      "submitting": "发布中..."
+    },
+    "validation": {
+      "nickname_required": "请输入昵称",
+      "nickname_max": "昵称最多20个字符",
+      "title_required": "请输入标题",
+      "title_max": "标题最多100个字符",
+      "content_required": "请输入内容"
+    },
+    "detail": {
+      "report": "举报",
+      "delete": "删除",
+      "edit": "编辑"
+    },
+    "comment": {
+      "title": "评论",
+      "placeholder": "写评论（最多200字）",
+      "submit": "发表",
+      "no_comments": "成为第一个评论的人！",
+      "delete_confirm": "确定删除此评论？"
+    },
+    "report": {
+      "title": "举报",
+      "reason": "举报原因",
+      "reasons": {
+        "spam": "垃圾信息/广告",
+        "inappropriate": "不当内容",
+        "harassment": "骚扰/仇恨",
+        "other": "其他"
+      },
+      "detail": "详情（可选）",
+      "detail_placeholder": "请详细描述问题",
+      "submit": "提交举报",
+      "cancel": "取消",
+      "success": "举报已提交",
+      "submitting": "提交中..."
+    }
   }
 }

@@ -55,7 +55,8 @@
     "switch_account": "Ganti Akun",
     "mode_switch": "Ganti Mode",
     "hall_of_fame": "Hall of Fame",
-    "news": "Berita"
+    "news": "Berita",
+    "community": "Komunitas"
   },
   "News": {
     "title": "Berita & Wawasan",
@@ -165,26 +166,69 @@
   },
   "Community": {
     "title": "Komunitas",
-    "subtitle": "Bagikan pemikiran Anda dengan bebas",
+    "subtitle": "Forum Bebas Penggemar",
     "write": "Tulis",
-    "nickname": "Nama panggilan",
-    "title_label": "Judul",
-    "content": "Konten",
-    "submit": "Kirim",
-    "cancel": "Batal",
-    "comments": "Komentar",
-    "comment_placeholder": "Tulis komentar",
-    "report": "Laporkan",
-    "report_reason": "Alasan pelaporan",
-    "report_success": "Laporan terkirim",
-    "report_duplicate": "Anda sudah melaporkan ini",
-    "no_posts": "Belum ada postingan",
+    "back_to_list": "← Kembali ke daftar",
+    "no_posts": "Belum ada postingan.",
     "loading": "Memuat...",
-    "view_count": "Dilihat",
-    "created_at": "Diposting",
-    "back_to_list": "Kembali ke daftar",
-    "post_success": "Postingan dibuat",
-    "comment_success": "Komentar diposting",
-    "error": "Terjadi kesalahan"
+    "table": {
+      "number": "No.",
+      "title": "Judul",
+      "author": "Penulis",
+      "date": "Tanggal",
+      "views": "Dilihat",
+      "comments": "Komentar"
+    },
+    "post": {
+      "views": "{count} dilihat",
+      "comments": "{count} komentar",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "Nama panggilan",
+      "nickname_placeholder": "Masukkan nama panggilan (maks. 20 karakter)",
+      "title": "Judul",
+      "title_placeholder": "Masukkan judul (maks. 100 karakter)",
+      "content": "Konten",
+      "content_placeholder": "Masukkan konten",
+      "submit": "Kirim",
+      "cancel": "Batal",
+      "submitting": "Mengirim..."
+    },
+    "validation": {
+      "nickname_required": "Harap masukkan nama panggilan",
+      "nickname_max": "Nama panggilan maksimal 20 karakter",
+      "title_required": "Harap masukkan judul",
+      "title_max": "Judul maksimal 100 karakter",
+      "content_required": "Harap masukkan konten"
+    },
+    "detail": {
+      "report": "Laporkan",
+      "delete": "Hapus",
+      "edit": "Edit"
+    },
+    "comment": {
+      "title": "Komentar",
+      "placeholder": "Tulis komentar (maks. 200 karakter)",
+      "submit": "Kirim",
+      "no_comments": "Jadilah yang pertama berkomentar!",
+      "delete_confirm": "Hapus komentar ini?"
+    },
+    "report": {
+      "title": "Laporkan",
+      "reason": "Alasan",
+      "reasons": {
+        "spam": "Spam/Iklan",
+        "inappropriate": "Konten tidak pantas",
+        "harassment": "Pelecehan/Kebencian",
+        "other": "Lainnya"
+      },
+      "detail": "Detail (opsional)",
+      "detail_placeholder": "Jelaskan masalahnya",
+      "submit": "Kirim laporan",
+      "cancel": "Batal",
+      "success": "Laporan terkirim",
+      "submitting": "Mengirim..."
+    }
   }
 }

@@ -55,7 +55,8 @@
     "switch_account": "Chuyển tài khoản",
     "mode_switch": "Chuyển chế độ",
     "hall_of_fame": "Đại Sảnh Danh Vọng",
-    "news": "Tin Tức"
+    "news": "Tin Tức",
+    "community": "Cộng đồng"
   },
   "News": {
     "title": "Tin Tức & Phân Tích",
@@ -165,26 +166,69 @@
   },
   "Community": {
     "title": "Cộng đồng",
-    "subtitle": "Chia sẻ suy nghĩ của bạn tự do",
+    "subtitle": "Diễn đàn tự do của Fan",
     "write": "Viết bài",
-    "nickname": "Biệt danh",
-    "title_label": "Tiêu đề",
-    "content": "Nội dung",
-    "submit": "Đăng",
-    "cancel": "Hủy",
-    "comments": "Bình luận",
-    "comment_placeholder": "Viết bình luận",
-    "report": "Báo cáo",
-    "report_reason": "Lý do báo cáo",
-    "report_success": "Đã gửi báo cáo",
-    "report_duplicate": "Bạn đã báo cáo nội dung này",
-    "no_posts": "Chưa có bài viết",
+    "back_to_list": "← Quay lại danh sách",
+    "no_posts": "Chưa có bài viết nào.",
     "loading": "Đang tải...",
-    "view_count": "Lượt xem",
-    "created_at": "Đăng lúc",
-    "back_to_list": "Quay lại danh sách",
-    "post_success": "Đã tạo bài viết",
-    "comment_success": "Đã đăng bình luận",
-    "error": "Đã xảy ra lỗi"
+    "table": {
+      "number": "STT",
+      "title": "Tiêu đề",
+      "author": "Tác giả",
+      "date": "Ngày",
+      "views": "Lượt xem",
+      "comments": "Bình luận"
+    },
+    "post": {
+      "views": "{count} lượt xem",
+      "comments": "{count} bình luận",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "Biệt danh",
+      "nickname_placeholder": "Nhập biệt danh (tối đa 20 ký tự)",
+      "title": "Tiêu đề",
+      "title_placeholder": "Nhập tiêu đề (tối đa 100 ký tự)",
+      "content": "Nội dung",
+      "content_placeholder": "Nhập nội dung",
+      "submit": "Đăng",
+      "cancel": "Hủy",
+      "submitting": "Đang đăng..."
+    },
+    "validation": {
+      "nickname_required": "Vui lòng nhập biệt danh",
+      "nickname_max": "Biệt danh tối đa 20 ký tự",
+      "title_required": "Vui lòng nhập tiêu đề",
+      "title_max": "Tiêu đề tối đa 100 ký tự",
+      "content_required": "Vui lòng nhập nội dung"
+    },
+    "detail": {
+      "report": "Báo cáo",
+      "delete": "Xóa",
+      "edit": "Sửa"
+    },
+    "comment": {
+      "title": "Bình luận",
+      "placeholder": "Viết bình luận (tối đa 200 ký tự)",
+      "submit": "Đăng",
+      "no_comments": "Hãy là người đầu tiên bình luận!",
+      "delete_confirm": "Xóa bình luận này?"
+    },
+    "report": {
+      "title": "Báo cáo",
+      "reason": "Lý do",
+      "reasons": {
+        "spam": "Spam/Quảng cáo",
+        "inappropriate": "Nội dung không phù hợp",
+        "harassment": "Quấy rối/Thù ghét",
+        "other": "Khác"
+      },
+      "detail": "Chi tiết (tùy chọn)",
+      "detail_placeholder": "Vui lòng mô tả vấn đề",
+      "submit": "Gửi báo cáo",
+      "cancel": "Hủy",
+      "success": "Đã gửi báo cáo",
+      "submitting": "Đang gửi..."
+    }
   }
 }

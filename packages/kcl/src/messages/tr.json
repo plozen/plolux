@@ -55,7 +55,8 @@
     "switch_account": "Hesap Değiştir",
     "mode_switch": "Mod Değiştir",
     "hall_of_fame": "Şöhret Salonu",
-    "news": "Haberler"
+    "news": "Haberler",
+    "community": "Topluluk"
   },
   "News": {
     "title": "Haberler ve Analizler",
@@ -165,26 +166,69 @@
   },
   "Community": {
     "title": "Topluluk",
-    "subtitle": "Düşüncelerinizi özgürce paylaşın",
+    "subtitle": "Hayran Serbest Forumu",
     "write": "Yaz",
-    "nickname": "Takma ad",
-    "title_label": "Başlık",
-    "content": "İçerik",
-    "submit": "Gönder",
-    "cancel": "İptal",
-    "comments": "Yorumlar",
-    "comment_placeholder": "Yorum yaz",
-    "report": "Bildir",
-    "report_reason": "Bildirme nedeni",
-    "report_success": "Bildirim gönderildi",
-    "report_duplicate": "Bunu zaten bildirdiniz",
-    "no_posts": "Henüz gönderi yok",
+    "back_to_list": "← Listeye dön",
+    "no_posts": "Henüz gönderi yok.",
     "loading": "Yükleniyor...",
-    "view_count": "Görüntüleme",
-    "created_at": "Yayınlandı",
-    "back_to_list": "Listeye dön",
-    "post_success": "Gönderi oluşturuldu",
-    "comment_success": "Yorum gönderildi",
-    "error": "Bir hata oluştu"
+    "table": {
+      "number": "No.",
+      "title": "Başlık",
+      "author": "Yazar",
+      "date": "Tarih",
+      "views": "Görüntüleme",
+      "comments": "Yorumlar"
+    },
+    "post": {
+      "views": "{count} görüntüleme",
+      "comments": "{count} yorum",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "Takma ad",
+      "nickname_placeholder": "Takma ad girin (maks. 20 karakter)",
+      "title": "Başlık",
+      "title_placeholder": "Başlık girin (maks. 100 karakter)",
+      "content": "İçerik",
+      "content_placeholder": "İçerik girin",
+      "submit": "Gönder",
+      "cancel": "İptal",
+      "submitting": "Gönderiliyor..."
+    },
+    "validation": {
+      "nickname_required": "Lütfen bir takma ad girin",
+      "nickname_max": "Takma ad en fazla 20 karakter olmalı",
+      "title_required": "Lütfen bir başlık girin",
+      "title_max": "Başlık en fazla 100 karakter olmalı",
+      "content_required": "Lütfen içerik girin"
+    },
+    "detail": {
+      "report": "Bildir",
+      "delete": "Sil",
+      "edit": "Düzenle"
+    },
+    "comment": {
+      "title": "Yorumlar",
+      "placeholder": "Yorum yaz (maks. 200 karakter)",
+      "submit": "Gönder",
+      "no_comments": "İlk yorumu siz yazın!",
+      "delete_confirm": "Bu yorum silinsin mi?"
+    },
+    "report": {
+      "title": "Bildir",
+      "reason": "Sebep",
+      "reasons": {
+        "spam": "Spam/Reklam",
+        "inappropriate": "Uygunsuz içerik",
+        "harassment": "Taciz/Nefret",
+        "other": "Diğer"
+      },
+      "detail": "Detaylar (isteğe bağlı)",
+      "detail_placeholder": "Sorunu açıklayın",
+      "submit": "Rapor gönder",
+      "cancel": "İptal",
+      "success": "Rapor gönderildi",
+      "submitting": "Gönderiliyor..."
+    }
   }
 }

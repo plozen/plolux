@@ -55,7 +55,8 @@
     "switch_account": "Trocar conta",
     "mode_switch": "Mudar modo",
     "hall_of_fame": "Hall da Fama",
-    "news": "Notícias"
+    "news": "Notícias",
+    "community": "Comunidade"
   },
   "News": {
     "title": "Notícias e Insights",
@@ -165,26 +166,69 @@
   },
   "Community": {
     "title": "Comunidade",
-    "subtitle": "Compartilhe seus pensamentos livremente",
+    "subtitle": "Fórum Livre de Fãs",
     "write": "Escrever",
-    "nickname": "Apelido",
-    "title_label": "Título",
-    "content": "Conteúdo",
-    "submit": "Enviar",
-    "cancel": "Cancelar",
-    "comments": "Comentários",
-    "comment_placeholder": "Escreva um comentário",
-    "report": "Denunciar",
-    "report_reason": "Motivo da denúncia",
-    "report_success": "Denúncia enviada",
-    "report_duplicate": "Você já denunciou isso",
-    "no_posts": "Nenhuma publicação",
+    "back_to_list": "← Voltar para a lista",
+    "no_posts": "Nenhuma publicação.",
     "loading": "Carregando...",
-    "view_count": "Visualizações",
-    "created_at": "Publicado",
-    "back_to_list": "Voltar para a lista",
-    "post_success": "Publicação criada",
-    "comment_success": "Comentário publicado",
-    "error": "Ocorreu um erro"
+    "table": {
+      "number": "N°",
+      "title": "Título",
+      "author": "Autor",
+      "date": "Data",
+      "views": "Visualizações",
+      "comments": "Comentários"
+    },
+    "post": {
+      "views": "{count} visualizações",
+      "comments": "{count} comentários",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "Apelido",
+      "nickname_placeholder": "Digite seu apelido (máx. 20 caracteres)",
+      "title": "Título",
+      "title_placeholder": "Digite o título (máx. 100 caracteres)",
+      "content": "Conteúdo",
+      "content_placeholder": "Digite o conteúdo",
+      "submit": "Publicar",
+      "cancel": "Cancelar",
+      "submitting": "Publicando..."
+    },
+    "validation": {
+      "nickname_required": "Por favor, digite um apelido",
+      "nickname_max": "Apelido deve ter 20 caracteres ou menos",
+      "title_required": "Por favor, digite um título",
+      "title_max": "Título deve ter 100 caracteres ou menos",
+      "content_required": "Por favor, digite conteúdo"
+    },
+    "detail": {
+      "report": "Denunciar",
+      "delete": "Excluir",
+      "edit": "Editar"
+    },
+    "comment": {
+      "title": "Comentários",
+      "placeholder": "Escreva um comentário (máx. 200 caracteres)",
+      "submit": "Publicar",
+      "no_comments": "Seja o primeiro a comentar!",
+      "delete_confirm": "Excluir este comentário?"
+    },
+    "report": {
+      "title": "Denunciar",
+      "reason": "Motivo",
+      "reasons": {
+        "spam": "Spam/Publicidade",
+        "inappropriate": "Conteúdo inapropriado",
+        "harassment": "Assédio/Ódio",
+        "other": "Outro"
+      },
+      "detail": "Detalhes (opcional)",
+      "detail_placeholder": "Descreva o problema",
+      "submit": "Enviar denúncia",
+      "cancel": "Cancelar",
+      "success": "Denúncia enviada",
+      "submitting": "Enviando..."
+    }
   }
 }

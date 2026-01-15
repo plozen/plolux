@@ -55,7 +55,8 @@
     "switch_account": "アカウント切替",
     "mode_switch": "モード切替",
     "hall_of_fame": "殿堂入り",
-    "news": "ニュース"
+    "news": "ニュース",
+    "community": "コミュニティ"
   },
   "News": {
     "title": "ニュース＆インサイト",
@@ -165,26 +166,69 @@
   },
   "Community": {
     "title": "コミュニティ",
-    "subtitle": "自由に話し合いましょう",
-    "write": "投稿する",
-    "nickname": "ニックネーム",
-    "title_label": "タイトル",
-    "content": "内容",
-    "submit": "投稿",
-    "cancel": "キャンセル",
-    "comments": "コメント",
-    "comment_placeholder": "コメントを入力",
-    "report": "報告",
-    "report_reason": "報告理由",
-    "report_success": "報告が受け付けられました",
-    "report_duplicate": "すでに報告済みです",
-    "no_posts": "投稿がありません",
+    "subtitle": "ファン自由掲示板",
+    "write": "書く",
+    "back_to_list": "← 一覧に戻る",
+    "no_posts": "投稿がありません。",
     "loading": "読み込み中...",
-    "view_count": "閲覧数",
-    "created_at": "投稿日",
-    "back_to_list": "一覧に戻る",
-    "post_success": "投稿が完了しました",
-    "comment_success": "コメントを投稿しました",
-    "error": "エラーが発生しました"
+    "table": {
+      "number": "番号",
+      "title": "タイトル",
+      "author": "作成者",
+      "date": "日付",
+      "views": "閲覧数",
+      "comments": "コメント"
+    },
+    "post": {
+      "views": "{count}回閲覧",
+      "comments": "コメント{count}件",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "ニックネーム",
+      "nickname_placeholder": "ニックネームを入力（最大20文字）",
+      "title": "タイトル",
+      "title_placeholder": "タイトルを入力（最大100文字）",
+      "content": "内容",
+      "content_placeholder": "内容を入力してください",
+      "submit": "投稿",
+      "cancel": "キャンセル",
+      "submitting": "投稿中..."
+    },
+    "validation": {
+      "nickname_required": "ニックネームを入力してください",
+      "nickname_max": "ニックネームは20文字以内です",
+      "title_required": "タイトルを入力してください",
+      "title_max": "タイトルは100文字以内です",
+      "content_required": "内容を入力してください"
+    },
+    "detail": {
+      "report": "報告",
+      "delete": "削除",
+      "edit": "編集"
+    },
+    "comment": {
+      "title": "コメント",
+      "placeholder": "コメントを入力（最大200文字）",
+      "submit": "投稿",
+      "no_comments": "最初のコメントを残しましょう！",
+      "delete_confirm": "このコメントを削除しますか？"
+    },
+    "report": {
+      "title": "報告する",
+      "reason": "報告理由",
+      "reasons": {
+        "spam": "スパム/広告",
+        "inappropriate": "不適切なコンテンツ",
+        "harassment": "ハラスメント/ヘイト",
+        "other": "その他"
+      },
+      "detail": "詳細（任意）",
+      "detail_placeholder": "詳しく説明してください",
+      "submit": "報告を送信",
+      "cancel": "キャンセル",
+      "success": "報告が受付けられました",
+      "submitting": "送信中..."
+    }
   }
 }
