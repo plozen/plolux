@@ -84,6 +84,8 @@ interface UseLeagueDataOptions {
   refreshInterval?: number;
   /** 포커스 시 재검증 */
   revalidateOnFocus?: boolean;
+  /** SSR 초기 데이터 (서버에서 미리 fetch한 데이터) */
+  fallbackData?: CompaniesResponse | null;
 }
 
 interface UseLeagueDataReturn {
@@ -131,12 +133,13 @@ interface UseLeagueDataReturn {
  * ```
  */
 export function useLeagueData(options: UseLeagueDataOptions = {}): UseLeagueDataReturn {
-  const { refreshInterval = 30000, revalidateOnFocus = true } = options;
+  const { refreshInterval = 30000, revalidateOnFocus = true, fallbackData } = options;
 
   const { data, error, isLoading, mutate } = useSWR<CompaniesResponse>('/api/companies', fetcher, {
     refreshInterval,
     revalidateOnFocus,
     dedupingInterval: 5000, // 5초간 중복 요청 방지
+    fallbackData: fallbackData || undefined, // SSR 초기 데이터 전달
   });
 
   // 전체 소속사 변환
