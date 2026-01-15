@@ -51,8 +51,8 @@ function transformToCompanyRanking(
     isRelegationZone: company.rank === 10,
     isPromotionZone: company.rank === 11,
     artists: {
-      en: [], // TODO: 대표 아티스트 조회 기능 추가
-      ko: [],
+      en: company.groups?.map((g) => g.name_en) || [],
+      ko: company.groups?.map((g) => g.name_ko) || [],
     },
   };
 }

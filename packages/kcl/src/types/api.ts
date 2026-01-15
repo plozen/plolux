@@ -30,16 +30,19 @@ export interface DBGroup {
   member_count: number | null;
   group_type: 'boy' | 'girl' | 'solo' | 'co-ed' | null;
   is_active: boolean;
+  vote_count: number; // T1.21 추가: 그룹별 투표 수
   created_at: string;
   updated_at: string;
 }
 
 /** API 응답: 소속사 목록 */
 export interface CompaniesResponse {
-  companies: Pick<
+  companies: (Pick<
     DBCompany,
     'id' | 'name_ko' | 'name_en' | 'slug' | 'logo_url' | 'gradient_color' | 'rank' | 'firepower'
-  >[];
+  > & {
+    groups: Pick<DBGroup, 'id' | 'name_ko' | 'name_en' | 'vote_count'>[];
+  })[];
   totalCount: number;
   updatedAt: string;
 }

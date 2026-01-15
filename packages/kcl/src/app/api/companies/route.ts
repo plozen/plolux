@@ -36,6 +36,13 @@ function getMockCompaniesResponse(tier?: string | null, limit?: string | null) {
     gradient_color: c.image,
     rank: c.rank,
     firepower: c.firepower,
+    // T1.21: Mock 데이터 그룹 매핑
+    groups: c.representative.en.map((name, idx) => ({
+      id: `group-${c.id}-${idx}`,
+      name_en: name,
+      name_ko: c.representative.ko[idx] || name,
+      vote_count: 0,
+    })),
   }));
 
   // 리그 필터
@@ -76,6 +83,7 @@ export async function GET(request: NextRequest) {
     }
 
     // 기본 쿼리: 순위순 정렬
+    // T1.21: 그룹 정보(kcl_groups) 추가 조회
     let query = supabase
       .from('kcl_companies')
       .select(
@@ -87,7 +95,13 @@ export async function GET(request: NextRequest) {
         logo_url,
         gradient_color,
         rank,
-        firepower
+        firepower,
+        groups:kcl_groups (
+          id,
+          name_ko,
+          name_en,
+          vote_count
+        )
       `,
       )
       .order('rank', { ascending: true });
@@ -107,7 +121,7 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    const { data: companies, error } = await query;
+    const { data: rawCompanies, error } = await query;
 
     if (error) {
       console.error('[Companies API] Supabase error:', error.message);
@@ -115,9 +129,21 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(getMockCompaniesResponse(tier, limit));
     }
 
+    // T1.21: 그룹별 vote_count 상위 4개 추출
+    const companies = (rawCompanies || []).map((company: any) => {
+      const sortedGroups = Array.isArray(company.groups)
+        ? [...company.groups].sort((a, b) => (b.vote_count || 0) - (a.vote_count || 0)).slice(0, 4)
+        : [];
+
+      return {
+        ...company,
+        groups: sortedGroups,
+      };
+    });
+
     return NextResponse.json({
-      companies: companies || [],
-      totalCount: companies?.length || 0,
+      companies,
+      totalCount: companies.length,
       updatedAt: new Date().toISOString(),
     });
   } catch (error) {
