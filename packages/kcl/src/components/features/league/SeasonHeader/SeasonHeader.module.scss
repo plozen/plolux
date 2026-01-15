@@ -57,18 +57,41 @@ $color-promotion: #28a745; // 초록 - 승격 기회
 .seasonTitle {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+}
 
-  h1 {
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: $color-text;
-    font-family: $font-display;
+.title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  line-height: 1.1;
+}
 
-    @media (min-width: 768px) {
-      font-size: 1.25rem;
-    }
+.brand {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: $color-text;
+  font-family: $font-display;
+  letter-spacing: -0.5px;
+
+  // Premium Text Effect
+  background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+.seasonInfo {
+  display: block;
+  font-size: 0.8rem;
+  color: $color-text-dim;
+  font-weight: 500;
+
+  @media (min-width: 768px) {
+    font-size: 0.95rem;
   }
 }
 
@@ -375,6 +398,4 @@ $color-promotion: #28a745; // 초록 - 승격 기회
 }
 
 // ===== 기존 호환성 (deprecated) =====
-.seasonInfo {
-  display: none;
-}
+// .seasonInfo removed

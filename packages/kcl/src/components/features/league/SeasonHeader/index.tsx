@@ -67,7 +67,12 @@ export default function SeasonHeader({
       <div className={styles.topRow}>
         <div className={styles.seasonTitle}>
           <Trophy className={styles.trophyIcon} size={20} />
-          <h1>{t('title', { year: season.year, month: season.month })}</h1>
+          <h1 className={styles.title}>
+            <span className={styles.brand}>KPOP COMPANY LEAGUE</span>
+            <span className={styles.seasonInfo}>
+              {t('title', { year: season.year, month: season.month })}
+            </span>
+          </h1>
         </div>
 
         <motion.div

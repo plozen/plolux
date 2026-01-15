@@ -120,7 +120,7 @@
   },
   "League": {
     "season": {
-      "title": "KPOP COMPANY LEAGUE ฤดูกาล {month} {year}",
+      "title": "ฤดูกาล {month} {year}",
       "days_remaining": "เหลืออีก {days} วัน",
       "ends_today": "สิ้นสุดวันนี้!",
       "current_leader": "อันดับ 1 ปัจจุบัน",
