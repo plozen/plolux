@@ -54,7 +54,15 @@
     "login": "Đăng nhập",
     "switch_account": "Chuyển tài khoản",
     "mode_switch": "Chuyển chế độ",
-    "hall_of_fame": "Đại Sảnh Danh Vọng"
+    "hall_of_fame": "Đại Sảnh Danh Vọng",
+    "news": "Tin Tức"
+  },
+  "News": {
+    "title": "Tin Tức & Phân Tích",
+    "subtitle": "Xu hướng mới nhất và báo cáo phân tích ngành K-Pop",
+    "backToList": "← Quay lại danh sách",
+    "noArticles": "Không có bài viết nào.",
+    "readMore": "Đọc thêm"
   },
   "Company": {
     "detail": "Chi Tiết Công Ty",

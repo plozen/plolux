@@ -54,7 +54,15 @@
     "login": "登录",
     "switch_account": "切换账号",
     "mode_switch": "切换模式",
-    "hall_of_fame": "名人堂"
+    "hall_of_fame": "名人堂",
+    "news": "新闻"
+  },
+  "News": {
+    "title": "新闻与洞察",
+    "subtitle": "K-Pop行业最新趋势与分析报告",
+    "backToList": "← 返回列表",
+    "noArticles": "暂无文章。",
+    "readMore": "阅读更多"
   },
   "Company": {
     "detail": "公司详情",

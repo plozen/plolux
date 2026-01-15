@@ -54,7 +54,15 @@
     "login": "Anmelden",
     "switch_account": "Konto wechseln",
     "mode_switch": "Modus wechseln",
-    "hall_of_fame": "Ruhmeshalle"
+    "hall_of_fame": "Ruhmeshalle",
+    "news": "Nachrichten"
+  },
+  "News": {
+    "title": "Nachrichten & Einblicke",
+    "subtitle": "Neueste Trends und Analysen der K-Pop-Branche",
+    "backToList": "← Zurück zur Liste",
+    "noArticles": "Keine Artikel verfügbar.",
+    "readMore": "Weiterlesen"
   },
   "Company": {
     "detail": "Firmendetails",

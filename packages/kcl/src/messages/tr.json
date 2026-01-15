@@ -54,7 +54,15 @@
     "login": "Giriş Yap",
     "switch_account": "Hesap Değiştir",
     "mode_switch": "Mod Değiştir",
-    "hall_of_fame": "Şöhret Salonu"
+    "hall_of_fame": "Şöhret Salonu",
+    "news": "Haberler"
+  },
+  "News": {
+    "title": "Haberler ve Analizler",
+    "subtitle": "K-Pop endüstrisinin en son trendleri ve analiz raporları",
+    "backToList": "← Listeye Dön",
+    "noArticles": "Makale bulunamadı.",
+    "readMore": "Devamını Oku"
   },
   "Company": {
     "detail": "Şirket Detayları",

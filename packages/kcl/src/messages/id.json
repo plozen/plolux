@@ -54,7 +54,15 @@
     "login": "Masuk",
     "switch_account": "Ganti Akun",
     "mode_switch": "Ganti Mode",
-    "hall_of_fame": "Hall of Fame"
+    "hall_of_fame": "Hall of Fame",
+    "news": "Berita"
+  },
+  "News": {
+    "title": "Berita & Wawasan",
+    "subtitle": "Tren terbaru dan laporan analisis industri K-Pop",
+    "backToList": "← Kembali ke daftar",
+    "noArticles": "Tidak ada artikel tersedia.",
+    "readMore": "Baca selengkapnya"
   },
   "Company": {
     "detail": "Detail Perusahaan",

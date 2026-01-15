@@ -54,7 +54,15 @@
     "login": "Entrar",
     "switch_account": "Trocar conta",
     "mode_switch": "Mudar modo",
-    "hall_of_fame": "Hall da Fama"
+    "hall_of_fame": "Hall da Fama",
+    "news": "Notícias"
+  },
+  "News": {
+    "title": "Notícias e Insights",
+    "subtitle": "Últimas tendências e análises da indústria K-Pop",
+    "backToList": "← Voltar para a lista",
+    "noArticles": "Nenhum artigo disponível.",
+    "readMore": "Ler mais"
   },
   "Company": {
     "detail": "Detalhes da Empresa",

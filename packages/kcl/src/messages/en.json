@@ -50,11 +50,19 @@
     "report": "Report/Contact",
     "analytics": "Analytics",
     "hall_of_fame": "Hall of Fame",
+    "news": "News",
     "settings": "Settings",
     "logout": "Logout",
     "login": "Login",
     "switch_account": "Switch Account",
     "mode_switch": "Switch Mode"
+  },
+  "News": {
+    "title": "News & Insights",
+    "subtitle": "Latest trends and analysis reports on the K-Pop industry",
+    "backToList": "← Back to News",
+    "noArticles": "No articles available.",
+    "readMore": "Read More"
   },
   "Company": {
     "detail": "Company Details",

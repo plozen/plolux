@@ -50,11 +50,19 @@
     "report": "제보/문의",
     "analytics": "통계",
     "hall_of_fame": "명예의 전당",
+    "news": "뉴스",
     "settings": "설정",
     "logout": "로그아웃",
     "login": "로그인",
     "switch_account": "계정 전환",
     "mode_switch": "모드 전환"
+  },
+  "News": {
+    "title": "뉴스 & 인사이트",
+    "subtitle": "K-Pop 산업의 최신 트렌드와 분석 리포트",
+    "backToList": "← 목록으로",
+    "noArticles": "등록된 기사가 없습니다.",
+    "readMore": "더 보기"
   },
   "Company": {
     "detail": "회사 상세",

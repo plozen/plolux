@@ -54,7 +54,15 @@
     "login": "ログイン",
     "switch_account": "アカウント切替",
     "mode_switch": "モード切替",
-    "hall_of_fame": "殿堂入り"
+    "hall_of_fame": "殿堂入り",
+    "news": "ニュース"
+  },
+  "News": {
+    "title": "ニュース＆インサイト",
+    "subtitle": "K-Pop業界の最新トレンドと分析レポート",
+    "backToList": "← 一覧に戻る",
+    "noArticles": "記事がありません。",
+    "readMore": "続きを読む"
   },
   "Company": {
     "detail": "会社詳細",

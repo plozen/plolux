@@ -54,7 +54,15 @@
     "login": "Connexion",
     "switch_account": "Changer de compte",
     "mode_switch": "Changer de mode",
-    "hall_of_fame": "Temple de la Renommée"
+    "hall_of_fame": "Temple de la Renommée",
+    "news": "Actualités"
+  },
+  "News": {
+    "title": "Actualités et Insights",
+    "subtitle": "Dernières tendances et analyses de l'industrie K-Pop",
+    "backToList": "← Retour à la liste",
+    "noArticles": "Aucun article disponible.",
+    "readMore": "Lire la suite"
   },
   "Company": {
     "detail": "Détails de l'Entreprise",
