@@ -160,6 +160,7 @@
       "up": "▲ {count}",
       "down": "▼ {count}",
       "same": "-"
-    }
+    },
+    "view_details": "Xem chi tiết"
   }
 }

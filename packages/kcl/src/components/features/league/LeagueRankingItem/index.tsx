@@ -10,29 +10,30 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import {
-  Flame,
-  ChevronRight,
-  TrendingUp,
-  TrendingDown,
-  Minus,
-  AlertTriangle,
-  ArrowUp,
-} from 'lucide-react';
+import { Flame, TrendingUp, TrendingDown, Minus, AlertTriangle, ArrowUp } from 'lucide-react';
 import classNames from 'classnames';
+import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import type { CompanyRanking } from '@/types/league';
 import styles from './LeagueRankingItem.module.scss';
 
 interface LeagueRankingItemProps {
   /** 소속사 정보 */
   company: CompanyRanking;
-  /** 투표 핸들러 */
-  onVote: (companyId: string) => void;
-  /** 상세 페이지 이동 핸들러 */
+  /** 투표 핸들러 (Deprecated) */
+  onVote?: (companyId: string) => void;
+  /** 상세 페이지 이동 핸들러 (Deprecated) */
   onDetail?: (companyId: string) => void;
 }
 
-export default function LeagueRankingItem({ company, onVote, onDetail }: LeagueRankingItemProps) {
+export default function LeagueRankingItem({
+  company,
+  onVote: _onVote,
+  onDetail: _onDetail,
+}: LeagueRankingItemProps) {
+  const router = useRouter();
+  const t = useTranslations('League');
+
   /** 순위 변동 렌더링 */
   const renderRankChange = () => {
     if (company.rankChange > 0) {
@@ -104,27 +105,16 @@ export default function LeagueRankingItem({ company, onVote, onDetail }: LeagueR
         </span>
       </div>
 
-      {/* 투표 버튼 */}
+      {/* 투표 버튼 -> 상세 보기 버튼 */}
       <button
         className={styles.voteButton}
         onClick={(e) => {
           e.stopPropagation();
-          onVote(company.companyId);
+          router.push(`/company/${company.companyId}`);
         }}
       >
-        투표
+        {t('view_details')}
       </button>
-
-      {/* 상세 보기 Chevron */}
-      {onDetail && (
-        <button
-          className={styles.detailButton}
-          onClick={() => onDetail(company.companyId)}
-          aria-label="상세 보기"
-        >
-          <ChevronRight size={18} />
-        </button>
-      )}
     </motion.article>
   );
 }

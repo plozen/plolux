@@ -11,6 +11,8 @@
 
 import { motion } from 'framer-motion';
 import { Medal, Flame, TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import type { CompanyRanking } from '@/types/league';
 import styles from './TopThreeCard.module.scss';
 
@@ -19,8 +21,8 @@ interface TopThreeCardProps {
   company: CompanyRanking;
   /** 순위 (1, 2, 3) */
   rank: 1 | 2 | 3;
-  /** 투표 핸들러 */
-  onVote: () => void;
+  /** 투표 핸들러 (Deprecated) */
+  onVote?: () => void;
 }
 
 /** 순위별 메달 색상 */
@@ -37,7 +39,9 @@ const MEDAL_EMOJI: Record<1 | 2 | 3, string> = {
   3: '🥉',
 };
 
-export default function TopThreeCard({ company, rank, onVote }: TopThreeCardProps) {
+export default function TopThreeCard({ company, rank, onVote: _onVote }: TopThreeCardProps) {
+  const router = useRouter();
+  const t = useTranslations('League');
   const medalColor = MEDAL_COLORS[rank];
 
   /** 순위 변동 아이콘 */
@@ -107,19 +111,18 @@ export default function TopThreeCard({ company, rank, onVote }: TopThreeCardProp
         )}
       </div>
 
-      {/* 투표 버튼 */}
+      {/* 투표 버튼 -> 상세 보기 버튼 */}
       <button
         className={styles.voteButton}
         onClick={(e) => {
           e.stopPropagation();
-          onVote();
+          router.push(`/company/${company.companyId}`);
         }}
         style={{
           background: `linear-gradient(135deg, ${medalColor}dd 0%, ${medalColor}99 100%)`,
         }}
       >
-        <Flame size={14} />
-        <span>투표하기</span>
+        <span>{t('view_details')}</span>
       </button>
     </motion.article>
   );
