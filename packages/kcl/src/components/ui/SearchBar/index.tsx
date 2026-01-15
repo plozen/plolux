@@ -9,15 +9,17 @@
  * - 소속사 이름으로 직접 검색
  * - 자동완성 드롭다운
  * - 키보드 네비게이션 (위/아래 화살표, Enter)
+ *
+ * @updated T1.10 - useLeagueData 훅 연동 (API 기반 검색)
  */
 
 'use client';
 
 import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { MOCK_COMPANIES, CompanyType } from '@/lib/mock-data';
+import { useLeagueData } from '@/hooks/useLeagueData';
 import styles from './SearchBar.module.scss';
 
 interface SearchResult {
@@ -43,40 +45,53 @@ export default function SearchBar({ onSelect, placeholder }: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
+  // 🔥 API에서 로드된 소속사 데이터 사용
+  const { allCompanies, isLoading } = useLeagueData({
+    refreshInterval: 0, // 검색용은 자동 새로고침 불필요
+    revalidateOnFocus: false,
+  });
+
   // 검색 결과 생성 (아티스트 + 소속사 통합)
   const searchResults = useMemo((): SearchResult[] => {
-    if (!query.trim()) return [];
+    if (!query.trim() || allCompanies.length === 0) return [];
 
     const lowerQuery = query.toLowerCase().trim();
     const results: SearchResult[] = [];
 
-    MOCK_COMPANIES.forEach((company) => {
+    allCompanies.forEach((company) => {
       // 소속사 이름 매칭
       const companyNameMatch =
-        company.name.en.toLowerCase().includes(lowerQuery) || company.name.ko.includes(lowerQuery);
+        company.nameEn.toLowerCase().includes(lowerQuery) || company.nameKo.includes(lowerQuery);
+
+      // gradient 스타일 생성
+      const gradient = company.gradientColor.startsWith('linear-gradient')
+        ? company.gradientColor
+        : `linear-gradient(135deg, ${company.gradientColor} 0%, #1A1A1A 100%)`;
 
       if (companyNameMatch) {
         results.push({
           type: 'company',
-          companyId: company.id,
-          companyName: company.name.en,
-          gradient: company.image,
+          companyId: company.companyId,
+          companyName: company.nameEn,
+          gradient,
         });
       }
 
       // 아티스트 이름 매칭
-      company.representative.en.forEach((artist, idx) => {
-        const koArtist = company.representative.ko[idx];
+      company.artists.en.forEach((artist, idx) => {
+        const koArtist = company.artists.ko[idx];
         if (artist.toLowerCase().includes(lowerQuery) || koArtist?.includes(lowerQuery)) {
           // 중복 방지: 이미 같은 회사가 있으면 추가 안함
-          const exists = results.find((r) => r.companyId === company.id && r.artistName === artist);
+          const exists = results.find(
+            (r) => r.companyId === company.companyId && r.artistName === artist,
+          );
           if (!exists) {
             results.push({
               type: 'artist',
-              companyId: company.id,
-              companyName: company.name.en,
+              companyId: company.companyId,
+              companyName: company.nameEn,
               artistName: artist,
-              gradient: company.image,
+              gradient,
             });
           }
         }
@@ -85,7 +100,7 @@ export default function SearchBar({ onSelect, placeholder }: SearchBarProps) {
 
     // 최대 8개까지만 표시
     return results.slice(0, 8);
-  }, [query]);
+  }, [query, allCompanies]);
 
   // 하이라이트 인덱스 리셋
   useEffect(() => {
@@ -152,7 +167,11 @@ export default function SearchBar({ onSelect, placeholder }: SearchBarProps) {
   return (
     <div className={styles.searchWrapper}>
       <div className={styles.inputContainer}>
-        <Search className={styles.searchIcon} size={18} />
+        {isLoading ? (
+          <Loader2 className={`${styles.searchIcon} ${styles.spinning}`} size={18} />
+        ) : (
+          <Search className={styles.searchIcon} size={18} />
+        )}
         <input
           ref={inputRef}
           type="text"
@@ -165,6 +184,7 @@ export default function SearchBar({ onSelect, placeholder }: SearchBarProps) {
           onKeyDown={handleKeyDown}
           autoComplete="off"
           spellCheck={false}
+          disabled={isLoading}
         />
         {query && (
           <button
@@ -192,7 +212,9 @@ export default function SearchBar({ onSelect, placeholder }: SearchBarProps) {
             {searchResults.map((result, idx) => (
               <li
                 key={`${result.companyId}-${result.artistName || 'company'}`}
-                className={`${styles.resultItem} ${idx === highlightIndex ? styles.highlighted : ''}`}
+                className={`${styles.resultItem} ${
+                  idx === highlightIndex ? styles.highlighted : ''
+                }`}
                 onClick={() => handleSelect(result)}
                 onMouseEnter={() => setHighlightIndex(idx)}
               >

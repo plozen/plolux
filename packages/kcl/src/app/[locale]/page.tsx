@@ -3,95 +3,47 @@
  *
  * KCL 리그 시스템 메인 페이지
  * - 탭 기반 1부/2부 리그 전환
- * - 시즌 대시보드 (1위 + 승강전 통합) - T1.16 수정
- * - 검색 기능 복구 - T1.16
+ * - 시즌 대시보드 (1위 + 승강전 통합)
+ * - 검색 기능
  *
  * 레이아웃:
  * - Mobile: 세로 1열, 스와이프 탭
  * - Desktop: 메인 콘텐츠 + 고정 Battle Station 패널
  *
- * @updated T1.16 - 승강전 Header 통합, 검색 복구, 패널 고정
+ * @updated T1.10 - Mock → Supabase API 연동
  */
 
 'use client';
 
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { MOCK_COMPANIES, CompanyType } from '@/lib/mock-data';
-import type {
-  LeagueTabType,
-  CompanyRanking,
-  SeasonInfo,
-  PromotionBattle as PromotionBattleType,
-} from '@/types/league';
+import type { CompanyType } from '@/lib/mock-data';
+import type { LeagueTabType, PromotionBattle as PromotionBattleType } from '@/types/league';
+
+// 데이터 Hooks
+import { useLeagueData } from '@/hooks/useLeagueData';
+import { dbCompanyToLegacy } from '@/lib/company-transform';
+import type { CompaniesResponse } from '@/types/api';
 
 // UI Components
 import BottomSheet from '@/components/ui/BottomSheet';
 import StickyPanel from '@/components/ui/StickyPanel';
-import SearchBar from '@/components/ui/SearchBar'; // T1.16 복구
+import SearchBar from '@/components/ui/SearchBar';
 
 // Feature Components
 import VoteController from '@/components/features/VoteController';
 import SeasonHeader from '@/components/features/league/SeasonHeader';
 import LeagueTabs from '@/components/features/league/LeagueTabs';
-// PromotionBattle은 SeasonHeader로 통합됨 - T1.16
-// import PromotionBattle from '@/components/features/league/PromotionBattle';
 import PremierLeague from '@/components/features/league/PremierLeague';
 import Challengers from '@/components/features/league/Challengers';
 
 import styles from './page.module.scss';
 
-/**
- * Mock 데이터를 CompanyRanking 형식으로 변환
- */
-function transformToCompanyRanking(company: CompanyType, index: number): CompanyRanking {
-  const rank = index + 1;
-  return {
-    companyId: company.id,
-    companyName: company.name.en,
-    nameKo: company.name.ko,
-    nameEn: company.name.en,
-    logoUrl: '',
-    gradientColor: company.image,
-    rank,
-    previousRank: company.rank,
-    rankChange: company.change === 'up' ? 1 : company.change === 'down' ? -1 : 0,
-    voteCount: company.firepower,
-    voteCountHourly: Math.floor(company.firepower * 0.01), // 시간당 1% 가정
-    tier: rank <= 10 ? 'premier' : 'challengers',
-    isRelegationZone: rank === 10,
-    isPromotionZone: rank === 11,
-    artists: company.representative,
-  };
-}
-
-/**
- * 현재 시즌 정보 생성 (Mock)
- */
-function getCurrentSeason(): SeasonInfo {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-
-  // 월말까지 남은 일수 계산
-  const lastDay = new Date(year, month, 0).getDate();
-  const daysRemaining = lastDay - now.getDate();
-
-  return {
-    year,
-    month,
-    startDate: new Date(year, month - 1, 1).toISOString(),
-    endDate: new Date(year, month, 0).toISOString(),
-    daysRemaining,
-    isActive: true,
-  };
-}
-
 export default function HomePage() {
   // 탭 상태 (1부 리그 기본)
   const [activeTab, setActiveTab] = useState<LeagueTabType>('premier');
 
-  // 선택된 회사 상태 (투표용)
+  // 선택된 회사 상태 (투표용) - 레거시 타입 유지
   const [selectedCompany, setSelectedCompany] = useState<CompanyType | null>(null);
 
   // BottomSheet 열림 상태 (모바일)
@@ -112,81 +64,100 @@ export default function HomePage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // 시즌 정보
-  const season = useMemo(() => getCurrentSeason(), []);
+  // 🔥 Supabase API에서 데이터 가져오기
+  const {
+    premierLeague,
+    challengers: allChallengers,
+    allCompanies,
+    season,
+    promotionBattle,
+    leader,
+    isLoading,
+    error,
+    refresh,
+  } = useLeagueData({ refreshInterval: 30000 });
 
-  // 전체 소속사 순위 데이터 변환
-  const allCompanies = useMemo(() => {
-    return MOCK_COMPANIES.map(transformToCompanyRanking);
-  }, []);
-
-  // 1부 리그 (1-10위)
-  const premierLeague = useMemo(() => {
-    return allCompanies.filter((c) => c.rank <= 10);
-  }, [allCompanies]);
-
-  // 2부 리그 (11위~)
+  // 2부 리그 페이지네이션
   const challengers = useMemo(() => {
-    return allCompanies.filter((c) => c.rank > 10).slice(0, challengersLimit);
-  }, [allCompanies, challengersLimit]);
+    return allChallengers.slice(0, challengersLimit);
+  }, [allChallengers, challengersLimit]);
 
-  // 승강전 정보 (10위 vs 11위)
-  const promotionBattle: PromotionBattleType | null = useMemo(() => {
-    const rank10 = allCompanies.find((c) => c.rank === 10);
-    const rank11 = allCompanies.find((c) => c.rank === 11);
+  // 더 불러올 데이터 있는지
+  const hasMoreChallengers = useMemo(() => {
+    return challengersLimit < allChallengers.length;
+  }, [allChallengers, challengersLimit]);
 
-    if (!rank10 || !rank11) return null;
-
-    return {
-      relegationCompany: rank10,
-      promotionCompany: rank11,
-      gap: rank10.voteCount - rank11.voteCount,
-    };
-  }, [allCompanies]);
-
-  // 현재 1위 (리더)
-  const leader = useMemo(() => {
-    return allCompanies.find((c) => c.rank === 1) || null;
-  }, [allCompanies]);
-
-  // 투표 핸들러
+  // 투표 핸들러 - DB 데이터를 레거시 타입으로 변환
   const handleVote = useCallback(
     (companyId: string) => {
-      const company = MOCK_COMPANIES.find((c) => c.id === companyId);
-      if (!company) return;
+      // allCompanies에서 해당 회사 찾기
+      const companyRanking = allCompanies.find((c) => c.companyId === companyId);
+      if (!companyRanking) return;
 
-      setSelectedCompany(company);
+      // CompanyRanking → CompanyType 변환
+      const legacyCompany: CompanyType = {
+        id: companyRanking.companyId,
+        name: {
+          en: companyRanking.nameEn,
+          ko: companyRanking.nameKo,
+        },
+        representative: companyRanking.artists,
+        firepower: companyRanking.voteCount,
+        rank: companyRanking.rank,
+        change:
+          companyRanking.rankChange > 0 ? 'up' : companyRanking.rankChange < 0 ? 'down' : 'same',
+        image: companyRanking.gradientColor.startsWith('linear-gradient')
+          ? companyRanking.gradientColor
+          : `linear-gradient(135deg, ${companyRanking.gradientColor} 0%, #1A1A1A 100%)`,
+        stockHistory: [],
+      };
+
+      setSelectedCompany(legacyCompany);
 
       if (isMobile) {
         setIsSheetOpen(true);
       }
     },
-    [isMobile],
+    [allCompanies, isMobile],
   );
 
-  // 투표 성공 핸들러
+  // 투표 성공 핸들러 - 데이터 새로고침
   const handleVoteSuccess = useCallback(() => {
-    // 투표 성공 후 처리 (순위 업데이트 등)
-  }, []);
+    refresh();
+  }, [refresh]);
 
   // 더 보기 핸들러
   const handleLoadMore = useCallback(() => {
     setChallengersLimit((prev) => prev + 10);
   }, []);
 
-  // 더 불러올 데이터 있는지
-  const hasMoreChallengers = useMemo(() => {
-    const totalChallengers = allCompanies.filter((c) => c.rank > 10).length;
-    return challengersLimit < totalChallengers;
-  }, [allCompanies, challengersLimit]);
-
-  /** 검색 결과 선택 핸들러 - T1.16 복구 */
+  // 검색 결과 선택 핸들러
   const handleSearchSelect = useCallback(
     (companyId: string) => {
       handleVote(companyId);
     },
     [handleVote],
   );
+
+  // 로딩 상태
+  if (isLoading && allCompanies.length === 0) {
+    return (
+      <div className={styles.loadingContainer}>
+        <div className={styles.spinner} />
+        <p>Loading league data...</p>
+      </div>
+    );
+  }
+
+  // 에러 상태
+  if (error && allCompanies.length === 0) {
+    return (
+      <div className={styles.errorContainer}>
+        <p>Failed to load data</p>
+        <button onClick={() => refresh()}>Retry</button>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.dashboardContainer}>
@@ -212,7 +183,7 @@ export default function HomePage() {
             activeTab={activeTab}
             onTabChange={setActiveTab}
             premierCount={premierLeague.length}
-            challengersCount={allCompanies.filter((c) => c.rank > 10).length}
+            challengersCount={allChallengers.length}
           />
 
           {/* 탭 콘텐츠 */}
