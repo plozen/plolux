@@ -51,6 +51,7 @@
     "analytics": "통계",
     "hall_of_fame": "명예의 전당",
     "news": "뉴스",
+    "community": "커뮤니티",
     "settings": "설정",
     "logout": "로그아웃",
     "login": "로그인",
@@ -162,5 +163,72 @@
       "same": "-"
     },
     "view_details": "상세보기"
+  },
+  "Community": {
+    "title": "커뮤니티",
+    "subtitle": "팬들의 자유 게시판",
+    "write": "글쓰기",
+    "back_to_list": "← 목록으로",
+    "no_posts": "등록된 글이 없습니다.",
+    "loading": "로딩 중...",
+    "table": {
+      "number": "번호",
+      "title": "제목",
+      "author": "작성자",
+      "date": "작성일",
+      "views": "조회수",
+      "comments": "댓글"
+    },
+    "post": {
+      "views": "조회 {count}",
+      "comments": "댓글 {count}",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "닉네임",
+      "nickname_placeholder": "닉네임을 입력하세요 (최대 20자)",
+      "title": "제목",
+      "title_placeholder": "제목을 입력하세요 (최대 100자)",
+      "content": "내용",
+      "content_placeholder": "내용을 입력하세요",
+      "submit": "등록",
+      "cancel": "취소",
+      "submitting": "등록 중..."
+    },
+    "validation": {
+      "nickname_required": "닉네임을 입력해주세요",
+      "nickname_max": "닉네임은 최대 20자입니다",
+      "title_required": "제목을 입력해주세요",
+      "title_max": "제목은 최대 100자입니다",
+      "content_required": "내용을 입력해주세요"
+    },
+    "detail": {
+      "report": "신고",
+      "delete": "삭제",
+      "edit": "수정"
+    },
+    "comment": {
+      "title": "댓글",
+      "placeholder": "댓글을 입력하세요 (최대 200자)",
+      "submit": "등록",
+      "no_comments": "첫 댓글을 남겨보세요!",
+      "delete_confirm": "댓글을 삭제하시겠습니까?"
+    },
+    "report": {
+      "title": "신고하기",
+      "reason": "신고 사유",
+      "reasons": {
+        "spam": "스팸/광고",
+        "inappropriate": "부적절한 내용",
+        "harassment": "괴롭힘/혐오",
+        "other": "기타"
+      },
+      "detail": "상세 내용 (선택)",
+      "detail_placeholder": "신고 사유를 자세히 적어주세요",
+      "submit": "신고하기",
+      "cancel": "취소",
+      "success": "신고가 접수되었습니다",
+      "submitting": "처리 중..."
+    }
   }
 }

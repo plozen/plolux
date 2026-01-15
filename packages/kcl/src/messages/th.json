@@ -55,7 +55,8 @@
     "switch_account": "สลับบัญชี",
     "mode_switch": "สลับโหมด",
     "hall_of_fame": "หอเกียรติยศ",
-    "news": "ข่าวสาร"
+    "news": "ข่าวสาร",
+    "community": "ชุมชน"
   },
   "News": {
     "title": "ข่าวสารและบทวิเคราะห์",
@@ -162,5 +163,72 @@
       "same": "-"
     },
     "view_details": "ดูรายละเอียด"
+  },
+  "Community": {
+    "title": "ชุมชน",
+    "subtitle": "กระดานสนทนาแฟนคลับ",
+    "write": "เขียน",
+    "back_to_list": "← กลับไปยังรายการ",
+    "no_posts": "ยังไม่มีโพสต์",
+    "loading": "กำลังโหลด...",
+    "table": {
+      "number": "ลำดับ",
+      "title": "หัวข้อ",
+      "author": "ผู้เขียน",
+      "date": "วันที่",
+      "views": "ดู",
+      "comments": "ความคิดเห็น"
+    },
+    "post": {
+      "views": "ดู {count} ครั้ง",
+      "comments": "{count} ความคิดเห็น",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "ชื่อเล่น",
+      "nickname_placeholder": "ใส่ชื่อเล่น (สูงสุด 20 ตัวอักษร)",
+      "title": "หัวข้อ",
+      "title_placeholder": "ใส่หัวข้อ (สูงสุด 100 ตัวอักษร)",
+      "content": "เนื้อหา",
+      "content_placeholder": "ใส่เนื้อหา",
+      "submit": "โพสต์",
+      "cancel": "ยกเลิก",
+      "submitting": "กำลังโพสต์..."
+    },
+    "validation": {
+      "nickname_required": "กรุณาใส่ชื่อเล่น",
+      "nickname_max": "ชื่อเล่นต้องไม่เกิน 20 ตัวอักษร",
+      "title_required": "กรุณาใส่หัวข้อ",
+      "title_max": "หัวข้อต้องไม่เกิน 100 ตัวอักษร",
+      "content_required": "กรุณาใส่เนื้อหา"
+    },
+    "detail": {
+      "report": "รายงาน",
+      "delete": "ลบ",
+      "edit": "แก้ไข"
+    },
+    "comment": {
+      "title": "ความคิดเห็น",
+      "placeholder": "เขียนความคิดเห็น (สูงสุด 200 ตัวอักษร)",
+      "submit": "โพสต์",
+      "no_comments": "เป็นคนแรกที่แสดงความคิดเห็น!",
+      "delete_confirm": "ลบความคิดเห็นนี้?"
+    },
+    "report": {
+      "title": "รายงาน",
+      "reason": "เหตุผล",
+      "reasons": {
+        "spam": "สแปม/โฆษณา",
+        "inappropriate": "เนื้อหาไม่เหมาะสม",
+        "harassment": "การคุกคาม/ความเกลียดชัง",
+        "other": "อื่นๆ"
+      },
+      "detail": "รายละเอียด (ไม่บังคับ)",
+      "detail_placeholder": "กรุณาอธิบายปัญหา",
+      "submit": "ส่งรายงาน",
+      "cancel": "ยกเลิก",
+      "success": "ส่งรายงานแล้ว",
+      "submitting": "กำลังส่ง..."
+    }
   }
 }

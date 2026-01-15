@@ -51,6 +51,7 @@
     "analytics": "Analytics",
     "hall_of_fame": "Hall of Fame",
     "news": "News",
+    "community": "Community",
     "settings": "Settings",
     "logout": "Logout",
     "login": "Login",
@@ -162,5 +163,72 @@
       "same": "-"
     },
     "view_details": "View Details"
+  },
+  "Community": {
+    "title": "Community",
+    "subtitle": "Fan Free Board",
+    "write": "Write",
+    "back_to_list": "← Back to List",
+    "no_posts": "No posts yet.",
+    "loading": "Loading...",
+    "table": {
+      "number": "No.",
+      "title": "Title",
+      "author": "Author",
+      "date": "Date",
+      "views": "Views",
+      "comments": "Comments"
+    },
+    "post": {
+      "views": "{count} views",
+      "comments": "{count} comments",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "Nickname",
+      "nickname_placeholder": "Enter nickname (max 20 chars)",
+      "title": "Title",
+      "title_placeholder": "Enter title (max 100 chars)",
+      "content": "Content",
+      "content_placeholder": "Enter content",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "submitting": "Submitting..."
+    },
+    "validation": {
+      "nickname_required": "Please enter a nickname",
+      "nickname_max": "Nickname must be 20 characters or less",
+      "title_required": "Please enter a title",
+      "title_max": "Title must be 100 characters or less",
+      "content_required": "Please enter content"
+    },
+    "detail": {
+      "report": "Report",
+      "delete": "Delete",
+      "edit": "Edit"
+    },
+    "comment": {
+      "title": "Comments",
+      "placeholder": "Write a comment (max 200 chars)",
+      "submit": "Post",
+      "no_comments": "Be the first to comment!",
+      "delete_confirm": "Delete this comment?"
+    },
+    "report": {
+      "title": "Report",
+      "reason": "Reason",
+      "reasons": {
+        "spam": "Spam/Advertising",
+        "inappropriate": "Inappropriate Content",
+        "harassment": "Harassment/Hate",
+        "other": "Other"
+      },
+      "detail": "Details (optional)",
+      "detail_placeholder": "Please describe the issue",
+      "submit": "Submit Report",
+      "cancel": "Cancel",
+      "success": "Report submitted",
+      "submitting": "Submitting..."
+    }
   }
 }

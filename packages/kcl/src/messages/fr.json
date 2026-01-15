@@ -55,7 +55,8 @@
     "switch_account": "Changer de compte",
     "mode_switch": "Changer de mode",
     "hall_of_fame": "Temple de la Renommée",
-    "news": "Actualités"
+    "news": "Actualités",
+    "community": "Communauté"
   },
   "News": {
     "title": "Actualités et Insights",
@@ -162,5 +163,72 @@
       "same": "-"
     },
     "view_details": "Voir les détails"
+  },
+  "Community": {
+    "title": "Communauté",
+    "subtitle": "Forum Libre des Fans",
+    "write": "Écrire",
+    "back_to_list": "← Retour à la liste",
+    "no_posts": "Aucune publication.",
+    "loading": "Chargement...",
+    "table": {
+      "number": "N°",
+      "title": "Titre",
+      "author": "Auteur",
+      "date": "Date",
+      "views": "Vues",
+      "comments": "Commentaires"
+    },
+    "post": {
+      "views": "{count} vues",
+      "comments": "{count} commentaires",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "Pseudo",
+      "nickname_placeholder": "Entrez votre pseudo (max. 20 caractères)",
+      "title": "Titre",
+      "title_placeholder": "Entrez le titre (max. 100 caractères)",
+      "content": "Contenu",
+      "content_placeholder": "Entrez le contenu",
+      "submit": "Publier",
+      "cancel": "Annuler",
+      "submitting": "Publication..."
+    },
+    "validation": {
+      "nickname_required": "Veuillez entrer un pseudo",
+      "nickname_max": "Le pseudo doit faire 20 caractères ou moins",
+      "title_required": "Veuillez entrer un titre",
+      "title_max": "Le titre doit faire 100 caractères ou moins",
+      "content_required": "Veuillez entrer du contenu"
+    },
+    "detail": {
+      "report": "Signaler",
+      "delete": "Supprimer",
+      "edit": "Modifier"
+    },
+    "comment": {
+      "title": "Commentaires",
+      "placeholder": "Écrire un commentaire (max. 200 caractères)",
+      "submit": "Publier",
+      "no_comments": "Soyez le premier à commenter!",
+      "delete_confirm": "Supprimer ce commentaire?"
+    },
+    "report": {
+      "title": "Signaler",
+      "reason": "Raison",
+      "reasons": {
+        "spam": "Spam/Publicité",
+        "inappropriate": "Contenu inapproprié",
+        "harassment": "Harcèlement/Haine",
+        "other": "Autre"
+      },
+      "detail": "Détails (optionnel)",
+      "detail_placeholder": "Décrivez le problème",
+      "submit": "Envoyer le signalement",
+      "cancel": "Annuler",
+      "success": "Signalement envoyé",
+      "submitting": "Envoi..."
+    }
   }
 }

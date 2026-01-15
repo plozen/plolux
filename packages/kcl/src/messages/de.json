@@ -55,7 +55,8 @@
     "switch_account": "Konto wechseln",
     "mode_switch": "Modus wechseln",
     "hall_of_fame": "Ruhmeshalle",
-    "news": "Nachrichten"
+    "news": "Nachrichten",
+    "community": "Community"
   },
   "News": {
     "title": "Nachrichten & Einblicke",
@@ -162,5 +163,72 @@
       "same": "-"
     },
     "view_details": "Details ansehen"
+  },
+  "Community": {
+    "title": "Community",
+    "subtitle": "Freies Fan-Forum",
+    "write": "Schreiben",
+    "back_to_list": "← Zurück zur Liste",
+    "no_posts": "Noch keine Beiträge.",
+    "loading": "Laden...",
+    "table": {
+      "number": "Nr.",
+      "title": "Titel",
+      "author": "Autor",
+      "date": "Datum",
+      "views": "Aufrufe",
+      "comments": "Kommentare"
+    },
+    "post": {
+      "views": "{count} Aufrufe",
+      "comments": "{count} Kommentare",
+      "created_at": "{date}"
+    },
+    "form": {
+      "nickname": "Spitzname",
+      "nickname_placeholder": "Spitzname eingeben (max. 20 Zeichen)",
+      "title": "Titel",
+      "title_placeholder": "Titel eingeben (max. 100 Zeichen)",
+      "content": "Inhalt",
+      "content_placeholder": "Inhalt eingeben",
+      "submit": "Veröffentlichen",
+      "cancel": "Abbrechen",
+      "submitting": "Wird gesendet..."
+    },
+    "validation": {
+      "nickname_required": "Bitte gib einen Spitznamen ein",
+      "nickname_max": "Spitzname darf maximal 20 Zeichen haben",
+      "title_required": "Bitte gib einen Titel ein",
+      "title_max": "Titel darf maximal 100 Zeichen haben",
+      "content_required": "Bitte gib Inhalt ein"
+    },
+    "detail": {
+      "report": "Melden",
+      "delete": "Löschen",
+      "edit": "Bearbeiten"
+    },
+    "comment": {
+      "title": "Kommentare",
+      "placeholder": "Kommentar schreiben (max. 200 Zeichen)",
+      "submit": "Posten",
+      "no_comments": "Sei der Erste, der kommentiert!",
+      "delete_confirm": "Diesen Kommentar löschen?"
+    },
+    "report": {
+      "title": "Melden",
+      "reason": "Grund",
+      "reasons": {
+        "spam": "Spam/Werbung",
+        "inappropriate": "Unangemessener Inhalt",
+        "harassment": "Belästigung/Hass",
+        "other": "Sonstiges"
+      },
+      "detail": "Details (optional)",
+      "detail_placeholder": "Bitte beschreibe das Problem",
+      "submit": "Meldung senden",
+      "cancel": "Abbrechen",
+      "success": "Meldung gesendet",
+      "submitting": "Wird gesendet..."
+    }
   }
 }
