@@ -53,10 +53,11 @@ jobs:
     needs: changes
     # 실행 조건:
     # 1. [no-deploy] 태그가 없을 것
-    # 2. plozen 패키지가 변경되었거나, [deploy:plozen] 또는 [deploy:all] 태그가 있을 때
+    # 2. plolux 패키지가 변경되었거나, [deploy:plolux] 또는 [deploy:all] 태그가 있을 때
+    # NOTE: kcl, plozen은 SSR이 있어 GitHub Pages 배포 불가 → sync만 실행
     if: |
       !contains(github.event.head_commit.message, '[no-deploy]') &&
-      (needs.changes.outputs.plozen == 'true' || needs.changes.outputs.plolux == 'true' || needs.changes.outputs.kcl == 'true' || contains(github.event.head_commit.message, '[deploy:plozen]') ||  contains(github.event.head_commit.message, '[deploy:plolux]') || contains(github.event.head_commit.message, '[deploy:kcl]') || contains(github.event.head_commit.message, '[deploy:all]'))
+      (needs.changes.outputs.plolux == 'true' || contains(github.event.head_commit.message, '[deploy:plolux]') || contains(github.event.head_commit.message, '[deploy:all]'))
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -132,21 +133,8 @@ jobs:
           cp -r packages/plolux/out/* staging/plolux/ || { echo "❌ 'plolux out' directory not found."; exit 1; }
           echo "📦 plolux copied to staging/plolux."
 
-      - name: kcl 패키지 빌드
-        run: |
-          echo "🚀 Building kcl..."
-          pnpm --filter kcl build
-          echo "✅ kcl build complete."
-
-      - name: kcl 빌드 결과물을 'staging'으로 복사
-        run: |
-          # kcl 디렉토리 생성 (URL: /kcl -> Repo:plolux + Dir:kcl)
-          mkdir -p staging/kcl
-
-          # Next.js output: export 모드일 경우 'out' 폴더가 생성됨
-          # 주의: next.config.mjs output: 'export' 설정 필요
-          cp -r packages/kcl/out/* staging/kcl/ || { echo "❌ 'kcl out' directory not found."; exit 1; }
-          echo "📦 kcl copied to staging/kcl."
+      # NOTE: kcl, plozen은 SSR/API 라우트가 있어 GitHub Pages 배포 불가
+      # 해당 패키지들은 sync job을 통해 별도 리포지토리로 전송 후 Vercel 등에서 배포
 
       # -------------------------------------------------------------
       # GitHub Pages 업로드 및 배포

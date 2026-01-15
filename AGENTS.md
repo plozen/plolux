@@ -106,7 +106,42 @@ Follow the specific layer structure:
 5.  **Persona**: Act as a technical partner (Jeff Dean persona defined in `CLAUDE.md`).
 6.  **I18n Check**: When modifying `kcl`, ALWAYS check `src/messages/` to ensure translations exist for 12 supported languages if adding text.
 
-## 5. Security & Env
+## 5. Deployment Architecture (CRITICAL)
+
+### Repository Structure
+
+Plolux는 **모노레포 + 개별 리포 sync** 구조를 사용한다:
+
+```
+plolux (모노레포) ─── CI/CD sync ───┬──→ kcl 리포 (별도)
+                                    └──→ plozen 리포 (별도)
+```
+
+- **plolux**: 개발용 모노레포. 모든 코드 변경은 여기서 발생.
+- **kcl / plozen 리포**: 동일 GitHub 계정의 별도 리포지토리. plolux에서 sync됨.
+- **Sync**: plolux 커밋 시 CI/CD가 각 리포로 코드를 push.
+
+### Deployment Flow
+
+| 단계              | 동작                                         |
+| ----------------- | -------------------------------------------- |
+| 1. plolux 커밋    | 개발자가 모노레포에 push                     |
+| 2. CI/CD sync     | `deploy.yml`이 kcl/plozen 리포로 코드 동기화 |
+| 3. 개별 리포 배포 | 각 리포의 자체 워크플로우가 배포 실행        |
+
+### SSR 프로젝트와 GitHub Pages
+
+**중요**: `kcl`, `plozen`은 SSR/API 라우트가 있어 **GitHub Pages 배포 불가**.
+
+| 패키지           | SSR/API | 배포 플랫폼       | GitHub Pages |
+| ---------------- | ------- | ----------------- | ------------ |
+| kcl              | ✅ 있음 | Vercel/Cloudflare | ❌ 불가      |
+| plozen           | ✅ 있음 | Vercel/Cloudflare | ❌ 불가      |
+| plolux (landing) | ❌ 없음 | GitHub Pages 가능 | ✅ 가능      |
+
+**결론**: SSR 프로젝트는 sync만 실행하고, 정적 배포(gh-pages)는 시도하지 않음.
+
+## 6. Security & Env
 
 - Never commit secrets.
 - Use `NEXT_PUBLIC_` prefix only for variables safe for browser exposure.
