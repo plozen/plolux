@@ -160,6 +160,7 @@
       "up": "▲ {count}",
       "down": "▼ {count}",
       "same": "-"
-    }
+    },
+    "view_details": "상세보기"
   }
 }
