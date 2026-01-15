@@ -164,6 +164,7 @@
     },
     "view_details": "Lihat Detail"
   },
+
   "Community": {
     "title": "Komunitas",
     "subtitle": "Forum Bebas Penggemar",
@@ -230,5 +231,57 @@
       "success": "Laporan terkirim",
       "submitting": "Mengirim..."
     }
+  },
+  "Disclaimer": {
+    "banner": "Ini adalah aplikasi tidak resmi yang dibuat oleh penggemar. Semua logo perusahaan dan informasi artis adalah milik pemiliknya masing-masing. Aplikasi ini tidak berafiliasi dengan perusahaan hiburan manapun.",
+    "terms": "Ketentuan Layanan",
+    "privacy": "Kebijakan Privasi",
+    "copyright": "© 2026 KCL. Hak cipta dilindungi."
+  },
+  "Legal": {
+    "last_updated": "Terakhir Diperbarui",
+    "legal_review_notice": "Dokumen ini dapat diperbarui setelah tinjauan hukum.",
+    "contact_title": "Hubungi Kami",
+    "contact_content": "Jika ada pertanyaan tentang kebijakan ini, hubungi kami di contact@kcl.fan",
+    "terms_title": "Ketentuan Layanan",
+    "terms_description": "Ketentuan Layanan dan Perjanjian Penggunaan KCL",
+    "terms_section1_title": "Pendahuluan",
+    "terms_section1_content": "Selamat datang di KCL (K-pop Company League). Dengan mengakses layanan kami, Anda menyetujui Ketentuan ini. Ini adalah aplikasi tidak resmi yang dibuat oleh penggemar.",
+    "terms_section2_title": "Penggunaan Layanan",
+    "terms_section2_content": "Dengan menggunakan KCL, Anda setuju untuk:",
+    "terms_section2_item1": "Menggunakan layanan hanya untuk tujuan pribadi dan non-komersial",
+    "terms_section2_item2": "Tidak mengganggu layanan",
+    "terms_section2_item3": "Tidak mencoba memanipulasi sistem voting",
+    "terms_section3_title": "Hak Kekayaan Intelektual",
+    "terms_section3_content": "Semua logo dan gambar artis adalah milik pemiliknya masing-masing.",
+    "terms_section4_title": "Penafian",
+    "terms_section4_content": "KCL disediakan \"sebagaimana adanya\" tanpa jaminan apapun.",
+    "terms_section5_title": "Perubahan Layanan",
+    "terms_section5_content": "Kami berhak mengubah atau menghentikan layanan kapan saja.",
+    "terms_section6_title": "Hukum yang Berlaku",
+    "terms_section6_content": "Ketentuan ini diatur oleh hukum Republik Korea.",
+    "privacy_title": "Kebijakan Privasi",
+    "privacy_description": "Kebijakan Privasi dan Perlindungan Data KCL",
+    "privacy_section1_title": "Ikhtisar",
+    "privacy_section1_content": "KCL menghormati privasi Anda dan melindungi data pribadi Anda.",
+    "privacy_section2_title": "Informasi yang Dikumpulkan",
+    "privacy_section2_content": "Kami hanya mengumpulkan informasi minimum yang diperlukan:",
+    "privacy_section2_item1": "Hash IP: Kami menyimpan versi anonim dari alamat IP Anda.",
+    "privacy_section2_item2": "Catatan Voting: Aktivitas voting Anda dicatat.",
+    "privacy_section2_item3": "Informasi Perangkat: Jenis perangkat dan browser dasar.",
+    "privacy_section3_title": "Penggunaan Informasi",
+    "privacy_section3_content": "Informasi Anda digunakan untuk:",
+    "privacy_section3_item1": "Operasi Layanan: Menyediakan fitur voting",
+    "privacy_section3_item2": "Pencegahan Penyalahgunaan: Mencegah manipulasi voting",
+    "privacy_section3_item3": "Peningkatan Layanan: Menganalisis pola penggunaan",
+    "privacy_section4_title": "Cookie",
+    "privacy_section4_content": "KCL menggunakan cookie penting untuk sesi dan preferensi.",
+    "privacy_section5_title": "Keamanan Data",
+    "privacy_section5_content": "Kami menerapkan langkah keamanan yang tepat termasuk enkripsi.",
+    "privacy_section6_title": "Berbagi dengan Pihak Ketiga",
+    "privacy_section6_content": "Kami tidak menjual informasi pribadi Anda kepada pihak ketiga.",
+    "privacy_section7_title": "Hak Anda",
+    "privacy_section7_content": "Anda memiliki hak untuk mengakses, memperbaiki, atau menghapus data Anda."
+
   }
 }

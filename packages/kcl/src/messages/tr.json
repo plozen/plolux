@@ -164,6 +164,7 @@
     },
     "view_details": "Detayları Görüntüle"
   },
+
   "Community": {
     "title": "Topluluk",
     "subtitle": "Hayran Serbest Forumu",
@@ -230,5 +231,57 @@
       "success": "Rapor gönderildi",
       "submitting": "Gönderiliyor..."
     }
+  },
+  "Disclaimer": {
+    "banner": "Bu, hayranlar tarafından oluşturulan resmi olmayan bir uygulamadır. Tüm şirket logoları ve sanatçı bilgileri ilgili sahiplerine aittir. Bu uygulama herhangi bir eğlence şirketiyle bağlantılı değildir.",
+    "terms": "Kullanım Koşulları",
+    "privacy": "Gizlilik Politikası",
+    "copyright": "© 2026 KCL. Tüm hakları saklıdır."
+  },
+  "Legal": {
+    "last_updated": "Son Güncelleme",
+    "legal_review_notice": "Bu belge hukuki incelemeden sonra güncellenebilir.",
+    "contact_title": "İletişim",
+    "contact_content": "Bu politika hakkında sorularınız için contact@kcl.fan adresinden bize ulaşın",
+    "terms_title": "Kullanım Koşulları",
+    "terms_description": "KCL Kullanım Koşulları ve Hizmet Sözleşmesi",
+    "terms_section1_title": "Giriş",
+    "terms_section1_content": "KCL'ye (K-pop Company League) hoş geldiniz. Hizmetimize erişerek bu Koşulları kabul etmiş olursunuz. Bu, hayranlar tarafından oluşturulan resmi olmayan bir uygulamadır.",
+    "terms_section2_title": "Hizmet Kullanımı",
+    "terms_section2_content": "KCL'yi kullanarak şunları kabul edersiniz:",
+    "terms_section2_item1": "Hizmeti yalnızca kişisel ve ticari olmayan amaçlarla kullanmak",
+    "terms_section2_item2": "Hizmeti aksatmamak",
+    "terms_section2_item3": "Oylama sistemlerini manipüle etmeye çalışmamak",
+    "terms_section3_title": "Fikri Mülkiyet",
+    "terms_section3_content": "Tüm logolar ve sanatçı görselleri ilgili sahiplerine aittir.",
+    "terms_section4_title": "Sorumluluk Reddi",
+    "terms_section4_content": "KCL herhangi bir garanti olmaksızın \"olduğu gibi\" sağlanmaktadır.",
+    "terms_section5_title": "Hizmet Değişiklikleri",
+    "terms_section5_content": "Hizmeti istediğimiz zaman değiştirme veya sonlandırma hakkını saklı tutarız.",
+    "terms_section6_title": "Geçerli Hukuk",
+    "terms_section6_content": "Bu Koşullar Kore Cumhuriyeti yasalarına tabidir.",
+    "privacy_title": "Gizlilik Politikası",
+    "privacy_description": "KCL Gizlilik Politikası ve Veri Koruma",
+    "privacy_section1_title": "Genel Bakış",
+    "privacy_section1_content": "KCL gizliliğinize saygı duyar ve kişisel verilerinizi korur.",
+    "privacy_section2_title": "Toplanan Bilgiler",
+    "privacy_section2_content": "Yalnızca minimum gerekli bilgileri topluyoruz:",
+    "privacy_section2_item1": "IP Hash: Anonimleştirilmiş IP adresinizi saklıyoruz.",
+    "privacy_section2_item2": "Oylama Kayıtları: Oylama aktiviteniz kaydedilir.",
+    "privacy_section2_item3": "Cihaz Bilgileri: Temel cihaz türü ve tarayıcı bilgileri.",
+    "privacy_section3_title": "Bilgi Kullanımı",
+    "privacy_section3_content": "Bilgileriniz şunlar için kullanılır:",
+    "privacy_section3_item1": "Hizmet İşletimi: Oylama özelliklerini sağlamak",
+    "privacy_section3_item2": "Kötüye Kullanımı Önleme: Oy manipülasyonunu önlemek",
+    "privacy_section3_item3": "Hizmet İyileştirme: Kullanım kalıplarını analiz etmek",
+    "privacy_section4_title": "Çerezler",
+    "privacy_section4_content": "KCL oturumlar ve tercihler için gerekli çerezleri kullanır.",
+    "privacy_section5_title": "Veri Güvenliği",
+    "privacy_section5_content": "Şifreleme dahil uygun güvenlik önlemlerini uyguluyoruz.",
+    "privacy_section6_title": "Üçüncü Taraflarla Paylaşım",
+    "privacy_section6_content": "Kişisel bilgilerinizi üçüncü taraflara satmıyoruz.",
+    "privacy_section7_title": "Haklarınız",
+    "privacy_section7_content": "Verilerinize erişme, düzeltme veya silme hakkınız vardır."
+
   }
 }
