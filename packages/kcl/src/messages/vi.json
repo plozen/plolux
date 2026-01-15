@@ -120,7 +120,7 @@
   },
   "League": {
     "season": {
-      "title": "Mùa giải tháng {month} năm {year}",
+      "title": "KPOP COMPANY LEAGUE Mùa giải tháng {month} năm {year}",
       "days_remaining": "Còn {days} ngày",
       "ends_today": "Kết thúc hôm nay!",
       "current_leader": "Hiện đang #1",

@@ -18,7 +18,8 @@
     flex-direction: column;
     position: sticky;
     top: 24px;
-    height: calc(100vh - 48px); // 전체 높이 확장
+    height: fit-content; // 콘텐츠 높이에 맞춤
+    max-height: calc(100vh - 48px); // 최대 높이 제한
     width: 100%;
     max-width: 340px;
     min-width: 280px;

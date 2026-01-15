@@ -161,65 +161,65 @@ export default function HomePage() {
 
   return (
     <div className={styles.dashboardContainer}>
-      {/* 메인 레이아웃 (Grid/Flex) */}
-      <div className={styles.mainLayout}>
-        {/* 좌측 콘텐츠 영역 (헤더 + 탭 + 리스트) */}
-        <div className={styles.contentColumn}>
-          {/* 시즌 대시보드 */}
-          <SeasonHeader
-            season={season}
-            leader={leader}
-            promotionBattle={promotionBattle}
-            onVote={handleVote}
-          />
+      {/* 상단 영역: 시즌 헤더 + 검색 + 탭 (전체 너비) */}
+      <header className={styles.headerSection}>
+        {/* 시즌 대시보드 */}
+        <SeasonHeader
+          season={season}
+          leader={leader}
+          promotionBattle={promotionBattle}
+          onVote={handleVote}
+        />
 
-          {/* 검색창 */}
-          <div className={styles.searchSection}>
-            <SearchBar onSelect={handleSearchSelect} />
-          </div>
-
-          {/* 탭 네비게이션 */}
-          <LeagueTabs
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            premierCount={premierLeague.length}
-            challengersCount={allChallengers.length}
-          />
-
-          {/* 탭 콘텐츠 */}
-          <section className={styles.leagueListSection}>
-            <AnimatePresence mode="wait">
-              {activeTab === 'premier' ? (
-                <motion.div
-                  key="premier"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <PremierLeague companies={premierLeague} onVote={handleVote} />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="challengers"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Challengers
-                    companies={challengers}
-                    onVote={handleVote}
-                    onLoadMore={handleLoadMore}
-                    hasMore={hasMoreChallengers}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </section>
+        {/* 검색창 */}
+        <div className={styles.searchSection}>
+          <SearchBar onSelect={handleSearchSelect} />
         </div>
 
-        {/* 우측 투표 패널 (데스크톱 전용) */}
+        {/* 탭 네비게이션 */}
+        <LeagueTabs
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          premierCount={premierLeague.length}
+          challengersCount={allChallengers.length}
+        />
+      </header>
+
+      {/* 하단 영역: 탭 콘텐츠 + Battle Station (2열 레이아웃) */}
+      <div className={styles.contentLayout}>
+        {/* 좌측: 탭 콘텐츠 영역 */}
+        <section className={styles.leagueListSection}>
+          <AnimatePresence mode="wait">
+            {activeTab === 'premier' ? (
+              <motion.div
+                key="premier"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.2 }}
+              >
+                <PremierLeague companies={premierLeague} onVote={handleVote} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="challengers"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Challengers
+                  companies={challengers}
+                  onVote={handleVote}
+                  onLoadMore={handleLoadMore}
+                  hasMore={hasMoreChallengers}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </section>
+
+        {/* 우측: Battle Station 패널 (데스크톱 전용) */}
         <aside className={styles.panelColumn}>
           <StickyPanel isVisible={true} title="Battle Station">
             <VoteController company={selectedCompany} onVoteSuccess={handleVoteSuccess} />
