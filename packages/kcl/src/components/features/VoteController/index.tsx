@@ -9,17 +9,25 @@
  * - 아티스트 칩(Chips) 선택 UI
  * - 대형 투표 버튼 + 파티클 효과
  * - 현재 화력 점수 표시
+ * - 투표권 상태 표시 (VoteQuotaBar)
+ *
+ * T1.8.2 변경사항:
+ * - 1회 투표 = 1점 (기존 100점에서 변경)
+ * - 일일 투표권 30회 제한
+ * - 투표권 소진 시 버튼 비활성화
  */
 
 'use client';
 
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Flame, Check } from 'lucide-react';
+import { Zap, Flame, Check, Timer } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import classNames from 'classnames';
 import { CompanyType } from '@/lib/mock-data';
 import { useVote } from '@/hooks/useVote';
+import { useVoteQuota } from '@/hooks/useVoteQuota';
+import VoteQuotaBar from '@/components/features/vote/VoteQuotaBar';
 import styles from './VoteController.module.scss';
 
 interface VoteControllerProps {
@@ -29,15 +37,19 @@ interface VoteControllerProps {
   selectedArtist?: string;
   /** 투표 성공 시 콜백 (리스트 하이라이트용) */
   onVoteSuccess?: (companyId: string) => void;
+  /** 표시 변형 - PC: full, Mobile: compact */
+  variant?: 'full' | 'compact';
 }
 
 export default function VoteController({
   company,
   selectedArtist,
   onVoteSuccess,
+  variant = 'full',
 }: VoteControllerProps) {
   const t = useTranslations('Vote');
   const { submitVote, isLoading } = useVote();
+  const { quota, useVote: consumeVote, isLoading: isQuotaLoading } = useVoteQuota();
 
   // 선택된 아티스트 상태 (초기값은 props에서 전달받거나 첫번째 아티스트)
   const [chosenArtist, setChosenArtist] = useState<string | null>(selectedArtist || null);
@@ -53,10 +65,12 @@ export default function VoteController({
 
   // 투표 핸들러
   const handleVote = useCallback(async () => {
-    if (!company || isLoading) return;
+    if (!company || isLoading || !quota.canVote) return;
 
     const success = await submitVote(company.id, company.image);
     if (success) {
+      // 투표권 차감
+      consumeVote();
       setShowSuccess(true);
       onVoteSuccess?.(company.id);
 
@@ -65,7 +79,7 @@ export default function VoteController({
         setShowSuccess(false);
       }, 1500);
     }
-  }, [company, isLoading, submitVote, onVoteSuccess]);
+  }, [company, isLoading, quota.canVote, submitVote, consumeVote, onVoteSuccess]);
 
   // 회사가 선택되지 않았을 때
   if (!company) {
@@ -125,13 +139,19 @@ export default function VoteController({
 
       {/* 대형 투표 버튼 */}
       <motion.button
-        className={styles.voteButton}
+        className={classNames(styles.voteButton, {
+          [styles.disabled]: !quota.canVote,
+        })}
         onClick={handleVote}
-        disabled={isLoading}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.95 }}
+        disabled={isLoading || !quota.canVote}
+        whileHover={quota.canVote ? { scale: 1.02 } : {}}
+        whileTap={quota.canVote ? { scale: 0.95 } : {}}
         style={{
-          background: showSuccess ? 'var(--color-secondary)' : company.image,
+          background: showSuccess
+            ? 'var(--color-secondary)'
+            : !quota.canVote
+              ? 'var(--color-text-dim)'
+              : company.image,
         }}
       >
         <AnimatePresence mode="wait">
@@ -144,7 +164,18 @@ export default function VoteController({
               exit={{ scale: 0.5, opacity: 0 }}
             >
               <Check size={32} strokeWidth={3} />
-              <span>+100</span>
+              <span>+1</span>
+            </motion.div>
+          ) : !quota.canVote ? (
+            <motion.div
+              key="exhausted"
+              className={styles.exhaustedContent}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <Timer size={28} />
+              <span>{t('button.exhausted')}</span>
             </motion.div>
           ) : (
             <motion.div
@@ -155,11 +186,22 @@ export default function VoteController({
               exit={{ opacity: 0 }}
             >
               <Flame size={28} />
-              <span>{isLoading ? 'Sending...' : 'Send Firepower'}</span>
+              <span>{isLoading ? 'Sending...' : t('button.vote')}</span>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.button>
+
+      {/* 투표권 상태 바 */}
+      {!isQuotaLoading && (
+        <VoteQuotaBar
+          used={quota.used}
+          max={quota.max}
+          hoursUntilReset={quota.hoursUntilReset}
+          minutesUntilReset={quota.minutesUntilReset}
+          variant={variant}
+        />
+      )}
 
       {/* 선택된 아티스트 컨텍스트 */}
       {chosenArtist && (

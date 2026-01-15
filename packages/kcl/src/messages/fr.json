@@ -68,7 +68,19 @@
     "select_artist": "Sélectionnez un artiste",
     "success": "Vote réussi!",
     "error": "Échec du vote. Veuillez réessayer.",
-    "daily_limit": "Vous avez atteint votre limite quotidienne de votes."
+    "daily_limit": "Vous avez atteint votre limite quotidienne de votes.",
+    "quota": {
+      "title": "Votes du Jour",
+      "remaining": "{remaining}/{max}",
+      "reset_hint": "Réinitialisation à minuit",
+      "exhausted_title": "Revenez demain!",
+      "exhausted_countdown": "Réinitialisation dans {hours}h {minutes}m"
+    },
+    "button": {
+      "vote": "Voter",
+      "exhausted": "Voté"
+    },
+    "vote_success": "+1 Puissance pour {company}"
   },
   "League": {
     "season": {

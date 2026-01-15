@@ -68,7 +68,19 @@
     "select_artist": "アーティストを選択",
     "success": "投票成功！",
     "error": "投票に失敗しました。もう一度お試しください。",
-    "daily_limit": "本日の投票上限に達しました。"
+    "daily_limit": "本日の投票上限に達しました。",
+    "quota": {
+      "title": "本日の投票権",
+      "remaining": "{remaining}/{max}",
+      "reset_hint": "深夜0時にリセット",
+      "exhausted_title": "また明日お越しください！",
+      "exhausted_countdown": "{hours}時間{minutes}分後にリセット"
+    },
+    "button": {
+      "vote": "投票する",
+      "exhausted": "投票完了"
+    },
+    "vote_success": "{company}に+1パワー"
   },
   "League": {
     "season": {

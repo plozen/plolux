@@ -68,7 +68,19 @@
     "select_artist": "选择艺人",
     "success": "投票成功！",
     "error": "投票失败。请重试。",
-    "daily_limit": "您已达到每日投票限制。"
+    "daily_limit": "您已达到每日投票限制。",
+    "quota": {
+      "title": "今日投票券",
+      "remaining": "{remaining}/{max}",
+      "reset_hint": "午夜刷新",
+      "exhausted_title": "明天再来！",
+      "exhausted_countdown": "{hours}小时{minutes}分钟后刷新"
+    },
+    "button": {
+      "vote": "投票",
+      "exhausted": "已投票"
+    },
+    "vote_success": "{company} +1火力"
   },
   "League": {
     "season": {

@@ -68,7 +68,19 @@
     "select_artist": "Chọn một nghệ sĩ",
     "success": "Bình chọn thành công!",
     "error": "Bình chọn thất bại. Vui lòng thử lại.",
-    "daily_limit": "Bạn đã đạt giới hạn bình chọn hàng ngày."
+    "daily_limit": "Bạn đã đạt giới hạn bình chọn hàng ngày.",
+    "quota": {
+      "title": "Phiếu Bầu Hôm Nay",
+      "remaining": "{remaining}/{max}",
+      "reset_hint": "Làm mới vào nửa đêm",
+      "exhausted_title": "Hẹn gặp lại ngày mai!",
+      "exhausted_countdown": "Làm mới sau {hours}g {minutes}p"
+    },
+    "button": {
+      "vote": "Bình Chọn",
+      "exhausted": "Đã Bình Chọn"
+    },
+    "vote_success": "+1 Sức Mạnh cho {company}"
   },
   "League": {
     "season": {

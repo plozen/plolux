@@ -68,7 +68,19 @@
     "select_artist": "Pilih artis",
     "success": "Vote berhasil!",
     "error": "Gagal vote. Silakan coba lagi.",
-    "daily_limit": "Anda telah mencapai batas vote harian."
+    "daily_limit": "Anda telah mencapai batas vote harian.",
+    "quota": {
+      "title": "Vote Hari Ini",
+      "remaining": "{remaining}/{max}",
+      "reset_hint": "Diperbarui saat tengah malam",
+      "exhausted_title": "Kembali besok!",
+      "exhausted_countdown": "Diperbarui dalam {hours}j {minutes}m"
+    },
+    "button": {
+      "vote": "Vote",
+      "exhausted": "Sudah Vote"
+    },
+    "vote_success": "+1 Firepower untuk {company}"
   },
   "League": {
     "season": {

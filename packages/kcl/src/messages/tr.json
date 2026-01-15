@@ -68,7 +68,19 @@
     "select_artist": "Bir sanatçı seçin",
     "success": "Oy başarılı!",
     "error": "Oy verilemedi. Lütfen tekrar deneyin.",
-    "daily_limit": "Günlük oy limitinize ulaştınız."
+    "daily_limit": "Günlük oy limitinize ulaştınız.",
+    "quota": {
+      "title": "Bugünkü Oylar",
+      "remaining": "{remaining}/{max}",
+      "reset_hint": "Gece yarısı sıfırlanır",
+      "exhausted_title": "Yarın tekrar gelin!",
+      "exhausted_countdown": "{hours}s {minutes}d sonra sıfırlanır"
+    },
+    "button": {
+      "vote": "Oy Ver",
+      "exhausted": "Oy Verildi"
+    },
+    "vote_success": "{company} için +1 Güç"
   },
   "League": {
     "season": {

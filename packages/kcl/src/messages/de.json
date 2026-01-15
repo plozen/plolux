@@ -68,7 +68,19 @@
     "select_artist": "Wählen Sie einen Künstler",
     "success": "Abstimmung erfolgreich!",
     "error": "Abstimmung fehlgeschlagen. Bitte versuchen Sie es erneut.",
-    "daily_limit": "Sie haben Ihr tägliches Abstimmungslimit erreicht."
+    "daily_limit": "Sie haben Ihr tägliches Abstimmungslimit erreicht.",
+    "quota": {
+      "title": "Heutige Stimmen",
+      "remaining": "{remaining}/{max}",
+      "reset_hint": "Wird um Mitternacht zurückgesetzt",
+      "exhausted_title": "Kommen Sie morgen wieder!",
+      "exhausted_countdown": "Zurücksetzung in {hours}h {minutes}m"
+    },
+    "button": {
+      "vote": "Abstimmen",
+      "exhausted": "Abgestimmt"
+    },
+    "vote_success": "+1 Feuerkraft für {company}"
   },
   "League": {
     "season": {

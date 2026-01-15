@@ -68,7 +68,19 @@
     "select_artist": "Selecione um artista",
     "success": "Voto bem-sucedido!",
     "error": "Falha ao votar. Por favor, tente novamente.",
-    "daily_limit": "Você atingiu seu limite diário de votos."
+    "daily_limit": "Você atingiu seu limite diário de votos.",
+    "quota": {
+      "title": "Votos de Hoje",
+      "remaining": "{remaining}/{max}",
+      "reset_hint": "Renova à meia-noite",
+      "exhausted_title": "Volte amanhã!",
+      "exhausted_countdown": "Renovação em {hours}h {minutes}m"
+    },
+    "button": {
+      "vote": "Votar",
+      "exhausted": "Votado"
+    },
+    "vote_success": "+1 Potência para {company}"
   },
   "League": {
     "season": {

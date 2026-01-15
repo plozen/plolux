@@ -68,7 +68,19 @@
     "select_artist": "เลือกศิลปิน",
     "success": "โหวตสำเร็จ!",
     "error": "โหวตไม่สำเร็จ กรุณาลองใหม่อีกครั้ง",
-    "daily_limit": "คุณถึงขีดจำกัดการโหวตรายวันแล้ว"
+    "daily_limit": "คุณถึงขีดจำกัดการโหวตรายวันแล้ว",
+    "quota": {
+      "title": "โหวตวันนี้",
+      "remaining": "{remaining}/{max}",
+      "reset_hint": "รีเซ็ตเที่ยงคืน",
+      "exhausted_title": "มาใหม่พรุ่งนี้!",
+      "exhausted_countdown": "รีเซ็ตใน {hours}ชม. {minutes}น."
+    },
+    "button": {
+      "vote": "โหวต",
+      "exhausted": "โหวตแล้ว"
+    },
+    "vote_success": "+1 พลังไฟให้ {company}"
   },
   "League": {
     "season": {
