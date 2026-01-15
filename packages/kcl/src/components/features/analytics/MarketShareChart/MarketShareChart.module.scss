@@ -55,7 +55,8 @@
   margin-top: 16px;
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+    // 2열 유지 (3열은 공간 부족으로 레이아웃 깨짐)
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 }
@@ -68,6 +69,7 @@
   background: rgba(255, 255, 255, 0.03);
   border-radius: 8px;
   transition: background 0.2s ease;
+  min-width: 0; // flex item 내부 text-overflow 작동 필수
 
   &:hover {
     background: rgba(255, 255, 255, 0.06);

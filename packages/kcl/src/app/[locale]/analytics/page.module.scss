@@ -110,19 +110,11 @@
 .marketShareSection {
   flex: 1;
   min-width: 0;
-
-  @media (min-width: 768px) {
-    flex: 0 0 50%;
-  }
 }
 
 .risingSection {
   flex: 1;
   min-width: 0;
-
-  @media (min-width: 768px) {
-    flex: 0 0 50%;
-  }
 }
 
 // 푸터
