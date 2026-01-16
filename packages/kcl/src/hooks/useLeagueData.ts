@@ -141,10 +141,16 @@ export function useLeagueData(options: UseLeagueDataOptions = {}): UseLeagueData
   // T1.30: 기본 polling 주기를 20초로 변경 (Redis 캐시 TTL 25초와 조화)
   const { refreshInterval = 20000, revalidateOnFocus = true, fallbackData } = options;
 
+  // 개발 환경에서 불필요한 API 호출 방지
+  const isDev = process.env.NODE_ENV === 'development';
+  const hasFallback = !!fallbackData;
+
   const { data, error, isLoading, mutate } = useSWR<CompaniesResponse>('/api/companies', fetcher, {
     refreshInterval,
-    revalidateOnFocus,
-    dedupingInterval: 5000, // 5초간 중복 요청 방지
+    revalidateOnFocus: isDev ? false : revalidateOnFocus, // 개발 모드: 포커스 재검증 비활성화
+    revalidateOnReconnect: !isDev, // 개발 모드: 네트워크 복구 시 재검증 비활성화
+    revalidateOnMount: !hasFallback, // fallbackData 있으면 마운트 시 재검증 안 함
+    dedupingInterval: isDev ? 10000 : 5000, // 개발 모드: 10초, 프로덕션: 5초
     fallbackData: fallbackData || undefined, // SSR 초기 데이터 전달
   });
 

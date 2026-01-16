@@ -14,6 +14,7 @@
 'use client';
 
 import { useState, useCallback, useMemo, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { CompanyType } from '@/lib/mock-data';
 import type { LeagueTabType } from '@/types/league';
@@ -22,17 +23,23 @@ import type { LeagueTabType } from '@/types/league';
 import { useLeagueData } from '@/hooks/useLeagueData';
 import type { CompaniesResponse } from '@/types/api';
 
-// UI Components
-import BottomSheet from '@/components/ui/BottomSheet';
+// UI Components - 지연 로드 (초기 번들 크기 감소)
+const BottomSheet = dynamic(() => import('@/components/ui/BottomSheet'), {
+  ssr: false, // 모바일 전용, SSR 불필요
+});
 import StickyPanel from '@/components/ui/StickyPanel';
 import SearchBar from '@/components/ui/SearchBar';
 
-// Feature Components
-import VoteController from '@/components/features/VoteController';
+// Feature Components - 무거운 컴포넌트 지연 로드
+const VoteController = dynamic(() => import('@/components/features/VoteController'), {
+  ssr: false,
+});
 import SeasonHeader from '@/components/features/league/SeasonHeader';
 import LeagueTabs from '@/components/features/league/LeagueTabs';
 import PremierLeague from '@/components/features/league/PremierLeague';
-import Challengers from '@/components/features/league/Challengers';
+const Challengers = dynamic(() => import('@/components/features/league/Challengers'), {
+  ssr: false,
+});
 
 import styles from './page.module.scss';
 
