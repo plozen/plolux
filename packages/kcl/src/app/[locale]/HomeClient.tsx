@@ -72,6 +72,7 @@ export function HomeClient({ initialData }: HomeClientProps) {
   }, []);
 
   // 🔥 Supabase API에서 데이터 가져오기 (SSR 초기 데이터 전달)
+  // T1.30: polling 주기를 20초로 변경 (Redis 캐시 TTL 25초와 조화)
   const {
     premierLeague,
     challengers: allChallengers,
@@ -83,7 +84,7 @@ export function HomeClient({ initialData }: HomeClientProps) {
     error,
     refresh,
   } = useLeagueData({
-    refreshInterval: 30000,
+    refreshInterval: 20000, // T1.30: Redis 캐시 TTL(25초)보다 짧게 설정하여 캐시 hit 극대화
     fallbackData: initialData, // SSR 초기 데이터 전달
   });
 

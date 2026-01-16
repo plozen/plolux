@@ -6,9 +6,14 @@
  *
  * 기능:
  * - 1부 리그 (1-10위) / 2부 리그 (11위~) 분리
- * - 30초마다 자동 갱신
+ * - 20초마다 자동 갱신 (T1.30: Redis 캐시 TTL 25초와 조화)
  * - 에러 처리 및 로딩 상태
  * - 수동 새로고침 (mutate)
+ *
+ * T1.30: Redis 캐싱 전략
+ * - 서버: Redis 캐시 TTL 25초
+ * - 클라이언트: SWR polling 20초
+ * - 이를 통해 대부분의 요청이 캐시에서 즉시 응답 (< 50ms)
  */
 
 'use client';
@@ -133,7 +138,8 @@ interface UseLeagueDataReturn {
  * ```
  */
 export function useLeagueData(options: UseLeagueDataOptions = {}): UseLeagueDataReturn {
-  const { refreshInterval = 30000, revalidateOnFocus = true, fallbackData } = options;
+  // T1.30: 기본 polling 주기를 20초로 변경 (Redis 캐시 TTL 25초와 조화)
+  const { refreshInterval = 20000, revalidateOnFocus = true, fallbackData } = options;
 
   const { data, error, isLoading, mutate } = useSWR<CompaniesResponse>('/api/companies', fetcher, {
     refreshInterval,
