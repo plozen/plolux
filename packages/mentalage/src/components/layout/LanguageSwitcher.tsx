@@ -8,7 +8,7 @@ import { locales, localeNames, type Locale } from '@/i18n/config';
  */
 const localeToCountry: Record<Locale, string> = {
   ko: 'kr',
-  en: 'us',
+  en: 'gb', // 영국 국기 (영어)
   ja: 'jp',
   zh: 'cn',
   es: 'es',

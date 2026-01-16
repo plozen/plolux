@@ -1,48 +1,54 @@
-import React from 'react';
+'use client';
+
+import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 
+declare global {
+  interface Window {
+    adsbygoogle: unknown[];
+  }
+}
+
 interface AdBannerProps {
-  slot: string;
-  format?: 'auto' | 'horizontal' | 'vertical';
   className?: string;
-  label?: string; // Optional label for debugging/visibility
 }
 
 /**
- * Google AdSense Placeholder Component
- *
- * Future Implementation:
- * 1. Add <script> tag for adsbygoogle in layout or component
- * 2. Replace this placeholder with <ins className="adsbygoogle" ... />
- * 3. Ensure client=ca-pub-XXXXXXXXXXXXXXXX matches the account
+ * Google AdSense 광고 배너 컴포넌트
+ * data-ad-slot: 7822847481
  */
-export default function AdBanner({
-  slot,
-  format = 'auto',
-  className,
-  label = 'Advertisement',
-}: AdBannerProps) {
-  // Production environment check could be added here to only show real ads in prod
-  // const isProd = process.env.NODE_ENV === 'production';
+export default function AdBanner({ className }: AdBannerProps) {
+  const adRef = useRef<HTMLModElement>(null);
+  const isLoaded = useRef(false);
+
+  useEffect(() => {
+    // 이미 로드된 경우 스킵
+    if (isLoaded.current) return;
+
+    // 광고 요소가 이미 로드되었는지 체크
+    if (adRef.current?.getAttribute('data-adsbygoogle-status')) return;
+
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      isLoaded.current = true;
+    } catch (err) {
+      // 개발 환경에서는 에러 무시
+      if (process.env.NODE_ENV === 'development') return;
+      console.error('AdSense error:', err);
+    }
+  }, []);
 
   return (
-    <div className={clsx('w-full my-4 flex flex-col items-center justify-center', className)}>
-      {/* Placeholder Visual */}
-      <div
-        className={clsx(
-          'bg-gray-200 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-400 font-medium text-sm select-none',
-          format === 'horizontal'
-            ? 'w-full h-[90px] max-w-[728px]'
-            : format === 'vertical'
-              ? 'w-[160px] h-[600px]'
-              : 'w-full h-[250px] max-w-[300px] sm:max-w-[336px] md:max-w-[728px] md:h-[90px]', // Responsive auto
-        )}
-      >
-        <div className="flex flex-col items-center gap-1">
-          <span>{label}</span>
-          <span className="text-xs text-gray-400/70">Slot: {slot}</span>
-        </div>
-      </div>
+    <div className={clsx('w-full clear-both text-center min-h-[100px]', className)}>
+      <ins
+        ref={adRef}
+        className="adsbygoogle"
+        style={{ display: 'block' }}
+        data-ad-client="ca-pub-8955182453510440"
+        data-ad-slot="7822847481"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
     </div>
   );
 }

@@ -5,9 +5,10 @@ import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useQuiz } from '@/hooks/useQuiz';
 import Button from '@/components/ui/Button';
+import HomeButton from '@/components/ui/HomeButton';
 import QuestionCard from '@/components/quiz/QuestionCard';
 import ResultCard from '@/components/result/ResultCard';
-// import AdBanner from '@/components/layout/AdBanner'; // AdSense 자동 광고 사용
+import AdBanner from '@/components/layout/AdBanner';
 import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
 
 export default function Home() {
@@ -88,7 +89,7 @@ export default function Home() {
             {t('home.startButton')}
           </Button>
 
-          {/* <AdBanner slot="landing-bottom" className="mt-8" /> */}
+          <AdBanner className="mt-8" />
         </div>
       </main>
     );
@@ -97,7 +98,9 @@ export default function Home() {
   // 2. Age Input Screen
   if (isStarted && realAge === null) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background animate-slide-in">
+      <main className="relative flex min-h-screen flex-col items-center justify-center p-6 bg-background animate-slide-in">
+        <HomeButton onClick={reset} />
+
         <div className="max-w-md w-full bg-white rounded-3xl p-8 shadow-xl space-y-6 text-center">
           <h2 className="text-2xl font-bold text-gray-800">{t('home.ageInput')}</h2>
 
@@ -136,7 +139,9 @@ export default function Home() {
     }));
 
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-background">
+      <main className="relative flex min-h-screen flex-col items-center justify-center p-4 bg-background">
+        <HomeButton onClick={reset} />
+
         <QuestionCard
           question={questionText}
           options={options}
@@ -145,10 +150,8 @@ export default function Home() {
           onAnswer={handleAnswer}
         />
 
-        {/* AdSense 자동 광고 사용으로 주석처리 */}
-        {/* {(currentIndex + 1) % 5 === 0 && (
-          <AdBanner slot="quiz-interval" className="mt-6" label="Sponsor" />
-        )} */}
+        {/* 5문제마다 광고 표시 */}
+        {(currentIndex + 1) % 5 === 0 && <AdBanner className="mt-6" />}
       </main>
     );
   }
@@ -160,8 +163,11 @@ export default function Home() {
     const description = tResults(`${resultKey}.description`);
 
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-background py-10">
-        {/* <AdBanner slot="result-top" className="mb-8" /> */}
+      <main className="relative flex min-h-screen flex-col items-center justify-center p-4 bg-background py-10">
+        <HomeButton onClick={reset} />
+
+        <AdBanner className="mb-6" />
+
         <ResultCard
           result={result}
           title={title}
@@ -169,6 +175,8 @@ export default function Home() {
           onRestart={reset}
           shareUrl={shareUrl}
         />
+
+        <AdBanner className="mt-6" />
       </main>
     );
   }
