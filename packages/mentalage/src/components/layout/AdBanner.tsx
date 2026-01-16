@@ -15,7 +15,8 @@ interface AdBannerProps {
 
 /**
  * Google AdSense 광고 배너 컴포넌트
- * data-ad-slot: 7822847481
+ * Unit Name: mentalage-display-01
+ * data-ad-slot: 9711703942
  */
 export default function AdBanner({ className }: AdBannerProps) {
   const adRef = useRef<HTMLModElement>(null);
@@ -45,7 +46,7 @@ export default function AdBanner({ className }: AdBannerProps) {
         className="adsbygoogle"
         style={{ display: 'block' }}
         data-ad-client="ca-pub-8955182453510440"
-        data-ad-slot="7822847481"
+        data-ad-slot="9711703942"
         data-ad-format="auto"
         data-full-width-responsive="true"
       />
