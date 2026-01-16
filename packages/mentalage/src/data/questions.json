@@ -1,0 +1,170 @@
+{
+  "totalQuestions": 15,
+  "questions": [
+    {
+      "id": 1,
+      "category": "technology",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": 15 },
+        { "id": "b", "score": 5 },
+        { "id": "c", "score": -5 },
+        { "id": "d", "score": -10 }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "lifestyle",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": -5 },
+        { "id": "c", "score": 5 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "social",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": 0 },
+        { "id": "c", "score": 10 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "values",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": -5 },
+        { "id": "c", "score": 5 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "habits",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": -5 },
+        { "id": "c", "score": 5 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "technology",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": 15 },
+        { "id": "b", "score": 10 },
+        { "id": "c", "score": 0 },
+        { "id": "d", "score": -10 }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "lifestyle",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": 0 },
+        { "id": "c", "score": 5 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "social",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": -5 },
+        { "id": "c", "score": 10 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "values",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": 0 },
+        { "id": "c", "score": 5 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 10,
+      "category": "habits",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": 15 },
+        { "id": "b", "score": 5 },
+        { "id": "c", "score": -5 },
+        { "id": "d", "score": -10 }
+      ]
+    },
+    {
+      "id": 11,
+      "category": "technology",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": 0 },
+        { "id": "c", "score": 5 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 12,
+      "category": "lifestyle",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": -5 },
+        { "id": "c", "score": 5 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 13,
+      "category": "social",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": 15 },
+        { "id": "b", "score": 5 },
+        { "id": "c", "score": -5 },
+        { "id": "d", "score": -10 }
+      ]
+    },
+    {
+      "id": 14,
+      "category": "values",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": -10 },
+        { "id": "b", "score": 0 },
+        { "id": "c", "score": 10 },
+        { "id": "d", "score": 15 }
+      ]
+    },
+    {
+      "id": 15,
+      "category": "habits",
+      "weight": 1,
+      "options": [
+        { "id": "a", "score": 15 },
+        { "id": "b", "score": 5 },
+        { "id": "c", "score": -5 },
+        { "id": "d", "score": -10 }
+      ]
+    }
+  ]
+}

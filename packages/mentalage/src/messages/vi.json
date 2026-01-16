@@ -1,0 +1,202 @@
+{
+  "home": {
+    "title": "Tuổi tâm lý của bạn là bao nhiêu?",
+    "subtitle": "Trả lời câu hỏi vui và chia sẻ kết quả với bạn bè!",
+    "startButton": "Bắt đầu Test 🚀",
+    "ageInput": "Đầu tiên, cho mình biết tuổi thật của bạn",
+    "agePlaceholder": "Nhập tuổi",
+    "ageConfirm": "Xác nhận"
+  },
+  "quiz": {
+    "question": "Câu hỏi",
+    "of": "/"
+  },
+  "result": {
+    "yourMentalAge": "Tuổi tâm lý của bạn là",
+    "years": "tuổi",
+    "realAge": "Tuổi thật",
+    "difference": "Chênh lệch",
+    "younger": "tuổi trẻ hơn",
+    "older": "tuổi già hơn",
+    "share": "Chia sẻ kết quả",
+    "retry": "Thử lại",
+    "copyLink": "Sao chép link",
+    "saveImage": "Lưu ảnh"
+  },
+  "results": {
+    "teen": {
+      "title": "Tuổi teen mãi mãi 🧒",
+      "description": "Vẫn muốn mẹ nấu cơm cho ăn đúng không! Sự ngây thơ là siêu năng lực của bạn. Nhưng có lẽ đã đến lúc trưởng thành rồi đấy...",
+      "shortDesc": "Tâm hồn trong sáng"
+    },
+    "young_adult": {
+      "title": "Tuổi 20 rực lửa 😎",
+      "description": "Hô YOLO nhưng vẫn bỏ ống heo đều đều! Cân bằng giữa đam mê và thực tế như một pro~",
+      "shortDesc": "Tràn đầy nhiệt huyết"
+    },
+    "adult": {
+      "title": "Người lớn thực thụ 💼",
+      "description": "Sáng dậy nói 'ôi... lại một ngày nữa...' thay vì 'chiến thôi!'? Chào mừng đến với cuộc sống người lớn!",
+      "shortDesc": "Thực tế"
+    },
+    "mature": {
+      "title": "Chuyên gia cuộc sống 🧐",
+      "description": "Bạn có cái nhìn 'tôi đã thấy hết rồi'! Và thầm vui khi người trẻ xin lời khuyên~",
+      "shortDesc": "Kinh nghiệm max"
+    },
+    "wise": {
+      "title": "Bậc Hiền Triết 🧙",
+      "description": "Bạn đã khám phá ra chân lý cuộc đời! 'Bọn trẻ bây giờ chẳng biết gì...' tự nhiên nói ra luôn đúng không?",
+      "shortDesc": "Giác ngộ"
+    }
+  },
+  "questions": {
+    "q1": {
+      "text": "Bạn hỏi 'Sao bạn không dùng emoji?' Bạn trả lời sao?",
+      "options": {
+        "a": "Emoji là gì? 😅",
+        "b": "👍 Thế này chưa đủ à?",
+        "c": "Haha tính tui vậy mà",
+        "d": "Lập tức gửi 20 emoji cute 🚀💕✨"
+      }
+    },
+    "q2": {
+      "text": "Cuối tuần sáng sớm. Bạn dậy lúc 7h. Làm gì?",
+      "options": {
+        "a": "Điên à! Ngủ tiếp 💤",
+        "b": "Ồ dậy sớm~ Coi YouTube",
+        "c": "Hay đấy, đi tập thể dục sáng",
+        "d": "Dậy sớm có lộc! ☀️"
+      }
+    },
+    "q3": {
+      "text": "Tìm thấy bạn cũ trên mạng xã hội. Làm gì?",
+      "options": {
+        "a": "Nhắn tin ngay 🏃‍♂️",
+        "b": "Follow trước, âm thầm theo dõi",
+        "c": "Lướt qua profile rồi đi",
+        "d": "Mạng xã hội? Zalo là đủ rồi"
+      }
+    },
+    "q4": {
+      "text": "Điều gì quan trọng nhất trong cuộc sống?",
+      "options": {
+        "a": "Chơi hết mình, ăn ngon! 🎉",
+        "b": "Tiền là vua. Phải thực tế",
+        "c": "Sức khỏe trước. Không có thì chẳng làm được gì",
+        "d": "Gia đình và cuộc sống bình yên là hạnh phúc"
+      }
+    },
+    "q5": {
+      "text": "Bạn xả stress bằng cách nào?",
+      "options": {
+        "a": "Chơi game xuyên đêm hoặc cày phim 🎮",
+        "b": "Gọi bạn bè đi nhậu 🍺",
+        "c": "Thời gian riêng. Đi dạo hoặc ngồi cafe một mình",
+        "d": "Chịu thôi. Ngủ một giấc là hết"
+      }
+    },
+    "q6": {
+      "text": "App mới ra! Phản ứng của bạn?",
+      "options": {
+        "a": "Tải ngay! Không biết nó là gì 🤳",
+        "b": "Xem review trước đã",
+        "c": "Cần thì mới tải",
+        "d": "Lại app mới? App cũ còn chưa dùng hết..."
+      }
+    },
+    "q7": {
+      "text": "Khi chọn bữa tối, bạn...",
+      "options": {
+        "a": "Cay! Hoặc quán mới kia! 🔥",
+        "b": "Thèm gì nhỉ? Mở app đặt đồ ăn",
+        "c": "Gì cũng được. Có ăn là được",
+        "d": "Nấu ở nhà ngon nhất. Phải ăn healthy"
+      }
+    },
+    "q8": {
+      "text": "Ở party toàn người lạ, bạn...",
+      "options": {
+        "a": "Chủ động nói chuyện! Kết bạn mới 🙋",
+        "b": "Ai nói chuyện thì mình nói",
+        "c": "Bám theo người quen",
+        "d": "Im lặng và thỉnh thoảng gật đầu"
+      }
+    },
+    "q9": {
+      "text": "Bạn hỏi 'Dạo này có gì vui không?'",
+      "options": {
+        "a": "Bắt đầu giải thích meme/trend đang hot 📱",
+        "b": "Kể về phim/game đang nghiện",
+        "c": "Hmm... không có gì đặc biệt?",
+        "d": "Vui? Tui thích sống bình thường thôi"
+      }
+    },
+    "q10": {
+      "text": "10 giờ tối. Bạn thường làm gì?",
+      "options": {
+        "a": "Ngày mới bắt đầu! 🌙",
+        "b": "YouTube/Netflix trên giường",
+        "c": "Đang buồn ngủ... tắm rồi đi ngủ",
+        "d": "Đã ngủ hoặc sắp ngủ"
+      }
+    },
+    "q11": {
+      "text": "Video call vs Nhắn tin. Bạn thích gì hơn?",
+      "options": {
+        "a": "Video call! Thích nhìn mặt 📹",
+        "b": "Nhắn tin nếu không gấp",
+        "c": "Thích nhắn tin hơn gọi điện",
+        "d": "Gọi điện thôi. Gõ chữ mệt"
+      }
+    },
+    "q12": {
+      "text": "Đột nhiên được nghỉ một tuần! Bạn...",
+      "options": {
+        "a": "Đặt vé du lịch ngay! Đi đâu? ✈️",
+        "b": "Rủ bạn bè đi chơi~",
+        "c": "Cuối cùng được nghỉ ngơi ở nhà",
+        "d": "Dọn dẹp nhà cửa đi"
+      }
+    },
+    "q13": {
+      "text": "Khi gặp từ lóng hoặc trend mới?",
+      "options": {
+        "a": "Biết chứ! Đang dùng rồi kk",
+        "b": "Nghe qua... phải Google",
+        "c": "Hả? Đây là tiếng Việt à?",
+        "d": "Bọn trẻ bây giờ nói gì vậy..."
+      }
+    },
+    "q14": {
+      "text": "Khi hối hận về một quyết định, thái độ của bạn...",
+      "options": {
+        "a": "Sao mình làm vậy... không ngừng nghĩ được 😢",
+        "b": "Hơi buồn nhưng thôi",
+        "c": "Đó là lựa chọn tốt nhất lúc đó. Không sao",
+        "d": "Hối hận cũng không thay đổi được gì. Lần sau làm tốt hơn"
+      }
+    },
+    "q15": {
+      "text": "Ai đó hỏi 'Dạo này đang học gì?'",
+      "options": {
+        "a": "Edit TikTok / chiến thuật game 🎮",
+        "b": "Tập gym hoặc hobby gì đó~",
+        "c": "Mấy thứ liên quan công việc...",
+        "d": "Tuổi này? Học đủ rồi"
+      }
+    }
+  },
+  "share": {
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "kakao": "KakaoTalk",
+    "copySuccess": "Đã sao chép link!",
+    "shareText": "Tuổi tâm lý của tui là {age}! Thử đi 👉"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Có lỗi xảy ra",
+    "back": "Quay lại"
+  }
+}

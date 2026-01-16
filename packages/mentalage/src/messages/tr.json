@@ -1,0 +1,202 @@
+{
+  "home": {
+    "title": "Zihinsel Yaşın Kaç?",
+    "subtitle": "Eğlenceli sorulara cevap ver ve sonuçları arkadaşlarınla paylaş!",
+    "startButton": "Teste Başla 🚀",
+    "ageInput": "Önce gerçek yaşını söyle",
+    "agePlaceholder": "Yaşını gir",
+    "ageConfirm": "Onayla"
+  },
+  "quiz": {
+    "question": "Soru",
+    "of": "/"
+  },
+  "result": {
+    "yourMentalAge": "Zihinsel yaşın",
+    "years": "yaş",
+    "realAge": "Gerçek yaş",
+    "difference": "Fark",
+    "younger": "yaş daha genç",
+    "older": "yaş daha olgun",
+    "share": "Sonucu Paylaş",
+    "retry": "Tekrar Dene",
+    "copyLink": "Linki Kopyala",
+    "saveImage": "Resmi Kaydet"
+  },
+  "results": {
+    "teen": {
+      "title": "Sonsuza Dek Genç 🧒",
+      "description": "Hâlâ annenin yemek yapmasını istiyorsun değil mi! Masumiyetin senin süper gücün. Ama belki biraz büyümenin zamanı geldi...",
+      "shortDesc": "Saf ruh"
+    },
+    "young_adult": {
+      "title": "Ateşli 20'ler 😎",
+      "description": "YOLO diye bağırıyorsun ama yine de para biriktiriyorsun! Tutku ve gerçeklik arasında ip cambazı gibisin~",
+      "shortDesc": "Tutku dolu"
+    },
+    "adult": {
+      "title": "Gerçek Yetişkin 💼",
+      "description": "Sabah 'haydi!' yerine 'of... yine bir gün...' diye mi uyanıyorsun? Resmi olarak yetişkin oldun!",
+      "shortDesc": "Realist"
+    },
+    "mature": {
+      "title": "Hayat Uzmanı 🧐",
+      "description": "Yüzünde 'ben her şeyi gördüm' ifadesi var! Ve gençler senden tavsiye isteyince içten içe mutlu oluyorsun~",
+      "shortDesc": "Max deneyim"
+    },
+    "wise": {
+      "title": "Bilge 🧙",
+      "description": "Hayatın gerçeğini keşfettin! 'Bu gençler hiçbir şey bilmiyor...' ağzından kendiliğinden çıkıyor, değil mi?",
+      "shortDesc": "Aydınlanmış"
+    }
+  },
+  "questions": {
+    "q1": {
+      "text": "Arkadaşın 'Neden emoji kullanmıyorsun?' diye soruyor. Ne dersin?",
+      "options": {
+        "a": "Emoji ne? 😅",
+        "b": "👍 Bu yetmez mi?",
+        "c": "Haha ben böyleyim işte",
+        "d": "Anında 20 tane tatlı emoji atar 🚀💕✨"
+      }
+    },
+    "q2": {
+      "text": "Hafta sonu sabahı. Saat 7'de uyandın. Ne yaparsın?",
+      "options": {
+        "a": "Deli misin! Hemen tekrar uyurum 💤",
+        "b": "Aa erken kalktım~ YouTube açayım",
+        "c": "Güzel, sabah sporu yapalım",
+        "d": "Erken kalkan yol alır! ☀️"
+      }
+    },
+    "q3": {
+      "text": "Sosyal medyada eski bir arkadaşını buldun. Ne yaparsın?",
+      "options": {
+        "a": "Direkt mesaj atarım 🏃‍♂️",
+        "b": "Önce takip, sessizce stalklarım",
+        "c": "Profile bakar geçerim",
+        "d": "Sosyal medya mı? WhatsApp yeter bana"
+      }
+    },
+    "q4": {
+      "text": "Hayatta en önemli şey ne?",
+      "options": {
+        "a": "Eğlenmek ve güzel yemek! 🎉",
+        "b": "Para her şey. Gerçekçi olmak lazım",
+        "c": "Sağlık önce gelir. Onsuz hiçbir şey olmaz",
+        "d": "Aile ve huzurlu bir hayat mutluluktur"
+      }
+    },
+    "q5": {
+      "text": "Stresle nasıl başa çıkıyorsun?",
+      "options": {
+        "a": "Sabaha kadar oyun veya dizi maratonu 🎮",
+        "b": "Arkadaşları çağırıp bir şeyler içeriz 🍺",
+        "c": "Kendi başıma zaman. Yürüyüş veya kafede yalnız",
+        "d": "Dayanırım. Uyuyunca geçer"
+      }
+    },
+    "q6": {
+      "text": "Yeni bir uygulama çıktı! Tepkin ne?",
+      "options": {
+        "a": "Hemen indir! Ne olduğunu bile bilmiyorum 🤳",
+        "b": "Önce yorumlara bakayım",
+        "c": "İhtiyacım olursa indiririm",
+        "d": "Yine yeni uygulama mı? Eldekileri bile zor kullanıyorum..."
+      }
+    },
+    "q7": {
+      "text": "Akşam yemeği seçerken, sen...",
+      "options": {
+        "a": "Acılı! Ya da o yeni restoran! 🔥",
+        "b": "Ne canım çekiyor? Yemek uygulamasını açar",
+        "c": "Farketmez. Yemek yemektir",
+        "d": "Ev yemeği en iyisi. Sağlıklı yemek lazım"
+      }
+    },
+    "q8": {
+      "text": "Tanımadığın insanlarla dolu bir partide, sen...",
+      "options": {
+        "a": "Ben başlatırım konuşmayı! Arkadaş edinelim 🙋",
+        "b": "Biri konuşursa konuşurum",
+        "c": "Tanıdıklarımın yanında kalırım",
+        "d": "Sessiz dururum, ara sıra başımı sallarım"
+      }
+    },
+    "q9": {
+      "text": "Arkadaşın 'Bu aralar ne popüler?' diye soruyor",
+      "options": {
+        "a": "Trend memeleri/challenge'ları anlatmaya başlar 📱",
+        "b": "Şu an takıldığı dizi/oyunu anlatır",
+        "c": "Hmm... pek bir şey yok?",
+        "d": "Eğlenceli şeyler mi? Ben normal yaşamayı seviyorum"
+      }
+    },
+    "q10": {
+      "text": "Saat gece 10. Genelde ne yapıyorsun?",
+      "options": {
+        "a": "Gün daha yeni başlıyor! 🌙",
+        "b": "Yatakta YouTube/Netflix",
+        "c": "Uykum geliyor... duş ve yatağa hazırlık",
+        "d": "Zaten uyumuşum veya uyumak üzereyim"
+      }
+    },
+    "q11": {
+      "text": "Görüntülü arama vs Mesaj. Tercihin ne?",
+      "options": {
+        "a": "Görüntülü! Yüz görmek isterim 📹",
+        "b": "Acil değilse mesaj",
+        "c": "Aramaktansa mesajı tercih ederim",
+        "d": "Ara gitsin. Yazmak yorucu"
+      }
+    },
+    "q12": {
+      "text": "Bir anda bir hafta tatil oldu! Sen...",
+      "options": {
+        "a": "Hemen seyahat planla! Nereye? ✈️",
+        "b": "Arkadaşları çağır takılalım~",
+        "c": "Sonunda evde dinlenebilirim",
+        "d": "Biriken ev işlerini halletme zamanı"
+      }
+    },
+    "q13": {
+      "text": "Yeni argo veya trendlerle karşılaştığında?",
+      "options": {
+        "a": "Tabii ki biliyorum! Zaten kullanıyorum lol",
+        "b": "Duydum... Google'a bakmalıyım",
+        "c": "Ne? Bu Türkçe mi?",
+        "d": "Bu gençler ne diyor böyle..."
+      }
+    },
+    "q14": {
+      "text": "Bir karardan pişman olduğunda, tutumun...",
+      "options": {
+        "a": "Neden öyle yaptım... düşünmeden duramıyorum 😢",
+        "b": "Biraz koyuyor ama neyse",
+        "c": "O an için en iyi seçimdi. Sorun yok",
+        "d": "Pişmanlık bir şey değiştirmez. Bir dahakine daha iyi yaparım"
+      }
+    },
+    "q15": {
+      "text": "Biri 'Bu aralar ne öğreniyorsun?' diye soruyor",
+      "options": {
+        "a": "TikTok düzenleme / oyun stratejileri 🎮",
+        "b": "Biraz spor veya hobi~",
+        "c": "İşle ilgili şeyler...",
+        "d": "Benim yaşımda mı? Yeterince öğrendim"
+      }
+    }
+  },
+  "share": {
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "kakao": "KakaoTalk",
+    "copySuccess": "Link kopyalandı!",
+    "shareText": "Zihinsel yaşım {age}! Sen de dene 👉"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "back": "Geri"
+  }
+}

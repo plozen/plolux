@@ -219,3 +219,26 @@ jobs:
           target-branch: 'main'
           create-target-branch-if-needed: true
           commit-message: 'Ship: KCL Update (ORIGIN_COMMIT)'
+
+  sync-to-mentalage:
+    runs-on: ubuntu-latest
+    needs: [] # Run in parallel
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync App to Mental Age Test Repo
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.FORJEX_SYNC_TOKEN }}
+        with:
+          source-directory: 'packages/mentalage'
+          destination-github-username: 'moony01'
+          destination-repository-name: 'mentalage'
+          user-email: 'devops@plozen.com'
+          target-branch: 'main'
+          create-target-branch-if-needed: true
+          commit-message: 'Ship: Mental Age Test Update (ORIGIN_COMMIT)'

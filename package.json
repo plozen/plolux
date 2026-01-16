@@ -9,6 +9,9 @@
     "build:plozen": "pnpm --filter plozen build",
     "dev:plolux": "pnpm --filter plolux dev",
     "build:plolux": "pnpm --filter plolux build",
+    "dev:mentalage": "pnpm --filter mentalage dev -p 3002",
+    "build:mentalage": "pnpm --filter mentalage build",
+    "test:mentalage": "pnpm --filter mentalage test",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx --fix && prettier --write . && tsc --noEmit",
     "test": "echo \"No tests configured. Please set up a test runner.\" && exit 1"
   },

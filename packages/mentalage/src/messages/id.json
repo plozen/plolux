@@ -1,0 +1,202 @@
+{
+  "home": {
+    "title": "Berapa Usia Mentalmu?",
+    "subtitle": "Jawab pertanyaan seru dan share hasilnya ke teman-teman!",
+    "startButton": "Mulai Tes 🚀",
+    "ageInput": "Pertama, kasih tau usia aslimu",
+    "agePlaceholder": "Masukkan usia",
+    "ageConfirm": "Konfirmasi"
+  },
+  "quiz": {
+    "question": "Pertanyaan",
+    "of": "dari"
+  },
+  "result": {
+    "yourMentalAge": "Usia mentalmu adalah",
+    "years": "tahun",
+    "realAge": "Usia asli",
+    "difference": "Selisih",
+    "younger": "tahun lebih muda",
+    "older": "tahun lebih tua",
+    "share": "Share Hasil",
+    "retry": "Coba Lagi",
+    "copyLink": "Salin Link",
+    "saveImage": "Simpan Gambar"
+  },
+  "results": {
+    "teen": {
+      "title": "Remaja Selamanya 🧒",
+      "description": "Masih pengen dimasakin mama ya! Kepolosanmu itu kekuatan super. Tapi mungkin udah saatnya dewasa dikit...",
+      "shortDesc": "Jiwa murni"
+    },
+    "young_adult": {
+      "title": "Anak 20an yang Hot 😎",
+      "description": "Teriak YOLO tapi tetep nabung! Seimbang antara passion dan realita~",
+      "shortDesc": "Penuh semangat"
+    },
+    "adult": {
+      "title": "Dewasa Beneran 💼",
+      "description": "Bangun tidur bilangnya 'aduh... hari lagi...' bukan 'let's go!'? Selamat, kamu resmi jadi dewasa!",
+      "shortDesc": "Realistis"
+    },
+    "mature": {
+      "title": "Ahli Kehidupan 🧐",
+      "description": "Mukamu udah ada tampang 'gue udah lihat semuanya'! Dan diam-diam seneng kalau anak muda minta saran~",
+      "shortDesc": "Pengalaman maks"
+    },
+    "wise": {
+      "title": "Sang Bijak 🧙",
+      "description": "Kamu udah nemuin kebenaran hidup! 'Anak jaman sekarang nggak tau apa-apa...' keluar sendiri kan?",
+      "shortDesc": "Tercerahkan"
+    }
+  },
+  "questions": {
+    "q1": {
+      "text": "Temenmu nanya 'Kok kamu nggak pake emoji?' Jawabmu apa?",
+      "options": {
+        "a": "Emoji tuh apa? 😅",
+        "b": "👍 Ini kurang?",
+        "c": "Wkwk gue emang gini orangnya",
+        "d": "Langsung kirim 20 emoji lucu 🚀💕✨"
+      }
+    },
+    "q2": {
+      "text": "Weekend pagi. Kamu bangun jam 7. Ngapain?",
+      "options": {
+        "a": "Gila! Tidur lagi dong 💤",
+        "b": "Oh bangun pagi~ Nonton YouTube dulu",
+        "c": "Oke, olahraga pagi yuk",
+        "d": "Yang bangun pagi rezekinya banyak! ☀️"
+      }
+    },
+    "q3": {
+      "text": "Nemu temen lama di sosmed. Ngapain?",
+      "options": {
+        "a": "Langsung DM 🏃‍♂️",
+        "b": "Follow dulu, stalking diem-diem",
+        "c": "Lihat profil doang terus skip",
+        "d": "Sosmed? WA aja cukup"
+      }
+    },
+    "q4": {
+      "text": "Apa yang paling penting dalam hidup?",
+      "options": {
+        "a": "Having fun dan makan enak! 🎉",
+        "b": "Duit itu segalanya. Harus realistis",
+        "c": "Kesehatan nomor satu. Tanpa itu nggak bisa apa-apa",
+        "d": "Keluarga dan hidup tenang itu kebahagiaan"
+      }
+    },
+    "q5": {
+      "text": "Gimana cara kamu handle stress?",
+      "options": {
+        "a": "Main game semalaman atau marathon series 🎮",
+        "b": "Ajak temen-temen hangout 🍺",
+        "c": "Me time. Jalan-jalan atau ke kafe sendiri",
+        "d": "Tahan aja. Tidur juga sembuh"
+      }
+    },
+    "q6": {
+      "text": "Ada aplikasi baru keluar! Reaksimu?",
+      "options": {
+        "a": "Download langsung! Nggak tau ini apaan 🤳",
+        "b": "Cek review dulu",
+        "c": "Download kalau butuh aja",
+        "d": "Aplikasi baru lagi? Yang sekarang aja belum bisa..."
+      }
+    },
+    "q7": {
+      "text": "Pas milih makan malam, kamu...",
+      "options": {
+        "a": "Pedes! Atau restoran baru itu! 🔥",
+        "b": "Pengen apa ya? Buka GoFood",
+        "c": "Terserah. Yang penting makan",
+        "d": "Masak sendiri paling enak. Harus makan sehat"
+      }
+    },
+    "q8": {
+      "text": "Di pesta yang isinya orang nggak dikenal, kamu...",
+      "options": {
+        "a": "Mulai ngobrol duluan! Cari temen baru 🙋",
+        "b": "Ngobrol kalau diajak",
+        "c": "Nempel sama orang yang udah kenal",
+        "d": "Diem aja dan sesekali ngangguk"
+      }
+    },
+    "q9": {
+      "text": "Temen nanya 'Apa yang lagi seru sekarang?'",
+      "options": {
+        "a": "Mulai jelasin meme/challenge yang lagi viral 📱",
+        "b": "Cerita soal series/game yang lagi disukai",
+        "c": "Hmm... nggak ada kayaknya?",
+        "d": "Seru? Gue suka hidup biasa aja"
+      }
+    },
+    "q10": {
+      "text": "Jam 10 malem. Biasanya lagi ngapain?",
+      "options": {
+        "a": "Baru mulai nih harinya! 🌙",
+        "b": "YouTube/Netflix di kasur",
+        "c": "Udah ngantuk... mandi terus tidur",
+        "d": "Udah tidur atau hampir"
+      }
+    },
+    "q11": {
+      "text": "Video call vs Chat. Pilih mana?",
+      "options": {
+        "a": "Video call! Suka lihat muka 📹",
+        "b": "Chat aja kalau nggak urgent",
+        "c": "Lebih suka chat daripada telpon",
+        "d": "Telpon aja. Males ngetik"
+      }
+    },
+    "q12": {
+      "text": "Tiba-tiba dapet libur seminggu! Kamu...",
+      "options": {
+        "a": "Langsung booking tiket! Ke mana? ✈️",
+        "b": "Ajak temen-temen jalan~",
+        "c": "Akhirnya bisa istirahat di rumah",
+        "d": "Waktunya beresin kerjaan rumah"
+      }
+    },
+    "q13": {
+      "text": "Kalau ketemu slang atau tren baru?",
+      "options": {
+        "a": "Ya tau dong! Udah pake wkwk",
+        "b": "Pernah denger... harus Google",
+        "c": "Hah? Itu bahasa apa?",
+        "d": "Anak jaman sekarang ngomong apaan sih..."
+      }
+    },
+    "q14": {
+      "text": "Kalau nyesel sama keputusan, sikapmu...",
+      "options": {
+        "a": "Kenapa gue gitu ya... nggak bisa berhenti mikirin 😢",
+        "b": "Agak kesel tapi ya udah",
+        "c": "Itu pilihan terbaik waktu itu. Nggak masalah",
+        "d": "Nyesel juga nggak ngubah apa-apa. Next time lebih baik"
+      }
+    },
+    "q15": {
+      "text": "Ada yang nanya 'Lagi belajar apa sekarang?'",
+      "options": {
+        "a": "Edit TikTok / strategi game 🎮",
+        "b": "Olahraga atau hobi gitu~",
+        "c": "Yang berhubungan sama kerjaan...",
+        "d": "Di umur gue? Udah cukup belajarnya"
+      }
+    }
+  },
+  "share": {
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "kakao": "KakaoTalk",
+    "copySuccess": "Link disalin!",
+    "shareText": "Usia mentalku {age} tahun! Coba juga yuk 👉"
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "back": "Kembali"
+  }
+}

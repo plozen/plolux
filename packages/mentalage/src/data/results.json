@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "id": "teen",
+      "minAge": 10,
+      "maxAge": 19,
+      "emoji": "🧒",
+      "colorTheme": "#FF6B6B"
+    },
+    {
+      "id": "young_adult",
+      "minAge": 20,
+      "maxAge": 29,
+      "emoji": "😎",
+      "colorTheme": "#4ECDC4"
+    },
+    {
+      "id": "adult",
+      "minAge": 30,
+      "maxAge": 39,
+      "emoji": "💼",
+      "colorTheme": "#45B7D1"
+    },
+    {
+      "id": "mature",
+      "minAge": 40,
+      "maxAge": 49,
+      "emoji": "🧐",
+      "colorTheme": "#96CEB4"
+    },
+    {
+      "id": "wise",
+      "minAge": 50,
+      "maxAge": 80,
+      "emoji": "🧙",
+      "colorTheme": "#9B59B6"
+    }
+  ]
+}

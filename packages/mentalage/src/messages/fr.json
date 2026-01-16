@@ -1,0 +1,202 @@
+{
+  "home": {
+    "title": "Quel est ton âge mental ?",
+    "subtitle": "Réponds à des questions fun et partage tes résultats avec tes potes !",
+    "startButton": "Commencer le Test 🚀",
+    "ageInput": "D'abord, dis-nous ton vrai âge",
+    "agePlaceholder": "Entre ton âge",
+    "ageConfirm": "Confirmer"
+  },
+  "quiz": {
+    "question": "Question",
+    "of": "sur"
+  },
+  "result": {
+    "yourMentalAge": "Ton âge mental est",
+    "years": "ans",
+    "realAge": "Âge réel",
+    "difference": "Différence",
+    "younger": "ans plus jeune",
+    "older": "ans plus vieux",
+    "share": "Partager le résultat",
+    "retry": "Réessayer",
+    "copyLink": "Copier le lien",
+    "saveImage": "Sauvegarder l'image"
+  },
+  "results": {
+    "teen": {
+      "title": "Ado pour toujours 🧒",
+      "description": "Tu rêves encore que maman te prépare à manger ! Ton innocence est ton super pouvoir. Mais peut-être qu'il serait temps de grandir un peu...",
+      "shortDesc": "Âme pure"
+    },
+    "young_adult": {
+      "title": "La vingtaine en feu 😎",
+      "description": "Tu cries YOLO mais tu mets quand même de côté ! Tu jongle entre passion et réalité comme un pro~",
+      "shortDesc": "Passion max"
+    },
+    "adult": {
+      "title": "Vrai Adulte 💼",
+      "description": "Tu te réveilles en disant 'pff... encore une journée...' au lieu de 'c'est parti !' ? Bienvenue dans la vie d'adulte !",
+      "shortDesc": "Réaliste"
+    },
+    "mature": {
+      "title": "Expert de la vie 🧐",
+      "description": "Tu as cette tête de 'j'ai tout vu' ! Et secrètement, t'adores quand les jeunes te demandent conseil~",
+      "shortDesc": "Expérience max"
+    },
+    "wise": {
+      "title": "Le Sage 🧙",
+      "description": "Tu as découvert la vérité de la vie ! 'Les jeunes d'aujourd'hui ne savent rien...' ça sort tout seul, non ?",
+      "shortDesc": "Illuminé"
+    }
+  },
+  "questions": {
+    "q1": {
+      "text": "Ton pote demande 'Pourquoi tu utilises pas d'emojis ?' Tu réponds quoi ?",
+      "options": {
+        "a": "C'est quoi un emoji ? 😅",
+        "b": "👍 Ça suffit pas ?",
+        "c": "Haha c'est juste mon style",
+        "d": "Envoie direct 20 emojis mignons 🚀💕✨"
+      }
+    },
+    "q2": {
+      "text": "C'est le weekend. Tu te réveilles à 7h. Tu fais quoi ?",
+      "options": {
+        "a": "C'est quoi ce délire ! Dodo direct 💤",
+        "b": "Oh je suis debout tôt~ YouTube time",
+        "c": "Nice, go sport matinal",
+        "d": "L'avenir appartient à ceux qui se lèvent tôt ! ☀️"
+      }
+    },
+    "q3": {
+      "text": "Tu trouves un vieil ami sur les réseaux. Tu fais quoi ?",
+      "options": {
+        "a": "DM direct 🏃‍♂️",
+        "b": "Follow d'abord, stalker en silence",
+        "c": "Je mate le profil et je passe",
+        "d": "Les réseaux ? WhatsApp ça me suffit"
+      }
+    },
+    "q4": {
+      "text": "C'est quoi le plus important dans la vie ?",
+      "options": {
+        "a": "Kiffer et bien manger ! 🎉",
+        "b": "L'argent c'est le pouvoir. Faut être réaliste",
+        "c": "La santé d'abord. Sans ça, rien n'est possible",
+        "d": "La famille et une vie tranquille c'est le bonheur"
+      }
+    },
+    "q5": {
+      "text": "Comment tu gères le stress ?",
+      "options": {
+        "a": "Gaming toute la nuit ou binge-watching 🎮",
+        "b": "J'appelle les potes pour boire un coup 🍺",
+        "c": "Temps pour moi. Balade ou café solo",
+        "d": "Je supporte. Ça passe en dormant"
+      }
+    },
+    "q6": {
+      "text": "Une nouvelle appli vient de sortir ! Ta réaction ?",
+      "options": {
+        "a": "Je télécharge direct ! Je sais même pas ce que c'est 🤳",
+        "b": "Je check les avis d'abord",
+        "c": "Je l'installe si j'en ai besoin",
+        "d": "Encore une nouvelle appli ? J'arrive déjà pas à utiliser celles que j'ai..."
+      }
+    },
+    "q7": {
+      "text": "Pour choisir le dîner, tu...",
+      "options": {
+        "a": "Épicé ! Ou ce nouveau resto ! 🔥",
+        "b": "J'ai envie de quoi ? J'ouvre Uber Eats",
+        "c": "Peu importe. De la bouffe c'est de la bouffe",
+        "d": "Fait maison c'est le mieux. Faut manger sain"
+      }
+    },
+    "q8": {
+      "text": "À une soirée avec des inconnus, tu...",
+      "options": {
+        "a": "J'engage la conv ! On se fait des potes 🙋",
+        "b": "Je parle si on me parle",
+        "c": "Je reste avec les gens que je connais",
+        "d": "Je reste tranquille et j'hoche la tête de temps en temps"
+      }
+    },
+    "q9": {
+      "text": "Un pote demande 'C'est quoi le délire en ce moment ?'",
+      "options": {
+        "a": "Commence à expliquer les memes/trends du moment 📱",
+        "b": "Parle de la série/du jeu qui le passionne",
+        "c": "Hmm... pas grand-chose ?",
+        "d": "Des trucs fun ? J'aime juste vivre tranquille"
+      }
+    },
+    "q10": {
+      "text": "Il est 22h. Tu fais quoi d'habitude ?",
+      "options": {
+        "a": "La journée commence à peine ! 🌙",
+        "b": "Mode YouTube/Netflix au lit",
+        "c": "Je fatigue... douche et prépa dodo",
+        "d": "Déjà au lit ou presque"
+      }
+    },
+    "q11": {
+      "text": "Appel vidéo vs SMS. Tu préfères ?",
+      "options": {
+        "a": "Appel vidéo ! J'aime voir les visages 📹",
+        "b": "SMS si c'est pas urgent",
+        "c": "Je préfère les messages aux appels",
+        "d": "Autant appeler. Taper c'est relou"
+      }
+    },
+    "q12": {
+      "text": "Tu as soudainement une semaine de libre ! Tu...",
+      "options": {
+        "a": "Je réserve un voyage direct ! On va où ? ✈️",
+        "b": "J'appelle les potes pour sortir~",
+        "c": "Enfin du repos à la maison",
+        "d": "C'est le moment de rattraper les corvées"
+      }
+    },
+    "q13": {
+      "text": "Quand tu découvres du nouveau slang ou des tendances ?",
+      "options": {
+        "a": "Évidemment que je connais ! Je l'utilise déjà mdr",
+        "b": "J'en ai entendu parler... faut que je Google",
+        "c": "Quoi ? C'est du français ça ?",
+        "d": "Qu'est-ce qu'ils racontent les jeunes..."
+      }
+    },
+    "q14": {
+      "text": "Quand tu regrettes une décision, ton attitude c'est...",
+      "options": {
+        "a": "Pourquoi j'ai fait ça... j'arrête pas d'y penser 😢",
+        "b": "Ça me saoule un peu mais bon",
+        "c": "C'était le meilleur choix à ce moment. Ça va",
+        "d": "Regretter change rien. On fait mieux la prochaine fois"
+      }
+    },
+    "q15": {
+      "text": "Quelqu'un demande 'T'apprends quoi en ce moment ?'",
+      "options": {
+        "a": "Montage TikTok / stratégies de jeu 🎮",
+        "b": "Un peu de sport ou un hobby~",
+        "c": "Des trucs pour le boulot...",
+        "d": "À mon âge ? J'ai assez appris"
+      }
+    }
+  },
+  "share": {
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "kakao": "KakaoTalk",
+    "copySuccess": "Lien copié !",
+    "shareText": "Mon âge mental est {age} ans ! Essaie toi aussi 👉"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "back": "Retour"
+  }
+}

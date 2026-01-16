@@ -33,6 +33,17 @@
         "group": "kcl",
         "order": 1
       }
+    },
+    {
+      "name": "Launch mentalage",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm --filter mentalage dev -p 3002",
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "group": "mentalage",
+        "order": 1
+      }
     }
   ]
 }

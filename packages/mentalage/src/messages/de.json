@@ -1,0 +1,202 @@
+{
+  "home": {
+    "title": "Wie alt bist du im Kopf?",
+    "subtitle": "Beantworte witzige Fragen und teile dein Ergebnis mit Freunden!",
+    "startButton": "Test starten 🚀",
+    "ageInput": "Erst mal: Wie alt bist du wirklich?",
+    "agePlaceholder": "Alter eingeben",
+    "ageConfirm": "Bestätigen"
+  },
+  "quiz": {
+    "question": "Frage",
+    "of": "von"
+  },
+  "result": {
+    "yourMentalAge": "Dein mentales Alter ist",
+    "years": "Jahre",
+    "realAge": "Echtes Alter",
+    "difference": "Unterschied",
+    "younger": "Jahre jünger",
+    "older": "Jahre älter",
+    "share": "Ergebnis teilen",
+    "retry": "Nochmal versuchen",
+    "copyLink": "Link kopieren",
+    "saveImage": "Bild speichern"
+  },
+  "results": {
+    "teen": {
+      "title": "Ewig jung 🧒",
+      "description": "Du wünschst dir immer noch, dass Mama dir Essen macht, oder? Deine Unschuld ist deine Superkraft. Aber vielleicht wird's Zeit, ein bisschen erwachsen zu werden...",
+      "shortDesc": "Reine Seele"
+    },
+    "young_adult": {
+      "title": "Wilde 20er 😎",
+      "description": "Du rufst YOLO, aber sparst trotzdem brav! Auf dem Drahtseil zwischen Leidenschaft und Realität~",
+      "shortDesc": "Volle Energie"
+    },
+    "adult": {
+      "title": "Echter Erwachsener 💼",
+      "description": "Wachst du morgens mit 'uff... noch ein Tag...' statt 'Los geht's!' auf? Willkommen im Erwachsenenleben!",
+      "shortDesc": "Realist"
+    },
+    "mature": {
+      "title": "Lebensexperte 🧐",
+      "description": "Du hast diesen 'Ich hab schon alles gesehen'-Blick drauf! Und freust dich heimlich, wenn Jüngere um Rat fragen~",
+      "shortDesc": "Max. Erfahrung"
+    },
+    "wise": {
+      "title": "Der Weise 🧙",
+      "description": "Du hast die Wahrheit des Lebens entdeckt! 'Die Jugend von heute...' rutscht dir automatisch raus, oder?",
+      "shortDesc": "Erleuchtet"
+    }
+  },
+  "questions": {
+    "q1": {
+      "text": "Dein Kumpel fragt: 'Warum benutzt du keine Emojis?' Was antwortest du?",
+      "options": {
+        "a": "Was ist ein Emoji? 😅",
+        "b": "👍 Reicht das nicht?",
+        "c": "Haha, bin halt so",
+        "d": "Schickt sofort 20 süße Emojis 🚀💕✨"
+      }
+    },
+    "q2": {
+      "text": "Wochenende. Du wachst um 7 Uhr auf. Was machst du?",
+      "options": {
+        "a": "Krass! Sofort weiterschlafen 💤",
+        "b": "Oh, früh wach~ Zeit für YouTube",
+        "c": "Nice, ab zum Morgensport",
+        "d": "Morgenstund hat Gold im Mund! ☀️"
+      }
+    },
+    "q3": {
+      "text": "Du findest einen alten Freund auf Social Media. Was machst du?",
+      "options": {
+        "a": "Direkt anschreiben 🏃‍♂️",
+        "b": "Erst folgen, heimlich stalken",
+        "c": "Kurz Profil checken und weiter",
+        "d": "Social Media? WhatsApp reicht mir"
+      }
+    },
+    "q4": {
+      "text": "Was ist das Wichtigste im Leben?",
+      "options": {
+        "a": "Feiern und gut essen! 🎉",
+        "b": "Geld regiert. Man muss realistisch sein",
+        "c": "Gesundheit zuerst. Ohne die geht nichts",
+        "d": "Familie und ein ruhiges Leben ist Glück"
+      }
+    },
+    "q5": {
+      "text": "Wie gehst du mit Stress um?",
+      "options": {
+        "a": "Die ganze Nacht zocken oder Serien bingen 🎮",
+        "b": "Freunde anrufen und einen trinken gehen 🍺",
+        "c": "Me-Time. Spazieren oder allein ins Café",
+        "d": "Einfach aushalten. Schlaf hilft"
+      }
+    },
+    "q6": {
+      "text": "Eine neue App ist raus! Deine Reaktion?",
+      "options": {
+        "a": "Sofort downloaden! Keine Ahnung was das ist 🤳",
+        "b": "Erst mal die Bewertungen checken",
+        "c": "Hol ich mir, wenn ich's brauche",
+        "d": "Noch eine neue App? Ich komm ja kaum mit den alten klar..."
+      }
+    },
+    "q7": {
+      "text": "Beim Abendessen auswählen, du...",
+      "options": {
+        "a": "Scharf! Oder das neue Restaurant! 🔥",
+        "b": "Worauf hab ich Bock? App öffnen",
+        "c": "Egal. Hauptsache Essen",
+        "d": "Selbst kochen ist am besten. Muss gesund sein"
+      }
+    },
+    "q8": {
+      "text": "Auf einer Party mit lauter Fremden, du...",
+      "options": {
+        "a": "Geh auf Leute zu! Neue Freunde finden 🙋",
+        "b": "Red mit denen, die mich ansprechen",
+        "c": "Bleib bei Leuten, die ich kenne",
+        "d": "Ruhig bleiben und ab und zu nicken"
+      }
+    },
+    "q9": {
+      "text": "Freund fragt: 'Was ist gerade angesagt?'",
+      "options": {
+        "a": "Erklärt die neuesten Memes/Challenges 📱",
+        "b": "Erzählt von der aktuellen Serie/dem Spiel",
+        "c": "Hmm... eigentlich nichts?",
+        "d": "Angesagt? Ich leb einfach normal"
+      }
+    },
+    "q10": {
+      "text": "Es ist 22 Uhr. Was machst du normalerweise?",
+      "options": {
+        "a": "Der Tag fängt erst an! 🌙",
+        "b": "YouTube/Netflix im Bett",
+        "c": "Werde müde... duschen und ab ins Bett",
+        "d": "Schlafe schon oder fast"
+      }
+    },
+    "q11": {
+      "text": "Videoanruf vs Texten. Was bevorzugst du?",
+      "options": {
+        "a": "Videoanruf! Ich seh gern Gesichter 📹",
+        "b": "Texten, wenn's nicht dringend ist",
+        "c": "Lieber texten als telefonieren",
+        "d": "Einfach anrufen. Tippen nervt"
+      }
+    },
+    "q12": {
+      "text": "Du hast plötzlich eine Woche frei! Du...",
+      "options": {
+        "a": "Sofort Reise buchen! Wohin? ✈️",
+        "b": "Freunde zusammentrommeln~",
+        "c": "Endlich zu Hause entspannen",
+        "d": "Zeit, den Haushalt aufzuholen"
+      }
+    },
+    "q13": {
+      "text": "Wenn du auf neuen Slang oder Trends stößt?",
+      "options": {
+        "a": "Kenn ich natürlich! Benutz ich schon lol",
+        "b": "Hab's gehört... muss googeln",
+        "c": "Was? Ist das Deutsch?",
+        "d": "Was reden die Kids heutzutage..."
+      }
+    },
+    "q14": {
+      "text": "Wenn du eine Entscheidung bereust, deine Haltung ist...",
+      "options": {
+        "a": "Warum hab ich das gemacht... kann nicht aufhören zu grübeln 😢",
+        "b": "Nervt ein bisschen, aber okay",
+        "c": "War die beste Wahl damals. Passt schon",
+        "d": "Bereuen ändert nichts. Nächstes Mal besser"
+      }
+    },
+    "q15": {
+      "text": "Jemand fragt: 'Was lernst du gerade so?'",
+      "options": {
+        "a": "TikTok-Editing / Gaming-Strategien 🎮",
+        "b": "Irgendwas mit Fitness oder Hobby~",
+        "c": "Sachen für die Arbeit...",
+        "d": "In meinem Alter? Hab genug gelernt"
+      }
+    }
+  },
+  "share": {
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "kakao": "KakaoTalk",
+    "copySuccess": "Link kopiert!",
+    "shareText": "Mein mentales Alter ist {age}! Probier's auch aus 👉"
+  },
+  "common": {
+    "loading": "Lädt...",
+    "error": "Ein Fehler ist aufgetreten",
+    "back": "Zurück"
+  }
+}

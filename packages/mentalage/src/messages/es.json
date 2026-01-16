@@ -1,0 +1,202 @@
+{
+  "home": {
+    "title": "¿Cuál es tu edad mental?",
+    "subtitle": "¡Responde preguntas divertidas y comparte los resultados con tus amigos!",
+    "startButton": "Empezar Test 🚀",
+    "ageInput": "Primero, dinos tu edad real",
+    "agePlaceholder": "Ingresa tu edad",
+    "ageConfirm": "Confirmar"
+  },
+  "quiz": {
+    "question": "Pregunta",
+    "of": "de"
+  },
+  "result": {
+    "yourMentalAge": "Tu edad mental es",
+    "years": "años",
+    "realAge": "Edad real",
+    "difference": "Diferencia",
+    "younger": "años más joven",
+    "older": "años mayor",
+    "share": "Compartir resultado",
+    "retry": "Intentar de nuevo",
+    "copyLink": "Copiar enlace",
+    "saveImage": "Guardar imagen"
+  },
+  "results": {
+    "teen": {
+      "title": "Eterno Adolescente 🧒",
+      "description": "¡Todavía quieres que mamá te haga la cena! Tu inocencia es tu superpoder. Pero quizás ya va siendo hora de madurar un poquito...",
+      "shortDesc": "Alma pura"
+    },
+    "young_adult": {
+      "title": "Los 20 a Tope 😎",
+      "description": "¡Gritas YOLO pero igual ahorras! Equilibrando entre la pasión y la realidad como un pro~",
+      "shortDesc": "Pasión al máximo"
+    },
+    "adult": {
+      "title": "Adulto de Verdad 💼",
+      "description": "¿Te despiertas diciendo 'uf... otro día más...' en vez de '¡vamos!'? ¡Oficialmente eres adulto!",
+      "shortDesc": "Realista"
+    },
+    "mature": {
+      "title": "Experto en la Vida 🧐",
+      "description": "¡Tienes esa cara de 'yo ya lo he visto todo'! Y secretamente te encanta cuando los jóvenes te piden consejos~",
+      "shortDesc": "Máxima experiencia"
+    },
+    "wise": {
+      "title": "El Sabio 🧙",
+      "description": "¡Has descubierto la verdad de la vida! '¿Los jóvenes de hoy? No saben nada...' se te escapa solo, ¿verdad?",
+      "shortDesc": "Iluminado"
+    }
+  },
+  "questions": {
+    "q1": {
+      "text": "Tu amigo te pregunta '¿Por qué no usas emojis?' ¿Qué respondes?",
+      "options": {
+        "a": "¿Qué es un emoji? 😅",
+        "b": "👍 ¿Esto no basta?",
+        "c": "Jaja es que soy así",
+        "d": "Envía 20 emojis lindos de una 🚀💕✨"
+      }
+    },
+    "q2": {
+      "text": "Es fin de semana. Te despiertas a las 7am. ¿Qué haces?",
+      "options": {
+        "a": "¡¿Qué?! A dormir de nuevo 💤",
+        "b": "Oh, madrugué~ A ver YouTube",
+        "c": "Genial, vamos a hacer ejercicio",
+        "d": "¡A quien madruga, Dios le ayuda! ☀️"
+      }
+    },
+    "q3": {
+      "text": "Encontraste a un viejo amigo en redes sociales. ¿Qué haces?",
+      "options": {
+        "a": "Le escribo directo 🏃‍♂️",
+        "b": "Primero seguir, stalkearlo en silencio",
+        "c": "Le echo un vistazo al perfil y paso",
+        "d": "¿Redes sociales? Con WhatsApp me basta"
+      }
+    },
+    "q4": {
+      "text": "¿Qué es lo más importante en la vida?",
+      "options": {
+        "a": "¡Pasarla bien y comer rico! 🎉",
+        "b": "El dinero manda. Hay que ser realista",
+        "c": "La salud primero. Sin ella no hay nada",
+        "d": "La familia y una vida tranquila es felicidad"
+      }
+    },
+    "q5": {
+      "text": "¿Cómo manejas el estrés?",
+      "options": {
+        "a": "Jugar toda la noche o maratón de series 🎮",
+        "b": "Llamo a los amigos para unas birras 🍺",
+        "c": "Tiempo a solas. Caminar o café solo",
+        "d": "Aguantar. Durmiendo se pasa"
+      }
+    },
+    "q6": {
+      "text": "¡Salió una app nueva! ¿Tu reacción?",
+      "options": {
+        "a": "¡La descargo ya! Ni sé qué es 🤳",
+        "b": "Primero veo las reseñas",
+        "c": "La bajo si la necesito",
+        "d": "¿Otra app nueva? Si apenas manejo las que tengo..."
+      }
+    },
+    "q7": {
+      "text": "Al elegir la cena, tú...",
+      "options": {
+        "a": "¡Picante! ¡O ese restaurante nuevo! 🔥",
+        "b": "¿Qué se me antoja? Abro la app de delivery",
+        "c": "Lo que sea. Comida es comida",
+        "d": "Cocinar en casa es lo mejor. Hay que comer sano"
+      }
+    },
+    "q8": {
+      "text": "En una fiesta con puros desconocidos, tú...",
+      "options": {
+        "a": "¡Inicio conversación! A hacer amigos 🙋",
+        "b": "Si me hablan, les contesto",
+        "c": "Me quedo con los que conozco",
+        "d": "Callado y asintiendo de vez en cuando"
+      }
+    },
+    "q9": {
+      "text": "Un amigo pregunta '¿Qué está de moda ahora?'",
+      "options": {
+        "a": "Empieza a explicar los memes/trends 📱",
+        "b": "Habla de la serie/juego que le tiene enganchado",
+        "c": "Mmm... ¿nada en especial?",
+        "d": "¿Cosas divertidas? Me gusta vivir tranquilo"
+      }
+    },
+    "q10": {
+      "text": "Son las 10pm. ¿Qué estás haciendo normalmente?",
+      "options": {
+        "a": "¡El día apenas empieza! 🌙",
+        "b": "YouTube/Netflix en la cama",
+        "c": "Me da sueño... ducha y a dormir",
+        "d": "Ya dormido o casi"
+      }
+    },
+    "q11": {
+      "text": "Videollamada vs Mensaje. ¿Qué prefieres?",
+      "options": {
+        "a": "¡Videollamada! Me gusta ver caras 📹",
+        "b": "Mensaje si no es urgente",
+        "c": "Prefiero mensajes a llamadas",
+        "d": "Mejor llamar. Escribir es un rollo"
+      }
+    },
+    "q12": {
+      "text": "¡De repente tienes una semana libre! Tú...",
+      "options": {
+        "a": "¡Reservo viaje ya! ¿A dónde? ✈️",
+        "b": "Llamo a los amigos para salir~",
+        "c": "Por fin puedo descansar en casa",
+        "d": "Hora de ponerse al día con las tareas del hogar"
+      }
+    },
+    "q13": {
+      "text": "¿Cuando encuentras jerga nueva o tendencias?",
+      "options": {
+        "a": "¡Obvio que lo sé! Ya lo uso jaja",
+        "b": "Me suena... tengo que googlear",
+        "c": "¿Qué? ¿Eso es español?",
+        "d": "¿Qué están diciendo los jóvenes ahora..."
+      }
+    },
+    "q14": {
+      "text": "Cuando te arrepientes de una decisión, tu actitud es...",
+      "options": {
+        "a": "¿Por qué hice eso... no paro de pensar 😢",
+        "b": "Me molesta un poco pero bueno",
+        "c": "Era la mejor opción en ese momento. Está bien",
+        "d": "Arrepentirse no cambia nada. A hacerlo mejor la próxima"
+      }
+    },
+    "q15": {
+      "text": "Alguien pregunta '¿Qué estás aprendiendo últimamente?'",
+      "options": {
+        "a": "Edición de TikTok / estrategias de juegos 🎮",
+        "b": "Algo de ejercicio o hobby~",
+        "c": "Cosas del trabajo...",
+        "d": "¿A mi edad? Ya aprendí suficiente"
+      }
+    }
+  },
+  "share": {
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "kakao": "KakaoTalk",
+    "copySuccess": "¡Enlace copiado!",
+    "shareText": "¡Mi edad mental es {age}! Pruébalo tú también 👉"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "back": "Volver"
+  }
+}

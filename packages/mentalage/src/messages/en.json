@@ -1,0 +1,202 @@
+{
+  "home": {
+    "title": "What's Your Mental Age?",
+    "subtitle": "Answer fun questions and share results with friends!",
+    "startButton": "Start Test 🚀",
+    "ageInput": "First, tell us your real age",
+    "agePlaceholder": "Enter age",
+    "ageConfirm": "Confirm"
+  },
+  "quiz": {
+    "question": "Question",
+    "of": "of"
+  },
+  "result": {
+    "yourMentalAge": "Your Mental Age is",
+    "years": "years old",
+    "realAge": "Real Age",
+    "difference": "Difference",
+    "younger": "years younger",
+    "older": "years older",
+    "share": "Share Result",
+    "retry": "Try Again",
+    "copyLink": "Copy Link",
+    "saveImage": "Save Image"
+  },
+  "results": {
+    "teen": {
+      "title": "Forever Teen 🧒",
+      "description": "You still lowkey wish mom would make dinner for you! Your innocence is your superpower. But maybe it's time to adult a little...",
+      "shortDesc": "Pure soul"
+    },
+    "young_adult": {
+      "title": "Hot 20s 😎",
+      "description": "You yell YOLO but still put money in savings! Walking the tightrope between passion and reality~",
+      "shortDesc": "Passion overload"
+    },
+    "adult": {
+      "title": "Real Adult 💼",
+      "description": "Waking up saying 'ugh... another day...' instead of 'let's gooo!' You've officially adulted!",
+      "shortDesc": "Realist"
+    },
+    "mature": {
+      "title": "Life Expert 🧐",
+      "description": "You have that 'I've seen it all' look on your face! And secretly proud when younger folks ask for advice~",
+      "shortDesc": "Max experience"
+    },
+    "wise": {
+      "title": "Wise One 🧙",
+      "description": "You've discovered the truth of life! 'Kids these days don't know anything...' just comes out automatically, right?",
+      "shortDesc": "Enlightened"
+    }
+  },
+  "questions": {
+    "q1": {
+      "text": "Your friend asks 'Why don't you use emojis?' How do you respond?",
+      "options": {
+        "a": "What's an emoji? 😅",
+        "b": "👍 Isn't this enough?",
+        "c": "Haha that's just how I am",
+        "d": "Immediately sends 20 cute emojis 🚀💕✨"
+      }
+    },
+    "q2": {
+      "text": "It's weekend morning. You wake up at 7am. What do you do?",
+      "options": {
+        "a": "This is insane! Back to sleep immediately 💤",
+        "b": "Oh I'm up early~ Time for YouTube",
+        "c": "Nice, let's go for a morning workout",
+        "d": "Early bird gets the worm! ☀️"
+      }
+    },
+    "q3": {
+      "text": "You found an old friend on social media. What do you do?",
+      "options": {
+        "a": "Slide into DMs immediately 🏃‍♂️",
+        "b": "Follow first, stalk silently",
+        "c": "Just peek at their profile and move on",
+        "d": "Social media? I'm fine with just texting"
+      }
+    },
+    "q4": {
+      "text": "What's most important in life?",
+      "options": {
+        "a": "Play hard, eat well! 🎉",
+        "b": "Money is king. Gotta be realistic",
+        "c": "Health first. Can't do anything without it",
+        "d": "Family and peaceful daily life is happiness"
+      }
+    },
+    "q5": {
+      "text": "How do you deal with stress?",
+      "options": {
+        "a": "Gaming all night or binge-watching shows 🎮",
+        "b": "Call up friends for drinks 🍺",
+        "c": "Me time. Walk or cafe alone",
+        "d": "Just endure it. Sleep it off"
+      }
+    },
+    "q6": {
+      "text": "A new app just came out! Your reaction?",
+      "options": {
+        "a": "Download immediately! Don't even know what it is 🤳",
+        "b": "Let me check the reviews first",
+        "c": "I'll get it if I need it",
+        "d": "Another new app? I can barely use what I have..."
+      }
+    },
+    "q7": {
+      "text": "When choosing dinner, you...",
+      "options": {
+        "a": "Spicy! Or that new restaurant! 🔥",
+        "b": "What am I craving? Opens delivery app",
+        "c": "Whatever. Food is food",
+        "d": "Home cooking is best. Gotta eat healthy"
+      }
+    },
+    "q8": {
+      "text": "At a party with strangers, you...",
+      "options": {
+        "a": "Initiate convo! Let's make friends 🙋",
+        "b": "Talk if they talk to me first",
+        "c": "Just stick with people I know",
+        "d": "Stay quiet and nod occasionally"
+      }
+    },
+    "q9": {
+      "text": "Friend asks 'What's fun these days?'",
+      "options": {
+        "a": "Starts explaining trending memes/challenges 📱",
+        "b": "Talks about current show/game obsession",
+        "c": "Hmm... not really anything?",
+        "d": "Fun stuff? I just like living normally"
+      }
+    },
+    "q10": {
+      "text": "It's 10pm. What are you usually doing?",
+      "options": {
+        "a": "The day is just getting started! 🌙",
+        "b": "YouTube/Netflix in bed mode",
+        "c": "Getting sleepy... shower and bed prep",
+        "d": "Already asleep or almost there"
+      }
+    },
+    "q11": {
+      "text": "Video call vs Text/DM. Your preference?",
+      "options": {
+        "a": "Video call! I like seeing faces 📹",
+        "b": "Text unless it's urgent",
+        "c": "Prefer texting over calls",
+        "d": "Just call. Typing is annoying"
+      }
+    },
+    "q12": {
+      "text": "Suddenly you get a week off! You...",
+      "options": {
+        "a": "Book a trip immediately! Where to? ✈️",
+        "b": "Call up friends for hangouts~",
+        "c": "Finally can rest at home",
+        "d": "Time to catch up on house chores"
+      }
+    },
+    "q13": {
+      "text": "When you encounter new slang or trends?",
+      "options": {
+        "a": "Obviously know it! Already using it lol",
+        "b": "Heard of it... gotta Google",
+        "c": "What? Is that even English?",
+        "d": "What are kids saying these days..."
+      }
+    },
+    "q14": {
+      "text": "When you regret a decision, your attitude is...",
+      "options": {
+        "a": "Why did I do that... can't stop thinking 😢",
+        "b": "Kinda sucks but whatever",
+        "c": "It was the best choice at the time. It's fine",
+        "d": "Regret changes nothing. Just do better next time"
+      }
+    },
+    "q15": {
+      "text": "Someone asks 'What are you learning these days?'",
+      "options": {
+        "a": "TikTok editing / game strategies 🎮",
+        "b": "Some workout or hobby~",
+        "c": "Work-related stuff...",
+        "d": "At my age? I've learned enough"
+      }
+    }
+  },
+  "share": {
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "kakao": "KakaoTalk",
+    "copySuccess": "Link copied!",
+    "shareText": "My mental age is {age}! Try it too 👉"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back"
+  }
+}

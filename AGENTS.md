@@ -8,7 +8,7 @@ This document defines the operational standards, code style, and workflows for A
 - **Framework**: Next.js 16 (App Router), React 19.
 - **Language**: TypeScript 5.x (Strict Mode).
 - **Backend**: Supabase (Auth, DB, Realtime).
-- **Styling**: SCSS (SASS) with Design Tokens. **Do NOT use TailwindCSS**.
+- **Styling**: SCSS (SASS) with Design Tokens. **Do NOT use TailwindCSS** (exception: `mentalage` uses Tailwind).
 - **Package Manager**: `pnpm` (Version 10.x).
 
 ### Workspace Structure
@@ -16,6 +16,7 @@ This document defines the operational standards, code style, and workflows for A
 - `packages/kcl`: K-pop Company League app (Multi-language i18n).
 - `packages/plozen`: Main admin/portfolio platform.
 - `packages/plolux`: Landing/Demo sites.
+- `packages/mentalage`: Mental Age Test viral quiz app (Multi-language, Static Export).
 
 ## 2. Operational Commands
 
@@ -113,33 +114,111 @@ Follow the specific layer structure:
 Plolux는 **모노레포 + 개별 리포 sync** 구조를 사용한다:
 
 ```
-plolux (모노레포) ─── CI/CD sync ───┬──→ kcl 리포 (별도)
-                                    └──→ plozen 리포 (별도)
+plolux (모노레포)
+    │
+    ├── packages/plozen ──sync──→ plozen/plozen-web (Cloudflare Pages)
+    ├── packages/plolux ──sync──→ plozen/plolux-web (Cloudflare Pages)
+    ├── packages/kcl ─────sync──→ plozen/kcl (Cloudflare Workers)
+    └── packages/mentalage sync──→ moony01/mentalage (GitHub Pages)
 ```
 
-- **plolux**: 개발용 모노레포. 모든 코드 변경은 여기서 발생.
-- **kcl / plozen 리포**: 동일 GitHub 계정의 별도 리포지토리. plolux에서 sync됨.
-- **Sync**: plolux 커밋 시 CI/CD가 각 리포로 코드를 push.
+### Sync 대상 리포지토리 목록
+
+| 패키지    | 소스 경로            | 대상 리포지토리     | 배포 플랫폼        |
+| --------- | -------------------- | ------------------- | ------------------ |
+| plozen    | `packages/plozen`    | `plozen/plozen-web` | Cloudflare Pages   |
+| plolux    | `packages/plolux`    | `plozen/plolux-web` | Cloudflare Pages   |
+| kcl       | `packages/kcl`       | `plozen/kcl`        | Cloudflare Workers |
+| mentalage | `packages/mentalage` | `moony01/mentalage` | GitHub Pages       |
+
+### CI/CD 워크플로우 (`.github/workflows/deploy.yml`)
+
+#### 트리거
+
+- `main` 브랜치에 push 시 자동 실행
+
+#### Jobs 구조
+
+```yaml
+jobs:
+  changes: # 변경된 패키지 감지 (dorny/paths-filter)
+  build-and-deploy: # plolux 정적 사이트 → GitHub Pages 직접 배포
+  sync-to-plozen-web: # packages/plozen → plozen/plozen-web
+  sync-to-plolux-web: # packages/plolux → plozen/plolux-web
+  sync-to-kcl: # packages/kcl → plozen/kcl
+  sync-to-mentalage: # packages/mentalage → moony01/mentalage
+```
+
+#### Sync 메커니즘
+
+- **Action**: `cpina/github-action-push-to-another-repository@main`
+- **Token**: `FORJEX_SYNC_TOKEN` (GitHub Personal Access Token)
+- **동작**: 소스 디렉토리 전체를 대상 리포의 main 브랜치로 push
 
 ### Deployment Flow
 
-| 단계              | 동작                                         |
-| ----------------- | -------------------------------------------- |
-| 1. plolux 커밋    | 개발자가 모노레포에 push                     |
-| 2. CI/CD sync     | `deploy.yml`이 kcl/plozen 리포로 코드 동기화 |
-| 3. 개별 리포 배포 | 각 리포의 자체 워크플로우가 배포 실행        |
+```
+1. 개발자가 plolux 모노레포 main 브랜치에 push
+                    ↓
+2. GitHub Actions (deploy.yml) 실행
+                    ↓
+3. 각 패키지를 개별 리포지토리로 sync
+                    ↓
+4. 개별 리포의 자체 워크플로우가 배포 실행
+   - Cloudflare: Git 연동으로 자동 배포
+   - GitHub Pages: 리포 내 워크플로우 실행
+```
 
-### SSR 프로젝트와 GitHub Pages
+### SSR 프로젝트와 정적 사이트
 
-**중요**: `kcl`, `plozen`은 SSR/API 라우트가 있어 **GitHub Pages 배포 불가**.
+**중요**: SSR/API 라우트가 있는 프로젝트는 **GitHub Pages 배포 불가** → Cloudflare 사용.
 
-| 패키지           | SSR/API | 배포 플랫폼       | GitHub Pages |
-| ---------------- | ------- | ----------------- | ------------ |
-| kcl              | ✅ 있음 | Vercel/Cloudflare | ❌ 불가      |
-| plozen           | ✅ 있음 | Vercel/Cloudflare | ❌ 불가      |
-| plolux (landing) | ❌ 없음 | GitHub Pages 가능 | ✅ 가능      |
+| 패키지    | SSR/API | output 모드 | 배포 플랫폼        |
+| --------- | ------- | ----------- | ------------------ |
+| kcl       | ✅ 있음 | standalone  | Cloudflare Workers |
+| plozen    | ✅ 있음 | standalone  | Cloudflare Pages   |
+| plolux    | ❌ 없음 | export      | Cloudflare Pages   |
+| mentalage | ❌ 없음 | export      | GitHub Pages       |
 
-**결론**: SSR 프로젝트는 sync만 실행하고, 정적 배포(gh-pages)는 시도하지 않음.
+### 새 패키지 추가 시 CI/CD 설정 가이드
+
+새로운 패키지를 추가하고 배포하려면:
+
+1. **패키지 생성**: `packages/<new-package>/` 디렉토리 생성
+2. **대상 리포 생성**: GitHub에서 빈 리포지토리 생성
+3. **Sync Job 추가**: `.github/workflows/deploy.yml`에 sync job 추가:
+   ```yaml
+   sync-to-<new-package>:
+     runs-on: ubuntu-latest
+     needs: []
+     if: github.ref == 'refs/heads/main'
+     steps:
+       - uses: actions/checkout@v4
+         with:
+           fetch-depth: 0
+       - uses: cpina/github-action-push-to-another-repository@main
+         env:
+           API_TOKEN_GITHUB: ${{ secrets.FORJEX_SYNC_TOKEN }}
+         with:
+           source-directory: 'packages/<new-package>'
+           destination-github-username: '<owner>'
+           destination-repository-name: '<repo-name>'
+           user-email: 'devops@plozen.com'
+           target-branch: 'main'
+           create-target-branch-if-needed: true
+           commit-message: 'Ship: <Package> Update (ORIGIN_COMMIT)'
+   ```
+4. **대상 리포에 배포 워크플로우 추가** (필요시):
+   - 정적 사이트: GitHub Pages 워크플로우
+   - SSR 앱: Cloudflare 자동 연동 또는 별도 설정
+
+### 배포 커밋 태그 (선택적)
+
+| 태그              | 동작                  |
+| ----------------- | --------------------- |
+| `[no-deploy]`     | 배포 스킵             |
+| `[deploy:plolux]` | plolux만 강제 배포    |
+| `[deploy:all]`    | 모든 패키지 강제 배포 |
 
 ## 6. Security & Env
 
