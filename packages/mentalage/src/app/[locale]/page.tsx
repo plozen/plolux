@@ -1,14 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useQuiz } from '@/hooks/useQuiz';
 import Button from '@/components/ui/Button';
 import QuestionCard from '@/components/quiz/QuestionCard';
 import ResultCard from '@/components/result/ResultCard';
-import AdBanner from '@/components/layout/AdBanner';
+// import AdBanner from '@/components/layout/AdBanner'; // AdSense 자동 광고 사용
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
 
 export default function Home() {
+  const params = useParams();
+  const currentLocale = params.locale as string;
+
   const t = useTranslations();
   const tQuestions = useTranslations('questions');
   const tResults = useTranslations('results');
@@ -63,6 +68,9 @@ export default function Home() {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background animate-fade-in text-center">
         <div className="max-w-md w-full space-y-8">
+          {/* 언어 선택 플래그 바 */}
+          <LanguageSwitcher currentLocale={currentLocale} />
+
           <div className="space-y-4">
             <div className="text-8xl animate-bounce-slow">🧠</div>
             <h1 className="text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">
@@ -80,7 +88,7 @@ export default function Home() {
             {t('home.startButton')}
           </Button>
 
-          <AdBanner slot="landing-bottom" className="mt-8" />
+          {/* <AdBanner slot="landing-bottom" className="mt-8" /> */}
         </div>
       </main>
     );
@@ -137,10 +145,10 @@ export default function Home() {
           onAnswer={handleAnswer}
         />
 
-        {/* Show ad every 5 questions */}
-        {(currentIndex + 1) % 5 === 0 && (
+        {/* AdSense 자동 광고 사용으로 주석처리 */}
+        {/* {(currentIndex + 1) % 5 === 0 && (
           <AdBanner slot="quiz-interval" className="mt-6" label="Sponsor" />
-        )}
+        )} */}
       </main>
     );
   }
@@ -153,7 +161,7 @@ export default function Home() {
 
     return (
       <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-background py-10">
-        <AdBanner slot="result-top" className="mb-8" />
+        {/* <AdBanner slot="result-top" className="mb-8" /> */}
         <ResultCard
           result={result}
           title={title}

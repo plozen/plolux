@@ -13,6 +13,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" suppressHydrationWarning>
       <head>
         <link rel="icon" href={faviconUrl} />
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8955182453510440"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="min-h-screen bg-gradient-to-br from-surface to-white">{children}</body>
     </html>
